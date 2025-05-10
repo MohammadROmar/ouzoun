@@ -1,0 +1,11 @@
+{
+  "MetaData": {
+    "Root": {
+      "title": "Ozone",
+      "description": "A specialized store for dental, pharmacy, and medical tools with reliable maintenance services."
+    }
+  },
+  "LandingPage": {
+    "hello": "hello"
+  }
+}

@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-montserrat: --font-montserrat;
+  --font-ubuntu-bold: --font-ubuntu-bold;
+  --font-kufi: --font-kufi;
+
+  --color-metallic-blue: #254c73;
+  --color-Sinbad: #9bd0be;
+  --color-zomp: #2b9193;
+  --color-beige: #f3f3d9;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
