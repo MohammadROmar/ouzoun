@@ -1,25 +1,40 @@
 {
-  "Locales": {
+  "locales": {
     "en": "English",
     "ar": "Arabic"
   },
-  "Metadata": {
+  "metadata": {
     "Root": {
       "title": "Ozone",
       "description": "A specialized store for dental tools with reliable maintenance services."
     }
   },
-  "LandingPage": {
-    "main-title1": "Are you a Dentist?",
-    "main-title2": "Do You Find It Difficult To Choose The Tools and Assistant?",
-    "main-body": "Don't Worry! We're here to get you covered.",
-    "contact": "Contact Us"
+  "landing-page": {
+    "hero": {
+      "main-title1": "Are you a Dentist?",
+      "main-title2": "Do You Find It Difficult To Choose The Tools and Assistant?",
+      "main-body": "Don't Worry! We're here to get you covered.",
+      "contact": "Contact Us"
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "What We Offer",
+      "heading-list": {
+        "service0": "Assistant Dentist Rental",
+        "service1": "Medical Equipment Supply",
+        "service2": "Assistant Performance Reports",
+        "service3": "Surgical Operation Support"
+      },
+      "body-list": {
+        "service0": "We provide skilled assistant dentists to support you in implant surgeries and complex dental procedures",
+        "service1": "Get the latest medical tools and equipment for all types of dental operations quickly and easily",
+        "service2": "Track assistant dentists’ performance with accurate reports highlighting productivity and professionalism",
+        "service3": "We help you fully prepare your operation room with all necessary tools and qualified assisting staff."
+      }
+    }
   },
-  "Shared": {
-    "language": "Language"
-  },
-  "Navigation": {
-    "Landing": {
+  "navigation": {
+    "landing": {
       "home": "Home",
       "services": "Services",
       "about": "About Us",

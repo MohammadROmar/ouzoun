@@ -1,18 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
-  --font-montserrat: --font-montserrat;
-  --font-ubuntu: --font-ubuntu;
-  --font-kufi: --font-kufi;
+  --font-montserrat: var(--font-montserrat);
+  --font-ubuntu: var(--font-ubuntu);
+  --font-kufi: var(--font-kufi);
 
-  --color-notes: #244f7a;
-  --color-gray: #a0a0a0;
-  --color-background: #fff;
-  --color-green: #00796b;
-  --color-green-light: #9ad0c2;
-}
-
-.colors-preview {
   --color-notes: #244f7a;
   --color-gray: #a0a0a0;
   --color-background: #fff;
@@ -21,6 +13,12 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  .dark {
+    --color-background: #222;
+  }
+}
 
 @utility max-container {
   @apply mx-auto max-w-[1440px];

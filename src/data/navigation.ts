@@ -6,9 +6,9 @@ export function landingNavigation(
   t: (p: string) => string,
 ): NavigationLink[] {
   return [
-    { label: t('Navigation.Landing.home'), to: `${locale}/` },
-    { label: t('Navigation.Landing.services'), to: `/${locale}/#services` },
-    { label: t('Navigation.Landing.about'), to: `/${locale}/#about` },
-    { label: t('Navigation.Landing.why-us'), to: `/${locale}/#why-us` },
+    { label: t('navigation.landing.home'), to: `${locale}/` },
+    { label: t('navigation.landing.services'), to: `/${locale}/#services` },
+    { label: t('navigation.landing.about'), to: `/${locale}/#about` },
+    { label: t('navigation.landing.why-us'), to: `/${locale}/#why-us` },
   ];
 }

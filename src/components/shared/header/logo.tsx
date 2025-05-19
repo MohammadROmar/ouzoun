@@ -10,7 +10,7 @@ export default async function HeaderLogo() {
   return (
     <Link href={`/${locale}`} className="flex items-center gap-2">
       <Logo className="size-5" />
-      <p className="text-lg">{t('Metadata.Root.title')}</p>
+      <p className="text-lg">{t('metadata.Root.title')}</p>
     </Link>
   );
 }

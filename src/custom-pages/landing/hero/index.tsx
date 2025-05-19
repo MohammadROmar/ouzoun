@@ -7,14 +7,14 @@ import type { Locale } from '@/i18n/routing';
 
 export default async function Hero() {
   const locale = (await getLocale()) as Locale;
-  const t = await getTranslations('LandingPage');
+  const t = await getTranslations('landing-page.hero');
 
   return (
-    <section className="spacing flex h-screen items-center gap-4 pt-24 max-md:flex-col">
+    <section className="spacing flex min-h-screen items-center gap-4 pt-24 max-md:flex-col">
       <div className="flex flex-1 flex-col gap-4">
         <h1
           className={clsx(
-            'max-w-xl text-3xl leading-14 font-medium md:text-5xl',
+            'max-w-xl text-3xl leading-14 font-medium lg:text-5xl',
             locale === 'en' && 'font-ubuntu',
           )}
         >

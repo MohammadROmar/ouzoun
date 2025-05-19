@@ -10,9 +10,9 @@ const ubuntu = localFont({
   preload: true,
   variable: '--font-ubuntu',
   src: [
-    { path: '../assets/fonts/Ubuntu-Bold.ttf', weight: '700' },
     { path: '../assets/fonts/Ubuntu-Regular.ttf', weight: '400' },
     { path: '../assets/fonts/Ubuntu-Medium.ttf', weight: '500' },
+    { path: '../assets/fonts/Ubuntu-Bold.ttf', weight: '700' },
   ],
 });
 

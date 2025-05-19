@@ -8,7 +8,7 @@ import type { Locale } from '@/i18n/routing';
 
 async function ContactButton() {
   const locale = (await getLocale()) as Locale;
-  const t = await getTranslations('LandingPage');
+  const t = await getTranslations('landing-page.hero');
 
   return (
     <div className="relative w-fit">

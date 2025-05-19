@@ -11,7 +11,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('Metadata.Root');
+  const t = await getTranslations('metadata.Root');
 
   return { title: t('title'), description: t('description') };
 }
@@ -42,7 +42,7 @@ async function LocaleLayout({ children, params }: LocaleLayoutProps) {
       <body
         className={`${fontVariables} ${
           locale === 'en' ? 'font-montserrat' : 'font-kufi'
-        } bg-background max-container selection:bg-green/75 antialiased selection:text-white dark:bg-[#333]`}
+        } bg-background max-container selection:bg-green/75 antialiased selection:text-white`}
       >
         <Providers>
           <Header />

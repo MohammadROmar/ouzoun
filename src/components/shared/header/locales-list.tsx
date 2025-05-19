@@ -12,7 +12,7 @@ type LocaleListProps = MotionProps &
   };
 
 function LocalesList({ handleChange, ...props }: LocaleListProps) {
-  const t = useTranslations('Locales');
+  const t = useTranslations('locales');
 
   return (
     <motion.ul
