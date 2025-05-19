@@ -7,7 +7,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Providers from '@/components/providers';
 import Header from '@/components/shared/header';
 import Footer from '@/components/shared/footer';
-import { routing, type Locale } from '@/i18n/routing';
+import { routing, type LocaleParams } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,8 +20,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-type Params = { params: Promise<{ locale: Locale }> };
-type LocaleLayoutProps = Params & PropsWithChildren;
+type LocaleLayoutProps = LocaleParams & PropsWithChildren;
 
 async function LocaleLayout({ children, params }: LocaleLayoutProps) {
   const { locale } = await params;

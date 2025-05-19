@@ -31,6 +31,13 @@
         "service2": "Track assistant dentists’ performance with accurate reports highlighting productivity and professionalism",
         "service3": "We help you fully prepare your operation room with all necessary tools and qualified assisting staff."
       }
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Empowering Dental Professionals",
+      "subtitle2": "Our Mission",
+      "body": "We are a specialized platform that supports dentists in delivering high-quality care by providing integrated solutions, essential resources, and professional connections for efficient and flexible practice.",
+      "body2": "At Ouzoun, Our mission is to promote optimal oral health and create lasting, confident smiles"
     }
   },
   "navigation": {

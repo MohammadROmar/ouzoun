@@ -25,5 +25,5 @@
 }
 
 @utility spacing {
-  @apply p-6 md:p-12 lg:p-16;
+  @apply p-6 py-16 md:p-12 lg:p-16;
 }

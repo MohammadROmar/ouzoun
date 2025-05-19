@@ -11,9 +11,9 @@ A specialized store for dental, pharmacy, and medical tools with reliable mainte
 
 - [next-intl](https://next-intl.dev/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
-- [framer-mtoion](https://motion.dev/docs/react-quick-start)
+- [framer-motion](https://motion.dev/docs/react-quick-start)
 
-#### Project Setup
+#### Local Project Setup
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -30,5 +30,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
