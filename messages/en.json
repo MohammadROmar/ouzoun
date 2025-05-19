@@ -1,11 +1,30 @@
 {
-  "MetaData": {
+  "Locales": {
+    "en": "English",
+    "ar": "Arabic"
+  },
+  "Metadata": {
     "Root": {
       "title": "Ozone",
-      "description": "A specialized store for dental, pharmacy, and medical tools with reliable maintenance services."
+      "description": "A specialized store for dental tools with reliable maintenance services."
     }
   },
   "LandingPage": {
-    "hello": "hello"
+    "main-title1": "Are you a Dentist?",
+    "main-title2": "Do You Find It Difficult To Choose The Tools and Assistant?",
+    "main-body": "Don't Worry! We're here to get you covered.",
+    "contact": "Contact Us"
+  },
+  "Shared": {
+    "language": "Language"
+  },
+  "Navigation": {
+    "Landing": {
+      "home": "Home",
+      "services": "Services",
+      "about": "About Us",
+      "why-us": "Why Choose Us",
+      "contact": "Contact Us"
+    }
   }
 }

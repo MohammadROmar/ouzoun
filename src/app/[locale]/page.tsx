@@ -1,11 +1,5 @@
-import { getTranslations } from 'next-intl/server';
+import LandingPage from '@/custom-pages/landing';
 
-export default async function LandingPage() {
-  const translation = await getTranslations('LandingPage');
-
-  return (
-    <section>
-      <h1>{translation('hello')}</h1>
-    </section>
-  );
+export default async function HomePage() {
+  return <LandingPage />;
 }
