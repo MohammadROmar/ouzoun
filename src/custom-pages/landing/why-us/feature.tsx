@@ -14,7 +14,7 @@ function Feature({ title, body, locale }: FeatureProps) {
     <li className="flex items-start gap-4">
       <div
         aria-hidden
-        className="text-background mt-2 box-content rounded-full bg-green-300 p-0.5"
+        className="text-background bg-green dark:bg-green-light mt-2 box-content rounded-full p-0.5"
       >
         <CheckMarkIcon className="aspect-square size-3" />
       </div>

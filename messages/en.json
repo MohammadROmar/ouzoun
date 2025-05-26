@@ -58,6 +58,12 @@
           "feature4": "From planning to execution, we offer complete operational support for your dental practice."
         }
       }
+    },
+    "mobile": {
+      "title": "Download Our App",
+      "subtitle": "Your Clinic On-the-Go",
+      "body": "Download our mobile app and manage everything from your phone—book assistants, request equipment, track performance reports, and organize your surgical schedule. A smooth, tailored experience built for professional dentists.",
+      "download": "Download Now"
     }
   },
   "navigation": {

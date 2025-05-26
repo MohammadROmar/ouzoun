@@ -5,14 +5,16 @@ import clsx from 'clsx';
 import PatternIcon from '@/assets/icons/patterns/pattern2';
 import type { Locale } from '@/i18n/routing';
 
-async function LandingImage({ image }: { image: StaticImageData }) {
+type LandingImageProps = { image: StaticImageData; alt: string };
+
+async function LandingImage({ image, alt }: LandingImageProps) {
   const locale = (await getLocale()) as Locale;
 
   return (
     <div className="relative aspect-square flex-1 self-center max-lg:w-full max-lg:max-w-lg">
       <div
         className={clsx(
-          'bg-green relative size-full overflow-hidden',
+          'bg-green-light dark:bg-green relative size-full overflow-hidden',
           locale === 'en'
             ? 'rounded-tr-[7.5rem] rounded-bl-[7.5rem]'
             : 'rounded-tl-[7.5rem] rounded-br-[7.5rem]',
@@ -20,7 +22,7 @@ async function LandingImage({ image }: { image: StaticImageData }) {
       >
         <Image
           src={image}
-          alt="An image of a dentist and a patient."
+          alt={alt}
           fill
           sizes="(max-width: 48rem) 100vw, (max-width: 1440px) 50vw, 720px"
           className="object-cover object-center"
@@ -29,7 +31,7 @@ async function LandingImage({ image }: { image: StaticImageData }) {
 
       <PatternIcon
         className={clsx(
-          'text-green-light absolute bottom-0 -z-10 size-32 translate-y-1/2',
+          'text-green dark:text-green-light absolute bottom-0 -z-10 size-32 translate-y-1/2',
           locale === 'en' ? 'right-4' : 'left-4',
         )}
       />

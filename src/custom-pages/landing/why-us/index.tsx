@@ -12,7 +12,10 @@ export default async function WhyUs() {
   const locale = (await getLocale()) as Locale;
 
   return (
-    <section className="max-container spacing flex justify-between gap-6 max-lg:flex-col lg:items-center lg:gap-12">
+    <section
+      id="why-us"
+      className="max-container spacing flex justify-between gap-6 max-lg:flex-col lg:items-center lg:gap-12"
+    >
       <div className="flex-1">
         <SectionTitle
           title={t('title')}
@@ -28,7 +31,10 @@ export default async function WhyUs() {
         </ul>
       </div>
 
-      <Image image={dentalCheckUpImg} />
+      <Image
+        image={dentalCheckUpImg}
+        alt="An image of a young woman receiving dental check up."
+      />
     </section>
   );
 }

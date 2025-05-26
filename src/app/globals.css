@@ -27,3 +27,7 @@
 @utility spacing {
   @apply p-6 py-16 md:p-12 lg:p-16;
 }
+
+@utility button {
+  @apply bg-green cursor-pointer rounded-full px-4 py-2 text-white transition-transform duration-300 hover:scale-95;
+}

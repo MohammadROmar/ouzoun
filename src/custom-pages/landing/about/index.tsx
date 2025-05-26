@@ -8,7 +8,7 @@ export default async function About() {
       id="about"
       className="max-container spacing flex justify-between gap-6 max-lg:flex-col-reverse lg:items-center lg:gap-12"
     >
-      <Image image={dentistImg} />
+      <Image image={dentistImg} alt="An image of a dentist and a patient." />
 
       <AboutText />
     </section>
