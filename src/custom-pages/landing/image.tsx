@@ -1,12 +1,11 @@
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { getLocale } from 'next-intl/server';
 import clsx from 'clsx';
 
 import PatternIcon from '@/assets/icons/patterns/pattern2';
-import dentistImg from '@/assets/images/dentist.png';
 import type { Locale } from '@/i18n/routing';
 
-export default async function AboutImage() {
+async function LandingImage({ image }: { image: StaticImageData }) {
   const locale = (await getLocale()) as Locale;
 
   return (
@@ -20,7 +19,7 @@ export default async function AboutImage() {
         )}
       >
         <Image
-          src={dentistImg}
+          src={image}
           alt="An image of a dentist and a patient."
           fill
           sizes="(max-width: 48rem) 100vw, (max-width: 1440px) 50vw, 720px"
@@ -37,3 +36,5 @@ export default async function AboutImage() {
     </div>
   );
 }
+
+export default LandingImage;

@@ -38,6 +38,26 @@
       "subtitle2": "Our Mission",
       "body": "We are a specialized platform that supports dentists in delivering high-quality care by providing integrated solutions, essential resources, and professional connections for efficient and flexible practice.",
       "body2": "At Ouzoun, Our mission is to promote optimal oral health and create lasting, confident smiles"
+    },
+    "why-us": {
+      "title": "Why Choose Us",
+      "subtitle": "Solutions That Simplify",
+      "features": {
+        "title": {
+          "feature0": "Top-Tier Assistant Dentists",
+          "feature1": "Ready-to-Use Equipment",
+          "feature2": "Fast and Flexible Service",
+          "feature3": "Reliable Performance Reports",
+          "feature4": "Comprehensive Clinic Support"
+        },
+        "body": {
+          "feature0": "Our team includes highly skilled and experienced assistant dentists for advanced dental procedures.",
+          "feature1": "We provide modern, sterilized tools and equipment suited for a wide range of dental surgeries.",
+          "feature2": "Request what you need anytime—we ensure prompt delivery and efficient support.",
+          "feature3": "Access clear, detailed reports to track assistant performance and support informed decisions.",
+          "feature4": "From planning to execution, we offer complete operational support for your dental practice."
+        }
+      }
     }
   },
   "navigation": {
