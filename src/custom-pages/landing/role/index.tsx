@@ -1,6 +1,6 @@
 import Image from '../image';
-import AboutText from './text';
-import adminRoleImg from '@/assets/images/admin-role.png';
+import RoleText from './text';
+import adminImg from '@/assets/images/admin.png';
 
 export default async function Role() {
   return (
@@ -8,12 +8,9 @@ export default async function Role() {
       id="role"
       className="max-container spacing flex justify-between gap-6 max-lg:flex-col-reverse lg:items-center lg:gap-12"
     >
-      <Image
-        src={adminRoleImg}
-        alt="An image of a woman managing a business."
-      />
+      <Image src={adminImg} alt="An image of a woman managing a business." />
 
-      <AboutText />
+      <RoleText />
     </section>
   );
 }

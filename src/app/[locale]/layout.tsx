@@ -11,7 +11,7 @@ import { routing, type LocaleParams } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('metadata.Root');
+  const t = await getTranslations('metadata.root');
 
   return { title: t('title'), description: t('description') };
 }

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import SectionTitle from '@/components/shared/section-title';
 import type { Locale } from '@/i18n/routing';
 
-export default async function AboutText() {
+export default async function RoleText() {
   const t = await getTranslations('landing-page.role');
   const locale = (await getLocale()) as Locale;
 
@@ -21,7 +21,7 @@ export default async function AboutText() {
 
       <h4
         className={clsx(
-          'mt-6 text-2xl font-medium md:text-4xl',
+          'mt-6 text-2xl font-medium md:text-3xl lg:text-4xl',
           locale === 'en' && 'font-ubuntu',
         )}
       >

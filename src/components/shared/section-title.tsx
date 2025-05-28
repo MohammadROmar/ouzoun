@@ -17,7 +17,7 @@ function SectionTitle({ title, subtitle, locale, align }: SectionTitleProps) {
       </h2>
       <h3
         className={clsx(
-          'text-2xl font-medium md:text-4xl',
+          'text-2xl font-medium md:text-3xl lg:text-4xl',
           locale === 'en' && 'font-ubuntu',
           align,
         )}
