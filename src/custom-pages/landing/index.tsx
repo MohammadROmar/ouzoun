@@ -1,19 +1,15 @@
 import Hero from './hero';
-import Services from './services';
-import About from './about';
-import WhyUs from './why-us';
-import MobileApp from './mobile-app';
-import Contact from './contact';
+import Capabilities from './capabilities';
+import Role from './role';
+import Overview from './overview';
 
-export default function LandingPage() {
+export default async function LandingPage() {
   return (
     <>
       <Hero />
-      <Services />
-      <About />
-      <WhyUs />
-      <MobileApp />
-      <Contact />
+      <Capabilities />
+      <Role />
+      <Overview />
     </>
   );
 }

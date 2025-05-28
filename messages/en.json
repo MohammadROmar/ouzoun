@@ -11,68 +11,59 @@
   },
   "landing-page": {
     "hero": {
-      "main-title1": "Are you a Dentist?",
-      "main-title2": "Do You Find It Difficult To Choose The Tools and Assistant?",
-      "main-body": "Don't Worry! We're here to get you covered.",
-      "contact": "Contact Us"
+      "title1": "Medical Operations Dashboard",
+      "title2": "Start Your Day with Clarity and Full Control",
+      "body": "A unified platform to manage assistants, tools, and performance from one place.",
+      "start": "Start Now"
     },
-    "services": {
-      "title": "Services",
-      "subtitle": "What We Offer",
+    "capabilities": {
+      "title": "What You Can Do",
+      "subtitle": "Smart and Fast Control",
       "heading-list": {
-        "service0": "Assistant Dentist Rental",
-        "service1": "Medical Equipment Supply",
-        "service2": "Assistant Performance Reports",
-        "service3": "Surgical Operation Support"
+        "capability0": "Manage Requests",
+        "capability1": "Schedule Equipment",
+        "capability2": "Track Assistant Performance",
+        "capability3": "Support Operations"
       },
       "body-list": {
-        "service0": "We provide skilled assistant dentists to support you in implant surgeries and complex dental procedures",
-        "service1": "Get the latest medical tools and equipment for all types of dental operations quickly and easily",
-        "service2": "Track assistant dentists’ performance with accurate reports highlighting productivity and professionalism",
-        "service3": "We help you fully prepare your operation room with all necessary tools and qualified assisting staff."
+        "capability0": "Review and approve requests for tools and surgical assistants.",
+        "capability1": "Schedule and allocate surgical tools and kits as needed.",
+        "capability2": "Access detailed performance reports for assistants based on past operations.",
+        "capability3": "Provide logistical and organizational support for clinics and surgical teams."
       }
     },
-    "about": {
-      "title": "About Us",
-      "subtitle": "Empowering Dental Professionals",
-      "subtitle2": "Our Mission",
-      "body": "We are a specialized platform that supports dentists in delivering high-quality care by providing integrated solutions, essential resources, and professional connections for efficient and flexible practice.",
-      "body2": "At Ouzoun, Our mission is to promote optimal oral health and create lasting, confident smiles"
-    },
-    "why-us": {
-      "title": "Why Choose Us",
-      "subtitle": "Solutions That Simplify",
+    "overview": {
+      "title": "Overview",
+      "subtitle": "Everything Under Your Control",
       "features": {
         "title": {
-          "feature0": "Top-Tier Assistant Dentists",
-          "feature1": "Ready-to-Use Equipment",
-          "feature2": "Fast and Flexible Service",
-          "feature3": "Reliable Performance Reports",
-          "feature4": "Comprehensive Clinic Support"
+          "feature0": "New Requests",
+          "feature1": "Rented Tools",
+          "feature2": "Active Assistants",
+          "feature3": "Upcoming Operations"
         },
         "body": {
-          "feature0": "Our team includes highly skilled and experienced assistant dentists for advanced dental procedures.",
-          "feature1": "We provide modern, sterilized tools and equipment suited for a wide range of dental surgeries.",
-          "feature2": "Request what you need anytime—we ensure prompt delivery and efficient support.",
-          "feature3": "Access clear, detailed reports to track assistant performance and support informed decisions.",
-          "feature4": "From planning to execution, we offer complete operational support for your dental practice."
+          "feature0": "Check the number of requests that need review.",
+          "feature1": "Track rented tools anytime, anywhere.",
+          "feature2": "View the number of assistants currently available or on duty.",
+          "feature3": "Easily schedule upcoming operations for you and your assistants."
         }
       }
     },
-    "mobile": {
-      "title": "Download Our App",
-      "subtitle": "Your Clinic On-the-Go",
-      "body": "Download our mobile app and manage everything from your phone—book assistants, request equipment, track performance reports, and organize your surgical schedule. A smooth, tailored experience built for professional dentists.",
-      "download": "Download Now"
+    "role": {
+      "title": "Your Role in Workflow",
+      "subtitle": "Coordination, Oversight, Execution",
+      "subtitle2": "Structured Responsibility Flow",
+      "body": "Daily operations rely on your decisions regarding approvals, allocations, and follow-up. This platform provides practical tools to execute tasks efficiently while ensuring clear communication between assistants and clinics.",
+      "body2": "Tasks begin with review and conclude with execution confirmation. The workflow includes making prompt decisions on requests, scheduling resources, and monitoring execution status to ensure adherence to the approved plan."
     }
   },
   "navigation": {
     "landing": {
       "home": "Home",
-      "services": "Services",
-      "about": "About Us",
-      "why-us": "Why Choose Us",
-      "contact": "Contact Us"
+      "capabilities": "Capabilities",
+      "overview": "Overview",
+      "role": "Role"
     }
   }
 }

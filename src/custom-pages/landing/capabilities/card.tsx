@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 
-import type { Service } from '@/data/services';
+import type { Capability } from '@/data/capabilities';
 import type { Locale } from '@/i18n/routing';
 
-type ServiceCardProps = { service: Service; locale: Locale };
+type CapabilityCardProps = { capability: Capability; locale: Locale };
 
-function ServiceCard({ service, locale }: ServiceCardProps) {
-  const { icon: Icon, title, body } = service;
+function CapabilityCard({ capability, locale }: CapabilityCardProps) {
+  const { icon: Icon, title, body } = capability;
 
   return (
     <li className="bg-green-light flex-1 space-y-2 rounded-xl p-4">
@@ -24,4 +24,4 @@ function ServiceCard({ service, locale }: ServiceCardProps) {
   );
 }
 
-export default ServiceCard;
+export default CapabilityCard;

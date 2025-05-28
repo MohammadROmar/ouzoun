@@ -1,22 +1,23 @@
 import Link from 'next/link';
-import { getLocale, getTranslations } from 'next-intl/server';
 import clsx from 'clsx';
 
 import CurvedArrrowIcon from '@/assets/icons/curved-arrow';
 import PatternIcon from '@/assets/icons/patterns/pattern1';
 import type { Locale } from '@/i18n/routing';
 
-async function ContactButton() {
-  const locale = (await getLocale()) as Locale;
-  const t = await getTranslations('landing-page.hero');
+type StartButtonProps = {
+  locale: Locale;
+  t(key: string): string;
+};
 
+function StartButton({ locale, t }: StartButtonProps) {
   return (
     <div className="relative w-fit">
       <Link
-        href={`/${locale}#contact`}
+        href={`/${locale}/login`}
         className="button flex items-center gap-3 text-xl font-medium md:text-2xl"
       >
-        <p>{t('contact')}</p>
+        <p>{t('start')}</p>
         <CurvedArrrowIcon className="size-3" />
       </Link>
 
@@ -32,4 +33,4 @@ async function ContactButton() {
   );
 }
 
-export default ContactButton;
+export default StartButton;

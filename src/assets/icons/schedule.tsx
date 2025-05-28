@@ -1,6 +1,6 @@
 import { memo, type ComponentPropsWithoutRef } from 'react';
 
-function PerformanceIcon(props: ComponentPropsWithoutRef<'svg'>) {
+function ScheduleIcon(props: ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
       viewBox="0 0 1024 1024"
@@ -20,4 +20,4 @@ function PerformanceIcon(props: ComponentPropsWithoutRef<'svg'>) {
   );
 }
 
-export default memo(PerformanceIcon);
+export default memo(ScheduleIcon);

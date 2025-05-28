@@ -5,7 +5,7 @@ import SectionTitle from '@/components/shared/section-title';
 import type { Locale } from '@/i18n/routing';
 
 export default async function AboutText() {
-  const t = await getTranslations('landing-page.about');
+  const t = await getTranslations('landing-page.role');
   const locale = (await getLocale()) as Locale;
 
   return (

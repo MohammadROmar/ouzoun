@@ -6,7 +6,7 @@
   --font-kufi: var(--font-kufi);
 
   --color-notes: #244f7a;
-  --color-gray: #a0a0a0;
+  --color-gray: #505050;
   --color-background: #fff;
   --color-green: #00796b;
   --color-green-light: #9ad0c2;
@@ -17,6 +17,7 @@
 @layer base {
   .dark {
     --color-background: #222;
+    --color-gray: #bdbcbc;
   }
 }
 

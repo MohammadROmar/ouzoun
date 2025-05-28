@@ -1,7 +1,7 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import clsx from 'clsx';
 
-import ContactButton from './contact-btn';
+import StartButton from './start-btn';
 import HeroImage from './image';
 import type { Locale } from '@/i18n/routing';
 
@@ -14,17 +14,17 @@ export default async function Hero() {
       <div className="flex flex-1 flex-col gap-4">
         <h1
           className={clsx(
-            'max-w-xl text-3xl leading-14 font-medium lg:text-5xl',
+            'max-w-xl text-3xl leading-10 font-medium lg:text-5xl lg:leading-14',
             locale === 'en' && 'font-ubuntu',
           )}
         >
-          <span className="text-green block">{t('main-title1')}</span>
-          <span className="block">{t('main-title2')}</span>
+          <span className="text-green block">{t('title1')}</span>
+          <span className="block">{t('title2')}</span>
         </h1>
 
-        <p className="text-gray text-xl md:text-2xl">{t('main-body')}</p>
+        <p className="text-gray max-w-lg text-lg md:text-xl">{t('body')}</p>
 
-        <ContactButton />
+        <StartButton locale={locale} t={t} />
       </div>
 
       <HeroImage />
