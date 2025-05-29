@@ -4,7 +4,7 @@ import SectionTitle from '@/components/shared/section-title';
 import Feature from './feature';
 import Image from '../image';
 import { features } from '@/data/features';
-import dashboardImg from '@/assets/images/dashboard.png';
+import adminImg from '@/assets/images/admin.png';
 import type { Locale } from '@/i18n/routing';
 
 export default async function Overview() {
@@ -32,8 +32,8 @@ export default async function Overview() {
       </div>
 
       <Image
-        src={dashboardImg}
-        alt="An image a person controlling a dashboard."
+        src={adminImg}
+        alt="An image of a person managing a business on laptop."
       />
     </section>
   );

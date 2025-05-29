@@ -65,5 +65,17 @@
       "overview": "Overview",
       "role": "Role"
     }
+  },
+  "footer": {
+    "rights": "All Rights Reserved."
+  },
+  "accessibility": {
+    "language": "Change language",
+    "theme": {
+      "dark": "Toggle dark mode",
+      "light": "Toggle light mode"
+    },
+    "hamburger-menu": "Open sidebar",
+    "sidebar-close": "Close sidebar"
   }
 }

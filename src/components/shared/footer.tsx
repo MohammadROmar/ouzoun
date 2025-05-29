@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import Logo from '../logo';
+import Logo from './logo';
 import { landingNavigation } from '@/data/navigation';
 import type { Locale } from '@/i18n/routing';
 
@@ -12,7 +12,7 @@ export default async function Footer() {
   const links = landingNavigation(locale, t);
 
   return (
-    <footer className="spacing max-container border-gray border-t py-6">
+    <footer className="spacing max-container border-gray flex flex-col border-t py-6">
       <div className="flex items-center gap-4">
         <Logo />
       </div>
@@ -29,6 +29,14 @@ export default async function Footer() {
           ))}
         </ul>
       </nav>
+
+      <p className="mt-4 self-center text-sm">
+        <span>&copy; </span>
+        <span className="text-green dark:text-green-light">
+          {t('metadata.root.title')}
+        </span>
+        <span>{`. ${t('footer.rights')}`}</span>
+      </p>
     </footer>
   );
 }

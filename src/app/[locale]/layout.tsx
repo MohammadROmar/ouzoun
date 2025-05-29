@@ -6,9 +6,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import Providers from '@/components/providers';
 import Header from '@/components/shared/header';
+import Sidebar from '@/components/shared/sidebar';
 import Footer from '@/components/shared/footer';
 import { routing, type LocaleParams } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
+import SidebarContextProvider from '@/store/theme-provider';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata.root');
@@ -44,7 +46,10 @@ async function LocaleLayout({ children, params }: LocaleLayoutProps) {
         } bg-background max-container selection:bg-green/75 antialiased selection:text-white`}
       >
         <Providers>
-          <Header />
+          <SidebarContextProvider>
+            <Header />
+            <Sidebar />
+          </SidebarContextProvider>
           <main>{children}</main>
           <Footer />
         </Providers>

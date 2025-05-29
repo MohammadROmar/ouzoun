@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { getLocale, getTranslations } from 'next-intl/server';
 
-import LocaleSwitcher from './locale-switcher';
-import ThemeToggle from '../../theme/theme-toggle';
 import Logo from '../logo';
+import LocaleSwitcher from '../../locale/locale-switcher';
+import ThemeToggle from '../../theme/theme-toggle';
+import HamburgerMenu from './hamburger-menu';
 import { landingNavigation } from '@/data/navigation';
 import type { Locale } from '@/i18n/routing';
 
@@ -27,10 +28,12 @@ export default async function Header() {
         </ul>
       </nav>
 
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-6 max-md:hidden">
         <LocaleSwitcher />
         <ThemeToggle />
       </div>
+
+      <HamburgerMenu />
     </header>
   );
 }
