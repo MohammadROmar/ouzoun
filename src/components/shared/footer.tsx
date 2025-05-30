@@ -1,15 +1,13 @@
-import Link from 'next/link';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 import Logo from './logo';
-import { landingNavigation } from '@/data/navigation';
-import type { Locale } from '@/i18n/routing';
+import Navigation from '../navigation';
+import type { NavigationLink } from '@/models/navigation-link';
 
-export default async function Footer() {
-  const locale = (await getLocale()) as Locale;
+type FooterProps = { navigationLinks: NavigationLink[] };
+
+export default async function Footer({ navigationLinks }: FooterProps) {
   const t = await getTranslations();
-
-  const links = landingNavigation(locale, t);
 
   return (
     <footer className="spacing max-container border-gray flex flex-col border-t py-6">
@@ -20,15 +18,7 @@ export default async function Footer() {
         {t('metadata.root.description')}
       </p>
 
-      <nav className="mt-4">
-        <ul className="flex flex-wrap gap-6">
-          {links.map((link) => (
-            <li key={link.label}>
-              <Link href={link.to}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Navigation links={navigationLinks} className="mt-4" />
 
       <p className="mt-4 self-center text-sm">
         <span>&copy; </span>

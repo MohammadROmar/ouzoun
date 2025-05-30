@@ -14,7 +14,7 @@ function StartButton({ locale, t }: StartButtonProps) {
   return (
     <div className="relative w-fit">
       <Link
-        href={`/${locale}/login`}
+        href={`/${locale}/sign-in`}
         className="button flex items-center gap-3 text-xl font-medium md:text-2xl"
       >
         <p>{t('start')}</p>

@@ -1,17 +1,19 @@
+import { getLocale, getTranslations } from 'next-intl/server';
+
 import type { Locale } from '@/i18n/routing';
 import type { NavigationLink } from '@/models/navigation-link';
 
-export function landingNavigation(
-  locale: Locale,
-  t: (p: string) => string,
-): NavigationLink[] {
+export async function landingNavigation(): Promise<NavigationLink[]> {
+  const t = await getTranslations('navigation.landing');
+  const locale = (await getLocale()) as Locale;
+
   return [
-    { label: t('navigation.landing.home'), to: `${locale}/` },
+    { label: t('home'), to: `${locale}/` },
     {
-      label: t('navigation.landing.capabilities'),
+      label: t('capabilities'),
       to: `/${locale}/#capabilities`,
     },
-    { label: t('navigation.landing.role'), to: `/${locale}/#role` },
-    { label: t('navigation.landing.overview'), to: `/${locale}/#overview` },
+    { label: t('role'), to: `/${locale}/#role` },
+    { label: t('overview'), to: `/${locale}/#overview` },
   ];
 }

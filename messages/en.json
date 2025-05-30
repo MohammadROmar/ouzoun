@@ -58,6 +58,19 @@
       "body2": "Tasks begin with review and conclude with execution confirmation. The workflow includes making prompt decisions on requests, scheduling resources, and monitoring execution status to ensure adherence to the approved plan."
     }
   },
+  "sign-in-page": {
+    "title": "Sign In",
+    "subtitle": "Please login to continue to your account.",
+    "email": "E-mail",
+    "password": "Password",
+    "submittion": "Submit form",
+    "errors": {
+      "email": "Please enter a valid E-mail.",
+      "password": "Please enter a valid Password."
+    },
+    "hide-password": "Hide password",
+    "show-password": "Show password"
+  },
   "navigation": {
     "landing": {
       "home": "Home",

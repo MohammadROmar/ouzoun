@@ -1,16 +1,12 @@
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import type { PropsWithChildren } from 'react';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from 'next';
+import type { PropsWithChildren } from 'react';
 
 import Providers from '@/components/providers';
-import Header from '@/components/shared/header';
-import Sidebar from '@/components/shared/sidebar';
-import Footer from '@/components/shared/footer';
 import { routing, type LocaleParams } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
-import SidebarContextProvider from '@/store/theme-provider';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata.root');
@@ -45,14 +41,7 @@ async function LocaleLayout({ children, params }: LocaleLayoutProps) {
           locale === 'en' ? 'font-montserrat' : 'font-kufi'
         } bg-background max-container selection:bg-green/75 antialiased selection:text-white`}
       >
-        <Providers>
-          <SidebarContextProvider>
-            <Header />
-            <Sidebar />
-          </SidebarContextProvider>
-          <main>{children}</main>
-          <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

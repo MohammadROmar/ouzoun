@@ -1,32 +1,20 @@
-import Link from 'next/link';
-import { getLocale, getTranslations } from 'next-intl/server';
-
 import Logo from '../logo';
+import Navigation from '@/components/navigation';
 import LocaleSwitcher from '../../locale/locale-switcher';
 import ThemeToggle from '../../theme/theme-toggle';
 import HamburgerMenu from './hamburger-menu';
-import { landingNavigation } from '@/data/navigation';
-import type { Locale } from '@/i18n/routing';
+import type { NavigationLink } from '@/models/navigation-link';
 
-export default async function Header() {
-  const locale = (await getLocale()) as Locale;
-  const t = await getTranslations();
+type HeaderProps = { navigationLinks?: NavigationLink[] };
 
-  const links = landingNavigation(locale, t);
-
+async function Header({ navigationLinks }: HeaderProps) {
   return (
     <header className="spacing max-container absolute top-0 right-0 left-0 flex items-center justify-between py-4">
       <Logo />
 
-      <nav className="max-md:hidden">
-        <ul className="flex gap-6">
-          {links.map((link) => (
-            <li key={link.label}>
-              <Link href={link.to}>{link.label}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {navigationLinks && (
+        <Navigation links={navigationLinks} className="max-md:hidden" />
+      )}
 
       <div className="flex items-center gap-6 max-md:hidden">
         <LocaleSwitcher />
@@ -37,3 +25,5 @@ export default async function Header() {
     </header>
   );
 }
+
+export default Header;
