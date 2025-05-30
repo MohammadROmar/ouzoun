@@ -71,6 +71,11 @@
     "hide-password": "اخفاء كلمة السر",
     "show-password": "عرض كلمة السر"
   },
+  "not-found-page": {
+    "title": "يا للأسف!",
+    "subtitle": "لم يتم العثور على الصفحة التي طلبتها",
+    "back-to-home": "العودة إلى الرئيسية"
+  },
   "navigation": {
     "landing": {
       "home": "الرئيسية",

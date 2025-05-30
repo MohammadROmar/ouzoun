@@ -1,23 +1,10 @@
-import SidebarContextProvider from '@/store/theme-provider';
-import Header from '@/components/shared/header';
-import Sidebar from '@/components/shared/sidebar';
+import Layout from '@/custom-pages/layout';
 import LandingPage from '@/custom-pages/landing';
-import Footer from '@/components/shared/footer';
-import { landingNavigation } from '@/data/navigation';
 
-export default async function HomePage() {
-  const navigationLinks = await landingNavigation();
-
+export default function HomePage() {
   return (
-    <>
-      <SidebarContextProvider>
-        <Header navigationLinks={navigationLinks} />
-        <Sidebar navigationLinks={navigationLinks} />
-      </SidebarContextProvider>
-      <main>
-        <LandingPage />
-      </main>
-      <Footer navigationLinks={navigationLinks} />
-    </>
+    <Layout>
+      <LandingPage />
+    </Layout>
   );
 }

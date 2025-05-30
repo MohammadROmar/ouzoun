@@ -71,6 +71,11 @@
     "hide-password": "Hide password",
     "show-password": "Show password"
   },
+  "not-found-page": {
+    "title": "Oops!",
+    "subtitle": "Could not find the page you requested",
+    "back-to-home": "Back to Home"
+  },
   "navigation": {
     "landing": {
       "home": "Home",

@@ -8,7 +8,7 @@ export async function landingNavigation(): Promise<NavigationLink[]> {
   const locale = (await getLocale()) as Locale;
 
   return [
-    { label: t('home'), to: `${locale}/` },
+    { label: t('home'), to: `/${locale}/` },
     {
       label: t('capabilities'),
       to: `/${locale}/#capabilities`,
