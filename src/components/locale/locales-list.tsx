@@ -18,10 +18,11 @@ function LocalesList({ handleChange, ...props }: LocaleListProps) {
     <motion.ul
       initial={{ opacity: 0, y: 25 }}
       animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 25 }}
       {...props}
     >
       {routing.locales.map((locale) => (
-        <li key={locale}>
+        <li key={locale} className="py-0.5">
           <button
             onClick={() => handleChange(locale)}
             className="w-full cursor-pointer"

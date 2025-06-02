@@ -8,6 +8,7 @@ import { useRouter, usePathname } from '@/i18n/navigation';
 import LocalesList from './locales-list';
 import GlobeIcon from '@/assets/icons/globe';
 import type { Locale } from '@/i18n/routing';
+import { AnimatePresence } from 'framer-motion';
 
 type LocaleSwitcherProps = {
   direction?: 'top' | 'bottom';
@@ -39,18 +40,20 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
           <GlobeIcon className="size-7 md:size-5" />
         </button>
 
-        {isOpen && (
-          <LocalesList
-            id="language-list"
-            handleChange={changeLocale}
-            className={clsx(
-              'bg-green absolute left-1/2 w-fit -translate-x-1/2 px-2 py-1 text-center text-white',
-              direction === 'bottom'
-                ? 'top-[calc(100%_+_0.5rem)]'
-                : 'bottom-[calc(100%_+_0.5rem)]',
-            )}
-          />
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <LocalesList
+              id="language-list"
+              handleChange={changeLocale}
+              className={clsx(
+                'bg-green absolute left-1/2 w-fit -translate-x-1/2 divide-y divide-white/50 rounded-lg px-2 py-0.5 text-center text-white',
+                direction === 'bottom'
+                  ? 'top-[calc(100%_+_0.5rem)]'
+                  : 'bottom-[calc(100%_+_0.5rem)]',
+              )}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

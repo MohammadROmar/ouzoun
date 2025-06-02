@@ -1,6 +1,17 @@
+import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import type { PropsWithChildren } from 'react';
 
 import Logo from '@/components/shared/logo';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('sign-in-page');
+
+  return {
+    title: t('title'),
+    description: t('subtitle'),
+  };
+}
 
 export default function LoginLayout({ children }: PropsWithChildren) {
   return (

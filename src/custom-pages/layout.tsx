@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 
-import SidebarContextProvider from '@/store/theme-provider';
+import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
 import Footer from '@/components/shared/footer';

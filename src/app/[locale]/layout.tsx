@@ -11,7 +11,10 @@ import { fontVariables } from '@/data/fonts';
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata.root');
 
-  return { title: t('title'), description: t('description') };
+  return {
+    title: { default: t('title'), template: `%s - ${t('title')}` },
+    description: t('description'),
+  };
 }
 
 export function generateStaticParams() {

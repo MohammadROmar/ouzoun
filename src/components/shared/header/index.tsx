@@ -1,3 +1,4 @@
+import HeaderWrapper from './wrapper';
 import Logo from '../logo';
 import Navigation from '@/components/navigation';
 import LocaleSwitcher from '../../locale/locale-switcher';
@@ -7,9 +8,9 @@ import type { NavigationLink } from '@/models/navigation-link';
 
 type HeaderProps = { navigationLinks?: NavigationLink[] };
 
-async function Header({ navigationLinks }: HeaderProps) {
+function Header({ navigationLinks }: HeaderProps) {
   return (
-    <header className="spacing max-container absolute top-0 right-0 left-0 flex items-center justify-between py-4">
+    <HeaderWrapper>
       <Logo />
 
       {navigationLinks && (
@@ -22,7 +23,7 @@ async function Header({ navigationLinks }: HeaderProps) {
       </div>
 
       <HamburgerMenu />
-    </header>
+    </HeaderWrapper>
   );
 }
 

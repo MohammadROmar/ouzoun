@@ -5,7 +5,7 @@
   },
   "metadata": {
     "root": {
-      "title": "Ozone",
+      "title": "Ouzoun",
       "description": "A specialized store for dental tools with reliable maintenance services."
     }
   },
@@ -74,7 +74,7 @@
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
-    "back-to-home": "Back to Home"
+    "back-to-home": "Return to Home"
   },
   "navigation": {
     "landing": {
@@ -94,6 +94,7 @@
       "light": "Toggle light mode"
     },
     "hamburger-menu": "Open sidebar",
-    "sidebar-close": "Close sidebar"
+    "sidebar-close": "Close sidebar",
+    "return-to-home": "Return to Home"
   }
 }

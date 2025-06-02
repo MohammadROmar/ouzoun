@@ -1,6 +1,6 @@
 'use client';
 
-import { useSidebarContext } from '@/store/theme-provider';
+import { useSidebarContext } from '@/store/sidebar';
 import Navigation from '@/components/navigation';
 import type { NavigationLink } from '@/models/navigation-link';
 

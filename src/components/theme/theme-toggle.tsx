@@ -19,7 +19,8 @@ export default function ThemeToggle() {
 
   useEffect(() => setDidMount(true), []);
 
-  if (!didMount) return <LoadingSpinner className="size-5 animate-spin" />;
+  if (!didMount)
+    return <LoadingSpinner className="size-7 animate-spin md:size-5" />;
 
   function handleThemeChange() {
     setTheme(isDark ? 'light' : 'dark');

@@ -14,7 +14,10 @@ function Navigation({ links, vertical, onClick, ...props }: NavigationProps) {
   return (
     <nav {...props}>
       <ul
-        className={clsx('flex gap-6', vertical ? 'flex-col' : 'items-center')}
+        className={clsx(
+          'flex gap-6 max-md:flex-wrap',
+          vertical ? 'flex-col' : 'items-center',
+        )}
       >
         {links.map((link) => (
           <li key={link.label}>

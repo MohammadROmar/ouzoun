@@ -2,7 +2,7 @@ import Image from '../image';
 import RoleText from './text';
 import dashboardImg from '@/assets/images/dashboard.png';
 
-export default async function Role() {
+export default function Role() {
   return (
     <section
       id="role"

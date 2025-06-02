@@ -3,7 +3,7 @@ import Capabilities from './capabilities';
 import Role from './role';
 import Overview from './overview';
 
-export default async function LandingPage() {
+export default function LandingPage() {
   return (
     <>
       <Hero />

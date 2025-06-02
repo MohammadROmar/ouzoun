@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useSidebarContext } from '@/store/theme-provider';
+import { useSidebarContext } from '@/store/sidebar';
 import XIcon from '@/assets/icons/x';
 
 export default function CloseSidebarButton() {
