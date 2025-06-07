@@ -68,8 +68,39 @@
       "email": "Please enter a valid E-mail.",
       "password": "Please enter a valid Password."
     },
-    "hide-password": "Hide password",
-    "show-password": "Show password"
+    "forgot-password": "Forgot password?"
+  },
+  "reset-password-page": {
+    "title": "Reset Password",
+    "steps": {
+      "0": "Enter E-mail",
+      "1": "Verify E-mail",
+      "2": "Reset Password"
+    },
+    "step0": {
+      "title": "Reset Password",
+      "subtitle": "Enter your E-mail to continue.",
+      "label": "E-mail"
+    },
+    "step1": {
+      "title": "Enter Verification Code",
+      "subtitle": "Check your email and enter the code we sent you",
+      "label": "Verification code"
+    },
+    "step2": {
+      "title": "Set a New Password",
+      "subtitle": "Enter and confirm your new password",
+      "label": "New password",
+      "label2": "Confirm password"
+    },
+    "step3": {
+      "title": "Password Changed",
+      "subtitle": "Your password has been changed successfuly",
+      "sign-in": "Now you can Sign in with the new password."
+    },
+    "back-to-sign-in": "Back to Sign in",
+    "next": "Next",
+    "change-password": "Change Password"
   },
   "not-found-page": {
     "title": "Oops!",

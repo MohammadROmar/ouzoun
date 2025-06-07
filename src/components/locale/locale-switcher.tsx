@@ -34,7 +34,7 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={t('language')}
           title={t('language')}
-          aria-controls="language-list"
+          aria-controls="languages-list"
           aria-expanded={isOpen}
         >
           <GlobeIcon className="size-7 md:size-5" />
@@ -43,7 +43,7 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
         <AnimatePresence>
           {isOpen && (
             <LocalesList
-              id="language-list"
+              id="languages-list"
               handleChange={changeLocale}
               className={clsx(
                 'bg-green absolute left-1/2 w-fit -translate-x-1/2 divide-y divide-white/50 rounded-lg px-2 py-0.5 text-center text-white',

@@ -10,7 +10,6 @@ import type { Locale } from '@/i18n/routing';
 
 export default async function SignInPageContent() {
   const locale = (await getLocale()) as Locale;
-
   const t = await getTranslations('sign-in-page');
 
   return (

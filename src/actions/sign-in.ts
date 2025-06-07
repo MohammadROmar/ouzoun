@@ -1,9 +1,15 @@
 'use server';
 
+import { isValidEmail, isValidPassword } from '@/utils/validation';
+
+type SignInState =
+  | { errors: { [key: string]: string }; email?: string; password?: string }
+  | undefined;
+
 export async function signIn(
-  prevState: { errors: { [key: string]: string } } | undefined,
+  prevState: SignInState,
   formData: FormData,
-) {
+): Promise<SignInState> {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
@@ -18,16 +24,6 @@ export async function signIn(
   }
 
   if (Object.keys(errors).length > 0) {
-    return { errors };
+    return { errors, email, password };
   }
-}
-
-function isValidEmail(email: string) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-function isValidPassword(password: string) {
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-  return passwordRegex.test(password);
 }

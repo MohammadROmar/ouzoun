@@ -21,6 +21,18 @@
   }
 }
 
+@layer utilities {
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+}
+
 @utility max-container {
   @apply mx-auto max-w-[1440px];
 }
@@ -30,5 +42,5 @@
 }
 
 @utility button {
-  @apply bg-green cursor-pointer rounded-full px-4 py-2 text-white transition-transform duration-300 hover:scale-95;
+  @apply bg-green disabled:bg-green/50 cursor-pointer rounded-full px-4 py-2 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
 }
