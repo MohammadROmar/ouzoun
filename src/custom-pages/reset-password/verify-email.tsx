@@ -28,8 +28,8 @@ export default function VerifyEmail({ changeStep }: VerifyEmailProps) {
         numInputs={4}
         inputType="number"
         renderInput={(props, i) => <input id={`otp-${i}`} {...props} />}
-        containerStyle="justify-center flex gap-4"
-        inputStyle="border-gray no-spinner focus:border-green mt-2 !size-14 rounded-md border-2 text-2xl outline-none focus:border-2"
+        containerStyle="justify-center flex gap-4 rtl:flex-row-reverse"
+        inputStyle="border-gray no-spinner focus:border-green mt-2 !size-14 rounded-md border-2 text-xl outline-none focus:border-2"
       />
 
       <button

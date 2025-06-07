@@ -14,7 +14,7 @@ export default async function SignInPageContent() {
 
   return (
     <>
-      <section className="flex flex-col p-6 md:col-span-2">
+      <section className="flex flex-col p-6 pt-24 md:col-span-2">
         <h1
           className={clsx(
             'text-3xl font-medium lg:text-5xl',

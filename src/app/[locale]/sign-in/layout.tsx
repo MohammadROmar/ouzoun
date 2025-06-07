@@ -20,7 +20,7 @@ export default function LoginLayout({ children }: PropsWithChildren) {
         <Logo />
       </header>
 
-      <main className="max-container grid min-h-screen items-center md:grid-cols-6">
+      <main className="max-container grid min-h-screen items-center max-md:relative md:grid-cols-6">
         {children}
       </main>
     </>

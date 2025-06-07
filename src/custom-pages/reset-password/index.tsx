@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 
-import LocaleSwitcher from '@/components/locale/locale-switcher';
-import ThemeToggle from '@/components/theme/theme-toggle';
 import Stepper from '@/components/stepper';
 import Content from './content';
 
@@ -19,7 +17,7 @@ export default function ResetPasswordPageContent() {
 
   return (
     <>
-      <section className="flex justify-center md:col-span-4">
+      <section className="flex justify-center pt-24 md:col-span-4">
         <div className="flex flex-col p-6 max-md:w-full">
           <div className="self-center md:hidden">
             <Stepper
@@ -39,11 +37,6 @@ export default function ResetPasswordPageContent() {
           >
             {t('back-to-sign-in')}
           </Link>
-
-          <div className="flex items-center gap-6 self-center">
-            <LocaleSwitcher />
-            <ThemeToggle />
-          </div>
         </div>
       </section>
 

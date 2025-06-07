@@ -7,7 +7,7 @@
 
   --color-notes: #244f7a;
   --color-gray: #505050;
-  --color-background: #fff;
+  --color-background: #f7f7f7;
   --color-green: #00796b;
   --color-green-light: #9ad0c2;
 }
@@ -30,6 +30,7 @@
 
   .no-spinner {
     -moz-appearance: textfield;
+    color: #edfffd;
   }
 }
 
