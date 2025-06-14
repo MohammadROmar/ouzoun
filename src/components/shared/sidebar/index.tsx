@@ -1,3 +1,6 @@
+import { cookies } from 'next/headers';
+import type { PropsWithChildren } from 'react';
+
 import SidebarWrapper from './wrappers';
 import Logo from './logo';
 import CloseSidebarButton from './close-btn';
@@ -6,20 +9,24 @@ import LocaleSwitcher from '../../locale/locale-switcher';
 import ThemeToggle from '../../theme/theme-toggle';
 import type { NavigationLink } from '@/models/navigation-link';
 
-type SidebarProps = { navigationLinks: NavigationLink[] };
+type SidebarProps = { navigationLinks?: NavigationLink[] } & PropsWithChildren;
 
-export default function Sidebar({ navigationLinks }: SidebarProps) {
+async function Sidebar({ navigationLinks, children }: SidebarProps) {
+  const isAuthenticated = (await cookies()).get('access-token')?.value;
+
   return (
-    <SidebarWrapper>
-      <div className="spacing bg-background flex size-full cursor-default flex-col justify-between gap-6 py-4">
+    <SidebarWrapper isAuthenticated={!!isAuthenticated}>
+      <div className="max-md:spacing bg-background flex size-full cursor-default flex-col gap-6 !py-4 max-md:justify-between md:px-6">
         <div className="flex items-center justify-between">
           <Logo />
           <CloseSidebarButton />
         </div>
 
-        <NavigationList links={navigationLinks} />
+        {navigationLinks && <NavigationList links={navigationLinks} />}
 
-        <div className="flex items-center gap-6 self-center">
+        {children}
+
+        <div className="flex items-center gap-6 self-center md:hidden">
           <LocaleSwitcher direction="top" />
           <ThemeToggle />
         </div>
@@ -27,3 +34,5 @@ export default function Sidebar({ navigationLinks }: SidebarProps) {
     </SidebarWrapper>
   );
 }
+
+export default Sidebar;

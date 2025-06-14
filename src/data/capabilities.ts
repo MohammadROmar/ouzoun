@@ -3,7 +3,7 @@ import type { ElementType } from 'react';
 import DentistIcon from '@/assets/icons/dentist';
 import EquipmentIcon from '@/assets/icons/equipment';
 import ScheduleIcon from '@/assets/icons/schedule';
-import OperationIcon from '@/assets/icons/operation';
+import ToolsIcon from '@/assets/icons/tools';
 
 export type Capability = { title: string; body: string; icon: ElementType };
 
@@ -16,7 +16,7 @@ export function capabilities(t: (key: string) => string) {
   const capabilitysBody = CAPABILITIES_INDICES.map((i) =>
     t(`body-list.capability${i}`),
   );
-  const icons = [ScheduleIcon, OperationIcon, DentistIcon, EquipmentIcon];
+  const icons = [ScheduleIcon, ToolsIcon, DentistIcon, EquipmentIcon];
 
   const capabilitys: Capability[] = CAPABILITIES_INDICES.map((i) => ({
     title: capabilitysHeading[i],

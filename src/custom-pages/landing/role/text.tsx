@@ -1,30 +1,21 @@
-import { getLocale, getTranslations } from 'next-intl/server';
-import clsx from 'clsx';
+import { getTranslations } from 'next-intl/server';
 
 import SectionTitle from '@/components/shared/section-title';
-import type { Locale } from '@/i18n/routing';
 
 export default async function RoleText() {
   const t = await getTranslations('landing-page.role');
-  const locale = (await getLocale()) as Locale;
 
   return (
     <div className="flex-1">
       <SectionTitle
         title={t('title')}
         subtitle={t('subtitle')}
-        locale={locale}
         align="text-start"
       />
 
       <p className="text-gray mt-4 text-sm">{t('body')}</p>
 
-      <h4
-        className={clsx(
-          'mt-6 text-2xl font-medium md:text-3xl lg:text-4xl',
-          locale === 'en' && 'font-ubuntu',
-        )}
-      >
+      <h4 className="ltr:font-ubuntu mt-6 text-2xl font-medium md:text-3xl lg:text-4xl">
         {t('subtitle2')}
       </h4>
 

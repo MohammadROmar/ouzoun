@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
-import clsx from 'clsx';
 
 import Layout from '@/custom-pages/layout';
 import sadToothImg from '@/assets/images/sad-tooth.png';
@@ -30,12 +29,7 @@ export default async function NotFoundPage() {
           <span>4</span>
         </p>
 
-        <h1
-          className={clsx(
-            'text-green-light text-6xl font-medium max-sm:text-4xl',
-            locale === 'en' && 'font-ubuntu',
-          )}
-        >
+        <h1 className="text-green-light ltr:font-ubuntu text-6xl font-medium max-sm:text-4xl">
           {t('title')}
         </h1>
         <h2 className="text-2xl max-sm:text-xl">{t('subtitle')}</h2>

@@ -1,5 +1,8 @@
 'use server';
 
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+
 import { isValidEmail, isValidPassword } from '@/utils/validation';
 
 type SignInState =
@@ -26,4 +29,15 @@ export async function signIn(
   if (Object.keys(errors).length > 0) {
     return { errors, email, password };
   }
+
+  (await cookies()).set('access-token', 'true', {
+    httpOnly: true,
+    secure: true,
+    value: 'true',
+    maxAge: 60 * 60 * 24 * 30,
+  });
+
+  // (await cookies()).delete('access-token')
+
+  redirect('/dashboard');
 }

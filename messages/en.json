@@ -7,6 +7,9 @@
     "root": {
       "title": "Ouzoun",
       "description": "A specialized store for dental tools with reliable maintenance services."
+    },
+    "authenticated": {
+      "title": "Dashboard"
     }
   },
   "landing-page": {
@@ -102,6 +105,10 @@
     "next": "Next",
     "change-password": "Change Password"
   },
+  "dashboard-page": {
+    "title": "Dashboard",
+    "logout": "Logout"
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
@@ -113,6 +120,12 @@
       "capabilities": "Capabilities",
       "overview": "Overview",
       "role": "Role"
+    },
+    "dashboard": {
+      "statistics": "Statistics",
+      "kits": "Kits",
+      "tools": "Tools",
+      "implants": "Implants"
     }
   },
   "footer": {

@@ -1,15 +1,11 @@
-import clsx from 'clsx';
-
 import CheckMarkIcon from '@/assets/icons/check-mark';
-import type { Locale } from '@/i18n/routing';
 
 type FeatureProps = {
   title: string;
   body: string;
-  locale: Locale;
 };
 
-function Feature({ title, body, locale }: FeatureProps) {
+function Feature({ title, body }: FeatureProps) {
   return (
     <li className="flex items-start gap-4">
       <div
@@ -20,12 +16,7 @@ function Feature({ title, body, locale }: FeatureProps) {
       </div>
 
       <div>
-        <h3
-          className={clsx(
-            'inline font-medium',
-            locale === 'en' && 'font-ubuntu',
-          )}
-        >
+        <h3 className="ltr:font-ubuntu inline font-medium">
           {title}
           <span className="text-green-light">: </span>
         </h3>

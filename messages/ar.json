@@ -7,6 +7,9 @@
     "root": {
       "title": "أوزون",
       "description": "متجر متخصص في أدوات طب الأسنان مع خدمات صيانة موثوقة."
+    },
+    "authenticated": {
+      "title": "لوحة التحكم"
     }
   },
   "landing-page": {
@@ -102,6 +105,10 @@
     "next": "التالي",
     "change-password": "تغيير كلمة المرور"
   },
+  "dashboard-page": {
+    "title": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
   "not-found-page": {
     "title": "يا للأسف!",
     "subtitle": "لم يتم العثور على الصفحة التي طلبتها",
@@ -113,6 +120,12 @@
       "capabilities": "المقدرات",
       "overview": "نظرة عامة",
       "role": "الدور"
+    },
+    "dashboard": {
+      "statistics": "الاحصائيات",
+      "kits": "المجموعات",
+      "tools": "الأدوات",
+      "implants": "الزرعات"
     }
   },
   "footer": {

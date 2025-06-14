@@ -4,7 +4,7 @@ import Logo from './logo';
 import Navigation from '../navigation';
 import type { NavigationLink } from '@/models/navigation-link';
 
-type FooterProps = { navigationLinks: NavigationLink[] };
+type FooterProps = { navigationLinks?: NavigationLink[] };
 
 export default async function Footer({ navigationLinks }: FooterProps) {
   const t = await getTranslations();
@@ -18,7 +18,9 @@ export default async function Footer({ navigationLinks }: FooterProps) {
         {t('metadata.root.description')}
       </p>
 
-      <Navigation links={navigationLinks} className="mt-4" />
+      {navigationLinks && (
+        <Navigation links={navigationLinks} className="mt-4" />
+      )}
 
       <p className="mt-4 self-center text-sm">
         <span>&copy; </span>

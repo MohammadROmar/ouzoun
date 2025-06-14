@@ -1,5 +1,4 @@
-import { useLocale, useTranslations } from 'next-intl';
-import clsx from 'clsx';
+import { useTranslations } from 'next-intl';
 
 import Email from './email';
 import VerifyEmail from './verify-email';
@@ -11,17 +10,13 @@ type ContentProps = {
 };
 
 export default function Content({ step, setStep }: ContentProps) {
-  const locale = useLocale();
   const t = useTranslations('reset-password-page');
 
   return (
     <>
       <h1
         aria-live="polite"
-        className={clsx(
-          'mt-8 text-3xl font-medium lg:text-5xl',
-          locale === 'en' && 'font-ubuntu',
-        )}
+        className="ltr:font-ubuntu mt-8 text-3xl font-medium lg:text-5xl"
       >
         {t(`step${step}.title`)}
       </h1>

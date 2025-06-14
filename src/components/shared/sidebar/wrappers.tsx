@@ -1,16 +1,14 @@
 'use client';
 
 import { useEffect, type PropsWithChildren } from 'react';
-import { useLocale } from 'next-intl';
 import clsx from 'clsx';
 
 import { useSidebarContext } from '@/store/sidebar';
-import type { Locale } from '@/i18n/routing';
 
-export default function SidebarWrapper({ children }: PropsWithChildren) {
+type SidebarWrapperProps = { isAuthenticated: boolean } & PropsWithChildren;
+
+function SidebarWrapper({ isAuthenticated, children }: SidebarWrapperProps) {
   const { isOpen, setIsOpen } = useSidebarContext();
-
-  const locale = useLocale() as Locale;
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
@@ -29,15 +27,18 @@ export default function SidebarWrapper({ children }: PropsWithChildren) {
       id="sidebar"
       aria-label="Sidebar"
       className={clsx(
-        'fixed inset-0 z-50 transition-transform duration-500 ease-in-out md:hidden',
+        'md:rtl:border-l-gray/25 md:ltr:border-r-gray/25 fixed z-50 transition-transform duration-500 ease-in-out md:ltr:border-r md:rtl:border-l',
         isOpen
           ? 'translate-x-0'
-          : locale === 'en'
-            ? 'translate-x-full'
-            : '-translate-x-full',
+          : 'max-md:ltr:translate-x-full max-md:rtl:-translate-x-full',
+        !isAuthenticated && 'inset-0 md:hidden',
+        isAuthenticated &&
+          'max-md:inset-0 md:top-0 md:bottom-0 md:w-64 md:translate-x-0 md:ltr:left-0 md:rtl:right-0',
       )}
     >
       {children}
     </aside>
   );
 }
+
+export default SidebarWrapper;

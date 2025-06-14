@@ -1,26 +1,18 @@
 import Image from 'next/image';
-import { getLocale, getTranslations } from 'next-intl/server';
-import clsx from 'clsx';
+import { getTranslations } from 'next-intl/server';
 
 import LocaleSwitcher from '@/components/locale/locale-switcher';
 import ThemeToggle from '@/components/theme/theme-toggle';
 import dentalClinicImg from '@/assets/images/dental-clinic.jpg';
 import SignInForm from './form';
-import type { Locale } from '@/i18n/routing';
 
 export default async function SignInPageContent() {
-  const locale = (await getLocale()) as Locale;
   const t = await getTranslations('sign-in-page');
 
   return (
     <>
       <section className="flex flex-col p-6 pt-24 md:col-span-2">
-        <h1
-          className={clsx(
-            'text-3xl font-medium lg:text-5xl',
-            locale === 'en' && 'font-ubuntu',
-          )}
-        >
+        <h1 className="ltr:font-ubuntu text-3xl font-medium lg:text-5xl">
           {t('title')}
         </h1>
         <p className="text-gray mt-2 text-sm">{t('subtitle')}</p>

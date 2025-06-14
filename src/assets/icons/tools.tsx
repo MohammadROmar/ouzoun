@@ -1,6 +1,6 @@
 import { memo, type ComponentPropsWithoutRef } from 'react';
 
-function OperationIcon(props: ComponentPropsWithoutRef<'svg'>) {
+function ToolsIcon(props: ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -29,4 +29,4 @@ function OperationIcon(props: ComponentPropsWithoutRef<'svg'>) {
   );
 }
 
-export default memo(OperationIcon);
+export default memo(ToolsIcon);

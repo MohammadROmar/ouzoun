@@ -1,15 +1,13 @@
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 import SectionTitle from '@/components/shared/section-title';
 import Feature from './feature';
 import Image from '../image';
 import { features } from '@/data/features';
 import adminImg from '@/assets/images/admin.png';
-import type { Locale } from '@/i18n/routing';
 
 export default async function Overview() {
   const t = await getTranslations('landing-page.overview');
-  const locale = (await getLocale()) as Locale;
 
   return (
     <section
@@ -20,13 +18,12 @@ export default async function Overview() {
         <SectionTitle
           title={t('title')}
           subtitle={t('subtitle')}
-          locale={locale}
           align="text-start"
         />
 
         <ul className="mt-6 space-y-2">
           {features(t).map((feature) => (
-            <Feature key={feature.title} {...feature} locale={locale} />
+            <Feature key={feature.title} {...feature} />
           ))}
         </ul>
       </div>

@@ -14,7 +14,7 @@ export default function CloseSidebarButton() {
       onClick={() => setIsOpen(false)}
       aria-label={t('sidebar-close')}
       title={t('sidebar-close')}
-      className="cursor-pointer"
+      className="cursor-pointer md:hidden"
     >
       <XIcon className="size-4" />
     </button>

@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import clsx from 'clsx';
 
 import LogoIcon from '@/assets/icons/logo';
 import type { Locale } from '@/i18n/routing';
@@ -21,7 +20,7 @@ export default function Logo(props: ComponentPropsWithoutRef<'a'>) {
       {...props}
     >
       <LogoIcon className="size-6" />
-      <span className={clsx('text-xl', locale === 'en' && 'font-ubuntu')}>
+      <span className="ltr:font-ubuntu text-xl">
         {t('metadata.root.title')}
       </span>
     </Link>

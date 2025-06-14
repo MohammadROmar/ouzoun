@@ -4,7 +4,7 @@ import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
 import Footer from '@/components/shared/footer';
-import { landingNavigation } from '@/data/navigation';
+import { landingNavigation } from '@/data/navigation/landing';
 
 type LayoutProps = {
   hasHeader?: boolean;
