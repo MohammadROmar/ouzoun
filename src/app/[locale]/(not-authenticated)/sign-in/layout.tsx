@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function LoginLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <header className="max-container absolute top-0 right-0 left-0 p-2 px-6 max-md:py-4">
+      <header className="max-container absolute top-0 right-0 left-0 z-50 p-2 px-6 max-md:py-4">
         <Logo />
       </header>
 

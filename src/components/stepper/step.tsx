@@ -1,3 +1,4 @@
+import { useLocale } from 'next-intl';
 import clsx from 'clsx';
 
 import CheckMarkIcon from '@/assets/icons/check-mark';
@@ -11,6 +12,9 @@ type StepProps = {
 };
 
 function Step({ label, index, isVertical, isActive, isCompleted }: StepProps) {
+  const locale = useLocale();
+  const isEn = locale === 'en';
+
   const getStepBgColor = () => {
     if (isActive) return 'bg-blue-400';
     else if (isCompleted) return 'bg-green-400';
@@ -28,7 +32,7 @@ function Step({ label, index, isVertical, isActive, isCompleted }: StepProps) {
           index !== 0 &&
             (isVertical
               ? 'mt-6 before:bottom-full before:w-[200%] before:rotate-90'
-              : `before:top-1/2 before:w-[200%] before:-translate-y-1/2 before:ltr:right-full before:rtl:left-full`),
+              : `before:top-1/2 ${isEn ? 'before:right-full' : 'before:left-full'} before:w-[200%] before:-translate-y-1/2`),
         )}
         aria-current={isActive ? 'step' : undefined}
       >

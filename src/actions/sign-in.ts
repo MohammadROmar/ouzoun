@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
 
 import { isValidEmail, isValidPassword } from '@/utils/validation';
+import { getLocale } from 'next-intl/server';
 
 type SignInState =
   | { errors: { [key: string]: string }; email?: string; password?: string }
@@ -39,5 +40,6 @@ export async function signIn(
 
   // (await cookies()).delete('access-token')
 
-  redirect('/dashboard');
+  const locale = await getLocale();
+  redirect(`/${locale}/dashboard`);
 }
