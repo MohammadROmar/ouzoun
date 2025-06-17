@@ -2,9 +2,9 @@ import { Implant } from '@/models/implant';
 
 export function getDimentions(implant: Implant, t: (key: string) => string) {
   return {
-    [t('width')]: implant.width.toString(),
-    [t('height')]: implant.height.toString(),
-    [t('radius')]: implant.radius.toString(),
+    [t('width')]: `${implant.width.toString()} ${t('unit-mm')}`,
+    [t('height')]: `${implant.height.toString()} ${t('unit-mm')}`,
+    [t('radius')]: `${implant.radius.toString()} ${t('unit-mm')}`,
   };
 }
 

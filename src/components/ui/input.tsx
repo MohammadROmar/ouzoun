@@ -1,30 +1,62 @@
 import type { ComponentPropsWithoutRef } from 'react';
 import clsx from 'clsx';
 
-type InputProps = {
+type BaseProps = {
   id: string;
   label: string;
   error?: string;
-} & ComponentPropsWithoutRef<'input'>;
+};
 
-export default function Input({ id, label, error, ...props }: InputProps) {
+type InputProps = {
+  as?: 'input';
+} & BaseProps &
+  ComponentPropsWithoutRef<'input'>;
+
+type TextareaProps = {
+  as: 'textarea';
+} & BaseProps &
+  ComponentPropsWithoutRef<'textarea'>;
+
+type Props = InputProps | TextareaProps;
+
+function Input({ id, as = 'input', label, error, ...props }: Props) {
+  const className = clsx(
+    'border-gray w-full rounded-[inherit] border px-4 py-2 outline-none',
+    props.className,
+  );
+
+  const sharedProps = {
+    id,
+    name: id,
+    'aria-invalid': !!error,
+    'aria-describedby': error ? `error-${id}` : undefined,
+    className,
+  };
+
+  let element = <input {...(props as InputProps)} {...sharedProps} />;
+
+  if (as === 'textarea') {
+    element = <textarea {...(props as TextareaProps)} {...sharedProps} />;
+  }
+
   return (
-    <>
-      <p className={clsx('flex flex-col gap-2', props.className)}>
-        <label htmlFor={id}>{label}</label>
-        <input
-          id={id}
-          name={id}
-          {...props}
-          className="border-gray w-full rounded-full border px-4 py-2 outline-none"
-        />
-      </p>
+    <div className="flex flex-col rounded-full">
+      <label htmlFor={id} className="mb-2">
+        {label}
+      </label>
+      {element}
 
       {error && (
-        <p className="mt-1 text-sm text-red-400" aria-live="polite">
+        <p
+          id={`error-${id}`}
+          className="mt-1 text-sm text-red-400"
+          aria-live="polite"
+        >
           {error}
         </p>
       )}
-    </>
+    </div>
   );
 }
+
+export default Input;

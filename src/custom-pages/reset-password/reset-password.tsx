@@ -21,25 +21,26 @@ export default function ResetPassword({ changeStep }: ResetPasswordProps) {
 
   return (
     <form aria-live="polite" action={formAction}>
-      <Input
-        id="password"
-        label={t('step2.label')}
-        type="password"
-        required
-        placeholder="********"
-        autoComplete="new-password"
-        defaultValue={state.password}
-      />
-      <Input
-        id="confirm-password"
-        label={t('step2.label2')}
-        type="password"
-        required
-        placeholder="********"
-        autoComplete="new-password"
-        defaultValue={state.confirmPassword}
-        className="mt-4"
-      />
+      <div className="space-y-4">
+        <Input
+          id="password"
+          label={t('step2.label')}
+          type="password"
+          required
+          placeholder="********"
+          autoComplete="new-password"
+          defaultValue={state.password}
+        />
+        <Input
+          id="confirm-password"
+          label={t('step2.label2')}
+          type="password"
+          required
+          placeholder="********"
+          autoComplete="new-password"
+          defaultValue={state.confirmPassword}
+        />
+      </div>
 
       {state.message && state.message !== 'success' && (
         <p className="mt-1 text-sm text-red-400">

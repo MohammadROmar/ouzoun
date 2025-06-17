@@ -127,10 +127,19 @@
     "brand": "Brand",
     "radius": "Radius",
     "kit": "Examine Kit",
+    "kit-id": "Kit ID",
     "dimensions": "Dimensions",
     "source-stock": "Source & Stock",
     "card-action": "View details",
     "unit-mm": "mm",
+    "info": "Implant Information",
+    "add": "Add",
+    "reset": "Reset",
+    "image": {
+      "dnd": "Drag and Drop image here",
+      "or": "OR",
+      "select": "Select from device"
+    },
     "details": {
       "title": "Implant Details",
       "edit": "Edit",

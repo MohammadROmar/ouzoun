@@ -20,7 +20,9 @@ export default function Breadcrumbs() {
 
         return (
           <li key={segment} className="flex">
-            <Link href={href}>{label}</Link>
+            <Link href={href} className="underline underline-offset-2">
+              {label}
+            </Link>
             {!isLast && (
               <span aria-hidden className="px-4">
                 &gt;
