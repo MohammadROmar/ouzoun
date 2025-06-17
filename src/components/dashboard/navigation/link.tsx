@@ -1,11 +1,10 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
 import clsx from 'clsx';
 import type { PropsWithChildren } from 'react';
 
 import { useSidebarContext } from '@/store/sidebar';
+import { Link, usePathname } from '@/i18n/navigation';
 
 type NavLinkProps = { label: string; to: string } & PropsWithChildren;
 
@@ -27,7 +26,7 @@ function NavLink({ label, to, children }: NavLinkProps) {
       <Link
         href={to}
         className="flex items-center gap-4 p-2 transition-transform group-hover:scale-95"
-        onClick={isOpen ? () => setIsOpen(false) : undefined}
+        onNavigate={isOpen ? () => setIsOpen(false) : undefined}
       >
         {children}
         <span className="text-lg">{label}</span>

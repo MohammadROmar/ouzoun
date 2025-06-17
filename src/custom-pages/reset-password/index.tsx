@@ -1,16 +1,15 @@
 'use client';
 
-import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { useStep } from '@/hooks/use-step';
+import { Link } from '@/i18n/navigation';
 import Stepper from '@/components/stepper';
 import Content from './content';
-import { useStep } from '@/hooks/use-step';
 
 export default function ResetPasswordPageContent() {
   const { step, setStep } = useStep();
 
-  const locale = useLocale();
   const t = useTranslations('reset-password-page');
 
   const STEPS = [t('steps.0'), t('steps.1'), t('steps.2')];
@@ -28,7 +27,7 @@ export default function ResetPasswordPageContent() {
           <hr className="text-gray my-8 w-full" />
 
           <Link
-            href={`/${locale}/sign-in`}
+            href="/sign-in"
             className="button mb-6 w-full rounded-full text-center"
           >
             {t('back-to-sign-in')}

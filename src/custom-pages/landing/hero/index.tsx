@@ -1,11 +1,9 @@
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
 import StartButton from './start-btn';
 import HeroImage from './image';
-import type { Locale } from '@/i18n/routing';
 
 export default async function Hero() {
-  const locale = (await getLocale()) as Locale;
   const t = await getTranslations('landing-page.hero');
 
   return (
@@ -18,7 +16,7 @@ export default async function Hero() {
 
         <p className="text-gray max-w-lg text-lg md:text-xl">{t('body')}</p>
 
-        <StartButton locale={locale} t={t} />
+        <StartButton label={t('start')} />
       </div>
 
       <HeroImage />

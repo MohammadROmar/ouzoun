@@ -7,7 +7,7 @@ import type { PropsWithChildren } from 'react';
 import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
-import DashboardNavigation from '@/components/dashboard-navigation';
+import DashboardNavigation from '@/components/dashboard/navigation/index';
 import LogoutButton from '@/components/logout-btn';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +30,7 @@ export default async function AuthLayout({ children }: PropsWithChildren) {
         <DashboardNavigation />
         <LogoutButton />
       </Sidebar>
-      <main className="max-md:spacing max-md:pt-16 md:ml-64 md:pt-20 md:pl-4">
+      <main className="max-md:spacing bg min-h-screen max-md:pt-16 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
         {children}
       </main>
     </SidebarContextProvider>

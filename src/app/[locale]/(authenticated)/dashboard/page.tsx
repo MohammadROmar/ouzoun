@@ -5,7 +5,7 @@ export default async function DashboardPage() {
 
   return (
     <section>
-      <h1 className="text-xl">{t('title')}</h1>
+      <h1 className="ltr:font-ubuntu text-3xl md:text-4xl">{t('title')}</h1>
     </section>
   );
 }

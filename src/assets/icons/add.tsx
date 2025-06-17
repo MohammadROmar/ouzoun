@@ -4,39 +4,18 @@ function AddIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
       viewBox="0 0 24 24"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
       {...props}
     >
-      <g>
-        <g>
-          <g>
-            <line
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              x1="12"
-              x2="12"
-              y1="19"
-              y2="5"
-            />
-
-            <line
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              x1="5"
-              x2="19"
-              y1="12"
-              y2="12"
-            />
-          </g>
-        </g>
-      </g>
+      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+      <path
+        d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

@@ -109,6 +109,34 @@
     "title": "Dashboard",
     "logout": "Logout"
   },
+  "kits-page": {
+    "title": "Kits",
+    "action": "Add new kit"
+  },
+  "tools-page": {
+    "title": "Tools",
+    "action": "Add new tool"
+  },
+  "implants-page": {
+    "title": "Implants",
+    "action": "Add new implant",
+    "quantity": "Quantity",
+    "width": "Width",
+    "height": "Height",
+    "description": "Description",
+    "brand": "Brand",
+    "radius": "Radius",
+    "kit": "Examine Kit",
+    "dimensions": "Dimensions",
+    "source-stock": "Source & Stock",
+    "card-action": "View details",
+    "unit-mm": "mm",
+    "details": {
+      "title": "Implant Details",
+      "edit": "Edit",
+      "delete": "Delete"
+    }
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",

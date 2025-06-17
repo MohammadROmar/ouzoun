@@ -109,6 +109,34 @@
     "title": "لوحة التحكم",
     "logout": "تسجيل الخروج"
   },
+  "kits-page": {
+    "title": "العُدد",
+    "action": "إضافة عُدة"
+  },
+  "tools-page": {
+    "title": "الأدوات",
+    "action": "إضافة أداة"
+  },
+  "implants-page": {
+    "title": "الزرعات",
+    "action": "إضافة زرعة",
+    "quantity": "الكمية",
+    "width": "العرض",
+    "height": "الطول",
+    "description": "الوصف",
+    "brand": "الماركة",
+    "radius": "القطر",
+    "kit": "الاطلاع على العدة",
+    "dimensions": "الأبعاد",
+    "source-stock": "المصدر والمخزون",
+    "card-action": "رؤية التفاصيل",
+    "unit-mm": "مم",
+    "details": {
+      "title": "تفاصيل الزرعة",
+      "edit": "تعديل",
+      "delete": "حذف"
+    }
+  },
   "not-found-page": {
     "title": "يا للأسف!",
     "subtitle": "لم يتم العثور على الصفحة التي طلبتها",
@@ -123,7 +151,7 @@
     },
     "dashboard": {
       "statistics": "الاحصائيات",
-      "kits": "المجموعات",
+      "kits": "العُدد",
       "tools": "الأدوات",
       "implants": "الزرعات"
     }

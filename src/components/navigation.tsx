@@ -1,8 +1,8 @@
-import Link from 'next/link';
-
-import type { NavigationLink } from '@/models/navigation-link';
-import { ComponentPropsWithoutRef } from 'react';
 import clsx from 'clsx';
+import type { ComponentPropsWithoutRef } from 'react';
+
+import { Link } from '@/i18n/navigation';
+import type { NavigationLink } from '@/models/navigation-link';
 
 type NavigationProps = {
   links: NavigationLink[];

@@ -1,12 +1,11 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 
+import { Link } from '@/i18n/navigation';
 import Layout from '@/custom-pages/layout';
 import sadToothImg from '@/assets/images/sad-tooth.png';
 
 export default async function NotFoundPage() {
-  const locale = await getLocale();
   const t = await getTranslations('not-found-page');
 
   return (
@@ -33,7 +32,7 @@ export default async function NotFoundPage() {
           {t('title')}
         </h1>
         <h2 className="text-2xl max-sm:text-xl">{t('subtitle')}</h2>
-        <Link href={`/${locale}`} className="button mt-4 sm:text-xl">
+        <Link href="/" className="button mt-4 sm:text-xl">
           {t('back-to-home')}
         </Link>
       </section>

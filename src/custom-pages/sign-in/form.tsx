@@ -1,16 +1,15 @@
 'use client';
 
-import Link from 'next/link';
 import { useActionState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { Link } from '@/i18n/navigation';
 import Input from '@/components/ui/input';
 import SignInFormSubmit from './submit';
 import { signIn } from '@/actions/sign-in';
 
 export default function SignInForm() {
   const t = useTranslations('sign-in-page');
-  const locale = useLocale();
 
   const [state, formAction] = useActionState(signIn, { errors: {} });
 
@@ -39,7 +38,7 @@ export default function SignInForm() {
         className="mt-4 mb-1"
       />
 
-      <Link href={`/${locale}/reset-password`} className="text-gray text-sm">
+      <Link href="reset-password" className="text-gray text-sm">
         {t('forgot-password')}
       </Link>
 
