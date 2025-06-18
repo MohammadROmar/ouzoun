@@ -45,3 +45,7 @@
 @utility button {
   @apply bg-green disabled:bg-green/50 cursor-pointer rounded-full px-4 py-2 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
 }
+
+@utility sr-only {
+  @apply absolute -m-1 size-[1px] overflow-hidden border-none p-0 whitespace-nowrap [clip:rect(0,0,0,0)];
+}

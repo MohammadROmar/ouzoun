@@ -1,9 +1,17 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
+import ImplantImage from './image';
+import type { CreateImplantActionState } from '@/actions/create-implant';
+import type { TFunction } from '@/models/t-function';
 
-type ImplantInfoProps = { t: (key: string) => string };
+type ImplantInfoProps = {
+  t: TFunction;
+  state: CreateImplantActionState;
+};
 
-export default function ImplantInfo({ t }: ImplantInfoProps) {
+export default function ImplantInfo({ t, state }: ImplantInfoProps) {
+  const { defaultValues, errors } = state;
+
   return (
     <Fieldset
       title={t('info')}
@@ -12,11 +20,13 @@ export default function ImplantInfo({ t }: ImplantInfoProps) {
       <div className="mb-0 grid grid-rows-[auto_auto_1fr] gap-2">
         <Input
           id="name"
-          label="Name"
+          label={t('name')}
           type="text"
           required
           autoComplete="off"
           className="rounded-lg"
+          defaultValue={defaultValues?.name}
+          error={errors?.name ? t('error', { field: t('name') }) : undefined}
         />
         <Input
           id="kit-id"
@@ -25,32 +35,28 @@ export default function ImplantInfo({ t }: ImplantInfoProps) {
           required
           autoComplete="off"
           className="rounded-lg"
+          defaultValue={defaultValues?.['kit-id']}
+          error={
+            errors?.['kit-id'] ? t('error', { field: t('kit-id') }) : undefined
+          }
         />
         <Input
           as="textarea"
           id="description"
           label={t('description')}
           required
+          rows={4}
           className="h-full resize-none rounded-xl"
+          defaultValue={defaultValues?.description}
+          error={
+            errors?.description
+              ? t('error', { field: t('description') })
+              : undefined
+          }
         />
       </div>
 
-      <div className="flex flex-col items-center gap-2">
-        <div className="bg-green aspect-square w-full max-w-56 rounded-xl mask-auto" />
-
-        <div className="flex flex-col items-center space-y-2 rounded-lg border border-dashed p-2">
-          <p className="flex flex-col items-center text-center">
-            <span>{t('image.dnd')}</span>
-            <span className="text-gray underline underline-offset-2">
-              {t('image.or')}
-            </span>
-          </p>
-
-          <button className="button w-fit rounded-lg">
-            {t('image.select')}
-          </button>
-        </div>
-      </div>
+      <ImplantImage t={t} hasError={errors?.image} />
     </Fieldset>
   );
 }

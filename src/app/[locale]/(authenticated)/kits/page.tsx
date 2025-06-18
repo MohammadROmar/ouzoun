@@ -1,6 +1,13 @@
+import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import AddProductButton from '@/components/dashboard/add-product-btn';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('kits-page');
+
+  return { title: t('title') };
+}
 
 export default async function KitsPage() {
   const t = await getTranslations('kits-page');

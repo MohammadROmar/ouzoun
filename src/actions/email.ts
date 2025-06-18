@@ -2,12 +2,12 @@
 
 import { isValidEmail } from '@/utils/validation';
 
-type EmailState = { message: string | undefined; email?: string };
+type EmailActionState = { message: string | undefined; email?: string };
 
-export async function email(
-  prevState: EmailState,
+export async function emailAction(
+  prevState: EmailActionState,
   formData: FormData,
-): Promise<EmailState> {
+): Promise<EmailActionState> {
   const email = formData.get('email') as string;
 
   if (!isValidEmail(email)) {

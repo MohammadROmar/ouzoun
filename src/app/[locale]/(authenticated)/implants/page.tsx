@@ -1,8 +1,15 @@
+import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import ImplantCard from '@/components/dashboard/implant-card';
 import { implants } from '@/data/dummy/implants';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('implants-page');
+
+  return { title: t('title') };
+}
 
 export default async function ImplantsPage() {
   const t = await getTranslations('implants-page');

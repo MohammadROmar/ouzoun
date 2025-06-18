@@ -1,11 +1,11 @@
 'use server';
 
-type VerifyEmailState = { message: string | undefined };
+type VerifyEmailActionState = { message: string | undefined };
 
-export async function verifyEmail(
-  prevState: VerifyEmailState,
+export async function verifyEmailAction(
+  prevState: VerifyEmailActionState,
   formData: FormData,
-): Promise<VerifyEmailState> {
+): Promise<VerifyEmailActionState> {
   const inputs = [0, 1, 2, 3].map(
     (inputNum) => formData.get(`otp-${inputNum}`) as string,
   );

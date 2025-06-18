@@ -2,16 +2,16 @@
 
 import { isValidPassword } from '@/utils/validation';
 
-type ResetPasswordState = {
+type ResetPasswordActionState = {
   message: string | undefined;
   password?: string;
   confirmPassword?: string;
 };
 
-export async function resetPassword(
-  prevState: ResetPasswordState,
+export async function resetPasswordAction(
+  prevState: ResetPasswordActionState,
   formData: FormData,
-): Promise<ResetPasswordState> {
+): Promise<ResetPasswordActionState> {
   const password = formData.get('password') as string;
   const confirmPassword = formData.get('confirm-password') as string;
 

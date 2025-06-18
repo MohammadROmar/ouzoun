@@ -1,10 +1,12 @@
-import type { ComponentPropsWithoutRef } from 'react';
 import clsx from 'clsx';
+import type { ComponentPropsWithoutRef } from 'react';
 
 type BaseProps = {
   id: string;
   label: string;
   error?: string;
+  labelStyles?: string;
+  containerStyles?: string;
 };
 
 type InputProps = {
@@ -19,9 +21,17 @@ type TextareaProps = {
 
 type Props = InputProps | TextareaProps;
 
-function Input({ id, as = 'input', label, error, ...props }: Props) {
+function Input({
+  id,
+  as = 'input',
+  label,
+  error,
+  labelStyles,
+  containerStyles,
+  ...props
+}: Props) {
   const className = clsx(
-    'border-gray w-full rounded-[inherit] border px-4 py-2 outline-none',
+    'border-gray mt-2 w-full rounded-[inherit] border px-4 py-2 focus:outline focus:outline-black dark:focus:outline-white',
     props.className,
   );
 
@@ -40,8 +50,8 @@ function Input({ id, as = 'input', label, error, ...props }: Props) {
   }
 
   return (
-    <div className="flex flex-col rounded-full">
-      <label htmlFor={id} className="mb-2">
+    <div className={clsx('flex flex-col rounded-full', containerStyles)}>
+      <label htmlFor={id} className={labelStyles}>
         {label}
       </label>
       {element}

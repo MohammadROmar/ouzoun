@@ -4,12 +4,12 @@ import { useTranslations } from 'next-intl';
 import OTPInput from 'react-otp-input';
 
 import LoadingSpinner from '@/components/shared/loading-spinner';
-import { verifyEmail } from '@/actions/verify-email';
+import { verifyEmailAction } from '@/actions/verify-email';
 
 type VerifyEmailProps = { changeStep(step: number): void };
 
 export default function VerifyEmail({ changeStep }: VerifyEmailProps) {
-  const [state, formAction] = useActionState(verifyEmail, {
+  const [state, formAction] = useActionState(verifyEmailAction, {
     message: undefined,
   });
 

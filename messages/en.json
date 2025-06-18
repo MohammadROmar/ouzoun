@@ -120,6 +120,8 @@
   "implants-page": {
     "title": "Implants",
     "action": "Add new implant",
+    "name": "Name",
+    "image-field": "Image",
     "quantity": "Quantity",
     "width": "Width",
     "height": "Height",
@@ -138,13 +140,16 @@
     "image": {
       "dnd": "Drag and Drop image here",
       "or": "OR",
-      "select": "Select from device"
+      "select": "Select from device",
+      "drop": "Drop image here",
+      "sr": "Select an image"
     },
     "details": {
       "title": "Implant Details",
       "edit": "Edit",
       "delete": "Delete"
-    }
+    },
+    "error": "Please enter a valid {field}"
   },
   "not-found-page": {
     "title": "Oops!",
@@ -162,7 +167,9 @@
       "statistics": "Statistics",
       "kits": "Kits",
       "tools": "Tools",
-      "implants": "Implants"
+      "implants": "Implants",
+      "new": "New",
+      "edit": "Edit"
     }
   },
   "footer": {

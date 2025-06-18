@@ -4,12 +4,14 @@ import { useTranslations } from 'next-intl';
 
 import Input from '@/components/ui/input';
 import LoadingSpinner from '@/components/shared/loading-spinner';
-import { email } from '@/actions/email';
+import { emailAction } from '@/actions/email';
 
 type EmailProps = { changeStep(step: number): void };
 
 export default function Email({ changeStep }: EmailProps) {
-  const [state, formAction] = useActionState(email, { message: undefined });
+  const [state, formAction] = useActionState(emailAction, {
+    message: undefined,
+  });
 
   const t = useTranslations('reset-password-page');
 

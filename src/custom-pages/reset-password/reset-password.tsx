@@ -2,12 +2,12 @@ import { useActionState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import Input from '@/components/ui/input';
-import { resetPassword } from '@/actions/reset-password';
+import { resetPasswordAction } from '@/actions/reset-password';
 
 type ResetPasswordProps = { changeStep(step: number): void };
 
 export default function ResetPassword({ changeStep }: ResetPasswordProps) {
-  const [state, formAction] = useActionState(resetPassword, {
+  const [state, formAction] = useActionState(resetPasswordAction, {
     message: undefined,
   });
 

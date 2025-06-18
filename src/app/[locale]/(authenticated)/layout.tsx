@@ -11,9 +11,15 @@ import DashboardNavigation from '@/components/dashboard/navigation/index';
 import LogoutButton from '@/components/logout-btn';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('metadata.authenticated');
+  const t = await getTranslations('metadata');
 
-  return { title: t('title'), description: null };
+  return {
+    title: {
+      default: t('authenticated.title'),
+      template: `%s - ${t('root.title')}`,
+    },
+    description: null,
+  };
 }
 
 export default async function AuthLayout({ children }: PropsWithChildren) {

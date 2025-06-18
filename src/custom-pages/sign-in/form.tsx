@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Input from '@/components/ui/input';
 import SignInFormSubmit from './submit';
-import { signIn } from '@/actions/sign-in';
+import { signInAction } from '@/actions/sign-in';
 
 export default function SignInForm() {
   const t = useTranslations('sign-in-page');
 
-  const [state, formAction] = useActionState(signIn, { errors: {} });
+  const [state, formAction] = useActionState(signInAction, { errors: {} });
 
   return (
     <form className="mt-6" action={formAction}>

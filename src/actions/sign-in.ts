@@ -6,14 +6,14 @@ import { cookies } from 'next/headers';
 import { isValidEmail, isValidPassword } from '@/utils/validation';
 import { getLocale } from 'next-intl/server';
 
-type SignInState =
+type SignInActionState =
   | { errors: { [key: string]: string }; email?: string; password?: string }
   | undefined;
 
-export async function signIn(
-  prevState: SignInState,
+export async function signInAction(
+  prevState: SignInActionState,
   formData: FormData,
-): Promise<SignInState> {
+): Promise<SignInActionState> {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
@@ -37,8 +37,6 @@ export async function signIn(
     value: 'true',
     maxAge: 60 * 60 * 24 * 30,
   });
-
-  // (await cookies()).delete('access-token')
 
   const locale = await getLocale();
   redirect(`/${locale}/dashboard`);
