@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
@@ -5,11 +6,17 @@ import Title from '@/components/dashboard/title';
 import ImplantHeading from '@/components/dashboard/details/implant/heading';
 import Detail from '@/components/dashboard/details/implant/detail';
 import ImplantActions from '@/components/dashboard/details/implant/actions';
-import { getDimentions, getSourceStock } from '@/utils/details/implant';
-import { implants } from '@/data/dummy/implants';
 import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
+import { getDimentions, getSourceStock } from '@/utils/details/implant';
+import { implants } from '@/data/dummy/implants';
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('implants-page.titles');
+
+  return { title: t('details') };
+}
 
 type Props = { params: Promise<{ locale: string; id: string }> };
 
@@ -26,28 +33,28 @@ async function ImplantDetailsPage({ params }: Props) {
 
   return (
     <article className="space-y-4">
-      <Title title={t('details.title')} />
+      <Title title={t('titles.details')} />
 
       <ImplantHeading
         title={implant.name}
         kitId={implant.kitId}
-        action={t('kit')}
+        action={t('actions.view-kit')}
       />
 
       <Detail
-        title={t('description')}
+        title={t('item.description')}
         icon={FileIcon}
         details={implant.description}
       />
 
       <Detail
-        title={t('dimensions')}
+        title={t('titles.dimensions')}
         icon={DimensionsIcon}
         details={getDimentions(implant, t)}
       />
 
       <Detail
-        title={t('source-stock')}
+        title={t('titles.source-stock')}
         icon={BoxIcon}
         details={getSourceStock(implant, t)}
       />

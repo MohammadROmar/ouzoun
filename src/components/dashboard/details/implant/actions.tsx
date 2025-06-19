@@ -9,10 +9,10 @@ function ImplantActions({ implantId, t }: ImplantActionsProps) {
         href={`/implants/${implantId}/edit`}
         className="button rounded-xl bg-amber-400 max-md:text-sm"
       >
-        {t('details.edit')}
+        {t('actions.edit')}
       </Link>
       <button className="button rounded-xl bg-red-400 max-md:text-sm">
-        {t('details.delete')}
+        {t('actions.delete')}
       </button>
     </section>
   );

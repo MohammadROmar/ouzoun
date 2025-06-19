@@ -9,13 +9,13 @@ function CreateImplantAction({ t }: CreateImplantActionProps) {
   return (
     <div className="mt-4 flex items-center justify-end gap-2">
       <button disabled={pending} className="button rounded-lg" type="reset">
-        {t('reset')}
+        {t('actions.reset')}
       </button>
       <button disabled={pending} className="button rounded-lg">
         {pending ? (
           <LoadingSpinner className="size-6 animate-spin" />
         ) : (
-          t('add')
+          t('actions.add')
         )}
       </button>
     </div>

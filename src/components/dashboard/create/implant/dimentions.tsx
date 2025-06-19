@@ -12,40 +12,42 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
   const { defaultValues, errors } = state;
 
   return (
-    <Fieldset title={t('dimensions')}>
+    <Fieldset title={t('titles.dimensions')}>
       <div className="grid grid-cols-2 gap-4">
         <Input
           id="width"
-          label={`${t('width')} (${t('unit-mm')})`}
+          label={`${t('item.width')} (${t('item.unit-mm')})`}
           type="number"
           min={0}
           required
           className="rounded-xl"
           defaultValue={defaultValues?.width ?? 0}
-          error={errors?.width ? t('error', { field: t('width') }) : undefined}
+          error={
+            errors?.width ? t('error', { field: t('item.width') }) : undefined
+          }
         />
         <Input
           id="height"
-          label={`${t('height')} (${t('unit-mm')})`}
+          label={`${t('item.height')} (${t('item.unit-mm')})`}
           type="number"
           min={0}
           required
           className="rounded-xl"
           defaultValue={defaultValues?.height ?? 0}
           error={
-            errors?.height ? t('error', { field: t('height') }) : undefined
+            errors?.height ? t('error', { field: t('item.height') }) : undefined
           }
         />
         <Input
           id="radius"
-          label={`${t('radius')} (${t('unit-mm')})`}
+          label={`${t('item.radius')} (${t('item.unit-mm')})`}
           type="number"
           min={0}
           required
           className="rounded-xl"
           defaultValue={defaultValues?.radius ?? 0}
           error={
-            errors?.radius ? t('error', { field: t('radius') }) : undefined
+            errors?.radius ? t('error', { field: t('item.radius') }) : undefined
           }
         />
       </div>

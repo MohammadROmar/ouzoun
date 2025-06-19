@@ -18,10 +18,10 @@ async function ImplantCard({ implant }: ImplantCardProps) {
 
           <div className="text-gray space-y-1 text-sm">
             <p>
-              {t('brand')}: {implant.brand}
+              {t('item.brand')}: {implant.brand}
             </p>
             <p>
-              {t('quantity')}: {implant.quantity}
+              {t('item.quantity')}: {implant.quantity}
             </p>
           </div>
         </div>
@@ -33,7 +33,7 @@ async function ImplantCard({ implant }: ImplantCardProps) {
         href={`/implants/${implant.id}`}
         className="button flex w-full justify-center rounded-xl"
       >
-        {t('card-action')}
+        {t('actions.card')}
       </Link>
     </li>
   );

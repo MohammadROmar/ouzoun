@@ -61,7 +61,7 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
           name="image"
           type="file"
           accept="image/*"
-          // required
+          required
           className="cursor-default"
           {...getInputProps()}
         />
@@ -69,7 +69,7 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
 
       {hasError && (
         <p className="mt-1 text-sm text-red-400" aria-live="polite">
-          {t('error', { field: t('image-field') })}
+          {t('error', { field: t('item.image') })}
         </p>
       )}
     </div>

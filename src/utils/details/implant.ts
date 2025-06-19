@@ -2,15 +2,15 @@ import { Implant } from '@/models/implant';
 
 export function getDimentions(implant: Implant, t: (key: string) => string) {
   return {
-    [t('width')]: `${implant.width.toString()} ${t('unit-mm')}`,
-    [t('height')]: `${implant.height.toString()} ${t('unit-mm')}`,
-    [t('radius')]: `${implant.radius.toString()} ${t('unit-mm')}`,
+    [t('item.width')]: `${implant.width.toString()} ${t('item.unit-mm')}`,
+    [t('item.height')]: `${implant.height.toString()} ${t('item.unit-mm')}`,
+    [t('item.radius')]: `${implant.radius.toString()} ${t('item.unit-mm')}`,
   };
 }
 
 export function getSourceStock(implant: Implant, t: (key: string) => string) {
   return {
-    [t('brand')]: implant.brand.toString(),
-    [t('quantity')]: implant.quantity.toString(),
+    [t('item.brand')]: implant.brand.toString(),
+    [t('item.quantity')]: implant.quantity.toString(),
   };
 }

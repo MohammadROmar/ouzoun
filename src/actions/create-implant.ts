@@ -26,8 +26,6 @@ export async function createImplantAction(
 ): Promise<CreateImplantActionState> {
   const data = Object.fromEntries(formData.entries()) as ImplantInputs;
 
-  console.log(data.image);
-
   const errors = getImplantInputErrors(data);
   const hasError = Object.entries(errors).find((error) => error[1]);
 
@@ -42,7 +40,6 @@ function getImplantInputErrors(data: ImplantInputs) {
   const errors: { [K in keyof ImplantInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
-  errors.name = true;
   errors.brand = isInvalidText(data.brand);
   errors['kit-id'] = isInvalidText(data['kit-id']);
   errors.description = isInvalidText(data.description);

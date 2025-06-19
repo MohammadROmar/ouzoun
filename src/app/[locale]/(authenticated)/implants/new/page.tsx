@@ -5,9 +5,9 @@ import Title from '@/components/dashboard/title';
 import CreateImplantForm from '@/components/dashboard/create/implant/form';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('implants-page');
+  const t = await getTranslations('implants-page.titles');
 
-  return { title: t('action') };
+  return { title: t('new') };
 }
 
 export default async function CreateImplantPage() {
@@ -15,7 +15,7 @@ export default async function CreateImplantPage() {
 
   return (
     <>
-      <Title title={t('action')} />
+      <Title title={t('titles.new')} />
 
       <section className="mt-4">
         <CreateImplantForm />

@@ -6,9 +6,9 @@ import ImplantCard from '@/components/dashboard/implant-card';
 import { implants } from '@/data/dummy/implants';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('implants-page');
+  const t = await getTranslations('implants-page.titles');
 
-  return { title: t('title') };
+  return { title: t('base') };
 }
 
 export default async function ImplantsPage() {
@@ -17,8 +17,13 @@ export default async function ImplantsPage() {
   return (
     <>
       <section className="flex items-center justify-between">
-        <h1 className="ltr:font-ubuntu text-3xl md:text-4xl">{t('title')}</h1>
-        <AddProductButton href="/implants/new" label={t('action')} />
+        <h1 className="ltr:font-ubuntu text-3xl md:text-4xl">
+          {t('titles.base')}
+        </h1>
+        <AddProductButton
+          href="/implants/new"
+          label={t('actions.add-implant')}
+        />
       </section>
 
       <section>
