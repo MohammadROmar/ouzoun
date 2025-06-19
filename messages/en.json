@@ -158,7 +158,10 @@
       "dnd": "Drag and drop image here",
       "or": "OR",
       "select": "Select from device",
-      "drop": "Drop image here"
+      "drop": "Drop image here",
+      "error-size": "File size must not exceed 2MB",
+      "error-type": "File type must be png or jpg",
+      "error-unknow": "Unknow error happent while uploading the image"
     },
     "item": {
       "name": "Name",

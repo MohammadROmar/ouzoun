@@ -35,11 +35,7 @@ async function ImplantDetailsPage({ params }: Props) {
     <article className="space-y-4">
       <Title title={t('titles.details')} />
 
-      <ImplantHeading
-        title={implant.name}
-        kitId={implant.kitId}
-        action={t('actions.view-kit')}
-      />
+      <ImplantHeading t={t} implant={implant} />
 
       <Detail
         title={t('item.description')}
@@ -59,7 +55,9 @@ async function ImplantDetailsPage({ params }: Props) {
         details={getSourceStock(implant, t)}
       />
 
-      <ImplantActions implantId={implant.id} t={t} />
+      <section className="md:hidden">
+        <ImplantActions implantId={implant.id} t={t} />
+      </section>
     </article>
   );
 }

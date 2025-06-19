@@ -21,12 +21,11 @@ function Detail({ title, icon: Icon, details }: DetailProps) {
         ) : (
           <ul>
             {Object.entries(details).map(([key, value]) => (
-              <li
-                key={key ? `${key}-${value}` : value}
-                className="whitespace-pre"
-              >
-                {key && <span className="font-semibold">{key}: </span>}
-                <span>{value}</span>
+              <li key={key ? `${key}-${value}` : value}>
+                <p className="whitespace-pre">
+                  {key && <span className="font-semibold">{key}: </span>}
+                  <span>{value}</span>
+                </p>
               </li>
             ))}
           </ul>

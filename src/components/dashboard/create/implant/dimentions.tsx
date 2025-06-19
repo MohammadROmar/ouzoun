@@ -1,11 +1,11 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
-import type { CreateImplantActionState } from '@/actions/create-implant';
+import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
 type ImplantDimentionsProps = {
   t: TFunction;
-  state: CreateImplantActionState;
+  state: ImplantActionState;
 };
 
 function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
@@ -20,6 +20,7 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           type="number"
           min={0}
           required
+          step="any"
           className="rounded-xl"
           defaultValue={defaultValues?.width ?? 0}
           error={
@@ -32,6 +33,7 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           type="number"
           min={0}
           required
+          step="any"
           className="rounded-xl"
           defaultValue={defaultValues?.height ?? 0}
           error={
@@ -44,6 +46,7 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           type="number"
           min={0}
           required
+          step="any"
           className="rounded-xl"
           defaultValue={defaultValues?.radius ?? 0}
           error={

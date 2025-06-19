@@ -1,36 +1,23 @@
 'use client';
 
 import Image from 'next/image';
-import { memo, useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { memo } from 'react';
 import clsx from 'clsx';
 
+import { useDropzoneImage } from '@/hooks/use-dropzone-image';
 import type { TFunction } from '@/models/t-function';
 
 type ImplantImageProps = { t: TFunction; hasError?: boolean };
 
 function ImplantImage({ t, hasError }: ImplantImageProps) {
-  const [image, setImage] = useState<string>();
-
-  function onDrop(acceptedFiles: File[]) {
-    const file = acceptedFiles[0];
-
-    if (file) {
-      setImage(URL.createObjectURL(file));
-    }
-  }
-
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    multiple: false,
-    accept: { 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] },
-  });
+  const { image, error, getRootProps, getInputProps, isDragActive } =
+    useDropzoneImage();
 
   return (
     <div className="size-full max-md:m-auto max-md:aspect-square max-md:w-full max-md:max-w-56">
       <div
         className={clsx(
-          'relative flex size-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg border border-dashed !outline-current',
+          'relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border border-dashed !outline-current',
           isDragActive && 'bg-green',
         )}
         {...getRootProps()}
@@ -67,11 +54,14 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
         />
       </div>
 
-      {hasError && (
-        <p className="mt-1 text-sm text-red-400" aria-live="polite">
-          {t('error', { field: t('item.image') })}
-        </p>
-      )}
+      {hasError ||
+        (error && (
+          <p className="mt-1 text-sm text-red-400" aria-live="polite">
+            {hasError
+              ? t('error', { field: t('item.image') })
+              : t(`image.error-${error}`)}
+          </p>
+        ))}
     </div>
   );
 }

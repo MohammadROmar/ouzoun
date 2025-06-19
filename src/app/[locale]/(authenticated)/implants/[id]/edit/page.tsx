@@ -4,6 +4,8 @@ import { getTranslations } from 'next-intl/server';
 
 import Title from '@/components/dashboard/title';
 import { implants } from '@/data/dummy/implants';
+import ImplantForm from '@/components/dashboard/implant-form';
+import { implantToInputs } from '@/utils/implant-to-input';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');
@@ -24,9 +26,15 @@ export default async function ImplantEditPage({ params }: Props) {
 
   const t = await getTranslations('implants-page');
 
+  const implatAsInput = implantToInputs(implant);
+
   return (
     <>
       <Title title={t('titles.edit')} />
+
+      <section className="mt-4">
+        <ImplantForm defaultValues={implatAsInput} action="EDIT" />
+      </section>
     </>
   );
 }

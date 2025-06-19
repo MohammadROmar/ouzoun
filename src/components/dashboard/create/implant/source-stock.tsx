@@ -1,11 +1,11 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
-import type { CreateImplantActionState } from '@/actions/create-implant';
+import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
 type ImplantSourceAndStockProps = {
   t: TFunction;
-  state: CreateImplantActionState;
+  state: ImplantActionState;
 };
 
 function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
@@ -33,6 +33,7 @@ function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
           min={0}
           defaultValue={defaultValues?.quantity ?? 0}
           required
+          step="any"
           className="rounded-xl"
           error={
             errors?.quantity

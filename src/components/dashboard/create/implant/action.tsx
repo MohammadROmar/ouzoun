@@ -1,9 +1,12 @@
 import LoadingSpinner from '@/components/shared/loading-spinner';
 import { useFormStatus } from 'react-dom';
 
-type CreateImplantActionProps = { t: (key: string) => string };
+type CreateImplantActionProps = {
+  t: (key: string) => string;
+  action: 'CREATE' | 'EDIT';
+};
 
-function CreateImplantAction({ t }: CreateImplantActionProps) {
+function CreateImplantAction({ t, action }: CreateImplantActionProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -15,7 +18,7 @@ function CreateImplantAction({ t }: CreateImplantActionProps) {
         {pending ? (
           <LoadingSpinner className="size-6 animate-spin" />
         ) : (
-          t('actions.add')
+          t(action === 'CREATE' ? 'actions.add' : 'actions.edit')
         )}
       </button>
     </div>

@@ -1,38 +1,40 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
-type ImplantInputs = {
-  name: string;
-  image: File;
-  'kit-id': string;
-  description: string;
-  width: string;
-  height: string;
-  radius: string;
-  brand: string;
-  quantity: string;
-};
+import type { ImplantInputs } from '@/models/implant';
 
-export type CreateImplantActionState = {
+export type ImplantActionState = {
   message: string | undefined;
   errors?: { [K in keyof ImplantInputs]?: boolean };
   defaultValues?: ImplantInputs;
+  action: 'CREATE' | 'EDIT';
 };
 
-export async function createImplantAction(
-  prevState: CreateImplantActionState,
+export async function implantAction(
+  prevState: ImplantActionState,
   formData: FormData,
-): Promise<CreateImplantActionState> {
+): Promise<ImplantActionState> {
   const data = Object.fromEntries(formData.entries()) as ImplantInputs;
 
   const errors = getImplantInputErrors(data);
   const hasError = Object.entries(errors).find((error) => error[1]);
 
   if (hasError) {
-    return { message: 'invalid-input', errors, defaultValues: data };
+    return {
+      message: 'invalid-input',
+      errors,
+      defaultValues: data,
+      action: prevState.action,
+    };
   }
 
+  if (prevState.action === 'CREATE') {
+  } else {
+  }
+
+  revalidatePath('/implants', 'layout');
   redirect('/implants');
 }
 
@@ -49,7 +51,10 @@ function getImplantInputErrors(data: ImplantInputs) {
   errors.radius = isInvalidNumber(data.radius);
   errors.quantity = isInvalidNumber(data.quantity);
 
-  errors.image = data.image === undefined || data.image.size === 0;
+  errors.image =
+    data.image === undefined ||
+    data.image.size === 0 ||
+    data.image.size > 2 * 1024 * 1024;
 
   return errors;
 }
