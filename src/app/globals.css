@@ -7,7 +7,7 @@
 
   --color-notes: #244f7a;
   --color-gray: #505050;
-  --color-bg-secondary: #f7f7f7;
+  --color-bg-secondary: white;
   --color-bg-primary: #f7f7f7;
   --color-green: #00796b;
   --color-green-light: #9ad0c2;
@@ -32,7 +32,6 @@
 
   .no-spinner {
     -moz-appearance: textfield;
-    color: #edfffd;
   }
 }
 
@@ -45,7 +44,7 @@
 }
 
 @utility button {
-  @apply bg-green disabled:bg-green/50 cursor-pointer rounded-full px-4 py-2 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
+  @apply bg-green disabled:bg-green/50 cursor-pointer rounded-xl px-4 py-2 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
 }
 
 @utility sr-only {

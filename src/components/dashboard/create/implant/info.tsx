@@ -50,7 +50,7 @@ export default function ImplantInfo({ t, state }: ImplantInfoProps) {
           label={t('item.description')}
           required
           rows={4}
-          className="h-full resize-none rounded-xl"
+          className="h-full resize-none"
           defaultValue={defaultValues?.description}
           error={
             errors?.description

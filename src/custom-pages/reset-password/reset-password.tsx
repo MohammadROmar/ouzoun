@@ -48,9 +48,7 @@ export default function ResetPassword({ changeStep }: ResetPasswordProps) {
         </p>
       )}
 
-      <button className="button mt-6 w-full rounded-full">
-        {t('change-password')}
-      </button>
+      <button className="button mt-6 w-full">{t('change-password')}</button>
     </form>
   );
 }

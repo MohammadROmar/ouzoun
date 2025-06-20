@@ -50,7 +50,7 @@ function Input({
   }
 
   return (
-    <div className={clsx('flex flex-col rounded-full', containerStyles)}>
+    <div className={clsx('flex flex-col rounded-xl', containerStyles)}>
       <label htmlFor={id} className={labelStyles}>
         {label}
       </label>

@@ -20,7 +20,6 @@ function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
           type="text"
           required
           autoComplete="off"
-          className="rounded-xl"
           defaultValue={defaultValues?.brand}
           error={
             errors?.brand ? t('error', { field: t('item.brand') }) : undefined
@@ -34,7 +33,6 @@ function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
           defaultValue={defaultValues?.quantity ?? 0}
           required
           step="any"
-          className="rounded-xl"
           error={
             errors?.quantity
               ? t('error', { field: t('item.quantity') })

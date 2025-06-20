@@ -11,7 +11,7 @@ export default function Breadcrumbs() {
   const segments = pathname.split('/').filter(Boolean);
 
   return (
-    <ol className="flex">
+    <ol className="flex flex-wrap">
       {segments.map((segment, i) => {
         const isLast = i === segments.length - 1;
 
@@ -19,7 +19,7 @@ export default function Breadcrumbs() {
         const label = t.has(segment) ? t(segment) : segment;
 
         return (
-          <li key={segment} className="flex">
+          <li key={segment} className="flex max-sm:text-sm">
             <Link href={href} className="underline underline-offset-2">
               {label}
             </Link>

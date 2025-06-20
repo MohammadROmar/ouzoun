@@ -7,7 +7,7 @@ function AddProductButton({ label, href }: AddProductButtonProps) {
   return (
     <Link
       href={href}
-      className="button flex items-center gap-2 rounded-xl max-sm:p-2"
+      className="button flex items-center gap-2 max-sm:p-2"
       aria-label={label}
       title={label}
     >

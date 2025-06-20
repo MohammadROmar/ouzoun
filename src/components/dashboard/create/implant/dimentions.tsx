@@ -21,7 +21,6 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           min={0}
           required
           step="any"
-          className="rounded-xl"
           defaultValue={defaultValues?.width ?? 0}
           error={
             errors?.width ? t('error', { field: t('item.width') }) : undefined
@@ -34,7 +33,6 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           min={0}
           required
           step="any"
-          className="rounded-xl"
           defaultValue={defaultValues?.height ?? 0}
           error={
             errors?.height ? t('error', { field: t('item.height') }) : undefined
@@ -47,7 +45,6 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
           min={0}
           required
           step="any"
-          className="rounded-xl"
           defaultValue={defaultValues?.radius ?? 0}
           error={
             errors?.radius ? t('error', { field: t('item.radius') }) : undefined

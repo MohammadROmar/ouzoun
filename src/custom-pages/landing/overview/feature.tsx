@@ -18,7 +18,7 @@ function Feature({ title, body }: FeatureProps) {
       <div>
         <h3 className="ltr:font-ubuntu inline font-medium">
           {title}
-          <span className="text-green-light">: </span>
+          <span className="text-green">: </span>
         </h3>
         <p className="text-gray inline text-sm">{body}</p>
       </div>

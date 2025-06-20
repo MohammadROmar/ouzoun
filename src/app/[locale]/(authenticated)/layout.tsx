@@ -36,7 +36,7 @@ export default async function AuthLayout({ children }: PropsWithChildren) {
         <DashboardNavigation />
         <LogoutButton />
       </Sidebar>
-      <main className="max-md:spacing min-h-screen max-md:pt-16 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
+      <main className="max-md:spacing min-h-screen max-md:pt-18 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
         {children}
       </main>
     </SidebarContextProvider>

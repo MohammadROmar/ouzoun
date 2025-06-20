@@ -26,10 +26,7 @@ export default function ResetPasswordPageContent() {
 
           <hr className="text-gray my-8 w-full" />
 
-          <Link
-            href="/sign-in"
-            className="button mb-6 w-full rounded-full text-center"
-          >
+          <Link href="/sign-in" className="button mb-6 w-full text-center">
             {t('back-to-sign-in')}
           </Link>
         </div>

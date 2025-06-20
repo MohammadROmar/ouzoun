@@ -12,7 +12,7 @@ type ImplantActionsProps = {
 
 function ImplantActions({ implantId, kitId, t }: ImplantActionsProps) {
   const sharedStyles =
-    'button grid grid-cols-[1.25rem_auto] place-items-center justify-center gap-1 rounded-xl sm:gap-2';
+    'button grid grid-cols-[1.25rem_auto] place-items-center justify-center gap-1 sm:gap-2';
 
   return (
     <div className="space-y-2 md:w-min">

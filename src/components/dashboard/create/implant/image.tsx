@@ -78,7 +78,7 @@ const DNDText = memo(function DNDText({ t }: { t: TFunction }) {
       <span className="text-gray underline underline-offset-2">
         {t('image.or')}
       </span>
-      <span className="button mt-2 rounded-xl">{t('image.select')}</span>
+      <span className="button mt-2">{t('image.select')}</span>
     </p>
   );
 });

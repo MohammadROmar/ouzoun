@@ -17,12 +17,12 @@ function Detail({ title, icon: Icon, details }: DetailProps) {
         </h3>
 
         {typeof details === 'string' ? (
-          <p>{details}</p>
+          <p className="max-md:text-sm">{details}</p>
         ) : (
           <ul>
             {Object.entries(details).map(([key, value]) => (
               <li key={key ? `${key}-${value}` : value}>
-                <p className="whitespace-pre">
+                <p className="whitespace-pre max-md:text-sm">
                   {key && <span className="font-semibold">{key}: </span>}
                   <span>{value}</span>
                 </p>

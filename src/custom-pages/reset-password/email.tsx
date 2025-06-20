@@ -43,7 +43,7 @@ function SubmitButton({ text }: { text: string }) {
   const { pending } = useFormStatus();
 
   return (
-    <button disabled={pending} className="button mt-6 w-full rounded-full">
+    <button disabled={pending} className="button mt-6 w-full">
       {pending ? (
         <LoadingSpinner className="flex size-6 w-full animate-spin items-center" />
       ) : (

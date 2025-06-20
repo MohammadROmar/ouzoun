@@ -14,7 +14,7 @@ function SignInFormSubmit({ text }: SignInFormSubmitProps) {
   return (
     <button
       disabled={pending}
-      className="button mt-6 w-full rounded-full"
+      className="button mt-6 w-full"
       aria-label={t('submittion')}
     >
       {pending ? (
