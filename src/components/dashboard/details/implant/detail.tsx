@@ -8,10 +8,10 @@ type DetailProps = {
 
 function Detail({ title, icon: Icon, details }: DetailProps) {
   return (
-    <section className="flex items-start gap-2">
+    <section className="grid grid-cols-[1.75rem_1fr] gap-2">
       <Icon className="text-green size-7" />
 
-      <div>
+      <div className="w-full">
         <h3 className="ltr:font-ubuntu text-green text-xl md:text-2xl">
           {title}
         </h3>

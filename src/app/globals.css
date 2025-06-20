@@ -7,7 +7,8 @@
 
   --color-notes: #244f7a;
   --color-gray: #505050;
-  --color-background: #f7f7f7;
+  --color-bg-secondary: #f7f7f7;
+  --color-bg-primary: #f7f7f7;
   --color-green: #00796b;
   --color-green-light: #9ad0c2;
 }
@@ -16,7 +17,8 @@
 
 @layer base {
   .dark {
-    --color-background: #222;
+    --color-bg-secondary: black;
+    --color-bg-primary: #0a0a0a;
     --color-gray: #bdbcbc;
   }
 }
@@ -39,7 +41,7 @@
 }
 
 @utility spacing {
-  @apply p-6 py-12 md:p-12 lg:p-16;
+  @apply p-6 md:px-12 md:py-12 lg:px-16;
 }
 
 @utility button {

@@ -42,7 +42,7 @@ async function LocaleLayout({ children, params }: LocaleLayoutProps) {
       <body
         className={`${fontVariables} ${
           locale === 'en' ? 'font-montserrat' : 'font-kufi'
-        } bg-background max-container selection:bg-green/75 relative antialiased selection:text-white`}
+        } bg-bg-secondary max-container selection:bg-green/75 relative antialiased selection:text-white`}
       >
         <Providers>{children}</Providers>
       </body>

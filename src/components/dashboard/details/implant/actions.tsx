@@ -1,23 +1,36 @@
+import { Link } from '@/i18n/navigation';
 import DeleteIcon from '@/assets/icons/delete';
 import EditIcon from '@/assets/icons/edit';
-import { Link } from '@/i18n/navigation';
+import KitIcon from '@/assets/icons/kit';
+import clsx from 'clsx';
 
-type ImplantActionsProps = { implantId: string; t: (key: string) => string };
+type ImplantActionsProps = {
+  implantId: string;
+  kitId: string;
+  t: (key: string) => string;
+};
 
-function ImplantActions({ implantId, t }: ImplantActionsProps) {
+function ImplantActions({ implantId, kitId, t }: ImplantActionsProps) {
+  const sharedStyles =
+    'button grid grid-cols-[1.25rem_auto] place-items-center justify-center gap-1 rounded-xl sm:gap-2';
+
   return (
-    <div className="flex items-center gap-4 max-md:justify-end">
-      <Link
-        href={`/implants/${implantId}/edit`}
-        className="bg-green max-md:bg-green flex items-center gap-2 rounded-xl bg-none px-4 py-2"
-      >
-        <EditIcon className="size-5" />
-        <span>{t('actions.edit')}</span>
+    <div className="space-y-2 md:w-min">
+      <div className="flex items-center gap-2 max-md:grid max-md:grid-cols-2 max-md:justify-end">
+        <Link href={`/implants/${implantId}/edit`} className={sharedStyles}>
+          <EditIcon className="size-5" />
+          <span>{t('actions.edit')}</span>
+        </Link>
+        <button className={clsx(sharedStyles, 'bg-red-400')}>
+          <DeleteIcon className="size-5" />
+          <span>{t('actions.delete')}</span>
+        </button>
+      </div>
+
+      <Link href={`/kits/${kitId}`} className={sharedStyles}>
+        <KitIcon className="size-5" />
+        <span>{t('actions.view-kit')}</span>
       </Link>
-      <button className="flex cursor-pointer items-center gap-2 rounded-xl bg-red-400 bg-none px-4 py-2">
-        <DeleteIcon className="size-5" />
-        <span>{t('actions.delete')}</span>
-      </button>
     </div>
   );
 }

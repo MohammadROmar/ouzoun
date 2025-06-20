@@ -32,31 +32,33 @@ async function ImplantDetailsPage({ params }: Props) {
   const t = await getTranslations('implants-page');
 
   return (
-    <article className="space-y-4">
-      <Title title={t('titles.details')} />
+    <article className="flex flex-col justify-between gap-4 max-md:min-h-[calc(100vh_-_5.5rem)]">
+      <div className="space-y-4">
+        <Title title={t('titles.details')} />
 
-      <ImplantHeading t={t} implant={implant} />
+        <ImplantHeading t={t} implant={implant} />
 
-      <Detail
-        title={t('item.description')}
-        icon={FileIcon}
-        details={implant.description}
-      />
+        <Detail
+          title={t('item.description')}
+          icon={FileIcon}
+          details={implant.description}
+        />
 
-      <Detail
-        title={t('titles.dimensions')}
-        icon={DimensionsIcon}
-        details={getDimentions(implant, t)}
-      />
+        <Detail
+          title={t('titles.dimensions')}
+          icon={DimensionsIcon}
+          details={getDimentions(implant, t)}
+        />
 
-      <Detail
-        title={t('titles.source-stock')}
-        icon={BoxIcon}
-        details={getSourceStock(implant, t)}
-      />
+        <Detail
+          title={t('titles.source-stock')}
+          icon={BoxIcon}
+          details={getSourceStock(implant, t)}
+        />
+      </div>
 
-      <section className="md:hidden">
-        <ImplantActions implantId={implant.id} t={t} />
+      <section className="grid h-full md:hidden">
+        <ImplantActions implantId={implant.id} kitId={implant.kitId} t={t} />
       </section>
     </article>
   );

@@ -26,7 +26,7 @@ export default function HeaderWrapper({ children }: PropsWithChildren) {
       }}
       animate={isVisible ? 'visible' : 'hidden'}
       transition={{ duration: 0.5, bounce: false, ease: 'easeInOut' }}
-      className="bg-background/50 spacing max-container md:border-b-gray/25 fixed top-0 right-0 left-0 z-10 flex items-center justify-between py-4 backdrop-blur-sm ease-in-out md:border-b"
+      className="bg-bg-secondary spacing max-container md:border-b-gray/25 fixed top-0 right-0 left-0 z-10 flex items-center justify-between py-4 backdrop-blur-sm ease-in-out md:border-b"
     >
       {children}
     </motion.header>

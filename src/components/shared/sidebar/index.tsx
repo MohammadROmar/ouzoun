@@ -16,7 +16,7 @@ async function Sidebar({ navigationLinks, children }: SidebarProps) {
 
   return (
     <SidebarWrapper isAuthenticated={!!isAuthenticated}>
-      <div className="max-md:spacing bg-background flex size-full cursor-default flex-col gap-6 !py-4 max-md:justify-between md:px-6">
+      <div className="max-md:spacing bg-bg-secondary flex size-full cursor-default flex-col gap-6 !py-4 max-md:justify-between md:px-6">
         <div className="flex items-center justify-between">
           <Logo />
           <CloseSidebarButton />

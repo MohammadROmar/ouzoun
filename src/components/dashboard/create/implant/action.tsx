@@ -1,5 +1,6 @@
-import LoadingSpinner from '@/components/shared/loading-spinner';
 import { useFormStatus } from 'react-dom';
+
+import LoadingSpinner from '@/components/shared/loading-spinner';
 
 type CreateImplantActionProps = {
   t: (key: string) => string;

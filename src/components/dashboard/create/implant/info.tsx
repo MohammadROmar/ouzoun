@@ -1,12 +1,12 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
 import ImplantImage from './image';
-import type { CreateImplantActionState } from '@/actions/implant/create';
+import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
 type ImplantInfoProps = {
   t: TFunction;
-  state: CreateImplantActionState;
+  state: ImplantActionState;
 };
 
 export default function ImplantInfo({ t, state }: ImplantInfoProps) {

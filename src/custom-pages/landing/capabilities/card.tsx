@@ -11,7 +11,7 @@ function CapabilityCard({ capability }: CapabilityCardProps) {
       <h4 className="text-green ltr:font-ubuntu text-lg font-medium">
         {title}
       </h4>
-      <p className="text-background text-sm">{body}</p>
+      <p className="text-bg-primary text-sm">{body}</p>
     </li>
   );
 }
