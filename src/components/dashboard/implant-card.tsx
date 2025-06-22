@@ -9,7 +9,7 @@ async function ImplantCard({ implant }: ImplantCardProps) {
   const t = await getTranslations('implants-page');
 
   return (
-    <li className="bg-bg-primary grid w-full grid-rows-[auto_1fr_auto] space-y-2 rounded-xl p-2 shadow-[0px_0px_4px] shadow-black/15 dark:shadow-white/30">
+    <li className="bg-bg-primary grid w-full grid-rows-[auto_1fr_auto] space-y-2 rounded-xl p-2 shadow-[0px_0px_4px] shadow-black/15 dark:shadow-[0px_0px_6px] dark:shadow-white/35">
       <div className="flex basis-0 gap-2">
         <div className="bg-green aspect-square w-1/4 rounded-lg" />
 

@@ -8,7 +8,7 @@ import ImplantIcon from '@/assets/icons/implant';
 import type { NavigationLink } from '@/models/navigation-link';
 
 export type DashboardNavigationLink = {
-  icon: FC<SVGProps<SVGSVGElement>>;
+  icon: FC<SVGProps<SVGElement>>;
 } & NavigationLink;
 
 export async function dashboardNavigation(): Promise<

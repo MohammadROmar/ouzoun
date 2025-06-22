@@ -7,9 +7,9 @@ import clsx from 'clsx';
 import { useDropzoneImage } from '@/hooks/use-dropzone-image';
 import type { TFunction } from '@/models/t-function';
 
-type ImplantImageProps = { t: TFunction; hasError?: boolean };
+type DropzoneImageProps = { t: TFunction; hasError?: boolean };
 
-function ImplantImage({ t, hasError }: ImplantImageProps) {
+function DropzoneImage({ t, hasError }: DropzoneImageProps) {
   const { image, error, getRootProps, getInputProps, isDragActive } =
     useDropzoneImage();
 
@@ -17,7 +17,7 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
     <div className="size-full max-md:m-auto max-md:aspect-square max-md:w-full max-md:max-w-56">
       <div
         className={clsx(
-          'relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border border-dashed !outline-current',
+          'bg-bg-primary relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border border-dashed !outline-current',
           isDragActive && 'bg-green',
         )}
         {...getRootProps()}
@@ -56,7 +56,7 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
 
       {hasError ||
         (error && (
-          <p className="mt-1 text-sm text-red-400" aria-live="polite">
+          <p aria-live="polite" className="mt-1 text-sm text-red-400">
             {hasError
               ? t('error', { field: t('item.image') })
               : t(`image.error-${error}`)}
@@ -66,7 +66,7 @@ function ImplantImage({ t, hasError }: ImplantImageProps) {
   );
 }
 
-export default ImplantImage;
+export default DropzoneImage;
 
 const DNDText = memo(function DNDText({ t }: { t: TFunction }) {
   return (

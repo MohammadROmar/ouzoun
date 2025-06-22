@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import type { PropsWithChildren } from 'react';
 
-import SidebarWrapper from './wrappers';
+import SidebarWrapper from './wrapper';
 import Logo from './logo';
 import CloseSidebarButton from './close-btn';
 import NavigationList from './nav-list';
@@ -16,8 +16,8 @@ async function Sidebar({ navigationLinks, children }: SidebarProps) {
 
   return (
     <SidebarWrapper isAuthenticated={!!isAuthenticated}>
-      <div className="max-md:spacing bg-bg-primary flex size-full min-h-screen cursor-default flex-col gap-6 overflow-y-auto !py-4 max-md:justify-between md:px-6">
-        <div className="flex items-center justify-between">
+      <div className="max-md:spacing bg-bg-primary flex size-full min-h-screen cursor-default flex-col gap-6 overflow-y-auto py-4 max-md:justify-between max-md:pt-20 md:px-6">
+        <div className="flex items-center justify-between max-md:hidden">
           <Logo />
           <CloseSidebarButton />
         </div>

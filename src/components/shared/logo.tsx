@@ -17,7 +17,9 @@ export default function Logo(props: ComponentPropsWithoutRef<'a'>) {
       className="flex items-center gap-2"
       {...props}
     >
-      <LogoIcon className="size-6" />
+      <span>
+        <LogoIcon className="size-6" />
+      </span>
       <span className="ltr:font-ubuntu text-xl">
         {t('metadata.root.title')}
       </span>

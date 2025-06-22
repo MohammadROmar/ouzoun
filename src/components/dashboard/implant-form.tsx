@@ -3,10 +3,10 @@
 import { useActionState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import ImplantInfo from './create/implant/info';
-import ImplantDimentions from './create/implant/dimentions';
-import ImplantSourceAndStock from './create/implant/source-stock';
-import CreateImplantAction from './create/implant/action';
+import ImplantInfo from './forms/implant/info';
+import ImplantDimentions from './forms/implant/dimentions';
+import ImplantSourceAndStock from './forms/implant/source-stock';
+import CreateImplantAction from './forms/implant/action';
 import { implantAction } from '@/actions/implant';
 import type { ImplantInputs } from '@/models/implant';
 

@@ -1,5 +1,6 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
+import BoxIcon from '@/assets/icons/box';
 import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
@@ -12,7 +13,7 @@ function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
   const { defaultValues, errors } = state;
 
   return (
-    <Fieldset title={t('titles.source-stock')}>
+    <Fieldset icon={BoxIcon} title={t('titles.source-stock')}>
       <div className="grid grid-cols-2 gap-4">
         <Input
           id="brand"

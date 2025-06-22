@@ -39,7 +39,7 @@ function Step({ label, index, isVertical, isActive, isCompleted }: StepProps) {
         {isCompleted ? (
           <CheckMarkIcon className="size-5 text-white" aria-hidden="true" />
         ) : (
-          <span className="text-white">{index + 1}</span>
+          <p className="text-white">{index + 1}</p>
         )}
       </div>
 

@@ -9,7 +9,9 @@ function ImplantHeading({ t, implant }: ImplantHeadingProps) {
       <div className="bg-green aspect-square w-full max-w-3xs rounded-lg max-sm:m-auto sm:w-1/3 md:w-1/6" />
 
       <div className="flex flex-col justify-center gap-4">
-        <h2 className="ltr:font-ubuntu text-2xl md:text-3xl">{implant.name}</h2>
+        <h2 className="ltr:font-ubuntu text-2xl max-md:text-center md:text-3xl">
+          {implant.name}
+        </h2>
 
         <div className="max-md:hidden">
           <ImplantActions implantId={implant.id} kitId={implant.kitId} t={t} />

@@ -12,13 +12,13 @@ export default function HamburgerMenu() {
   return (
     <button
       className="cursor-pointer md:hidden"
-      onClick={() => setIsOpen(true)}
+      onClick={() => setIsOpen(!isOpen)}
       aria-label={t('hamburger-menu')}
       title={t('hamburger-menu')}
       aria-controls="sidebar"
       aria-expanded={isOpen}
     >
-      <HamburgerMenuIcon className="size-5" />
+      <HamburgerMenuIcon isOpen={isOpen} className="size-5" />
     </button>
   );
 }

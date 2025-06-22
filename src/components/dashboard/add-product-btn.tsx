@@ -11,7 +11,9 @@ function AddProductButton({ label, href }: AddProductButtonProps) {
       aria-label={label}
       title={label}
     >
-      <AddIcon className="size-5 max-md:size-7" />
+      <span>
+        <AddIcon className="size-5 max-md:size-7" />
+      </span>
       <span aria-hidden className="max-sm:hidden">
         {label}
       </span>

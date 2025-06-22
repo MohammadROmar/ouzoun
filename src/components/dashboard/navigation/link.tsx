@@ -28,7 +28,7 @@ function NavLink({ label, to, children }: NavLinkProps) {
         className="flex items-center gap-4 p-2 transition-transform group-hover:scale-95"
         onNavigate={isOpen ? () => setIsOpen(false) : undefined}
       >
-        {children}
+        {children && <span>{children}</span>}
         <span className="text-lg">{label}</span>
       </Link>
     </li>

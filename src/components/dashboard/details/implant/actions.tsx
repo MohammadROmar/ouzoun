@@ -18,17 +18,23 @@ function ImplantActions({ implantId, kitId, t }: ImplantActionsProps) {
     <div className="space-y-2 md:w-min">
       <div className="flex items-center gap-2 max-md:grid max-md:grid-cols-2 max-md:justify-end">
         <Link href={`/implants/${implantId}/edit`} className={sharedStyles}>
-          <EditIcon className="size-5" />
+          <span>
+            <EditIcon className="size-5" />
+          </span>
           <span>{t('actions.edit')}</span>
         </Link>
         <button className={clsx(sharedStyles, 'bg-red-400')}>
-          <DeleteIcon className="size-5" />
+          <span>
+            <DeleteIcon className="size-5" />
+          </span>
           <span>{t('actions.delete')}</span>
         </button>
       </div>
 
       <Link href={`/kits/${kitId}`} className={sharedStyles}>
-        <KitIcon className="size-5" />
+        <span>
+          <KitIcon className="size-5" />
+        </span>
         <span>{t('actions.view-kit')}</span>
       </Link>
     </div>

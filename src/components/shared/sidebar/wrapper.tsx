@@ -27,7 +27,7 @@ function SidebarWrapper({ isAuthenticated, children }: SidebarWrapperProps) {
       id="sidebar"
       aria-label="Sidebar"
       className={clsx(
-        'md:rtl:border-l-gray/25 md:ltr:border-r-gray/25 fixed z-50 transition-transform duration-500 ease-in-out md:absolute md:ltr:border-r md:rtl:border-l',
+        'md:rtl:border-l-gray/25 md:ltr:border-r-gray/25 fixed z-40 transition-transform duration-500 ease-in-out md:absolute md:z-50 md:ltr:border-r md:rtl:border-l',
         isOpen
           ? 'translate-x-0'
           : 'max-md:ltr:translate-x-full max-md:rtl:-translate-x-full',

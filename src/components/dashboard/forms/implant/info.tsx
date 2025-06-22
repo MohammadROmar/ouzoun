@@ -1,6 +1,7 @@
-import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
-import ImplantImage from './image';
+import Input from '@/components/ui/input';
+import DropzoneImage from '../dropzone-image';
+import InfoIcon from '@/assets/icons/info';
 import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
@@ -15,6 +16,7 @@ export default function ImplantInfo({ t, state }: ImplantInfoProps) {
   return (
     <Fieldset
       title={t('titles.info')}
+      icon={InfoIcon}
       className="grid grid-cols-1 gap-4 md:grid-cols-2"
     >
       <div className="mb-0 grid grid-rows-[auto_auto_1fr] gap-2">
@@ -60,7 +62,7 @@ export default function ImplantInfo({ t, state }: ImplantInfoProps) {
         />
       </div>
 
-      <ImplantImage t={t} hasError={errors?.image} />
+      <DropzoneImage t={t} hasError={errors?.image} />
     </Fieldset>
   );
 }

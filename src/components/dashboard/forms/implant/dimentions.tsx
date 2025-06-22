@@ -1,5 +1,6 @@
-import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
+import Input from '@/components/ui/input';
+import DimensionsIcon from '@/assets/icons/dimensions';
 import type { ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 
@@ -12,7 +13,7 @@ function ImplantDimentions({ t, state }: ImplantDimentionsProps) {
   const { defaultValues, errors } = state;
 
   return (
-    <Fieldset title={t('titles.dimensions')}>
+    <Fieldset title={t('titles.dimensions')} icon={DimensionsIcon}>
       <div className="grid grid-cols-2 gap-4">
         <Input
           id="width"
