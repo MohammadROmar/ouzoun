@@ -1,4 +1,4 @@
-import ImplantActions from './actions';
+import Actions from '../../actions';
 import type { Implant } from '@/models/implant';
 
 type ImplantHeadingProps = { t: (key: string) => string; implant: Implant };
@@ -14,7 +14,11 @@ function ImplantHeading({ t, implant }: ImplantHeadingProps) {
         </h2>
 
         <div className="max-md:hidden">
-          <ImplantActions implantId={implant.id} kitId={implant.kitId} t={t} />
+          <Actions
+            action={`/implants/${implant.id}/edit`}
+            kitId={implant.kitId}
+            t={t}
+          />
         </div>
       </div>
     </section>

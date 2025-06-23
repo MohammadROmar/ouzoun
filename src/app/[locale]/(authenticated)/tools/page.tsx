@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import { tools } from '@/data/dummy/tools';
+import ToolCard from '@/components/dashboard/cards/tool';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('tools-page.titles');
@@ -24,9 +25,9 @@ export default async function ToolsPage() {
       </section>
 
       <section>
-        <ul>
+        <ul className="mt-4 grid auto-rows-fr grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => (
-            <li key={tool.id}>{tool.name}</li>
+            <ToolCard key={tool.id} tool={tool} />
           ))}
         </ul>
       </section>

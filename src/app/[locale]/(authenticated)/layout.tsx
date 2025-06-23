@@ -9,6 +9,7 @@ import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
 import DashboardNavigation from '@/components/dashboard/navigation/index';
 import LogoutButton from '@/components/logout-btn';
+import { LocaleParams } from '@/i18n/routing';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
@@ -22,11 +23,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function AuthLayout({ children }: PropsWithChildren) {
+type AuthLayoutProps = LocaleParams & PropsWithChildren;
+
+async function AuthLayout({ params, children }: AuthLayoutProps) {
   const isAuthenticated = (await cookies()).get('access-token')?.value;
 
   if (!isAuthenticated) {
-    redirect('/');
+    const { locale } = await params;
+
+    redirect(`/${locale}`);
   }
 
   return (
@@ -42,3 +47,5 @@ export default async function AuthLayout({ children }: PropsWithChildren) {
     </SidebarContextProvider>
   );
 }
+
+export default AuthLayout;

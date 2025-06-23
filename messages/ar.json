@@ -133,13 +133,16 @@
       "height": "الطول",
       "thickness": "السُمك",
       "quantity": "الكمية",
-      "category-id": "مُعرف الصنف"
+      "category-id": "مُعرف الصنف",
+      "unit-cm": "سم"
     },
     "actions": {
       "add": "إضافة",
       "edit": "تعديل",
+      "delete": "حذف",
       "reset": "إعادة تعيين",
-      "add-tool": "إضافة أداة"
+      "add-tool": "إضافة أداة",
+      "view-kit": "الاطلاع على العدة"
     }
   },
   "implants-page": {

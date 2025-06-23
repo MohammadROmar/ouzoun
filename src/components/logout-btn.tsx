@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 
 import LogoutIcon from '@/assets/icons/logout';
 
@@ -11,8 +11,9 @@ export default async function LogoutButton() {
     'use server';
 
     (await cookies()).delete('access-token');
+    const locale = await getLocale();
 
-    redirect('/');
+    redirect(`/${locale}`);
   }
 
   return (

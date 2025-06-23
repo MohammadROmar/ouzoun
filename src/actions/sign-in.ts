@@ -2,9 +2,9 @@
 
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
+import { getLocale } from 'next-intl/server';
 
 import { isValidEmail, isValidPassword } from '@/utils/validation';
-import { getLocale } from 'next-intl/server';
 
 type SignInActionState =
   | { errors: { [key: string]: string }; email?: string; password?: string }

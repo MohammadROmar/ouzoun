@@ -26,7 +26,7 @@ async function Sidebar({ navigationLinks, children }: SidebarProps) {
 
         {children}
 
-        <div className="flex items-center gap-6 self-center md:hidden">
+        <div className="mb-8 flex items-center gap-6 self-center md:hidden">
           <LocaleSwitcher direction="top" />
           <ThemeToggle />
         </div>

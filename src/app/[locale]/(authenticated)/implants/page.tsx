@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import AddProductButton from '@/components/dashboard/add-product-btn';
-import ImplantCard from '@/components/dashboard/implant-card';
+import ImplantCard from '@/components/dashboard/cards/implant';
 import { implants } from '@/data/dummy/implants';
 
 export async function generateMetadata(): Promise<Metadata> {

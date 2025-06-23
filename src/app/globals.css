@@ -18,7 +18,7 @@
 @layer base {
   .dark {
     --color-bg-secondary: black;
-    --color-bg-primary: #0a0a0a;
+    --color-bg-primary: #111;
     --color-gray: #bdbcbc;
   }
 }
@@ -44,9 +44,13 @@
 }
 
 @utility button {
-  @apply bg-green disabled:bg-green/50 cursor-pointer rounded-xl px-4 py-2 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
+  @apply bg-green disabled:bg-green/50 cursor-pointer rounded-xl px-3 py-1.5 text-white transition-all duration-300 hover:scale-95 disabled:cursor-not-allowed;
 }
 
 @utility sr-only {
   @apply absolute -m-1 size-[1px] overflow-hidden border-none p-0 whitespace-nowrap [clip:rect(0,0,0,0)];
+}
+
+@utility card-shadow {
+  @apply shadow-[0px_0px_4px] shadow-black/15 dark:shadow-[0px_0px_6px] dark:shadow-emerald-50/35;
 }

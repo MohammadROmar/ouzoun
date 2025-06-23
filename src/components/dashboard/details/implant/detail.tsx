@@ -8,7 +8,7 @@ type DetailProps = {
 
 function Detail({ title, icon: Icon, details }: DetailProps) {
   return (
-    <section className="bg-bg-primary rounded-xl p-4 shadow-[0px_0px_4px] shadow-black/15 dark:shadow-[0px_0px_6px] dark:shadow-white/35">
+    <section className="bg-bg-primary card-shadow rounded-xl p-4">
       <div className="grid grid-cols-[1.75rem_auto] items-center gap-2">
         <Icon className="text-green size-7" />
 

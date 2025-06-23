@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { getLocale } from 'next-intl/server';
 
 import type { ImplantInputs } from '@/models/implant';
 
@@ -34,8 +35,10 @@ export async function implantAction(
   } else {
   }
 
+  const locale = await getLocale();
+
   revalidatePath('/implants', 'layout');
-  redirect('/implants');
+  redirect(`/${locale}/implants`);
 }
 
 function getImplantInputErrors(data: ImplantInputs) {

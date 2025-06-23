@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import Title from '@/components/dashboard/title';
 import ImplantHeading from '@/components/dashboard/details/implant/heading';
 import Detail from '@/components/dashboard/details/implant/detail';
-import ImplantActions from '@/components/dashboard/details/implant/actions';
+import Actions from '@/components/dashboard/actions';
 import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
@@ -58,7 +58,11 @@ async function ImplantDetailsPage({ params }: Props) {
       </div>
 
       <section className="grid h-full md:hidden">
-        <ImplantActions implantId={implant.id} kitId={implant.kitId} t={t} />
+        <Actions
+          action={`/implants/${implantId}/edit`}
+          kitId={implant.kitId}
+          t={t}
+        />
       </section>
     </article>
   );

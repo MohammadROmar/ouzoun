@@ -133,13 +133,17 @@
       "height": "Height",
       "thickness": "Thickness",
       "quantity": "Quantity",
-      "category-id": "Category ID"
+      "category-id": "Category ID",
+      "unit-cm": "cm"
     },
     "actions": {
       "add": "Add",
       "edit": "Edit",
+      "delete": "Delete",
       "reset": "Reset",
-      "add-tool": "Add new tool"
+      "add-tool": "Add new tool",
+      "card": "View details",
+      "view-kit": "View kit"
     }
   },
   "implants-page": {
