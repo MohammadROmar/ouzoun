@@ -8,3 +8,14 @@ export interface Tool {
   thickness: number;
   quantity: number;
 }
+
+export type ToolInputs = {
+  name: string;
+  image: File;
+  'kit-id': string;
+  'category-id': string;
+  width: string;
+  height: string;
+  thickness: string;
+  quantity: string;
+};

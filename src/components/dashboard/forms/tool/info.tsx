@@ -2,18 +2,18 @@ import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
-import type { ImplantFieldsetProps } from '.';
+import type { ToolFieldsetProps } from '.';
 
-export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
-  const { defaultValues, errors } = state;
+export default function ToolInfo({ state, t }: ToolFieldsetProps) {
+  const { errors, defaultValues } = state;
 
   return (
     <Fieldset
-      title={t('titles.info')}
       icon={InfoIcon}
+      title={t('titles.info')}
       className="grid grid-cols-1 gap-4 md:grid-cols-2"
     >
-      <div className="mb-0 grid grid-rows-[auto_auto_1fr] gap-2">
+      <div className="mb-0 space-y-2">
         <Input
           id="name"
           label={t('item.name')}
@@ -41,15 +41,14 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
           }
         />
         <Input
-          as="textarea"
-          id="description"
-          label={t('item.description')}
+          id="category-id"
+          label={t('item.category-id')}
           required
           rows={4}
           className="h-full resize-none"
-          defaultValue={defaultValues?.description}
+          defaultValue={defaultValues?.['category-id']}
           error={
-            errors?.description
+            errors?.['category-id']
               ? t('error', { field: t('item.description') })
               : undefined
           }

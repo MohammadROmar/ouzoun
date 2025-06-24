@@ -5,22 +5,22 @@ import { revalidatePath } from 'next/cache';
 import { getLocale } from 'next-intl/server';
 
 import { isInvalidNumber, isInvalidText } from './validation';
-import type { ImplantInputs } from '@/models/implant';
+import type { ToolInputs } from '@/models/tool';
 
-export type ImplantActionState = {
+export type ToolActionState = {
   message: string | undefined;
-  errors?: { [K in keyof ImplantInputs]?: boolean };
-  defaultValues?: ImplantInputs;
+  errors?: { [K in keyof ToolInputs]?: boolean };
+  defaultValues?: ToolInputs;
   action: 'CREATE' | 'EDIT';
 };
 
-export async function implantAction(
-  prevState: ImplantActionState,
+export async function toolAction(
+  prevState: ToolActionState,
   formData: FormData,
-): Promise<ImplantActionState> {
-  const data = Object.fromEntries(formData.entries()) as ImplantInputs;
+): Promise<ToolActionState> {
+  const data = Object.fromEntries(formData.entries()) as ToolInputs;
 
-  const errors = getImplantInputErrors(data);
+  const errors = getToolInputErrors(data);
   const hasError = Object.entries(errors).find((error) => error[1]);
 
   if (hasError) {
@@ -38,22 +38,21 @@ export async function implantAction(
 
   const locale = await getLocale();
 
-  revalidatePath('/en/implants', 'layout');
-  revalidatePath('/ar/implants', 'layout');
-  redirect(`/${locale}/implants`);
+  revalidatePath('/en/tools', 'layout');
+  revalidatePath('/ar/tools', 'layout');
+  redirect(`/${locale}/tools`);
 }
 
-function getImplantInputErrors(data: ImplantInputs) {
-  const errors: { [K in keyof ImplantInputs]?: boolean } = {};
+function getToolInputErrors(data: ToolInputs) {
+  const errors: { [K in keyof ToolInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
-  errors.brand = isInvalidText(data.brand);
   errors['kit-id'] = isInvalidText(data['kit-id']);
-  errors.description = isInvalidText(data.description);
+  errors['category-id'] = isInvalidText(data['category-id']);
 
   errors.width = isInvalidNumber(data.width);
   errors.height = isInvalidNumber(data.height);
-  errors.radius = isInvalidNumber(data.radius);
+  errors.thickness = isInvalidNumber(data.thickness);
   errors.quantity = isInvalidNumber(data.quantity);
 
   errors.image =

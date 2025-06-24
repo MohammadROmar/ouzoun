@@ -2,12 +2,12 @@ import { useFormStatus } from 'react-dom';
 
 import LoadingSpinner from '@/components/shared/loading-spinner';
 
-type CreateImplantActionProps = {
+type ActionsProps = {
   t: (key: string) => string;
   action: 'CREATE' | 'EDIT';
 };
 
-function CreateImplantAction({ t, action }: CreateImplantActionProps) {
+function Actions({ t, action }: ActionsProps) {
   const { pending } = useFormStatus();
 
   return (
@@ -26,4 +26,4 @@ function CreateImplantAction({ t, action }: CreateImplantActionProps) {
   );
 }
 
-export default CreateImplantAction;
+export default Actions;

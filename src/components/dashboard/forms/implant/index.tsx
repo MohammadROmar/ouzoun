@@ -3,12 +3,18 @@
 import { useActionState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import ImplantInfo from './forms/implant/info';
-import ImplantDimentions from './forms/implant/dimentions';
-import ImplantSourceAndStock from './forms/implant/source-stock';
-import CreateImplantAction from './forms/implant/action';
-import { implantAction } from '@/actions/implant';
+import ImplantInfo from './info';
+import ImplantDimentions from './dimentions';
+import ImplantSourceAndStock from './source-stock';
+import Actions from '../action';
+import { implantAction, type ImplantActionState } from '@/actions/implant';
 import type { ImplantInputs } from '@/models/implant';
+import type { TFunction } from '@/models/t-function';
+
+export type ImplantFieldsetProps = {
+  state: ImplantActionState;
+  t: TFunction;
+};
 
 type ImplantForm = { defaultValues?: ImplantInputs; action: 'CREATE' | 'EDIT' };
 
@@ -23,10 +29,10 @@ export default function ImplantForm({ defaultValues, action }: ImplantForm) {
 
   return (
     <form className="space-y-4" action={formAction}>
-      <ImplantInfo t={t} state={state} />
-      <ImplantDimentions t={t} state={state} />
-      <ImplantSourceAndStock t={t} state={state} />
-      <CreateImplantAction t={t} action={action} />
+      <ImplantInfo state={state} t={t} />
+      <ImplantDimentions state={state} t={t} />
+      <ImplantSourceAndStock state={state} t={t} />
+      <Actions action={action} t={t} />
     </form>
   );
 }

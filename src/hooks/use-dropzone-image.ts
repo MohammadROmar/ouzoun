@@ -40,5 +40,5 @@ export function useDropzoneImage() {
     accept: { 'image/png': ['.png'], 'image/jpeg': ['.jpg', '.jpeg'] },
   });
 
-  return { error, image, getRootProps, getInputProps, isDragActive };
+  return { error, image, getRootProps, getInputProps, isDragActive, setImage };
 }

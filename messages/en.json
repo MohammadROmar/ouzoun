@@ -119,11 +119,15 @@
     "actions": { "add-kit": "Add new kit" }
   },
   "tools-page": {
+    "error": "Please enter a valid {field}",
     "titles": {
       "base": "Tools",
       "new": "Add New Tool",
       "details": "Tool Details",
-      "edit": "Edit Tool"
+      "edit": "Edit Tool",
+      "info": "Tool Info",
+      "dimensions": "Dimensions",
+      "stock": "Stock"
     },
     "item": {
       "id": "Tool ID",
@@ -133,6 +137,7 @@
       "height": "Height",
       "thickness": "Thickness",
       "quantity": "Quantity",
+      "kit-id": "Kit ID",
       "category-id": "Category ID",
       "unit-cm": "cm"
     },
@@ -153,19 +158,9 @@
       "new": "Add New Implant",
       "edit": "Edit Implant",
       "details": "Implant Details",
-      "info": "implant info",
+      "info": "Implant Info",
       "dimensions": "Dimensions",
       "source-stock": "Source & Stock"
-    },
-    "image": {
-      "sr": "Choose an image",
-      "dnd": "Drag and drop image here",
-      "or": "OR",
-      "select": "Select from device",
-      "drop": "Drop image here",
-      "error-size": "File size must not exceed 2MB",
-      "error-type": "File type must be png or jpg",
-      "error-unknow": "Unknow error happent while uploading the image"
     },
     "item": {
       "name": "Name",
@@ -193,6 +188,17 @@
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
     "back-to-home": "Return to Home"
+  },
+  "dnd-image": {
+    "sr": "Choose an image",
+    "dnd": "Drag and drop image here",
+    "or": "OR",
+    "select": "Select from device",
+    "error": "Please choose an image",
+    "drop": "Drop image here",
+    "error-size": "File size must not exceed 2MB",
+    "error-type": "File type must be png or jpg",
+    "error-unknow": "Unknow error happent while uploading the image"
   },
   "navigation": {
     "landing": {

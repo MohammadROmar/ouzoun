@@ -1,17 +1,17 @@
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DimensionsIcon from '@/assets/icons/dimensions';
-import type { ImplantFieldsetProps } from '.';
+import type { ToolFieldsetProps } from '.';
 
-function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
-  const { defaultValues, errors } = state;
+export default function ToolDimensions({ state, t }: ToolFieldsetProps) {
+  const { errors, defaultValues } = state;
 
   return (
-    <Fieldset title={t('titles.dimensions')} icon={DimensionsIcon}>
+    <Fieldset icon={DimensionsIcon} title={t('titles.dimensions')}>
       <div className="grid grid-cols-2 gap-4">
         <Input
           id="width"
-          label={`${t('item.width')} (${t('item.unit-mm')})`}
+          label={`${t('item.width')} (${t('item.unit-cm')})`}
           type="number"
           min={0}
           required
@@ -23,7 +23,7 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
         />
         <Input
           id="height"
-          label={`${t('item.height')} (${t('item.unit-mm')})`}
+          label={`${t('item.height')} (${t('item.unit-cm')})`}
           type="number"
           min={0}
           required
@@ -34,20 +34,20 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
           }
         />
         <Input
-          id="radius"
-          label={`${t('item.radius')} (${t('item.unit-mm')})`}
+          id="thickness"
+          label={`${t('item.thickness')} (${t('item.unit-cm')})`}
           type="number"
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.radius ?? 0}
+          defaultValue={defaultValues?.thickness ?? 0}
           error={
-            errors?.radius ? t('error', { field: t('item.radius') }) : undefined
+            errors?.thickness
+              ? t('error', { field: t('item.thickness') })
+              : undefined
           }
         />
       </div>
     </Fieldset>
   );
 }
-
-export default ImplantDimentions;

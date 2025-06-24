@@ -1,15 +1,9 @@
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
 import BoxIcon from '@/assets/icons/box';
-import type { ImplantActionState } from '@/actions/implant';
-import type { TFunction } from '@/models/t-function';
+import type { ImplantFieldsetProps } from '.';
 
-type ImplantSourceAndStockProps = {
-  t: TFunction;
-  state: ImplantActionState;
-};
-
-function ImplantSourceAndStock({ t, state }: ImplantSourceAndStockProps) {
+function ImplantSourceAndStock({ t, state }: ImplantFieldsetProps) {
   const { defaultValues, errors } = state;
 
   return (
