@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { kits } from '@/data/dummy/kits';
 import Title from '@/components/dashboard/title';
+import Heading from '@/components/dashboard/details/heading';
+import { kits } from '@/data/dummy/kits';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');
@@ -25,12 +26,10 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
   const t = await getTranslations('kits-page');
 
   return (
-    <article>
+    <article className="space-y-4">
       <Title title={t('titles.details')} />
 
-      <section>
-        <h1 className="ltr:font-ubuntu text-3xl md:text-4xl">{kit.name}</h1>
-      </section>
+      <Heading title={kit.name} action={`/kits/${kitId}/edit`} t={t} />
     </article>
   );
 }

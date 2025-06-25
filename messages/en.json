@@ -116,7 +116,16 @@
       "edit": "Edit Kit",
       "details": "Kit Details"
     },
-    "actions": { "add-kit": "Add new kit" }
+    "item": {
+      "tools-num": "Tools",
+      "implants-num": "Implants"
+    },
+    "actions": {
+      "add-kit": "Add new kit",
+      "card": "View details",
+      "delete": "Delete",
+      "edit": "Edit"
+    }
   },
   "tools-page": {
     "error": "Please enter a valid {field}",

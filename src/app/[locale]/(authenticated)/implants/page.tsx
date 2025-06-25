@@ -26,8 +26,8 @@ export default async function ImplantsPage() {
         />
       </section>
 
-      <section>
-        <ul className="mt-4 grid auto-rows-fr grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="mt-4">
+        <ul className="grid auto-rows-fr grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {implants.map((implant) => (
             <ImplantCard key={implant.id} implant={implant} />
           ))}

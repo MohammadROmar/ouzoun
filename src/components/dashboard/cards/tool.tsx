@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 
+import { Link } from '@/i18n/navigation';
 import { getToolDimensions } from '@/utils/details/tool';
 import { Tool } from '@/models/tool';
-import ImplantActions from '../actions';
 
 type ToolCardProps = { tool: Tool };
 
@@ -39,12 +39,9 @@ async function ToolCard({ tool }: ToolCardProps) {
         ))}
       </ul>
 
-      <ImplantActions
-        action={`/tools/${tool.id}/edit`}
-        kitId={tool.kitId}
-        t={t}
-        full
-      />
+      <Link href={`/tools/${tool.id}`} className="button flex justify-center">
+        {t('actions.card')}
+      </Link>
     </li>
   );
 }

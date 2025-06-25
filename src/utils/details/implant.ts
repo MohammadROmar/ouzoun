@@ -1,6 +1,9 @@
 import { Implant } from '@/models/implant';
 
-export function getDimentions(implant: Implant, t: (key: string) => string) {
+export function getToolDimentions(
+  implant: Implant,
+  t: (key: string) => string,
+) {
   return {
     [t('item.width')]: `${implant.width.toString()} ${t('item.unit-mm')}`,
     [t('item.height')]: `${implant.height.toString()} ${t('item.unit-mm')}`,
@@ -8,7 +11,10 @@ export function getDimentions(implant: Implant, t: (key: string) => string) {
   };
 }
 
-export function getSourceStock(implant: Implant, t: (key: string) => string) {
+export function getToolSourceStock(
+  implant: Implant,
+  t: (key: string) => string,
+) {
   return {
     [t('item.brand')]: implant.brand.toString(),
     [t('item.quantity')]: implant.quantity.toString(),
