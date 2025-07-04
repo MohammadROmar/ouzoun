@@ -114,18 +114,21 @@
       "base": "Kits",
       "new": "Add New Kit",
       "edit": "Edit Kit",
-      "details": "Kit Details"
+      "details": "Kit Details",
+      "kit-tools": "Kit's Tools"
     },
     "item": {
-      "tools-num": "Tools",
-      "implants-num": "Implants"
+      "tools": "Tools",
+      "implants": "Implants"
     },
     "actions": {
       "add-kit": "Add new kit",
       "card": "View details",
       "delete": "Delete",
-      "edit": "Edit"
-    }
+      "edit": "Edit",
+      "more": "View all"
+    },
+    "no-tools": "It seems like this kit does not include any tools"
   },
   "tools-page": {
     "error": "Please enter a valid {field}",
@@ -180,7 +183,7 @@
       "description": "Description",
       "brand": "Brand",
       "radius": "Radius",
-      "kit-id": "Kit ID",
+      "kit-id": "Kit",
       "unit-mm": "mm"
     },
     "actions": {

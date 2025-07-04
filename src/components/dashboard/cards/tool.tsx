@@ -1,18 +1,24 @@
 import { getTranslations } from 'next-intl/server';
+import clsx from 'clsx';
 
 import { Link } from '@/i18n/navigation';
 import { getToolDimensions } from '@/utils/details/tool';
 import { Tool } from '@/models/tool';
 
-type ToolCardProps = { tool: Tool };
+type ToolCardProps = { tool: Tool; className?: string };
 
-async function ToolCard({ tool }: ToolCardProps) {
+async function ToolCard({ tool, className }: ToolCardProps) {
   const t = await getTranslations('tools-page');
 
   const dimensions = Object.entries(getToolDimensions(tool, t));
 
   return (
-    <li className="bg-bg-primary card-shadow space-y-2 rounded-xl p-2">
+    <li
+      className={clsx(
+        'bg-bg-primary card-shadow space-y-2 rounded-xl p-2',
+        className,
+      )}
+    >
       <div className="flex gap-2">
         <div className="bg-green aspect-square w-1/4 rounded-lg" />
 

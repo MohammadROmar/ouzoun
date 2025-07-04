@@ -2,7 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, MotionProps } from 'framer-motion';
+import { motion, MotionProps } from 'motion/react';
 
 import { routing, type Locale } from '@/i18n/routing';
 

@@ -1,24 +1,12 @@
-import { SVGProps, type FC, type ComponentPropsWithoutRef } from 'react';
+import DetailContainer, { type DetailContainerProps } from './detail-container';
 
 type DetailProps = {
-  title: string;
   details: { [key: string]: string } | string;
-  icon: FC<SVGProps<SVGElement>>;
-} & ComponentPropsWithoutRef<'section'>;
+} & DetailContainerProps;
 
-function Detail({ title, icon: Icon, details }: DetailProps) {
+function Detail({ title, icon, details }: DetailProps) {
   return (
-    <section className="bg-bg-primary card-shadow rounded-xl p-4">
-      <div className="grid grid-cols-[1.75rem_auto] items-center gap-2">
-        <Icon className="text-green size-7" />
-
-        <h3 className="ltr:font-ubuntu text-green w-fit text-xl md:text-2xl">
-          {title}
-        </h3>
-      </div>
-
-      <hr className="text-green my-3" />
-
+    <DetailContainer title={title} icon={icon}>
       {typeof details === 'string' ? (
         <p className="max-md:text-sm">{details}</p>
       ) : (
@@ -33,8 +21,8 @@ function Detail({ title, icon: Icon, details }: DetailProps) {
             </li>
           ))}
         </ul>
-      )}
-    </section>
+      )}{' '}
+    </DetailContainer>
   );
 }
 

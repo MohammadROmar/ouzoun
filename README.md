@@ -11,7 +11,7 @@ A specialized store for dental, pharmacy, and medical tools with reliable mainte
 
 - [next-intl](https://next-intl.dev/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
-- [framer-motion](https://motion.dev/docs/react-quick-start)
+- [motion](https://motion.dev/docs/react-quick-start)
 
 #### Local Project Setup
 

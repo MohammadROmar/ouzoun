@@ -12,7 +12,8 @@ function NavLink({ label, to, children }: NavLinkProps) {
   const pathname = usePathname();
   const { isOpen, setIsOpen } = useSidebarContext();
 
-  const isActive = pathname.includes(to);
+  const segments = pathname.split('/').filter(Boolean);
+  const isActive = to.includes(segments[0]);
 
   return (
     <li

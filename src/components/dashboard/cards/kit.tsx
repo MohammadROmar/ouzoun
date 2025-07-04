@@ -5,7 +5,10 @@ type KitCardProps = { kit: Kit; t: (key: string) => string };
 
 export default function KitCard({ kit, t }: KitCardProps) {
   return (
-    <li key={kit.name} className="card-shadow space-y-2 rounded-xl p-2">
+    <li
+      key={kit.name}
+      className="card-shadow bg-bg-primary space-y-2 rounded-xl p-2"
+    >
       <div className="flex gap-2">
         <div className="bg-green aspect-square w-1/4 rounded-lg" />
 
@@ -14,14 +17,12 @@ export default function KitCard({ kit, t }: KitCardProps) {
 
           <div className="flex gap-3">
             <p className="flex flex-col">
-              <span className="text-sm opacity-75">{t('item.tools-num')}</span>
+              <span className="text-sm opacity-75">{t('item.tools')}</span>
               <span>{kit.tools.length}</span>
             </p>
 
             <p className="flex flex-col">
-              <span className="text-sm opacity-75">
-                {t('item.implants-num')}
-              </span>
+              <span className="text-sm opacity-75">{t('item.implants')}</span>
               <span>{kit.implant.length}</span>
             </p>
           </div>

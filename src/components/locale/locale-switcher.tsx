@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { AnimatePresence } from 'motion/react';
 import clsx from 'clsx';
 
 import { useRouter, usePathname } from '@/i18n/navigation';
 import LocalesList from './locales-list';
 import GlobeIcon from '@/assets/icons/globe';
 import type { Locale } from '@/i18n/routing';
-import { AnimatePresence } from 'framer-motion';
 
 type LocaleSwitcherProps = {
   direction?: 'top' | 'bottom';

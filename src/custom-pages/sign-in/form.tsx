@@ -35,7 +35,8 @@ export default function SignInForm() {
         autoComplete="current-password"
         error={state?.errors.password && t('errors.password')}
         defaultValue={state?.password}
-        className="mt-4 mb-1"
+        labelStyles="mt-4"
+        className="mb-1"
       />
 
       <Link href="reset-password" className="text-gray text-sm">

@@ -1,7 +1,7 @@
 'use client';
 
 import { memo, type ComponentPropsWithoutRef } from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { motion, MotionProps } from 'motion/react';
 
 type HamburgerMenuIconProps = MotionProps & {
   isOpen: boolean;

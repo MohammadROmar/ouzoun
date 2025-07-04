@@ -54,3 +54,7 @@
 @utility card-shadow {
   @apply shadow-[0px_0px_4px] shadow-black/15 dark:shadow-[0px_0px_6px] dark:shadow-emerald-50/35;
 }
+
+.css-12ha1il-control {
+  outline-color: red !important;
+}

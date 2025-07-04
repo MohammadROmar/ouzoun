@@ -1,8 +1,12 @@
+import dynamic from 'next/dynamic';
+
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
 import type { ImplantFieldsetProps } from '.';
+
+const KitSelector = dynamic(() => import('./kit-selector'), { ssr: false });
 
 export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
   const { defaultValues, errors } = state;
@@ -26,20 +30,15 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
             errors?.name ? t('error', { field: t('item.name') }) : undefined
           }
         />
-        <Input
-          id="kit-id"
-          label={t('item.kit-id')}
-          type="text"
-          required
-          autoComplete="off"
-          className="rounded-lg"
-          defaultValue={defaultValues?.['kit-id']}
+
+        <KitSelector
           error={
             errors?.['kit-id']
               ? t('error', { field: t('item.kit-id') })
               : undefined
           }
         />
+
         <Input
           as="textarea"
           id="description"

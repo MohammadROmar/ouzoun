@@ -7,7 +7,7 @@ export const kits: Kit[] = [
   {
     id: 'kit-1',
     name: 'Basic Implant Kit',
-    tools: tools.filter((t) => t.kitId === 'kit-1'),
+    tools: tools,
     implant: implants.filter((i) => i.kitId === 'kit-1'),
   },
   {
