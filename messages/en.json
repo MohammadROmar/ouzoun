@@ -110,6 +110,7 @@
     "logout": "Logout"
   },
   "kits-page": {
+    "error": "Please enter a valid {field}",
     "titles": {
       "base": "Kits",
       "new": "Add New Kit",
@@ -118,15 +119,23 @@
       "kit-tools": "Kit's Tools"
     },
     "item": {
+      "name": "Name",
       "tools": "Tools",
-      "implants": "Implants"
+      "implant": "Implant",
+      "width": "Width",
+      "height": "Height",
+      "radius": "Radius",
+      "unit-mm": "mm"
     },
     "actions": {
-      "add-kit": "Add new kit",
-      "card": "View details",
-      "delete": "Delete",
+      "add": "Add",
       "edit": "Edit",
-      "more": "View all"
+      "reset": "Reset",
+      "delete": "Delete",
+      "more": "View all",
+      "card": "View details",
+      "add-kit": "Add new kit",
+      "implant": "View implant"
     },
     "no-tools": "It seems like this kit does not include any tools"
   },
@@ -180,17 +189,17 @@
       "quantity": "Quantity",
       "width": "Width",
       "height": "Height",
+      "radius": "Radius",
       "description": "Description",
       "brand": "Brand",
-      "radius": "Radius",
       "kit-id": "Kit",
       "unit-mm": "mm"
     },
     "actions": {
-      "edit": "Edit",
-      "delete": "Delete",
       "add": "Add",
+      "edit": "Edit",
       "reset": "Reset",
+      "delete": "Delete",
       "add-implant": "Add new implant",
       "card": "View details",
       "view-kit": "View kit"

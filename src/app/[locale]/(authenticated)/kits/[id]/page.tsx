@@ -2,13 +2,15 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
+import { Link } from '@/i18n/navigation';
 import Title from '@/components/dashboard/title';
 import Heading from '@/components/dashboard/details/heading';
-import { kits } from '@/data/dummy/kits';
-import ToolsIcon from '@/assets/icons/tools';
 import DetailContainer from '@/components/dashboard/details/detail-container';
 import ToolCard from '@/components/dashboard/cards/tool';
-import { Link } from '@/i18n/navigation';
+import ToolsIcon from '@/assets/icons/tools';
+import ImplantIcon from '@/assets/icons/implant';
+import { kits } from '@/data/dummy/kits';
+import { getToolDimentions } from '@/utils/details/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');
@@ -61,6 +63,36 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
           <p className="text-center">{t('no-tools')}</p>
         )}
       </DetailContainer>
+
+      {kit.implant && (
+        <DetailContainer title={t('item.implant')} icon={ImplantIcon}>
+          <>
+            <h4 className="ltr:font-ubuntu w-fit text-lg md:text-xl">
+              {kit.implant.name}
+            </h4>
+
+            <ul className="mt-2 flex gap-3">
+              {Object.entries(getToolDimentions(kit.implant, t)).map(
+                ([key, value]) => (
+                  <li key={key ? `${key}-${value}` : value}>
+                    <p className="flex flex-col">
+                      <span className="text-sm opacity-75">{key}</span>
+                      <span className="line-clamp-1">{value}</span>
+                    </p>
+                  </li>
+                ),
+              )}
+            </ul>
+
+            <Link
+              href={`/implants/${kit.implant.id}`}
+              className="button m-auto mt-2 flex w-fit"
+            >
+              {t('actions.implant')}
+            </Link>
+          </>
+        </DetailContainer>
+      )}
     </article>
   );
 }

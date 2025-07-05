@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getLocale } from 'next-intl/server';
 
-import { isInvalidNumber, isInvalidText } from './validation';
+import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ToolInputs } from '@/models/tool';
 
 export type ToolActionState = {
@@ -47,7 +47,6 @@ function getToolInputErrors(data: ToolInputs) {
   const errors: { [K in keyof ToolInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
-  errors['kit-id'] = isInvalidText(data['kit-id']);
   errors['category-id'] = isInvalidText(data['category-id']);
 
   errors.width = isInvalidNumber(data.width);
@@ -55,10 +54,7 @@ function getToolInputErrors(data: ToolInputs) {
   errors.thickness = isInvalidNumber(data.thickness);
   errors.quantity = isInvalidNumber(data.quantity);
 
-  errors.image =
-    data.image === undefined ||
-    data.image.size === 0 ||
-    data.image.size > 2 * 1024 * 1024;
+  errors.image = isInvalidImage(data.image);
 
   return errors;
 }

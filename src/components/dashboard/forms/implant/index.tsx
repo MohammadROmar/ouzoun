@@ -16,9 +16,12 @@ export type ImplantFieldsetProps = {
   t: TFunction;
 };
 
-type ImplantForm = { defaultValues?: ImplantInputs; action: 'CREATE' | 'EDIT' };
+type ImplantFormProps = {
+  defaultValues?: ImplantInputs;
+  action: 'CREATE' | 'EDIT';
+};
 
-export default function ImplantForm({ defaultValues, action }: ImplantForm) {
+function ImplantForm({ defaultValues, action }: ImplantFormProps) {
   const [state, formAction] = useActionState(implantAction, {
     message: undefined,
     defaultValues,
@@ -36,3 +39,5 @@ export default function ImplantForm({ defaultValues, action }: ImplantForm) {
     </form>
   );
 }
+
+export default ImplantForm;

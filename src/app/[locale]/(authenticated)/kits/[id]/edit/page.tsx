@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/components/dashboard/title';
+import KitForm from '@/components/dashboard/forms/kit';
 import { kits } from '@/data/dummy/kits';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,6 +28,13 @@ export default async function EditKitPage({ params }: Props) {
   return (
     <>
       <Title title={t('titles.edit')} />
+
+      <section className="mt-4">
+        <KitForm
+          action="EDIT"
+          defaultValues={{ name: kit.name, image: new File([], 'empty.png') }}
+        />
+      </section>
     </>
   );
 }

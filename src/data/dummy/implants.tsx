@@ -13,17 +13,6 @@ export const implants: Implant[] = [
     description: 'High-quality titanium implant for dental procedures.',
   },
   {
-    id: 'implant-2',
-    kitId: 'kit-1',
-    radius: 3.0,
-    name: 'Zirconia Implant B',
-    width: 4.5,
-    height: 12.0,
-    quantity: 15,
-    brand: 'ZircoMed',
-    description: 'Zirconia-based implant designed for aesthetic zones.',
-  },
-  {
     id: 'implant-3',
     kitId: 'kit-2',
     radius: 2.0,

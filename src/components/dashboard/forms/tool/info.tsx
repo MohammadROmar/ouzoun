@@ -1,5 +1,6 @@
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
+import KitSelector from '../kit-selector';
 import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
 import type { ToolFieldsetProps } from '.';
@@ -26,14 +27,8 @@ export default function ToolInfo({ state, t }: ToolFieldsetProps) {
             errors?.name ? t('error', { field: t('item.name') }) : undefined
           }
         />
-        <Input
-          id="kit-id"
-          label={t('item.kit-id')}
-          type="text"
-          required
-          autoComplete="off"
-          className="rounded-lg"
-          defaultValue={defaultValues?.['kit-id']}
+        <KitSelector
+          kitId={defaultValues?.['kit-id']}
           error={
             errors?.['kit-id']
               ? t('error', { field: t('item.kit-id') })

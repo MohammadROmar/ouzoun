@@ -21,10 +21,12 @@ export default function KitCard({ kit, t }: KitCardProps) {
               <span>{kit.tools.length}</span>
             </p>
 
-            <p className="flex flex-col">
-              <span className="text-sm opacity-75">{t('item.implants')}</span>
-              <span>{kit.implant.length}</span>
-            </p>
+            {kit.implant && (
+              <p className="flex flex-col">
+                <span className="text-sm opacity-75">{t('item.implant')}</span>
+                <span className="line-clamp-1">{kit.implant.name}</span>
+              </p>
+            )}
           </div>
         </div>
       </div>

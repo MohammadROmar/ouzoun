@@ -5,5 +5,10 @@ export interface Kit {
   id: string;
   name: string;
   tools: Tool[];
-  implant: Implant[];
+  implant?: Implant;
 }
+
+export type KitInputs = {
+  name: string;
+  image: File;
+};

@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getLocale } from 'next-intl/server';
 
-import { isInvalidNumber, isInvalidText } from './validation';
+import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ImplantInputs } from '@/models/implant';
 
 export type ImplantActionState = {
@@ -56,10 +56,7 @@ function getImplantInputErrors(data: ImplantInputs) {
   errors.radius = isInvalidNumber(data.radius);
   errors.quantity = isInvalidNumber(data.quantity);
 
-  errors.image =
-    data.image === undefined ||
-    data.image.size === 0 ||
-    data.image.size > 2 * 1024 * 1024;
+  errors.image = isInvalidImage(data.image);
 
   return errors;
 }

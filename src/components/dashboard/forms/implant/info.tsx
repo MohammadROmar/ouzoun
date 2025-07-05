@@ -6,7 +6,7 @@ import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
 import type { ImplantFieldsetProps } from '.';
 
-const KitSelector = dynamic(() => import('./kit-selector'), { ssr: false });
+const KitSelector = dynamic(() => import('../kit-selector'), { ssr: false });
 
 export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
   const { defaultValues, errors } = state;
@@ -30,15 +30,15 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
             errors?.name ? t('error', { field: t('item.name') }) : undefined
           }
         />
-
         <KitSelector
+          required
+          kitId={defaultValues?.['kit-id']}
           error={
             errors?.['kit-id']
               ? t('error', { field: t('item.kit-id') })
               : undefined
           }
         />
-
         <Input
           as="textarea"
           id="description"

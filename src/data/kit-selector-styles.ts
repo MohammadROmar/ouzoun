@@ -1,19 +1,7 @@
-'use client';
+import type { StylesConfig } from 'react-select';
 
-import { useTheme } from 'next-themes';
-import { useTranslations } from 'next-intl';
-import Select, { StylesConfig } from 'react-select';
-
-import { kits } from '@/data/dummy/kits';
-
-type KitSelectorProps = { error?: string };
-
-export default function KitSelector({ error }: KitSelectorProps) {
-  const { theme } = useTheme();
-
-  const t = useTranslations('implants-page.item');
-
-  const styles: StylesConfig = {
+export function kitSelectorStyles(theme?: string): StylesConfig {
+  return {
     container: (base) => ({ ...base, marginTop: '0.5rem' }),
     control: (base, state) => ({
       ...base,
@@ -51,26 +39,4 @@ export default function KitSelector({ error }: KitSelectorProps) {
       color: state.isFocused ? 'white' : 'currentColor',
     }),
   };
-
-  const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));
-
-  return (
-    <div>
-      <label htmlFor="kit-id">{t('kit-id')}</label>
-      <Select
-        styles={styles}
-        inputId="kit-id"
-        name="kit-id"
-        placeholder={false}
-        options={options}
-        aria-errormessage={error}
-      />
-
-      {error && (
-        <p className="mt-1 text-sm text-red-400" aria-live="polite">
-          {error}
-        </p>
-      )}
-    </div>
-  );
 }
