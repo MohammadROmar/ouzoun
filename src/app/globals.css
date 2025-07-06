@@ -59,6 +59,6 @@
   @apply shadow-[0px_0px_4px] shadow-black/15 dark:shadow-[0px_0px_6px] dark:shadow-emerald-50/35;
 }
 
-.css-12ha1il-control {
-  outline-color: red !important;
+@utility modal-icon {
+  @apply absolute top-0 -z-10 aspect-square h-full -translate-y-1/4 opacity-50 ltr:right-0 ltr:translate-x-1/4 ltr:rotate-[-25deg] rtl:left-0 rtl:-translate-x-2/6 rtl:rotate-25;
 }

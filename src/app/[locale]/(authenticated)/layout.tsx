@@ -8,7 +8,7 @@ import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
 import DashboardNavigation from '@/components/dashboard/navigation/index';
-import LogoutButton from '@/components/logout-btn';
+import LogoutButton from '@/components/logout/btn';
 import { LocaleParams } from '@/i18n/routing';
 
 export async function generateMetadata(): Promise<Metadata> {

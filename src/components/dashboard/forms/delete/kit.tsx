@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import Modal from '@/components/modal';
 import ModalActions from './actions';
+import WarningIcon from '@/assets/icons/warning';
 import { deleteKitAction } from '@/actions/kit';
 
 type DeleteKitModalProps = { id: string; open: boolean; close: () => void };
@@ -48,6 +49,8 @@ function DeleteKitModal({ id, open, close }: DeleteKitModalProps) {
       <form action={formAction}>
         <ModalActions close={close} />
       </form>
+
+      <WarningIcon className="text-danger modal-icon" />
     </Modal>
   );
 }

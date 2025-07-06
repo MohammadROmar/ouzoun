@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import ImplantInfo from './info';
 import ImplantDimentions from './dimentions';
 import ImplantSourceAndStock from './source-stock';
-import Actions from '../../actions';
+import FormActions from '../form-actions';
 import { implantAction, type ImplantActionState } from '@/actions/implant';
 import type { TFunction } from '@/models/t-function';
 import type { ImplantInputs } from '@/models/implant';
@@ -47,7 +47,7 @@ function ImplantForm({ defaultValues, action }: ImplantFormProps) {
       <ImplantInfo state={state} t={t} />
       <ImplantDimentions state={state} t={t} />
       <ImplantSourceAndStock state={state} t={t} />
-      <Actions action={action} t={t} />
+      <FormActions action={action} t={t} />
     </form>
   );
 }

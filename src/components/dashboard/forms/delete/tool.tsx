@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import Modal from '@/components/modal';
 import ModalActions from './actions';
+import WarningIcon from '@/assets/icons/warning';
 import { deleteToolAction } from '@/actions/tool';
 
 type DeleteToolModalProps = { id: string; open: boolean; close: () => void };
@@ -48,6 +49,8 @@ function DeleteToolModal({ id, open, close }: DeleteToolModalProps) {
       <form action={formAction}>
         <ModalActions close={close} />
       </form>
+
+      <WarningIcon className="text-danger modal-icon" />
     </Modal>
   );
 }

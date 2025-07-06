@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/components/dashboard/title';
-import { implants } from '@/data/dummy/implants';
 import ImplantForm from '@/components/dashboard/forms/implant';
+import { implants } from '@/data/dummy/implants';
 import { implantToInputs } from '@/utils/implant-to-input';
 
 export async function generateMetadata(): Promise<Metadata> {

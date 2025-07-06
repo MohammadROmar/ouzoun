@@ -16,9 +16,9 @@ type DeleteBtnProps = {
 };
 
 function DeleteBtn({ item, id, styles, label }: DeleteBtnProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const props = { id, open: isModalOpen, close: () => setIsModalOpen(false) };
+  const props = { id, open: isOpen, close: () => setIsOpen(false) };
 
   return (
     <>
@@ -28,7 +28,7 @@ function DeleteBtn({ item, id, styles, label }: DeleteBtnProps) {
 
       <button
         className={clsx(styles, 'bg-danger text-white')}
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => setIsOpen(true)}
       >
         <span>
           <DeleteIcon className="size-5" />

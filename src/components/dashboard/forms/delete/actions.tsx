@@ -3,9 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import LoadingSpinner from '@/components/shared/loading-spinner';
 
-type ModalActionsProps = {
-  close: () => void;
-};
+type ModalActionsProps = { close: () => void };
 
 function ModalActions({ close }: ModalActionsProps) {
   const t = useTranslations('modal');
@@ -16,7 +14,7 @@ function ModalActions({ close }: ModalActionsProps) {
       <button
         type="submit"
         disabled={pending}
-        aria-label={pending ? t('delete.pending') : undefined}
+        aria-label={pending ? t('processing') : undefined}
         className="button !bg-danger !text-white"
       >
         {pending ? (

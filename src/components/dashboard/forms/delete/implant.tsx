@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 
 import Modal from '@/components/modal';
 import ModalActions from './actions';
+import WarningIcon from '@/assets/icons/warning';
 import { deleteImplantAction } from '@/actions/implant';
 
 type DeleteImplantModalProps = { id: string; open: boolean; close: () => void };
@@ -48,6 +49,8 @@ function DeleteImplantModal({ id, open, close }: DeleteImplantModalProps) {
       <form action={formAction}>
         <ModalActions close={close} />
       </form>
+
+      <WarningIcon className="text-danger modal-icon" />
     </Modal>
   );
 }

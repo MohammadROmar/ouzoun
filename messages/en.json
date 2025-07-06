@@ -258,9 +258,13 @@
     "cancel": "Cancel",
     "delete": {
       "title": "Confirm Deletion",
-      "description": "Are you sure you want to delete this item?\nThis action cannot be undone.",
-      "pending": "Deleting"
-    }
+      "description": "Are you sure you want to delete this item?\nThis action cannot be undone."
+    },
+    "logout": {
+      "title": "Confirm Logout",
+      "description": "Are you sure you want to log out?\nYour current session will be terminated, and you will need to log in again to access your account."
+    },
+    "processing": "Processing"
   },
   "accessibility": {
     "language": "Change language",

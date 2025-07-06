@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import ToolInfo from './info';
 import ToolDimensions from './dimensions';
 import ToolStock from './stock';
-import Actions from '../../actions';
+import FormActions from '../form-actions';
 import { toolAction, type ToolActionState } from '@/actions/tool';
 import type { TFunction } from '@/models/t-function';
 import type { ToolInputs } from '@/models/tool';
@@ -41,7 +41,7 @@ export default function ToolForm({ action, defaultValues }: ToolFormProps) {
       <ToolInfo state={state} t={t} />
       <ToolDimensions state={state} t={t} />
       <ToolStock state={state} t={t} />
-      <Actions action={action} t={t} />
+      <FormActions action={action} t={t} />
     </form>
   );
 }

@@ -28,15 +28,20 @@ function Modal({ title, description, ref, titleStyles, children }: ModalProps) {
       aria-live="polite"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
-      className="bg-bg-primary card-shadow fixed top-1/2 w-fit -translate-1/2 space-y-4 rounded-xl p-4 backdrop:bg-black/50 max-sm:w-full ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2"
+      className="bg-bg-primary card-shadow fixed top-1/2 w-fit -translate-1/2 overflow-hidden rounded-xl backdrop:bg-black/50 max-sm:w-full sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2"
     >
-      <h4 id="modal-title" className={clsx('text-xl', titleStyles)}>
-        {title}
-      </h4>
-      <p id="modal-description" className="whitespace-pre-wrap">
-        {description}
-      </p>
-      {children}
+      <div className="relative p-4">
+        <h4
+          id="modal-title"
+          className={clsx('ltr:font-ubuntu text-2xl', titleStyles)}
+        >
+          {title}
+        </h4>
+        <p id="modal-description" className="my-4 text-sm whitespace-pre-wrap">
+          {description}
+        </p>
+        {children}
+      </div>
     </dialog>,
     document.getElementById('modals')!,
   );

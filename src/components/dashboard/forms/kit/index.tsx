@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
-import Actions from '../../actions';
+import FormActions from '../form-actions';
 import { kitAction } from '@/actions/kit';
 import type { KitInputs } from '@/models/kit';
 
@@ -51,7 +51,7 @@ function KitForm({ defaultValues, action }: KitFormProps) {
         <DropzoneImage hasError={state.errors?.image} />
       </div>
 
-      <Actions action={action} t={t} />
+      <FormActions action={action} t={t} />
     </form>
   );
 }
