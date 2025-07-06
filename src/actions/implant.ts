@@ -1,8 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { getLocale } from 'next-intl/server';
 
 import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ImplantInputs } from '@/models/implant';
@@ -14,7 +12,9 @@ export type ImplantActionState = {
   action: 'CREATE' | 'EDIT';
 };
 
-export async function implantAction(
+type DeleteImplantActionState = { message: string | undefined; id: string };
+
+async function implantAction(
   prevState: ImplantActionState,
   formData: FormData,
 ): Promise<ImplantActionState> {
@@ -36,11 +36,19 @@ export async function implantAction(
   } else {
   }
 
-  const locale = await getLocale();
-
   revalidatePath('/en/implants', 'layout');
   revalidatePath('/ar/implants', 'layout');
-  redirect(`/${locale}/implants`);
+
+  return { message: 'success', action: prevState.action, defaultValues: data };
+}
+
+async function deleteImplantAction(
+  prevState: DeleteImplantActionState,
+): Promise<DeleteImplantActionState> {
+  revalidatePath('/en/implants', 'layout');
+  revalidatePath('/ar/implants', 'layout');
+
+  return { message: 'success', id: prevState.id };
 }
 
 function getImplantInputErrors(data: ImplantInputs) {
@@ -60,3 +68,5 @@ function getImplantInputErrors(data: ImplantInputs) {
 
   return errors;
 }
+
+export { implantAction, deleteImplantAction };

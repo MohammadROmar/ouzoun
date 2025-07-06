@@ -30,7 +30,7 @@ export default async function Overview() {
 
       <Image
         src={adminImg}
-        alt="An image of a person managing a business on laptop."
+        alt="Call center agent focused on laptop, surrounded by chat bubbles representing customer interactions."
       />
     </section>
   );

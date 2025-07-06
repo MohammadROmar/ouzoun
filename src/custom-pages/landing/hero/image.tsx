@@ -8,7 +8,7 @@ export default function HeroImage() {
     <div className="relative flex-1">
       <Image
         src={dentalEquipmentImg}
-        alt="Dental Equipment Image."
+        alt="A dentist's office featuring a dental chair."
         priority
         fetchPriority="high"
       />

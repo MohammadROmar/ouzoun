@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import ImplantCard from '@/components/dashboard/cards/implant';
+import NoContent from '@/components/no-content';
 import { implants } from '@/data/dummy/implants';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,11 +28,15 @@ export default async function ImplantsPage() {
       </section>
 
       <section className="mt-4">
-        <ul className="grid auto-rows-fr grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {implants.map((implant) => (
-            <ImplantCard key={implant.id} implant={implant} />
-          ))}
-        </ul>
+        {implants.length > 0 ? (
+          <ul className="grid auto-rows-fr grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            {implants.map((implant) => (
+              <ImplantCard key={implant.id} implant={implant} />
+            ))}
+          </ul>
+        ) : (
+          <NoContent />
+        )}
       </section>
     </>
   );

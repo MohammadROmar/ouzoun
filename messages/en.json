@@ -135,7 +135,10 @@
       "more": "View all",
       "card": "View details",
       "add-kit": "Add new kit",
-      "implant": "View implant"
+      "implant": "View implant",
+      "created": "Kit Created Successfully",
+      "edited": "Kit Edited Successfully",
+      "deleted": "Kit Deleted Successfully"
     },
     "no-tools": "It seems like this kit does not include any tools"
   },
@@ -158,7 +161,7 @@
       "height": "Height",
       "thickness": "Thickness",
       "quantity": "Quantity",
-      "kit-id": "Kit ID",
+      "kit-id": "Kit (Optional)",
       "category-id": "Category ID",
       "unit-cm": "cm"
     },
@@ -169,7 +172,10 @@
       "reset": "Reset",
       "add-tool": "Add new tool",
       "card": "View details",
-      "view-kit": "View kit"
+      "view-kit": "View kit",
+      "created": "Tool Created Successfully",
+      "edited": "Tool Edited Successfully",
+      "deleted": "Tool Deleted Successfully"
     }
   },
   "implants-page": {
@@ -202,13 +208,20 @@
       "delete": "Delete",
       "add-implant": "Add new implant",
       "card": "View details",
-      "view-kit": "View kit"
+      "view-kit": "View kit",
+      "created": "Implant Created Successfully",
+      "edited": "Implant Edited Successfully",
+      "deleted": "Implant Deleted Successfully"
     }
   },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
     "back-to-home": "Return to Home"
+  },
+  "no-content": {
+    "title": "No Content Yet",
+    "description": "This page does not contain any items at the moment. it's waiting for its first addition."
   },
   "dnd-image": {
     "sr": "Choose an image",
@@ -239,6 +252,15 @@
   },
   "footer": {
     "rights": "All Rights Reserved."
+  },
+  "modal": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": {
+      "title": "Confirm Deletion",
+      "description": "Are you sure you want to delete this item?\nThis action cannot be undone.",
+      "pending": "Deleting"
+    }
   },
   "accessibility": {
     "language": "Change language",

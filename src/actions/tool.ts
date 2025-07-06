@@ -1,8 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { getLocale } from 'next-intl/server';
 
 import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ToolInputs } from '@/models/tool';
@@ -13,6 +11,8 @@ export type ToolActionState = {
   defaultValues?: ToolInputs;
   action: 'CREATE' | 'EDIT';
 };
+
+type DeleteToolActionState = { message: string | undefined; id: string };
 
 export async function toolAction(
   prevState: ToolActionState,
@@ -36,11 +36,19 @@ export async function toolAction(
   } else {
   }
 
-  const locale = await getLocale();
-
   revalidatePath('/en/tools', 'layout');
   revalidatePath('/ar/tools', 'layout');
-  redirect(`/${locale}/tools`);
+
+  return { message: 'success', action: prevState.action, defaultValues: data };
+}
+
+export async function deleteToolAction(
+  prevState: DeleteToolActionState,
+): Promise<DeleteToolActionState> {
+  revalidatePath('/en/tools', 'layout');
+  revalidatePath('/ar/tools', 'layout');
+
+  return { message: 'success', id: prevState.id };
 }
 
 function getToolInputErrors(data: ToolInputs) {

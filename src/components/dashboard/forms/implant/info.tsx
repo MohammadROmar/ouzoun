@@ -31,6 +31,7 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
           }
         />
         <KitSelector
+          label={t('item.kit-id')}
           required
           kitId={defaultValues?.['kit-id']}
           error={

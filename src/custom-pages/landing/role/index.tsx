@@ -10,7 +10,7 @@ export default function Role() {
     >
       <Image
         src={dashboardImg}
-        alt="An image a person controlling a dashboard."
+        alt="Man studying information presented on a monitor."
       />
 
       <RoleText />

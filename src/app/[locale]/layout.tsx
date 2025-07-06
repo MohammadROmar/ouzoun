@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 
 import Providers from '@/components/providers';
+import Toasts from '@/components/toasts';
 import { routing, type LocaleParams } from '@/i18n/routing';
 import { fontVariables } from '@/data/fonts';
 
@@ -44,7 +45,11 @@ async function LocaleLayout({ children, params }: LocaleLayoutProps) {
           locale === 'en' ? 'font-montserrat' : 'font-kufi'
         } bg-bg-secondary max-container selection:bg-green/75 relative antialiased selection:text-white`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <div id="modals" />
+          <Toasts />
+          {children}
+        </Providers>
       </body>
     </html>
   );

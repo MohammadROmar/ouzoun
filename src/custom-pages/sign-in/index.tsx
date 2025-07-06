@@ -30,7 +30,7 @@ export default async function SignInPageContent() {
       <section className="relative size-full max-md:absolute max-md:inset-0 max-md:-z-10 max-md:opacity-50 max-md:blur-[2px] md:col-span-4 max-md:dark:opacity-25">
         <Image
           src={dentalClinicImg}
-          alt="An image of dentist's clinic."
+          alt="A dental office featuring a patient chair and a desk, designed for dental examinations and treatments."
           fill
           sizes="(max-width: 48rem) 100vw, 66.67vw"
           priority

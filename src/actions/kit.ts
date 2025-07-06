@@ -1,7 +1,6 @@
 'use server';
 
-import { redirect } from 'next/navigation';
-import { getLocale } from 'next-intl/server';
+import { revalidatePath } from 'next/cache';
 
 import { isInvalidText, isInvalidImage } from './validation';
 import type { KitInputs } from '@/models/kit';
@@ -12,6 +11,8 @@ type KitActionState = {
   errors?: { [K in keyof KitInputs]?: boolean };
   defaultValues?: KitInputs;
 };
+
+type DeleteKitActionState = { message: string | undefined; id: string };
 
 export async function kitAction(
   prevState: KitActionState,
@@ -37,8 +38,23 @@ export async function kitAction(
   } else {
   }
 
-  const locale = await getLocale();
-  redirect(`/${locale}/kits`);
+  revalidatePath('/en/kits', 'layout');
+  revalidatePath('/ar/kits', 'layout');
+
+  return {
+    message: 'success',
+    action: prevState.action,
+    defaultValues: { name, image },
+  };
+}
+
+export async function deleteKitAction(
+  prevState: DeleteKitActionState,
+): Promise<DeleteKitActionState> {
+  revalidatePath('/en/kits', 'layout');
+  revalidatePath('/ar/kits', 'layout');
+
+  return { message: 'success', id: prevState.id };
 }
 
 function getKitInputErrors(data: KitInputs) {

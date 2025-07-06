@@ -1,15 +1,17 @@
 'use client';
 
-import { useActionState } from 'react';
-import { useTranslations } from 'next-intl';
+import { redirect } from 'next/navigation';
+import { useActionState, useEffect } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { toast } from 'react-toastify';
 
 import ImplantInfo from './info';
 import ImplantDimentions from './dimentions';
 import ImplantSourceAndStock from './source-stock';
-import Actions from '../action';
+import Actions from '../../actions';
 import { implantAction, type ImplantActionState } from '@/actions/implant';
-import type { ImplantInputs } from '@/models/implant';
 import type { TFunction } from '@/models/t-function';
+import type { ImplantInputs } from '@/models/implant';
 
 export type ImplantFieldsetProps = {
   state: ImplantActionState;
@@ -28,7 +30,17 @@ function ImplantForm({ defaultValues, action }: ImplantFormProps) {
     action,
   });
 
+  const locale = useLocale();
   const t = useTranslations('implants-page');
+
+  useEffect(() => {
+    if (state.message === 'success') {
+      toast.success(
+        t(action === 'CREATE' ? 'actions.created' : 'actions.edited'),
+      );
+      redirect(`/${locale}/implants`);
+    }
+  }, [state.message, locale, action, t]);
 
   return (
     <form className="space-y-4" action={formAction}>

@@ -1,31 +1,29 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import Select from 'react-select';
 
 import { kits } from '@/data/dummy/kits';
 import { kitSelectorStyles } from '@/data/kit-selector-styles';
 
-type KitSelectorProps = { kitId?: string; error?: string; required?: boolean };
+type KitSelectorProps = {
+  label: string;
+  kitId?: string;
+  error?: string;
+  required?: boolean;
+};
 
-export default function KitSelector({
-  kitId,
-  error,
-  required,
-}: KitSelectorProps) {
+function KitSelector({ label, kitId, error, required }: KitSelectorProps) {
   const { theme } = useTheme();
-
-  const t = useTranslations('implants-page.item');
   const locale = useLocale();
 
   const kit = kits.find((kit) => kit.id === kitId);
-
   const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));
 
   return (
     <div>
-      <label htmlFor="kit-id">{t('kit-id')}</label>
+      <label htmlFor="kit-id">{label}</label>
       <Select
         required={required}
         inputId="kit-id"
@@ -48,3 +46,5 @@ export default function KitSelector({
     </div>
   );
 }
+
+export default KitSelector;

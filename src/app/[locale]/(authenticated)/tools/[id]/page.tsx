@@ -36,10 +36,11 @@ export default async function ToolDetailsPage({ params }: Props) {
         <Title title={t('titles.details')} />
 
         <Heading
+          item="tools"
+          id={toolId}
           t={t}
           title={tool.name}
           kitId={tool.kitId}
-          action={`/tools/${tool.id}/edit`}
         />
 
         <Detail
@@ -56,7 +57,7 @@ export default async function ToolDetailsPage({ params }: Props) {
       </div>
 
       <section className="grid h-full md:hidden">
-        <Actions action={`/tools/${toolId}/edit`} kitId={tool.kitId} t={t} />
+        <Actions item="tools" id={toolId} kitId={tool.kitId} t={t} />
       </section>
     </article>
   );

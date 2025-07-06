@@ -37,10 +37,11 @@ async function ImplantDetailsPage({ params }: Props) {
         <Title title={t('titles.details')} />
 
         <Heading
+          item="implants"
+          id={implantId}
           t={t}
           title={implant.name}
           kitId={implant.kitId}
-          action={`/implants/${implant.id}/edit`}
         />
 
         <Detail
@@ -63,11 +64,7 @@ async function ImplantDetailsPage({ params }: Props) {
       </div>
 
       <section className="grid h-full md:hidden">
-        <Actions
-          action={`/implants/${implantId}/edit`}
-          kitId={implant.kitId}
-          t={t}
-        />
+        <Actions item="implants" id={implantId} kitId={implant.kitId} t={t} />
       </section>
     </article>
   );

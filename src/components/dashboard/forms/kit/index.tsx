@@ -1,11 +1,13 @@
 'use client';
 
-import { useActionState } from 'react';
-import { useTranslations } from 'next-intl';
+import { redirect } from 'next/navigation';
+import { useActionState, useEffect } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { toast } from 'react-toastify';
 
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
-import Actions from '../action';
+import Actions from '../../actions';
 import { kitAction } from '@/actions/kit';
 import type { KitInputs } from '@/models/kit';
 
@@ -18,7 +20,17 @@ function KitForm({ defaultValues, action }: KitFormProps) {
     defaultValues,
   });
 
+  const locale = useLocale();
   const t = useTranslations('kits-page');
+
+  useEffect(() => {
+    if (state.message === 'success') {
+      toast.success(
+        t(action === 'CREATE' ? 'actions.created' : 'actions.edited'),
+      );
+      redirect(`/${locale}/kits`);
+    }
+  }, [state.message, locale, t, action]);
 
   return (
     <form className="space-y-4" action={formAction}>

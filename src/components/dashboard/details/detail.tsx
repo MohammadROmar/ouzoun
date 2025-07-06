@@ -21,7 +21,7 @@ function Detail({ title, icon, details }: DetailProps) {
             </li>
           ))}
         </ul>
-      )}{' '}
+      )}
     </DetailContainer>
   );
 }

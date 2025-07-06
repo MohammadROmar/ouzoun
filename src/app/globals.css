@@ -11,6 +11,10 @@
   --color-bg-primary: #f7f7f7;
   --color-green: #00796b;
   --color-green-light: #9ad0c2;
+
+  --color-success: #41f1b6;
+  --color-danger: #ff7782;
+  --color-warning: #ffbb55;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

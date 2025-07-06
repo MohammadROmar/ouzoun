@@ -11,6 +11,7 @@ import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import { kits } from '@/data/dummy/kits';
 import { getToolDimentions } from '@/utils/details/implant';
+import Actions from '@/components/dashboard/actions';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');
@@ -35,7 +36,7 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
     <article className="space-y-4">
       <Title title={t('titles.details')} />
 
-      <Heading title={kit.name} action={`/kits/${kitId}/edit`} t={t} />
+      <Heading item="kits" id={kitId} title={kit.name} t={t} />
 
       <DetailContainer title={t('item.tools')} icon={ToolsIcon}>
         <ul className="grid grid-cols-1 grid-rows-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -93,6 +94,10 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
           </>
         </DetailContainer>
       )}
+
+      <section className="grid h-full md:hidden">
+        <Actions item="implants" id={kitId} t={t} />
+      </section>
     </article>
   );
 }

@@ -28,6 +28,7 @@ export default function ToolInfo({ state, t }: ToolFieldsetProps) {
           }
         />
         <KitSelector
+          label={t('item.kit-id')}
           kitId={defaultValues?.['kit-id']}
           error={
             errors?.['kit-id']
