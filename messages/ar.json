@@ -213,6 +213,32 @@
       "deleted": "تم حذف الزرعة بنجاح"
     }
   },
+  "assistants-page": {
+    "title": "المساعدين",
+    "register-action": "تسجيل",
+    "assign-action": "تكليف بعمل جراحي",
+    "leave-requests-action": "طلبات الإجازة",
+    "register": {
+      "title": "تسجيل مساعد",
+      "description": "أضف مساعداً جديداً.",
+      "user-name": "اسم المستخدم",
+      "email": "البريد الالكتروني",
+      "password": "كلمة المرور",
+      "phone-number": "رقم الهاتف",
+      "action": "تسجيل",
+      "reset": "إعادة تعيين",
+      "error": "رجاءاً ادخل {field} بشكل صحيح",
+      "success": "تم تسجيل المساعد بنجاح"
+    },
+    "assign": {
+      "title": "تكليف مساعد بعمل جراحي",
+      "description": "قم بتكليف مساعد لمرافقة عمل جراحي."
+    },
+    "leave-requests": {
+      "title": "طلبات اجازة المساعدين",
+      "description": "إدارة ومراجعة طلبات الإجازة الخاصة بالمساعدين."
+    }
+  },
   "not-found-page": {
     "title": "يا للأسف!",
     "subtitle": "لم يتم العثور على الصفحة التي طلبتها",
@@ -245,6 +271,10 @@
       "kits": "العُدد",
       "tools": "الأدوات",
       "implants": "الزرعات",
+      "assistants": "المساعدين",
+      "register": "التسجيل",
+      "assign": "التكليف",
+      "leave-requests": "الإجازات",
       "new": "الإضافة",
       "edit": "التعديل"
     }

@@ -24,7 +24,6 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
           type="text"
           required
           autoComplete="off"
-          className="rounded-lg"
           defaultValue={defaultValues?.name}
           error={
             errors?.name ? t('error', { field: t('item.name') }) : undefined

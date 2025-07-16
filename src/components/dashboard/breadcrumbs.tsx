@@ -24,7 +24,7 @@ export default function Breadcrumbs() {
               {label}
             </Link>
             {!isLast && (
-              <span aria-hidden className="px-4">
+              <span aria-hidden className="px-3 sm:px-4">
                 &gt;
               </span>
             )}

@@ -26,7 +26,7 @@ function DropzoneImage({ hasError, defaultImage }: DropzoneImageProps) {
     <div className="size-full max-md:m-auto max-md:aspect-square max-md:w-full max-md:max-w-56">
       <div
         className={clsx(
-          'bg-bg-primary relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-lg border border-dashed !outline-current',
+          'bg-bg-primary relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-dashed !outline-current',
           isDragActive && 'bg-green',
         )}
         {...getRootProps()}

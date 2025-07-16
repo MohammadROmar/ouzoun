@@ -3,7 +3,9 @@ export function isInvalidText(input: string) {
 }
 
 export function isInvalidNumber(input: string) {
-  return isNaN(parseInt(input)) || parseInt(input) < 0;
+  const number = parseInt(input);
+
+  return isInvalidText(input) || isNaN(number) || number < 0;
 }
 
 export function isInvalidImage(image: File) {

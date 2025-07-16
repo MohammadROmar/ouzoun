@@ -98,7 +98,7 @@
     },
     "step3": {
       "title": "Password Changed",
-      "subtitle": "Your password has been changed successfuly",
+      "subtitle": "Your password has been changed successfully",
       "sign-in": "Now you can Sign in with the new password."
     },
     "back-to-sign-in": "Back to Sign in",
@@ -214,6 +214,32 @@
       "deleted": "Implant Deleted Successfully"
     }
   },
+  "assistants-page": {
+    "title": "Assistants",
+    "register-action": "Register",
+    "assign-action": "Assign to Operation",
+    "leave-requests-action": "Leave Requests",
+    "register": {
+      "title": "Register Assistant",
+      "description": "Add a new assistant.",
+      "user-name": "User Name",
+      "email": "E-mail",
+      "password": "Password",
+      "phone-number": "Phone Number",
+      "action": "Register",
+      "reset": "Reset",
+      "error": "Please enter a valid {field}",
+      "success": "Assistant registered Successfully"
+    },
+    "assign": {
+      "title": "Assign Assistant to Operation",
+      "description": "Assign an assistant to a surgical procedure."
+    },
+    "leave-requests": {
+      "title": "Assistants' Leave Requests",
+      "description": "Manage and review assistants' leave requests."
+    }
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
@@ -246,6 +272,10 @@
       "kits": "Kits",
       "tools": "Tools",
       "implants": "Implants",
+      "assistants": "Assistants",
+      "register": "Register",
+      "assign": "Assign",
+      "leave-requests": "Leave Requests",
       "new": "New",
       "edit": "Edit"
     }
@@ -262,7 +292,7 @@
     },
     "logout": {
       "title": "Confirm Logout",
-      "description": "Are you sure you want to log out?\nYour current session will be terminated, and you will need to log in again to access your account."
+      "description": "Are you sure you want to logout?\nYour current session will be terminated, and you will need to log in again to access your account."
     },
     "processing": "Processing"
   },

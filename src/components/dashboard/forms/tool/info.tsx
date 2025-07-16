@@ -21,7 +21,6 @@ export default function ToolInfo({ state, t }: ToolFieldsetProps) {
           type="text"
           required
           autoComplete="off"
-          className="rounded-lg"
           defaultValue={defaultValues?.name}
           error={
             errors?.name ? t('error', { field: t('item.name') }) : undefined

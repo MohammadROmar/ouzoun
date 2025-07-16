@@ -40,7 +40,6 @@ function KitForm({ defaultValues, action }: KitFormProps) {
         type="text"
         required
         autoComplete="off"
-        className="rounded-lg"
         defaultValue={state.defaultValues?.name}
         error={
           state.errors?.name ? t('error', { field: t('item.name') }) : undefined
