@@ -1,17 +1,17 @@
 import { cookies } from 'next/headers';
-import type { PropsWithChildren } from 'react';
 
 import SidebarWrapper from './wrapper';
 import Logo from './logo';
 import CloseSidebarButton from './close-btn';
 import NavigationList from './nav-list';
+import DashboardNavigation from '@/components/dashboard/navigation';
+import LogoutButton from '@/components/logout/btn';
 import LocaleSwitcher from '../../locale/locale-switcher';
 import ThemeToggle from '../../theme/theme-toggle';
-import type { NavigationLink } from '@/models/navigation-link';
+import { landingNavigation } from '@/data/navigation/landing';
 
-type SidebarProps = { navigationLinks?: NavigationLink[] } & PropsWithChildren;
-
-async function Sidebar({ navigationLinks, children }: SidebarProps) {
+async function Sidebar() {
+  const navigationLinks = await landingNavigation();
   const isAuthenticated = (await cookies()).get('access-token')?.value;
 
   return (
@@ -22,9 +22,14 @@ async function Sidebar({ navigationLinks, children }: SidebarProps) {
           <CloseSidebarButton />
         </div>
 
-        {navigationLinks && <NavigationList links={navigationLinks} />}
+        {!isAuthenticated && <NavigationList links={navigationLinks} />}
 
-        {children}
+        {isAuthenticated && (
+          <>
+            <DashboardNavigation />
+            <LogoutButton />
+          </>
+        )}
 
         <div className="mb-8 flex items-center gap-6 self-center md:hidden">
           <LocaleSwitcher direction="top" />

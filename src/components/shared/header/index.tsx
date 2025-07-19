@@ -1,19 +1,22 @@
+import { cookies } from 'next/headers';
+
 import HeaderWrapper from './wrapper';
 import Logo from '../logo';
 import Navigation from '@/components/navigation';
 import LocaleSwitcher from '../../locale/locale-switcher';
 import ThemeToggle from '../../theme/theme-toggle';
 import HamburgerMenu from './hamburger-menu';
-import type { NavigationLink } from '@/models/navigation-link';
+import { landingNavigation } from '@/data/navigation/landing';
 
-type HeaderProps = { navigationLinks?: NavigationLink[] };
+async function Header() {
+  const isAuthenticated = (await cookies()).get('access-token')?.value;
+  const navigationLinks = await landingNavigation();
 
-function Header({ navigationLinks }: HeaderProps) {
   return (
     <HeaderWrapper>
       <Logo />
 
-      {navigationLinks && (
+      {!isAuthenticated && (
         <Navigation links={navigationLinks} className="max-md:hidden" />
       )}
 

@@ -11,7 +11,10 @@ import { signInAction } from '@/actions/sign-in';
 export default function SignInForm() {
   const t = useTranslations('sign-in-page');
 
-  const [state, formAction] = useActionState(signInAction, { errors: {} });
+  const [state, formAction] = useActionState(signInAction, {
+    message: undefined,
+    errors: {},
+  });
 
   return (
     <form className="mt-6" action={formAction}>

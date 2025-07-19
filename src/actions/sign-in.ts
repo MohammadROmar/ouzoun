@@ -6,9 +6,12 @@ import { getLocale } from 'next-intl/server';
 
 import { isValidEmail, isValidPassword } from '@/utils/validation';
 
-type SignInActionState =
-  | { errors: { [key: string]: string }; email?: string; password?: string }
-  | undefined;
+type SignInActionState = {
+  message: string | undefined;
+  errors: { [key: string]: string };
+  email?: string;
+  password?: string;
+};
 
 export async function signInAction(
   prevState: SignInActionState,
@@ -28,7 +31,7 @@ export async function signInAction(
   }
 
   if (Object.keys(errors).length > 0) {
-    return { errors, email, password };
+    return { message: 'invalid-input', errors, email, password };
   }
 
   (await cookies()).set('access-token', 'true', {

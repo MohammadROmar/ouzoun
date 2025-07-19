@@ -2,12 +2,12 @@ import { getTranslations } from 'next-intl/server';
 
 import Logo from './logo';
 import Navigation from '../navigation';
-import type { NavigationLink } from '@/models/navigation-link';
+import { landingNavigation } from '@/data/navigation/landing';
 
-type FooterProps = { navigationLinks?: NavigationLink[] };
-
-export default async function Footer({ navigationLinks }: FooterProps) {
+export default async function Footer() {
   const t = await getTranslations();
+
+  const navigationLinks = await landingNavigation();
 
   return (
     <footer className="spacing max-container border-gray flex flex-col border-t py-6">
@@ -18,9 +18,7 @@ export default async function Footer({ navigationLinks }: FooterProps) {
         {t('metadata.root.description')}
       </p>
 
-      {navigationLinks && (
-        <Navigation links={navigationLinks} className="mt-4" />
-      )}
+      <Navigation links={navigationLinks} className="mt-4" />
 
       <p className="mt-4 self-center text-sm">
         <span>&copy; </span>

@@ -7,8 +7,6 @@ import type { PropsWithChildren } from 'react';
 import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
-import DashboardNavigation from '@/components/dashboard/navigation/index';
-import LogoutButton from '@/components/logout/btn';
 import { LocaleParams } from '@/i18n/routing';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -37,10 +35,7 @@ async function AuthLayout({ params, children }: AuthLayoutProps) {
   return (
     <SidebarContextProvider>
       <Header />
-      <Sidebar>
-        <DashboardNavigation />
-        <LogoutButton />
-      </Sidebar>
+      <Sidebar />
       <main className="max-md:spacing min-h-screen max-md:pt-18 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
         {children}
       </main>

@@ -45,6 +45,7 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
             <LocalesList
               id="languages-list"
               handleChange={changeLocale}
+              close={() => setIsOpen(false)}
               className={clsx(
                 'bg-green absolute left-1/2 w-fit -translate-x-1/2 divide-y divide-white/50 rounded-lg px-2 py-0.5 text-center text-white',
                 direction === 'bottom'

@@ -1,5 +1,7 @@
 import { useFormStatus } from 'react-dom';
 
+import LoadingSpinner from '@/components/shared/loading-spinner';
+
 type RegisterAssistantActionsProps = { t(key: string): string };
 
 function RegisterAssistantActions({ t }: RegisterAssistantActionsProps) {
@@ -11,7 +13,11 @@ function RegisterAssistantActions({ t }: RegisterAssistantActionsProps) {
         {t('reset')}
       </button>
       <button disabled={pending} className="button">
-        {t('action')}
+        {pending ? (
+          <LoadingSpinner className="size-6 animate-spin" />
+        ) : (
+          t('action')
+        )}
       </button>
     </div>
   );

@@ -1,8 +1,8 @@
 'use client';
 
-import { useSidebarContext } from '@/store/sidebar';
 import Navigation from '@/components/navigation';
-import type { NavigationLink } from '@/models/navigation-link';
+import { NavigationLink } from '@/models/navigation-link';
+import { useSidebarContext } from '@/store/sidebar';
 
 type NavigationListProps = { links: NavigationLink[] };
 
@@ -13,8 +13,8 @@ export default function NavigationList({ links }: NavigationListProps) {
     <Navigation
       links={links}
       vertical
-      className="text-xl"
       onClick={() => setIsOpen(false)}
+      className="text-xl"
     />
   );
 }

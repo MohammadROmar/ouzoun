@@ -1,8 +1,9 @@
+import { cache } from 'react';
 import { getTranslations } from 'next-intl/server';
 
 import type { NavigationLink } from '@/models/navigation-link';
 
-export async function landingNavigation(): Promise<NavigationLink[]> {
+async function navigation(): Promise<NavigationLink[]> {
   const t = await getTranslations('navigation.landing');
 
   return [
@@ -12,3 +13,5 @@ export async function landingNavigation(): Promise<NavigationLink[]> {
     { label: t('overview'), to: '/#overview' },
   ];
 }
+
+export const landingNavigation = cache(navigation);

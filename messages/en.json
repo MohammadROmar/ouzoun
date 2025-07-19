@@ -229,7 +229,7 @@
       "action": "Register",
       "reset": "Reset",
       "error": "Please enter a valid {field}",
-      "success": "Assistant registered Successfully"
+      "success": "Assistant Registered Successfully"
     },
     "assign": {
       "title": "Assign Assistant to Operation",
