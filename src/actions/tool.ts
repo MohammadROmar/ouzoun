@@ -61,7 +61,7 @@ export async function toolAction(
 
     if (!response.ok) {
       return {
-        message: 'failed-to-create',
+        message: `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
         errors,
         defaultValues: data,
         id: prevState.id,
@@ -69,6 +69,8 @@ export async function toolAction(
       };
     }
   } catch (error) {
+    console.log(error);
+
     return {
       message: 'server-connection',
       errors,
@@ -110,6 +112,8 @@ export async function deleteToolAction(
       return { message: 'failed-to-delete', id: prevState.id };
     }
   } catch (e) {
+    console.log(e);
+
     return { message: 'server-connection', id: prevState.id };
   }
 

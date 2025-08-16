@@ -52,13 +52,15 @@ export async function kitAction(
 
     if (!response.ok) {
       return {
-        message: 'failed-to-create',
+        message: `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
         errors,
         defaultValues: { name, image, main },
         action: prevState.action,
       };
     }
   } catch (error) {
+    console.log(error);
+
     return {
       message: 'server-connection',
       errors,
@@ -94,13 +96,12 @@ export async function deleteKitAction(
       },
     );
 
-    console.log('delete kit ---------------------------');
-    console.log(response);
-
     if (!response.ok) {
       return { message: 'failed-to-delete', id: prevState.id };
     }
   } catch (e) {
+    console.log(e);
+
     return { message: 'server-connection', id: prevState.id };
   }
 

@@ -298,6 +298,7 @@
     "description": "This page does not contain any items at the moment. it's waiting for its first addition."
   },
   "errors": {
+    "failed-to-edit": "Failed to edit.\nPlease try again later.",
     "failed-to-change": "Failed to change.\nPlease try again later.",
     "failed-to-create": "Failed to create.\nPlease try again later.",
     "failed-to-delete": "Failed to delete.\nPlease try again later.",

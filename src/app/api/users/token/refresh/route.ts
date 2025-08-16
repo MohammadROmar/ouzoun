@@ -25,9 +25,6 @@ export async function POST() {
       body: JSON.stringify({ refreshToken }),
     },
   );
-
-  console.log(response);
-
   if (!response.ok) {
     return NextResponse.json(
       { error: 'Failed to refresh tokens.' },

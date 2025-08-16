@@ -9,7 +9,10 @@ import { selectorStyles } from '@/data/selector-styles';
 
 type StatusOptionsProps = { state: ActionState; t: (key: string) => string };
 
-const StatusOptions = memo(({ state, t }: StatusOptionsProps) => {
+const StatusOptions = memo(function StatusOptions({
+  state,
+  t,
+}: StatusOptionsProps) {
   const locale = useLocale();
   const { theme } = useTheme();
 

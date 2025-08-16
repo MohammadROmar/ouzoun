@@ -80,6 +80,8 @@ export async function signInAction(
       maxAge: 60 * 60 * 24 * 30,
     });
   } catch (error) {
+    console.log(error);
+
     return { message: 'server-error', errors: {}, email, password };
   }
 

@@ -40,8 +40,7 @@ async function implantAction(
   try {
     const accessToken = (await cookies()).get('access-token')?.value;
 
-    const endpoint = `${process.env.BASE_URL}/api/Implants${prevState.action === 'CREATE' ? '' : `/${prevState.id}`}`;
-    const response = await fetch(endpoint, {
+    const response = await fetch(`${process.env.BASE_URL}/api/implants`, {
       method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +60,7 @@ async function implantAction(
 
     if (!response.ok) {
       return {
-        message: 'failed-to-create',
+        message: `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
         errors,
         defaultValues: data,
         id: prevState.id,
@@ -69,6 +68,8 @@ async function implantAction(
       };
     }
   } catch (error) {
+    console.log(error);
+
     return {
       message: 'server-connection',
       errors,
@@ -96,7 +97,7 @@ async function deleteImplantAction(
 
   try {
     const response = await fetch(
-      `${process.env.BASE_URL}/api/Implants/${prevState.id}`,
+      `${process.env.BASE_URL}/api/implants/${prevState.id}`,
       {
         method: 'DELETE',
         headers: {
@@ -110,6 +111,8 @@ async function deleteImplantAction(
       return { message: 'failed-to-delete', id: prevState.id };
     }
   } catch (e) {
+    console.log(e);
+
     return { message: 'server-connection', id: prevState.id };
   }
 

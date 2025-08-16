@@ -1,16 +1,17 @@
-import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 
 import Title from '@/components/dashboard/title';
 import ToolCard from '@/components/dashboard/cards/tool';
-import { kits } from '@/data/dummy/kits';
+import { get } from '@/actions/get';
+import { Kit } from '@/models/kit';
 
 type KitToolsPageProps = { params: Promise<{ locale: string; id: string }> };
 
 async function KitToolsPage({ params }: KitToolsPageProps) {
   const { id: kitId } = await params;
 
-  const kit = kits.find((kit) => kit.id === kitId);
+  const kit = (await get(`/api/kits/${kitId}`)) as Kit;
 
   if (!kit) {
     return notFound();

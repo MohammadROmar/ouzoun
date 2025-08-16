@@ -23,6 +23,8 @@ export default function RefreshTokens() {
 
         if (!res.ok) setHasError(true);
       } catch (e) {
+        console.log(e);
+
         setHasError(true);
       }
     }

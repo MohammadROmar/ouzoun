@@ -1,7 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import Select from 'react-select';
 
 import { selectorStyles } from '@/data/selector-styles';
@@ -26,7 +26,6 @@ function KitSelector({
 }: KitSelectorProps) {
   const { theme } = useTheme();
   const locale = useLocale();
-  const t = useTranslations;
 
   const kit = kits.find((kit) => kit.id === kitId);
   const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));

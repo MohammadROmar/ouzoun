@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useEffect, type DependencyList } from 'react';
+import { useRef, useEffect } from 'react';
 
-export function useDialog(open: boolean, deps: DependencyList = []) {
+export function useDialog(open: boolean) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export function useDialog(open: boolean, deps: DependencyList = []) {
     } else if (!open && dialog.open) {
       dialog.close();
     }
-  }, [open, ...deps]);
+  }, [open]);
 
   return dialogRef;
 }

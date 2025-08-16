@@ -5,14 +5,15 @@ import { useTranslations } from 'next-intl';
 type SignInFormsErrorsProps = { message?: string };
 
 function SignInFormsErrors({ message }: SignInFormsErrorsProps) {
+  const t = useTranslations('sign-in-page.errors');
+
   if (
     message === undefined ||
     message === 'success' ||
     message === 'invalid-input'
-  )
+  ) {
     return null;
-
-  const t = useTranslations('sign-in-page.errors');
+  }
 
   const errorMessage =
     message === 'invalid-role'

@@ -23,8 +23,6 @@ export async function changeHolidayStatusAction(
   const status = formData.get('status') as string;
   const note = formData.get('note') as string;
 
-  console.log(note, status);
-
   const errors: { [K in keyof HolidayStatusInputs]?: boolean } = {};
 
   if (!['1', '2', '3'].includes(status)) {
@@ -62,8 +60,6 @@ export async function changeHolidayStatusAction(
       },
     );
 
-    console.log(response);
-
     if (!response.ok) {
       return {
         id: prevState.id,
@@ -72,6 +68,8 @@ export async function changeHolidayStatusAction(
       };
     }
   } catch (e) {
+    console.log(e);
+
     return {
       id: prevState.id,
       message: 'server-connection',

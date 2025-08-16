@@ -5,8 +5,12 @@ import type { ModalProps } from './change';
 
 type ChangeStatusActionsProps = ModalProps & { pending: boolean };
 
-const ChangeStatusActions = memo(
-  ({ t, close, pending }: ChangeStatusActionsProps) => (
+const ChangeStatusActions = memo(function ChangeStatusActions({
+  t,
+  close,
+  pending,
+}: ChangeStatusActionsProps) {
+  return (
     <div className="mt-4 flex items-center gap-4">
       <button disabled={pending} className="button">
         {pending ? (
@@ -24,7 +28,7 @@ const ChangeStatusActions = memo(
         {t('holiday.modal.cancel')}
       </button>
     </div>
-  ),
-);
+  );
+});
 
 export default ChangeStatusActions;

@@ -58,14 +58,12 @@ export async function registerAssistantAction(
       }),
     });
 
-    console.log('--------------------------------------------------------');
-    console.log(response);
-    console.log('--------------------------------------------------------');
-
     if (!response.ok) {
       return { message: 'failed-to-register', defaultValues: data, errors };
     }
   } catch (error) {
+    console.log(error);
+
     return {
       message: 'server-connection',
       errors,
