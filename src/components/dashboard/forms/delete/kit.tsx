@@ -1,11 +1,11 @@
 'use client';
 
-import { redirect } from 'next/navigation';
-import { useRef, useEffect, useActionState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { toast } from 'react-toastify';
+import { useActionState } from 'react';
+import { useTranslations } from 'next-intl';
 
+import { useDialog } from '@/hooks/use-dialog';
 import Modal from '@/components/modal';
+import FormErrors from '../errors';
 import ModalActions from './actions';
 import WarningIcon from '@/assets/icons/warning';
 import { deleteKitAction } from '@/actions/kit';
@@ -13,31 +13,14 @@ import { deleteKitAction } from '@/actions/kit';
 type DeleteKitModalProps = { id: string; open: boolean; close: () => void };
 
 function DeleteKitModal({ id, open, close }: DeleteKitModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const locale = useLocale();
   const t = useTranslations();
+
+  const dialogRef = useDialog(open);
 
   const [state, formAction] = useActionState(deleteKitAction, {
     id,
     message: undefined,
   });
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (open && !dialog.open) {
-      dialog.showModal();
-    } else if (!open && dialog.open) {
-      dialog.close();
-    }
-
-    if (state.message === 'success') {
-      toast.success(t('kits-page.actions.deleted'));
-      redirect(`/${locale}/kits`);
-    }
-  }, [open, state.message, locale, t]);
 
   return (
     <Modal
@@ -51,6 +34,8 @@ function DeleteKitModal({ id, open, close }: DeleteKitModalProps) {
       </form>
 
       <WarningIcon className="text-danger modal-icon" />
+
+      <FormErrors message={state.message} />
     </Modal>
   );
 }

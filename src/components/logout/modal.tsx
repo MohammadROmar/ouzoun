@@ -1,30 +1,19 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { useDialog } from '@/hooks/use-dialog';
 import Modal from '@/components/modal';
 import ModalActions from '../dashboard/forms/delete/actions';
 import WarningIcon from '@/assets/icons/warning';
 import { logoutAction } from '@/actions/logout';
 
-type DeleteImplantModalProps = { open: boolean; close: () => void };
+type LogoutModalProps = { open: boolean; close: () => void };
 
-function LogoutModal({ open, close }: DeleteImplantModalProps) {
+function LogoutModal({ open, close }: LogoutModalProps) {
   const t = useTranslations('modal');
-  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    const dialog = dialogRef.current;
-
-    if (!dialog) return;
-
-    if (open && !dialog.open) {
-      dialog.showModal();
-    } else if (!open && dialog.open) {
-      dialog.close();
-    }
-  }, [open]);
+  const dialogRef = useDialog(open);
 
   return (
     <Modal

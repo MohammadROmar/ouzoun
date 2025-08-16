@@ -1,10 +1,16 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+import { useImplantState } from '@/store/implant-state';
 import Input from '@/components/ui/input';
 import Fieldset from '../fieldset';
 import BoxIcon from '@/assets/icons/box';
-import type { ImplantFieldsetProps } from '.';
 
-function ImplantSourceAndStock({ t, state }: ImplantFieldsetProps) {
-  const { defaultValues, errors } = state;
+export default function ImplantSourceAndStock() {
+  const { defaultValues, errors } = useImplantState();
+
+  const t = useTranslations('implants-page');
 
   return (
     <Fieldset icon={BoxIcon} title={t('titles.source-stock')}>
@@ -25,7 +31,7 @@ function ImplantSourceAndStock({ t, state }: ImplantFieldsetProps) {
           label={t('item.quantity')}
           type="number"
           min={0}
-          defaultValue={defaultValues?.quantity ?? 0}
+          defaultValue={defaultValues?.quantity}
           required
           step="any"
           error={
@@ -38,5 +44,3 @@ function ImplantSourceAndStock({ t, state }: ImplantFieldsetProps) {
     </Fieldset>
   );
 }
-
-export default ImplantSourceAndStock;

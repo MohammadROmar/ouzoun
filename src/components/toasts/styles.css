@@ -1,6 +1,6 @@
 .custom-toast {
   --toastify-color-light: var(--color-bg-primary);
-  --toastify-color-dark: var(--color-bg-primary);
+  --toastify-color-dark: red;
 
   --toastify-text-color-light: black;
   --toastify-text-color-dark: black;
@@ -44,4 +44,9 @@
     left: 0;
     bottom: 0;
   }
+}
+
+.custom-toast {
+  color: currentColor;
+  background-color: var(--color-bg-primary) !important;
 }

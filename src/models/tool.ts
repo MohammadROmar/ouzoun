@@ -1,7 +1,7 @@
 export interface Tool {
   id: string;
   kitId: string;
-  categoryId: string;
+  categoryId: number;
   name: string;
   width: number;
   height: number;
@@ -13,7 +13,7 @@ export type ToolInputs = {
   name: string;
   image: File;
   'kit-id': string;
-  'category-id': string;
+  'category-id': number;
   width: string;
   height: string;
   thickness: string;

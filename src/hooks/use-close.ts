@@ -1,16 +1,26 @@
 import { useEffect, RefObject } from 'react';
 
-export function useClose(
-  ref: RefObject<HTMLElement | null>,
-  close: () => void,
-) {
+type UseCloseProps = {
+  ref: RefObject<HTMLElement | null>;
+  rootRef: RefObject<HTMLElement | null>;
+  close: () => void;
+};
+
+export function useClose({ ref, rootRef, close }: UseCloseProps) {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (!ref.current?.contains(event.target as Node)) close();
+      const clickedOutside = !ref.current?.contains(event.target as Node);
+      const clickedOnRoot = rootRef.current?.contains(event.target as Node);
+
+      if (clickedOutside && !clickedOnRoot) {
+        close();
+      }
     }
 
     function handleEsc(event: KeyboardEvent) {
-      if (event.key === 'Escape') close();
+      if (event.key === 'Escape') {
+        close();
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -20,5 +30,5 @@ export function useClose(
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleEsc);
     };
-  }, [ref, close]);
+  }, [ref, rootRef, close]);
 }

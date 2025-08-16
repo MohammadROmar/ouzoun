@@ -4,7 +4,7 @@ export const tools: Tool[] = [
   {
     id: 'tool-1',
     kitId: 'kit-1',
-    categoryId: 'drill-1',
+    categoryId: 1,
     name: 'Initial Drill',
     width: 2.0,
     height: 15.0,
@@ -14,7 +14,7 @@ export const tools: Tool[] = [
   {
     id: 'tool-2',
     kitId: 'kit-1',
-    categoryId: 'driver-1',
+    categoryId: 2,
     name: 'Torque Wrench',
     width: 3.0,
     height: 12.0,
@@ -24,7 +24,7 @@ export const tools: Tool[] = [
   {
     id: 'tool-3',
     kitId: 'kit-2',
-    categoryId: 'drill-2',
+    categoryId: 1,
     name: 'Pilot Drill',
     width: 1.8,
     height: 14.0,
@@ -34,7 +34,7 @@ export const tools: Tool[] = [
   {
     id: 'tool-4',
     kitId: 'kit-3',
-    categoryId: 'depth-gauge-1',
+    categoryId: 1,
     name: 'Depth Gauge',
     width: 2.5,
     height: 10.0,
@@ -44,7 +44,7 @@ export const tools: Tool[] = [
   {
     id: 'tool-5',
     kitId: 'kit-4',
-    categoryId: 'driver-2',
+    categoryId: 2,
     name: 'Hex Driver',
     width: 2.2,
     height: 11.0,

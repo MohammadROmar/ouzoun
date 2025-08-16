@@ -1,10 +1,15 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+import { useToolState } from '@/store/tool-state';
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DimensionsIcon from '@/assets/icons/dimensions';
-import type { ToolFieldsetProps } from '.';
 
-export default function ToolDimensions({ state, t }: ToolFieldsetProps) {
-  const { errors, defaultValues } = state;
+export default function ToolDimensions() {
+  const t = useTranslations('tools-page');
+  const { errors, defaultValues } = useToolState();
 
   return (
     <Fieldset icon={DimensionsIcon} title={t('titles.dimensions')}>
@@ -16,7 +21,7 @@ export default function ToolDimensions({ state, t }: ToolFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.width ?? 0}
+          defaultValue={defaultValues?.width}
           error={
             errors?.width ? t('error', { field: t('item.width') }) : undefined
           }
@@ -28,7 +33,7 @@ export default function ToolDimensions({ state, t }: ToolFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.height ?? 0}
+          defaultValue={defaultValues?.height}
           error={
             errors?.height ? t('error', { field: t('item.height') }) : undefined
           }
@@ -40,7 +45,7 @@ export default function ToolDimensions({ state, t }: ToolFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.thickness ?? 0}
+          defaultValue={defaultValues?.thickness}
           error={
             errors?.thickness
               ? t('error', { field: t('item.thickness') })

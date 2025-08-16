@@ -66,10 +66,20 @@
     "subtitle": "Please login to continue to your account.",
     "email": "E-mail",
     "password": "Password",
+    "notifications": {
+      "granted": "Notifications granted",
+      "denied": "Notifications denied",
+      "default": "Allow notifications",
+      "idle": "Allow notifications",
+      "pending": "Pending permission"
+    },
     "submittion": "Submit form",
     "errors": {
       "email": "Please enter a valid E-mail.",
-      "password": "Please enter a valid Password."
+      "password": "Please enter a valid Password.",
+      "not-admin": "Only administrators can sign in.",
+      "wrong-creds": "PLease check your E-mail and Password and try again.",
+      "unknown": "Unknow error has occured. Please try again later."
     },
     "forgot-password": "Forgot password?"
   },
@@ -125,7 +135,10 @@
       "width": "Width",
       "height": "Height",
       "radius": "Radius",
-      "unit-mm": "mm"
+      "unit-mm": "mm",
+      "main": "Main kit",
+      "is-main": "This kit is a main kit",
+      "not-main": "This kit isn't a main kit"
     },
     "actions": {
       "add": "Add",
@@ -162,7 +175,9 @@
       "thickness": "Thickness",
       "quantity": "Quantity",
       "kit-id": "Kit (Optional)",
-      "category-id": "Category ID",
+      "category": "Category",
+      "surgery": "Surgery",
+      "recovery": "Recovery",
       "unit-cm": "cm"
     },
     "actions": {
@@ -176,7 +191,8 @@
       "created": "Tool Created Successfully",
       "edited": "Tool Edited Successfully",
       "deleted": "Tool Deleted Successfully"
-    }
+    },
+    "no-option": "No option"
   },
   "implants-page": {
     "error": "Please enter a valid {field}",
@@ -212,13 +228,14 @@
       "created": "Implant Created Successfully",
       "edited": "Implant Edited Successfully",
       "deleted": "Implant Deleted Successfully"
-    }
+    },
+    "no-option": "No option"
   },
   "assistants-page": {
     "title": "Assistants",
     "register-action": "Register",
     "assign-action": "Assign to Operation",
-    "leave-requests-action": "Leave Requests",
+    "holidays-action": "Holidays",
     "register": {
       "title": "Register Assistant",
       "description": "Add a new assistant.",
@@ -235,9 +252,32 @@
       "title": "Assign Assistant to Operation",
       "description": "Assign an assistant to a surgical procedure."
     },
-    "leave-requests": {
-      "title": "Assistants' Leave Requests",
-      "description": "Manage and review assistants' leave requests."
+    "holidays": {
+      "title": "Assistants' Holidays",
+      "description": "Manage and review assistants' Holidays.",
+      "status": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "rejected": "Rejected"
+      },
+      "holiday": {
+        "title": "Assistant Holiday",
+        "request": "Requested a holiday",
+        "duration": "Holiday for",
+        "days": "Days",
+        "hours": "Hours",
+        "status": "Status",
+        "note": "Note",
+        "change-status": "Change Status",
+        "invalid-status": "Please enter a valid status",
+        "invalid-note": "Please enter a valid note",
+        "no-option": "No option",
+        "modal": {
+          "title": "Change Holiday Status",
+          "save": "Save",
+          "cancel": "Cancel"
+        }
+      }
     }
   },
   "not-found-page": {
@@ -245,9 +285,25 @@
     "subtitle": "Could not find the page you requested",
     "back-to-home": "Return to Home"
   },
+  "error-page": {
+    "title": "Something Went Wrong!",
+    "subtitle": "Unfortunately, we encountered a problem while loading the page or processing your request.",
+    "server-connection": "Failed to connect to the server. PLease check your internet conntection or try again later.",
+    "unknow-error": "An unexpected error occured> Please try again.",
+    "try-again": "Try Again",
+    "back-home": "Back to Home"
+  },
   "no-content": {
     "title": "No Content Yet",
     "description": "This page does not contain any items at the moment. it's waiting for its first addition."
+  },
+  "errors": {
+    "failed-to-change": "Failed to change.\nPlease try again later.",
+    "failed-to-create": "Failed to create.\nPlease try again later.",
+    "failed-to-delete": "Failed to delete.\nPlease try again later.",
+    "failed-to-register": "Failed to register new assistant.\nPlease try again later.",
+    "server-connection": "Failed to connect to the server.\nPLease check your internet conntection or try again later.",
+    "unknown": "Unknow error has occured. Please try again later."
   },
   "dnd-image": {
     "sr": "Choose an image",
@@ -275,7 +331,7 @@
       "assistants": "Assistants",
       "register": "Register",
       "assign": "Assign",
-      "leave-requests": "Leave Requests",
+      "holidays": "Holidays",
       "new": "New",
       "edit": "Edit"
     }
@@ -293,6 +349,11 @@
     "logout": {
       "title": "Confirm Logout",
       "description": "Are you sure you want to logout?\nYour current session will be terminated, and you will need to log in again to access your account."
+    },
+    "session-expired": {
+      "title": "Session Expired",
+      "subtitle": "Your session has ended.\nPlease sign in again to continue.",
+      "action": "Ok"
     },
     "processing": "Processing"
   },

@@ -11,6 +11,7 @@ export function getToolDimensions(tool: Tool, t: (key: string) => string) {
 export function getToolStock(tool: Tool, t: (key: string) => string) {
   return {
     [t('item.quantity')]: tool.quantity.toString(),
-    [t('item.category-id')]: tool.categoryId,
+    [t('item.category')]:
+      tool.categoryId === 1 ? t('item.surgery') : t('item.recovery'),
   };
 }

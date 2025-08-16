@@ -4,7 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import ToolCard from '@/components/dashboard/cards/tool';
 import NoContent from '@/components/no-content';
-import { tools } from '@/data/dummy/tools';
+import { get } from '@/actions/get';
+import { Tool } from '@/models/tool';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('tools-page.titles');
@@ -14,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ToolsPage() {
   const t = await getTranslations('tools-page');
+
+  const tools = (await get('/api/tools')) as Tool[];
 
   return (
     <>

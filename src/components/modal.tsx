@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 type ModalProps = {
   title: string;
-  description: string;
+  description?: string;
   ref: RefObject<HTMLDialogElement | null>;
   titleStyles?: string;
   children: ReactNode;
@@ -37,9 +37,14 @@ function Modal({ title, description, ref, titleStyles, children }: ModalProps) {
         >
           {title}
         </h4>
-        <p id="modal-description" className="my-4 text-sm whitespace-pre-wrap">
-          {description}
-        </p>
+        {description && (
+          <p
+            id="modal-description"
+            className="my-4 text-sm whitespace-pre-wrap"
+          >
+            {description}
+          </p>
+        )}
         {children}
       </div>
     </dialog>,

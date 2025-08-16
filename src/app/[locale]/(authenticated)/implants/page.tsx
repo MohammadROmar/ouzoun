@@ -4,7 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import ImplantCard from '@/components/dashboard/cards/implant';
 import NoContent from '@/components/no-content';
-import { implants } from '@/data/dummy/implants';
+import { get } from '@/actions/get';
+import { Implant } from '@/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');
@@ -14,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ImplantsPage() {
   const t = await getTranslations('implants-page');
+
+  const implants = (await get('/api/Implants')) as Implant[];
 
   return (
     <>

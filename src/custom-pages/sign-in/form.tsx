@@ -5,8 +5,9 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
 import Input from '@/components/ui/input';
-import SignInFormSubmit from './submit';
+import Notifications from './notifications-and-submittion';
 import { signInAction } from '@/actions/sign-in';
+import SignInFormsErrors from './errors';
 
 export default function SignInForm() {
   const t = useTranslations('sign-in-page');
@@ -41,12 +42,13 @@ export default function SignInForm() {
         labelStyles="mt-4"
         className="mb-1"
       />
-
       <Link href="reset-password" className="text-gray text-sm">
         {t('forgot-password')}
       </Link>
 
-      <SignInFormSubmit text={t('title')} />
+      <Notifications />
+
+      <SignInFormsErrors message={state.message} />
     </form>
   );
 }

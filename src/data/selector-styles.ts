@@ -1,6 +1,6 @@
 import type { StylesConfig } from 'react-select';
 
-export function kitSelectorStyles(theme?: string): StylesConfig {
+export function selectorStyles(theme?: string): StylesConfig {
   return {
     container: (base) => ({ ...base, marginTop: '0.5rem' }),
     control: (base, state) => ({

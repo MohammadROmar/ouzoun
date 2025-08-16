@@ -1,6 +1,4 @@
-'use client';
-
-import { useRef, type ComponentPropsWithoutRef } from 'react';
+import { useRef, RefObject, type ComponentPropsWithoutRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, MotionProps } from 'motion/react';
 
@@ -10,12 +8,18 @@ import { routing, type Locale } from '@/i18n/routing';
 type LocaleListProps = MotionProps &
   ComponentPropsWithoutRef<'ul'> & {
     handleChange: (locale: Locale) => void;
+    rootRef: RefObject<HTMLElement | null>;
     close: () => void;
   };
 
-function LocalesList({ close, handleChange, ...props }: LocaleListProps) {
+function LocalesList({
+  rootRef,
+  close,
+  handleChange,
+  ...props
+}: LocaleListProps) {
   const ref = useRef<HTMLUListElement>(null);
-  useClose(ref, close);
+  useClose({ ref, rootRef, close });
 
   const t = useTranslations('locales');
 

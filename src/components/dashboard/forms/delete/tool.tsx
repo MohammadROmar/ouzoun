@@ -1,43 +1,26 @@
 'use client';
 
-import { redirect } from 'next/navigation';
-import { useRef, useEffect, useActionState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import { toast } from 'react-toastify';
+import { useActionState } from 'react';
+import { useTranslations } from 'next-intl';
 
+import { useDialog } from '@/hooks/use-dialog';
 import Modal from '@/components/modal';
 import ModalActions from './actions';
+import FormErrors from '../errors';
 import WarningIcon from '@/assets/icons/warning';
 import { deleteToolAction } from '@/actions/tool';
 
 type DeleteToolModalProps = { id: string; open: boolean; close: () => void };
 
 function DeleteToolModal({ id, open, close }: DeleteToolModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const locale = useLocale();
   const t = useTranslations();
+
+  const dialogRef = useDialog(open);
 
   const [state, formAction] = useActionState(deleteToolAction, {
     id,
     message: undefined,
   });
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (open && !dialog.open) {
-      dialog.showModal();
-    } else if (!open && dialog.open) {
-      dialog.close();
-    }
-
-    if (state.message === 'success') {
-      toast.success(t('tools-page.actions.deleted'));
-      redirect(`/${locale}/tools`);
-    }
-  }, [open, state.message, locale, t]);
 
   return (
     <Modal
@@ -51,6 +34,8 @@ function DeleteToolModal({ id, open, close }: DeleteToolModalProps) {
       </form>
 
       <WarningIcon className="text-danger modal-icon" />
+
+      <FormErrors message={state.message} />
     </Modal>
   );
 }

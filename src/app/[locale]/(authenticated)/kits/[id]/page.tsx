@@ -7,11 +7,13 @@ import Title from '@/components/dashboard/title';
 import Heading from '@/components/dashboard/details/heading';
 import DetailContainer from '@/components/dashboard/details/detail-container';
 import ToolCard from '@/components/dashboard/cards/tool';
+import Actions from '@/components/dashboard/actions';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
-import { kits } from '@/data/dummy/kits';
+import MainIcon from '@/assets/icons/main';
 import { getToolDimentions } from '@/utils/details/implant';
-import Actions from '@/components/dashboard/actions';
+import { get } from '@/actions/get';
+import { Kit } from '@/models/kit';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');
@@ -23,8 +25,7 @@ type KitDetailsPageProps = { params: Promise<{ locale: string; id: string }> };
 
 export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
   const { id: kitId } = await params;
-
-  const kit = kits.find((kit) => kit.id === kitId);
+  const kit = (await get(`/api/kits/${kitId}`)) as Kit;
 
   if (!kit) {
     return notFound();
@@ -37,6 +38,10 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
       <Title title={t('titles.details')} />
 
       <Heading item="kits" id={kitId} title={kit.name} t={t} />
+
+      <DetailContainer title={t('item.main')} icon={MainIcon}>
+        <p>{t(kit.isMainKit ? 'item.is-main' : 'item.not-main')}</p>
+      </DetailContainer>
 
       <DetailContainer title={t('item.tools')} icon={ToolsIcon}>
         <ul className="grid grid-cols-1 grid-rows-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -69,7 +74,7 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
         <DetailContainer title={t('item.implant')} icon={ImplantIcon}>
           <>
             <h4 className="ltr:font-ubuntu w-fit text-lg md:text-xl">
-              {kit.implant.name}
+              {kit.implant.brand}
             </h4>
 
             <ul className="mt-2 flex gap-3">

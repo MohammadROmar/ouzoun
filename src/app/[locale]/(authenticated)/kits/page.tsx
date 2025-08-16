@@ -4,7 +4,8 @@ import { getTranslations } from 'next-intl/server';
 import AddProductButton from '@/components/dashboard/add-product-btn';
 import KitCard from '@/components/dashboard/cards/kit';
 import NoContent from '@/components/no-content';
-import { kits } from '@/data/dummy/kits';
+import { get } from '@/actions/get';
+import { Kit } from '@/models/kit';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');
@@ -14,6 +15,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function KitsPage() {
   const t = await getTranslations('kits-page');
+
+  const kits = (await get('/api/kits')) as Kit[];
 
   return (
     <>

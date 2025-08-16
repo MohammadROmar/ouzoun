@@ -1,15 +1,23 @@
-import dynamic from 'next/dynamic';
+'use client';
 
+import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
+
+import { useImplantState } from '@/store/implant-state';
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
-import type { ImplantFieldsetProps } from '.';
+import { Kit } from '@/models/kit';
 
 const KitSelector = dynamic(() => import('../kit-selector'), { ssr: false });
 
-export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
-  const { defaultValues, errors } = state;
+type ImplantInfoProps = { kits: Kit[] };
+
+export default function ImplantInfo({ kits }: ImplantInfoProps) {
+  const { defaultValues, errors } = useImplantState();
+
+  const t = useTranslations('implants-page');
 
   return (
     <Fieldset
@@ -18,21 +26,12 @@ export default function ImplantInfo({ t, state }: ImplantFieldsetProps) {
       className="grid grid-cols-1 gap-4 md:grid-cols-2"
     >
       <div className="mb-0 grid grid-rows-[auto_auto_1fr] gap-2">
-        <Input
-          id="name"
-          label={t('item.name')}
-          type="text"
-          required
-          autoComplete="off"
-          defaultValue={defaultValues?.name}
-          error={
-            errors?.name ? t('error', { field: t('item.name') }) : undefined
-          }
-        />
         <KitSelector
           label={t('item.kit-id')}
           required
+          kits={kits}
           kitId={defaultValues?.['kit-id']}
+          noOption={t('no-option')}
           error={
             errors?.['kit-id']
               ? t('error', { field: t('item.kit-id') })

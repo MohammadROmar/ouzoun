@@ -6,23 +6,16 @@ import Sidebar from '@/components/shared/sidebar';
 import Footer from '@/components/shared/footer';
 
 type LayoutProps = {
-  hasHeader?: boolean;
   hasFooter?: boolean;
 } & PropsWithChildren;
 
-export default async function Layout({
-  hasHeader = true,
-  hasFooter = true,
-  children,
-}: LayoutProps) {
+async function Layout({ hasFooter = true, children }: LayoutProps) {
   return (
     <>
-      {hasHeader && (
-        <SidebarContextProvider>
-          <Header />
-          <Sidebar />
-        </SidebarContextProvider>
-      )}
+      <SidebarContextProvider>
+        <Header />
+        <Sidebar />
+      </SidebarContextProvider>
 
       <main>{children}</main>
 
@@ -30,3 +23,5 @@ export default async function Layout({
     </>
   );
 }
+
+export default Layout;

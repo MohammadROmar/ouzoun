@@ -18,9 +18,9 @@ export function getAssistantsActions(t: (key: string) => string) {
     },
     {
       icon: LeaveIcon,
-      title: t('leave-requests-action'),
-      description: t('leave-requests.description'),
-      to: '/assistants/leave-requests',
+      title: t('holidays-action'),
+      description: t('holidays.description'),
+      to: '/assistants/holidays',
     },
   ];
 }

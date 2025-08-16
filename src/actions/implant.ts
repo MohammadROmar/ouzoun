@@ -1,6 +1,9 @@
 'use server';
 
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { getLocale } from 'next-intl/server';
 
 import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ImplantInputs } from '@/models/implant';
@@ -9,6 +12,7 @@ export type ImplantActionState = {
   message: string | undefined;
   errors?: { [K in keyof ImplantInputs]?: boolean };
   defaultValues?: ImplantInputs;
+  id?: string;
   action: 'CREATE' | 'EDIT';
 };
 
@@ -28,33 +32,97 @@ async function implantAction(
       message: 'invalid-input',
       errors,
       defaultValues: data,
+      id: prevState.id,
       action: prevState.action,
     };
   }
 
-  if (prevState.action === 'CREATE') {
-  } else {
+  try {
+    const accessToken = (await cookies()).get('access-token')?.value;
+
+    const endpoint = `${process.env.BASE_URL}/api/Implants${prevState.action === 'CREATE' ? '' : `/${prevState.id}`}`;
+    const response = await fetch(endpoint, {
+      method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        implantId: prevState.id,
+        radius: data.radius,
+        width: data.width,
+        height: data.height,
+        quantity: data.quantity,
+        brand: data.brand,
+        description: data.description,
+        kitId: data['kit-id'],
+      }),
+    });
+
+    if (!response.ok) {
+      return {
+        message: 'failed-to-create',
+        errors,
+        defaultValues: data,
+        id: prevState.id,
+        action: prevState.action,
+      };
+    }
+  } catch (error) {
+    return {
+      message: 'server-connection',
+      errors,
+      defaultValues: data,
+      id: prevState.id,
+      action: prevState.action,
+    };
   }
 
   revalidatePath('/en/implants', 'layout');
   revalidatePath('/ar/implants', 'layout');
 
-  return { message: 'success', action: prevState.action, defaultValues: data };
+  return {
+    message: 'success',
+    id: prevState.id,
+    action: prevState.action,
+    defaultValues: data,
+  };
 }
 
 async function deleteImplantAction(
   prevState: DeleteImplantActionState,
 ): Promise<DeleteImplantActionState> {
-  revalidatePath('/en/implants', 'layout');
-  revalidatePath('/ar/implants', 'layout');
+  const accessToken = (await cookies()).get('access-token')?.value;
 
-  return { message: 'success', id: prevState.id };
+  try {
+    const response = await fetch(
+      `${process.env.BASE_URL}/api/Implants/${prevState.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      return { message: 'failed-to-delete', id: prevState.id };
+    }
+  } catch (e) {
+    return { message: 'server-connection', id: prevState.id };
+  }
+
+  revalidatePath('/en/implants');
+  revalidatePath('/ar/implants');
+
+  const locale = await getLocale();
+  redirect(`/${locale}/implants`);
 }
 
 function getImplantInputErrors(data: ImplantInputs) {
   const errors: { [K in keyof ImplantInputs]?: boolean } = {};
 
-  errors.name = isInvalidText(data.name);
   errors.brand = isInvalidText(data.brand);
   errors['kit-id'] = isInvalidText(data['kit-id']);
   errors.description = isInvalidText(data.description);

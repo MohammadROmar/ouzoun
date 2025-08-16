@@ -1,10 +1,15 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+import { useToolState } from '@/store/tool-state';
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import BoxIcon from '@/assets/icons/box';
-import type { ToolFieldsetProps } from '.';
 
-export default function ToolStock({ state, t }: ToolFieldsetProps) {
-  const { errors, defaultValues } = state;
+export default function ToolStock() {
+  const t = useTranslations('tools-page');
+  const { errors, defaultValues } = useToolState();
 
   return (
     <Fieldset icon={BoxIcon} title={t('titles.stock')}>
@@ -13,7 +18,7 @@ export default function ToolStock({ state, t }: ToolFieldsetProps) {
         label={t('item.quantity')}
         type="number"
         min={0}
-        defaultValue={defaultValues?.quantity ?? 0}
+        defaultValue={defaultValues?.quantity}
         required
         step="any"
         error={

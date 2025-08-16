@@ -14,7 +14,7 @@ async function ImplantCard({ implant }: ImplantCardProps) {
         <div className="bg-green aspect-square w-1/4 rounded-lg" />
 
         <div className="flex flex-col justify-between">
-          <h2 className="ltr:font-ubuntu text-lg">{implant.name}</h2>
+          <h2 className="ltr:font-ubuntu text-lg">{implant.brand}</h2>
 
           <ul className="flex gap-3">
             <li>
@@ -37,6 +37,7 @@ async function ImplantCard({ implant }: ImplantCardProps) {
 
       <Link
         href={`/implants/${implant.id}`}
+        prefetch={false}
         className="button flex w-full justify-center"
       >
         {t('actions.card')}

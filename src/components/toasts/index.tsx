@@ -23,6 +23,7 @@ export default function Toasts() {
         theme={theme}
         rtl={locale === 'ar'}
         stacked
+        toastClassName="custom-toast"
         transition={Slide}
         className="custom-toast"
         progressClassName="bg-red-100"

@@ -1,5 +1,7 @@
 'use server';
 
+import { cookies } from 'next/headers';
+
 import { isInvalidText } from '../validation';
 import { isValidEmail, isValidPassword } from '@/utils/validation';
 
@@ -35,26 +37,41 @@ export async function registerAssistantAction(
     };
   }
 
-  // const response = await fetch(
-  //   `${process.env.BASE_URL}/api/User/RegisterUser`,
-  //   {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify({
-  //       userName: data['user-name'],
-  //       email: data.email,
-  //       password: data.password,
-  //       phoneNumber: data['phone-number'],
-  //       latitude: 0,
-  //       longtitude: 0,
-  //       role: 'AssistantDoctor',
-  //     }),
-  //   },
-  // );
+  try {
+    const accessToken = (await cookies()).get('access-token')?.value;
+    const response = await fetch(`${process.env.BASE_URL}/api/users/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        userName: data['user-name'],
+        email: data.email,
+        password: data.password,
+        phoneNumber: data['phone-number'],
+        latitude: 0,
+        longtitude: 0,
+        role: 'AssistantDoctor',
+        address: '',
+        clinicName: '',
+      }),
+    });
 
-  // if (response.status > 300) {
-  //   return { message: 'error', defaultValues: data, errors };
-  // }
+    console.log('--------------------------------------------------------');
+    console.log(response);
+    console.log('--------------------------------------------------------');
+
+    if (!response.ok) {
+      return { message: 'failed-to-register', defaultValues: data, errors };
+    }
+  } catch (error) {
+    return {
+      message: 'server-connection',
+      errors,
+      defaultValues: data,
+    };
+  }
 
   return { message: 'success', defaultValues: data };
 }

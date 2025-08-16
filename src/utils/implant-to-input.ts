@@ -2,7 +2,6 @@ import type { Implant, ImplantInputs } from '@/models/implant';
 
 export function implantToInputs(implant: Implant): ImplantInputs {
   return {
-    name: implant.name,
     image: new File([], 'empty.png'),
     description: implant.description,
     brand: implant.brand,

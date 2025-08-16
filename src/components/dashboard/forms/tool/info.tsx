@@ -1,12 +1,25 @@
+'use client';
+
+import dynamic from 'next/dynamic';
+import { useTranslations } from 'next-intl';
+
+import { useToolState } from '@/store/tool-state';
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
-import KitSelector from '../kit-selector';
 import DropzoneImage from '../dropzone-image';
 import InfoIcon from '@/assets/icons/info';
-import type { ToolFieldsetProps } from '.';
+import { Kit } from '@/models/kit';
 
-export default function ToolInfo({ state, t }: ToolFieldsetProps) {
-  const { errors, defaultValues } = state;
+const KitSelector = dynamic(() => import('../kit-selector'), { ssr: false });
+const CategorySelector = dynamic(() => import('./category-selector'), {
+  ssr: false,
+});
+
+type ToolInfoProps = { kits: Kit[] };
+
+export default function ToolInfo({ kits }: ToolInfoProps) {
+  const t = useTranslations('tools-page');
+  const { errors, defaultValues } = useToolState();
 
   return (
     <Fieldset
@@ -28,19 +41,16 @@ export default function ToolInfo({ state, t }: ToolFieldsetProps) {
         />
         <KitSelector
           label={t('item.kit-id')}
+          kits={kits}
           kitId={defaultValues?.['kit-id']}
+          noOption={t('no-option')}
           error={
             errors?.['kit-id']
               ? t('error', { field: t('item.kit-id') })
               : undefined
           }
         />
-        <Input
-          id="category-id"
-          label={t('item.category-id')}
-          required
-          rows={4}
-          className="h-full resize-none"
+        <CategorySelector
           defaultValue={defaultValues?.['category-id']}
           error={
             errors?.['category-id']

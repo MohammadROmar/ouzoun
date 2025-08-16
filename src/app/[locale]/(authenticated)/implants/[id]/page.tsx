@@ -10,7 +10,8 @@ import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
 import { getToolDimentions, getToolSourceStock } from '@/utils/details/implant';
-import { implants } from '@/data/dummy/implants';
+import { get } from '@/actions/get';
+import { Implant } from '@/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');
@@ -22,8 +23,7 @@ type Props = { params: Promise<{ locale: string; id: string }> };
 
 async function ImplantDetailsPage({ params }: Props) {
   const { id: implantId } = await params;
-
-  const implant = implants.find((implant) => implant.id === implantId);
+  const implant = (await get(`/api/Implants/${implantId}`)) as Implant;
 
   if (!implant) {
     return notFound();
@@ -40,7 +40,7 @@ async function ImplantDetailsPage({ params }: Props) {
           item="implants"
           id={implantId}
           t={t}
-          title={implant.name}
+          title={implant.brand}
           kitId={implant.kitId}
         />
 

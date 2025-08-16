@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import Input from '@/components/ui/input';
 import DropzoneImage from '../dropzone-image';
 import FormActions from '../form-actions';
+import FormErrors from '../errors';
 import { kitAction } from '@/actions/kit';
 import type { KitInputs } from '@/models/kit';
 
@@ -33,25 +34,46 @@ function KitForm({ defaultValues, action }: KitFormProps) {
   }, [state.message, locale, t, action]);
 
   return (
-    <form className="space-y-4" action={formAction}>
-      <Input
-        id="name"
-        label={t('item.name')}
-        type="text"
-        required
-        autoComplete="off"
-        defaultValue={state.defaultValues?.name}
-        error={
-          state.errors?.name ? t('error', { field: t('item.name') }) : undefined
-        }
-      />
+    <>
+      <form className="space-y-4" action={formAction}>
+        <Input
+          id="name"
+          label={t('item.name')}
+          type="text"
+          required
+          autoComplete="off"
+          defaultValue={state.defaultValues?.name}
+          error={
+            state.errors?.name
+              ? t('error', { field: t('item.name') })
+              : undefined
+          }
+        />
 
-      <div className="m-auto aspect-square max-w-md">
-        <DropzoneImage hasError={state.errors?.image} />
-      </div>
+        <Input
+          id="main"
+          label={t('item.main')}
+          type="checkbox"
+          autoComplete="off"
+          containerStyles="flex-row gap-2 items-center"
+          className="accent-green !mt-0 !size-4"
+          defaultChecked={defaultValues?.main ? true : false}
+          error={
+            state.errors?.main
+              ? t('error', { field: t('item.main') })
+              : undefined
+          }
+        />
 
-      <FormActions action={action} t={t} />
-    </form>
+        <div className="m-auto aspect-square max-w-md">
+          <DropzoneImage hasError={state.errors?.image} />
+        </div>
+
+        <FormActions action={action} />
+      </form>
+
+      <FormErrors message={state.message} />
+    </>
   );
 }
 

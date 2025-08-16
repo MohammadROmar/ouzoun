@@ -1,10 +1,16 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+import { useImplantState } from '@/store/implant-state';
 import Fieldset from '../fieldset';
 import Input from '@/components/ui/input';
 import DimensionsIcon from '@/assets/icons/dimensions';
-import type { ImplantFieldsetProps } from '.';
 
-function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
-  const { defaultValues, errors } = state;
+export default function ImplantDimentions() {
+  const { defaultValues, errors } = useImplantState();
+
+  const t = useTranslations('implants-page');
 
   return (
     <Fieldset title={t('titles.dimensions')} icon={DimensionsIcon}>
@@ -16,7 +22,7 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.width ?? 0}
+          defaultValue={defaultValues?.width}
           error={
             errors?.width ? t('error', { field: t('item.width') }) : undefined
           }
@@ -28,7 +34,7 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.height ?? 0}
+          defaultValue={defaultValues?.height}
           error={
             errors?.height ? t('error', { field: t('item.height') }) : undefined
           }
@@ -40,7 +46,7 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
           min={0}
           required
           step="any"
-          defaultValue={defaultValues?.radius ?? 0}
+          defaultValue={defaultValues?.radius}
           error={
             errors?.radius ? t('error', { field: t('item.radius') }) : undefined
           }
@@ -49,5 +55,3 @@ function ImplantDimentions({ t, state }: ImplantFieldsetProps) {
     </Fieldset>
   );
 }
-
-export default ImplantDimentions;

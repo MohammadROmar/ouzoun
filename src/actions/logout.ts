@@ -5,7 +5,11 @@ import { redirect } from 'next/navigation';
 import { getLocale } from 'next-intl/server';
 
 export async function logoutAction() {
-  (await cookies()).delete('access-token');
+  const cookieStore = await cookies();
+
+  cookieStore.delete('access-token');
+  cookieStore.delete('refresh-token');
+
   const locale = await getLocale();
 
   redirect(`/${locale}`);

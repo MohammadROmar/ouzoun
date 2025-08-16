@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import type { PropsWithChildren } from 'react';
 
+import RefreshTokens from '@/components/refresh-tokens';
 import SidebarContextProvider from '@/store/sidebar';
 import Header from '@/components/shared/header';
 import Sidebar from '@/components/shared/sidebar';
@@ -17,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
       default: t('authenticated.title'),
       template: `%s - ${t('root.title')}`,
     },
-    description: null,
   };
 }
 
@@ -33,13 +33,17 @@ async function AuthLayout({ params, children }: AuthLayoutProps) {
   }
 
   return (
-    <SidebarContextProvider>
-      <Header />
-      <Sidebar />
-      <main className="max-md:spacing min-h-screen max-md:pt-18 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
-        {children}
-      </main>
-    </SidebarContextProvider>
+    <>
+      <RefreshTokens />
+
+      <SidebarContextProvider>
+        <Header />
+        <Sidebar />
+        <main className="max-md:spacing min-h-screen max-md:pt-18 md:p-6 md:pt-20 md:ltr:ml-64 md:rtl:mr-64">
+          {children}
+        </main>
+      </SidebarContextProvider>
+    </>
   );
 }
 

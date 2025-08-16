@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { AnimatePresence } from 'motion/react';
 import clsx from 'clsx';
@@ -16,6 +16,7 @@ type LocaleSwitcherProps = {
 
 function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const rootRef = useRef<HTMLButtonElement>(null);
 
   const router = useRouter();
   const pathname = usePathname();
@@ -30,12 +31,13 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
     <>
       <div className="relative w-fit">
         <button
-          className="flex cursor-pointer items-center justify-center"
+          ref={rootRef}
           onClick={() => setIsOpen((prev) => !prev)}
-          aria-label={t('language')}
           title={t('language')}
+          aria-label={t('language')}
           aria-controls="languages-list"
           aria-expanded={isOpen}
+          className="flex cursor-pointer items-center justify-center"
         >
           <GlobeIcon className="size-7 md:size-5" />
         </button>
@@ -46,6 +48,7 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
               id="languages-list"
               handleChange={changeLocale}
               close={() => setIsOpen(false)}
+              rootRef={rootRef}
               className={clsx(
                 'bg-green absolute left-1/2 w-fit -translate-x-1/2 divide-y divide-white/50 rounded-lg px-2 py-0.5 text-center text-white',
                 direction === 'bottom'

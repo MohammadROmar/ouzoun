@@ -1,15 +1,19 @@
 'use server';
 
+import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
+import { getLocale } from 'next-intl/server';
 
 import { isInvalidText, isInvalidNumber, isInvalidImage } from './validation';
 import type { ToolInputs } from '@/models/tool';
 
 export type ToolActionState = {
+  id?: string;
+  action: 'CREATE' | 'EDIT';
+  defaultValues?: ToolInputs;
   message: string | undefined;
   errors?: { [K in keyof ToolInputs]?: boolean };
-  defaultValues?: ToolInputs;
-  action: 'CREATE' | 'EDIT';
 };
 
 type DeleteToolActionState = { message: string | undefined; id: string };
@@ -18,7 +22,7 @@ export async function toolAction(
   prevState: ToolActionState,
   formData: FormData,
 ): Promise<ToolActionState> {
-  const data = Object.fromEntries(formData.entries()) as ToolInputs;
+  const data = Object.fromEntries(formData.entries()) as unknown as ToolInputs;
 
   const errors = getToolInputErrors(data);
   const hasError = Object.entries(errors).find((error) => error[1]);
@@ -28,34 +32,99 @@ export async function toolAction(
       message: 'invalid-input',
       errors,
       defaultValues: data,
+      id: prevState.id,
       action: prevState.action,
     };
   }
 
-  if (prevState.action === 'CREATE') {
-  } else {
+  try {
+    const accessToken = (await cookies()).get('access-token')?.value;
+
+    const endpoint = `${process.env.BASE_URL}/api/tools`;
+    const response = await fetch(endpoint, {
+      method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        id: prevState.id,
+        name: data.name,
+        width: data.width,
+        height: data.height,
+        thickness: data.thickness,
+        quantity: data.quantity,
+        kitId: data['kit-id'],
+        categoryId: data['category-id'],
+      }),
+    });
+
+    if (!response.ok) {
+      return {
+        message: 'failed-to-create',
+        errors,
+        defaultValues: data,
+        id: prevState.id,
+        action: prevState.action,
+      };
+    }
+  } catch (error) {
+    return {
+      message: 'server-connection',
+      errors,
+      defaultValues: data,
+      id: prevState.id,
+      action: prevState.action,
+    };
   }
 
-  revalidatePath('/en/tools', 'layout');
-  revalidatePath('/ar/tools', 'layout');
+  revalidatePath('/en/tools');
+  revalidatePath('/ar/tools');
 
-  return { message: 'success', action: prevState.action, defaultValues: data };
+  return {
+    message: 'success',
+    action: prevState.action,
+    id: prevState.id,
+    defaultValues: data,
+  };
 }
 
 export async function deleteToolAction(
   prevState: DeleteToolActionState,
 ): Promise<DeleteToolActionState> {
-  revalidatePath('/en/tools', 'layout');
-  revalidatePath('/ar/tools', 'layout');
+  const accessToken = (await cookies()).get('access-token')?.value;
 
-  return { message: 'success', id: prevState.id };
+  try {
+    const response = await fetch(
+      `${process.env.BASE_URL}/api/tools/${prevState.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      return { message: 'failed-to-delete', id: prevState.id };
+    }
+  } catch (e) {
+    return { message: 'server-connection', id: prevState.id };
+  }
+
+  revalidatePath('/en/tools');
+  revalidatePath('/ar/tools');
+
+  const locale = await getLocale();
+  redirect(`/${locale}/tools`);
 }
 
 function getToolInputErrors(data: ToolInputs) {
   const errors: { [K in keyof ToolInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
-  errors['category-id'] = isInvalidText(data['category-id']);
+  errors['category-id'] = isInvalidText(data['category-id'].toString());
 
   errors.width = isInvalidNumber(data.width);
   errors.height = isInvalidNumber(data.height);

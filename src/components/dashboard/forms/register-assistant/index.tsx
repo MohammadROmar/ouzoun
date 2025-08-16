@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import Input from '@/components/ui/input';
 import RegisterAssistantActions from './actions';
 import { registerAssistantAction } from '@/actions/assistants/register';
+import FormErrors from '../errors';
 
 function RegisterAssistantForm() {
   const [{ message, defaultValues, errors }, formAction] = useActionState(
@@ -77,6 +78,8 @@ function RegisterAssistantForm() {
       />
 
       <RegisterAssistantActions t={t} />
+
+      <FormErrors message={message} />
     </form>
   );
 }

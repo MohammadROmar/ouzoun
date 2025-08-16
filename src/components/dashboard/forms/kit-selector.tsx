@@ -1,22 +1,32 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Select from 'react-select';
 
-import { kits } from '@/data/dummy/kits';
-import { kitSelectorStyles } from '@/data/kit-selector-styles';
+import { selectorStyles } from '@/data/selector-styles';
+import { Kit } from '@/models/kit';
 
 type KitSelectorProps = {
   label: string;
+  kits: Kit[];
   kitId?: string;
   error?: string;
   required?: boolean;
+  noOption: string;
 };
 
-function KitSelector({ label, kitId, error, required }: KitSelectorProps) {
+function KitSelector({
+  label,
+  kits,
+  kitId,
+  error,
+  required,
+  noOption,
+}: KitSelectorProps) {
   const { theme } = useTheme();
   const locale = useLocale();
+  const t = useTranslations;
 
   const kit = kits.find((kit) => kit.id === kitId);
   const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));
@@ -25,6 +35,7 @@ function KitSelector({ label, kitId, error, required }: KitSelectorProps) {
     <div>
       <label htmlFor="kit-id">{label}</label>
       <Select
+        isClearable={!required}
         required={required}
         inputId="kit-id"
         name="kit-id"
@@ -35,7 +46,8 @@ function KitSelector({ label, kitId, error, required }: KitSelectorProps) {
         aria-live="polite"
         aria-invalid={!!error}
         aria-errormessage={error}
-        styles={kitSelectorStyles(theme)}
+        styles={selectorStyles(theme)}
+        noOptionsMessage={() => noOption}
       />
 
       {error && (
