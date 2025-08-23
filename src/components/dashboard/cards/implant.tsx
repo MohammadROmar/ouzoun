@@ -1,15 +1,21 @@
 import { getTranslations } from 'next-intl/server';
+import clsx from 'clsx';
 
 import { Link } from '@/i18n/navigation';
 import { Implant } from '@/models/implant';
 
-type ImplantCardProps = { implant: Implant };
+type ImplantCardProps = { implant: Implant; className?: string };
 
-async function ImplantCard({ implant }: ImplantCardProps) {
+async function ImplantCard({ implant, className }: ImplantCardProps) {
   const t = await getTranslations('implants-page');
 
   return (
-    <li className="bg-bg-primary card-shadow grid w-full grid-rows-[auto_1fr_auto] space-y-2 rounded-xl p-2">
+    <li
+      className={clsx(
+        'bg-bg-primary card-shadow grid w-full grid-rows-[auto_1fr_auto] space-y-2 rounded-xl p-2',
+        className,
+      )}
+    >
       <div className="flex basis-0 gap-2">
         <div className="bg-green aspect-square w-1/4 rounded-lg" />
 

@@ -47,14 +47,14 @@ async function implantAction(
         Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        implantId: prevState.id,
-        radius: data.radius,
-        width: data.width,
-        height: data.height,
-        quantity: data.quantity,
+        implantId: prevState.id ? +prevState.id : undefined,
+        radius: +data.radius,
+        width: +data.width,
+        height: +data.height,
+        quantity: +data.quantity,
         brand: data.brand,
         description: data.description,
-        kitId: data['kit-id'],
+        kitId: +data['kit-id'],
       }),
     });
 

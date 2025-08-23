@@ -7,10 +7,12 @@ export default async function RegisterAssistantsPage() {
   const t = await getTranslations('assistants-page.register');
 
   return (
-    <section>
+    <>
       <Title title={t('title')} />
 
-      <RegisterAssistantForm />
-    </section>
+      <section className="mt-4">
+        <RegisterAssistantForm />
+      </section>
+    </>
   );
 }

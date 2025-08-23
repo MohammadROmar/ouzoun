@@ -18,15 +18,13 @@ export default function KitCard({ kit, t }: KitCardProps) {
           <div className="flex gap-3">
             <p className="flex flex-col">
               <span className="text-sm opacity-75">{t('item.tools')}</span>
-              <span>{kit.tools.length}</span>
+              <span>{kit.toolCount}</span>
             </p>
 
-            {kit.implant && (
-              <p className="flex flex-col">
-                <span className="text-sm opacity-75">{t('item.implant')}</span>
-                <span className="line-clamp-1">{kit.implant.brand}</span>
-              </p>
-            )}
+            <p className="flex flex-col">
+              <span className="text-sm opacity-75">{t('item.implant')}</span>
+              <span className="line-clamp-1">{kit.implantCount}</span>
+            </p>
           </div>
         </div>
       </div>

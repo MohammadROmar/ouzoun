@@ -1,5 +1,5 @@
 export interface Implant {
-  id: string;
+  id: number;
   kitId: string;
   radius: number;
   width: number;
@@ -7,6 +7,7 @@ export interface Implant {
   quantity: number;
   brand: string;
   description: string;
+  imagePath: string;
 }
 
 export type ImplantInputs = {

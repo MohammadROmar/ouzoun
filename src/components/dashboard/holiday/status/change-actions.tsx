@@ -23,7 +23,7 @@ const ChangeStatusActions = memo(function ChangeStatusActions({
         type="button"
         disabled={pending}
         onClick={close}
-        className="button bg-transparent p-0 text-current"
+        className="button bg-transparent p-0 text-current disabled:bg-transparent"
       >
         {t('holiday.modal.cancel')}
       </button>

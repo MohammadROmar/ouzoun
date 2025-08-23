@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       default: t('authenticated.title'),
       template: `%s - ${t('root.title')}`,
     },
+    robots: { index: false, follow: false },
   };
 }
 

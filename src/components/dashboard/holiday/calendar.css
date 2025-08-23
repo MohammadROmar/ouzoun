@@ -1,147 +1,116 @@
-.rdrDefinedRangesWrapper {
-  display: none;
-}
+@import 'tailwindcss';
 
 .rdrDateDisplayWrapper {
-  background-color: var(--color-bg-primary);
-  border-bottom: 1px solid var(--color-green);
+  @apply border-b border-b-[var(--color-green)] bg-[var(--color-bg-secondary)];
 }
 
 .rdrCalendarWrapper {
-  color: currentColor;
-  background-color: var(--color-bg-primary);
+  @apply bg-[var(--color-bg-secondary)] !text-current;
 }
 
 .rdrDateRangePickerWrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-items: center;
+  @apply flex items-center justify-center;
 }
 
 .rdrMonth,
 .rdrMonths.rdrMonthsVertical,
 .rdrCalendarWrapper.rdrDateRangeWrapper {
-  width: 100%;
+  @apply w-full;
 }
 
 .rdrWeekDay {
-  color: var(--color-green);
+  @apply text-[var(--color-green)];
 }
 
 .rdrDateInput.rdrDateDisplayItem {
-  border: none;
-  background-color: var(--color-green-light);
+  @apply border-none bg-[var(--color-green-light)];
 }
 
+.rdrDayNumber span,
 .rdrDateInput.rdrDateDisplayItem input {
-  width: 100%;
-  color: black;
+  @apply w-full !text-black;
 }
 
+.rdrDefinedRangesWrapper,
 .rdrDayStartPreview,
 .rdrDayEndPreview {
-  display: none;
+  @apply hidden;
 }
 
 .rdrNextPrevButton.rdrPprevButton i,
 .rdrNextPrevButton.rdrNextButton i {
-  border-width: 5px;
+  @apply border-4;
 }
 
 .rdrNextPrevButton.rdrNextButton i {
-  transform: translateX(-0.3px);
+  @apply -translate-x-1;
 }
 
 .rdrNextPrevButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-green-light);
-  transition: opacity 0.3s linear;
+  @apply flex items-center justify-center bg-[var(--color-green-light)] transition-opacity;
 }
 
 .rdrNextPrevButton:hover {
-  background-color: var(--color-green-light);
-  opacity: 0.8;
+  @apply bg-[var(--color-green-light)] opacity-80;
 }
 
-.rdrDay {
-  cursor: default;
+.rdrDay,
+.rdrDayNumber:hover {
+  @apply cursor-default;
 }
 
 .rdrDayPassive {
-  opacity: 0.5;
+  @apply opacity-50;
 }
 
 .rdrDayHovered {
-  border: none !important;
-}
-
-.rdrDayNumber:hover {
-  cursor: default;
+  @apply !border-none;
 }
 
 .rdrInRange,
 .rdrStartEdge,
 .rdrEndEdge {
-  color: var(--color-green) !important;
+  @apply !text-[var(--color-green)];
 }
 
 .rdrYearPicker select,
 .rdrMonthPicker select {
-  color: currentColor;
-  background: none;
-  padding: 0 !important;
+  @apply bg-none !p-0 text-current;
 }
 
 .rdrYearPicker select option,
 .rdrMonthPicker select option {
-  background-color: var(--color-green);
-  color: white;
-  border: 1px solid var(--color-green-light);
-}
-
-.rdrDayNumber span {
-  color: black !important;
+  @apply border border-[var(--color-green-light)] bg-[var(--color-green)] text-white;
 }
 
 .dark .rdrDayNumber span {
-  color: white !important;
+  @apply !text-white;
 }
 
 [dir='rtl'] .rdrStartEdge,
 [dir='rtl'] .rdrEndEdge,
 [dir='rtl'] .rdrInRange {
-  transform: scaleX(-1);
-  right: -1px;
-  left: -1px;
+  @apply -right-[1px] -left-[1px] -scale-x-100;
 }
 
 [dir='rtl'] .rdrInRange {
-  right: -2px;
-  left: -2px;
+  @apply -right-[2px] -left-[2px];
 }
 
 [dir='rtl'] .rdrDateInput.rdrDateDisplayItem:nth-of-type(2) {
-  margin-left: 0;
-  margin-right: 0.833em;
+  @apply mr-[0.833em] ml-0;
 }
 
 [dir='rtl'] .rdrNextPrevButton {
-  transform: scaleX(-1);
+  @apply -scale-x-100;
 }
 
 @media (max-width: 40rem) {
   .rdrDateDisplay {
-    display: grid;
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: 0.833em;
+    @apply grid grid-cols-1 grid-rows-2 gap-[0.833em];
   }
 
   .rdrDateInput.rdrDateDisplayItem {
-    width: 100%;
-    margin: 0 !important;
+    @apply !m-0 w-full;
   }
 }

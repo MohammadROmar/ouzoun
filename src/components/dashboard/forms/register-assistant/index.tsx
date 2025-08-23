@@ -29,7 +29,7 @@ function RegisterAssistantForm() {
   }, [locale, message, t]);
 
   return (
-    <form className="mt-4 space-y-4" action={formAction}>
+    <form className="space-y-4" action={formAction}>
       <Input
         id="user-name"
         label={t('user-name')}

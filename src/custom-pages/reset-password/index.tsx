@@ -1,11 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { useStep } from '@/hooks/use-step';
 import { Link } from '@/i18n/navigation';
 import Stepper from '@/components/stepper';
 import Content from './content';
+import patternImg from '@/assets/images/pattern.png';
 
 export default function ResetPasswordPageContent() {
   const { step, setStep } = useStep();
@@ -32,8 +34,18 @@ export default function ResetPasswordPageContent() {
         </div>
       </section>
 
-      <section className="bg-green relative z-0 flex h-full items-center justify-center overflow-hidden bg-[url(../assets/images/pattern.png)] bg-cover bg-center bg-no-repeat text-white max-md:hidden md:col-span-2">
+      <section className="bg-green relative z-0 flex h-full items-center justify-center text-white max-md:hidden md:col-span-2">
         <Stepper direction="vertical" steps={STEPS} currentStep={step} />
+
+        <Image
+          src={patternImg}
+          alt=""
+          fill
+          sizes="(min-width: 48rem) 50vw, 0px"
+          // priority
+          className="absolute inset-0 -z-50 object-cover object-center"
+          aria-hidden
+        />
       </section>
     </>
   );

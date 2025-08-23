@@ -2,16 +2,15 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { Link } from '@/i18n/navigation';
 import Title from '@/components/dashboard/title';
 import Heading from '@/components/dashboard/details/heading';
 import DetailContainer from '@/components/dashboard/details/detail-container';
 import ToolCard from '@/components/dashboard/cards/tool';
+import ImplantCard from '@/components/dashboard/cards/implant';
 import Actions from '@/components/dashboard/actions';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import MainIcon from '@/assets/icons/main';
-import { getToolDimentions } from '@/utils/details/implant';
 import { get } from '@/actions/get';
 import { Kit } from '@/models/kit';
 
@@ -45,7 +44,7 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
 
       <DetailContainer title={t('item.tools')} icon={ToolsIcon}>
         <ul className="grid grid-cols-1 grid-rows-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {kit.tools.slice(0, 3).map((tool) => (
+          {kit.tools.map((tool) => (
             <ToolCard
               key={tool.id}
               tool={tool}
@@ -54,51 +53,26 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
           ))}
         </ul>
 
-        {kit.tools.length > 3 && (
-          <div className="mt-3 flex w-full justify-center">
-            <Link
-              href={`/kits/${kitId}/tools`}
-              className="button flex w-full justify-center md:w-fit"
-            >
-              {t('actions.more')}
-            </Link>
-          </div>
-        )}
-
         {kit.tools.length === 0 && (
           <p className="text-center">{t('no-tools')}</p>
         )}
       </DetailContainer>
 
-      {kit.implant && (
-        <DetailContainer title={t('item.implant')} icon={ImplantIcon}>
-          <>
-            <h4 className="ltr:font-ubuntu w-fit text-lg md:text-xl">
-              {kit.implant.brand}
-            </h4>
+      <DetailContainer title={t('item.implant')} icon={ImplantIcon}>
+        <ul className="grid grid-cols-1 grid-rows-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {kit.implants.map((implant) => (
+            <ImplantCard
+              key={implant.id}
+              implant={implant}
+              className="bg-bg-secondary dark:shadow-white/15"
+            />
+          ))}
+        </ul>
 
-            <ul className="mt-2 flex gap-3">
-              {Object.entries(getToolDimentions(kit.implant, t)).map(
-                ([key, value]) => (
-                  <li key={key ? `${key}-${value}` : value}>
-                    <p className="flex flex-col">
-                      <span className="text-sm opacity-75">{key}</span>
-                      <span className="line-clamp-1">{value}</span>
-                    </p>
-                  </li>
-                ),
-              )}
-            </ul>
-
-            <Link
-              href={`/implants/${kit.implant.id}`}
-              className="button m-auto mt-2 flex w-fit"
-            >
-              {t('actions.implant')}
-            </Link>
-          </>
-        </DetailContainer>
-      )}
+        {kit.implants.length === 0 && (
+          <p className="text-center">{t('no-implants')}</p>
+        )}
+      </DetailContainer>
 
       <section className="grid h-full md:hidden">
         <Actions item="implants" id={kitId} t={t} />

@@ -53,7 +53,7 @@ function ModalAction({ t }: { t: (key: string) => string }) {
   const { pending } = useFormStatus();
 
   return (
-    <button className="button !bg-warning" disabled={pending}>
+    <button className="button !bg-warning text-bg-primary" disabled={pending}>
       {pending ? (
         <LoadingSpinner className="size-6 animate-spin" />
       ) : (

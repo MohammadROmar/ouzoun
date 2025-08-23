@@ -2,11 +2,13 @@ import { Tool } from './tool';
 import { Implant } from './implant';
 
 export interface Kit {
-  id: string;
+  id: number;
   name: string;
-  tools: Tool[];
   isMainKit: boolean;
-  implant?: Implant;
+  toolCount: number;
+  implantCount: number;
+  tools: Tool[];
+  implants: Implant[];
 }
 
 export type KitInputs = {

@@ -17,9 +17,9 @@ const StatusOptions = memo(function StatusOptions({
   const { theme } = useTheme();
 
   const options = [
-    { label: getHolidayStatus(1, t), value: '1' },
-    { label: getHolidayStatus(2, t), value: '2' },
-    { label: getHolidayStatus(3, t), value: '3' },
+    { label: t(getHolidayStatus(1)), value: '1' },
+    { label: t(getHolidayStatus(2)), value: '2' },
+    { label: t(getHolidayStatus(3)), value: '3' },
   ];
 
   const status = state.defaultValues.status;
@@ -33,7 +33,7 @@ const StatusOptions = memo(function StatusOptions({
         name="status"
         options={options}
         isRtl={locale === 'ar'}
-        defaultValue={{ label: getHolidayStatus(+status, t), value: status }}
+        defaultValue={{ label: t(getHolidayStatus(+status)), value: status }}
         aria-live="polite"
         aria-invalid={!!state.errors?.status}
         aria-errormessage={t('holiday.invalid-status')}

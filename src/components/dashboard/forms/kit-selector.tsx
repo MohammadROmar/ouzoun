@@ -27,7 +27,8 @@ function KitSelector({
   const { theme } = useTheme();
   const locale = useLocale();
 
-  const kit = kits.find((kit) => kit.id === kitId);
+  const kit =
+    kitId === undefined ? undefined : kits.find((kit) => kit.id === +kitId);
   const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));
 
   return (

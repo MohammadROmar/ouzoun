@@ -14,25 +14,31 @@ function HolidayStatus({ holiday }: HolidayStatusProps) {
 
   const t = useTranslations('assistants-page.holidays');
 
+  const canChangeStatus = holiday.status === 1;
+
   return (
     <section className="mt-4 flex items-center gap-4">
-      <ChangeStatus
-        holiday={holiday}
-        open={open}
-        close={() => setOpen(false)}
-        t={t}
-      />
+      {canChangeStatus && (
+        <ChangeStatus
+          holiday={holiday}
+          open={open}
+          close={() => setOpen(false)}
+          t={t}
+        />
+      )}
 
       <h3 className="ltr:font-ubuntu text-xl md:text-2xl">
         <span className="text-green">{t('holiday.status')}:</span>{' '}
         <span className="text-lg md:text-xl">
-          {getHolidayStatus(holiday.status, t)}
+          {t(getHolidayStatus(holiday.status))}
         </span>
       </h3>
 
-      <button onClick={() => setOpen(true)} className="button max-sm:text-sm">
-        {t('holiday.change-status')}
-      </button>
+      {canChangeStatus && (
+        <button onClick={() => setOpen(true)} className="button max-sm:text-sm">
+          {t('holiday.change-status')}
+        </button>
+      )}
     </section>
   );
 }

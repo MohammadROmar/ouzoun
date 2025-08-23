@@ -10,6 +10,7 @@ import { Holiday } from '@/models/holiday';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import './calendar.css';
+import { formatDate } from '@/utils/format-date';
 
 type HolidayCalendarProps = { holiday: Holiday };
 
@@ -32,16 +33,25 @@ function HolidayCalendar({ holiday }: HolidayCalendarProps) {
         </span>
       </h3>
 
-      <DateRangePicker
-        ranges={[{ startDate, endDate }]}
-        onChange={() => {}}
-        onRangeFocusChange={() => {}}
-        editableDateInputs={false}
-        className="sm"
-        dragSelectionEnabled={false}
-        dateDisplayFormat={days === 0 ? 'MMMM d, yyyy HH:mm' : 'MMMM d, yyyy'}
-        locale={locale === 'ar' ? ar : enUS}
-      />
+      <p className="sr-only">
+        {t('sr', {
+          from: formatDate(startDate, locale),
+          to: formatDate(endDate, locale),
+        })}
+      </p>
+
+      <div aria-hidden>
+        <DateRangePicker
+          ranges={[{ startDate, endDate }]}
+          onChange={() => {}}
+          onRangeFocusChange={() => {}}
+          editableDateInputs={false}
+          className="sm"
+          dragSelectionEnabled={false}
+          dateDisplayFormat={days === 0 ? 'MMMM d, yyyy HH:mm' : 'MMMM d, yyyy'}
+          locale={locale === 'ar' ? ar : enUS}
+        />
+      </div>
     </section>
   );
 }

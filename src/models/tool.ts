@@ -1,5 +1,5 @@
 export interface Tool {
-  id: string;
+  id: number;
   kitId: string;
   categoryId: number;
   name: string;
