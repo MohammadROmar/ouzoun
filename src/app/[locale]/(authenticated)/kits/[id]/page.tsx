@@ -7,11 +7,12 @@ import Heading from '@/components/dashboard/details/heading';
 import DetailContainer from '@/components/dashboard/details/detail-container';
 import ToolCard from '@/components/dashboard/cards/tool';
 import ImplantCard from '@/components/dashboard/cards/implant';
-import Actions from '@/components/dashboard/actions';
+import * as Actions from '@/components/dashboard/actions';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import MainIcon from '@/assets/icons/main';
 import { get } from '@/actions/get';
+import kitImg from '@/assets/images/kit.png';
 import { Kit } from '@/models/kit';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -36,7 +37,13 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
     <article className="space-y-4">
       <Title title={t('titles.details')} />
 
-      <Heading item="kits" id={kitId} title={kit.name} t={t} />
+      <Heading
+        item="kits"
+        id={kitId}
+        title={kit.name}
+        t={t}
+        imagePath={kit.imagePath ? kit.imagePath : kitImg}
+      />
 
       <DetailContainer title={t('item.main')} icon={MainIcon}>
         <p>{t(kit.isMainKit ? 'item.is-main' : 'item.not-main')}</p>
@@ -75,7 +82,9 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
       </DetailContainer>
 
       <section className="grid h-full md:hidden">
-        <Actions item="implants" id={kitId} t={t} />
+        <Actions.Root item="kits" id={kitId}>
+          <Actions.Delete />
+        </Actions.Root>
       </section>
     </article>
   );

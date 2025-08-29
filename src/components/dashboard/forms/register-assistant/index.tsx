@@ -7,8 +7,9 @@ import { toast } from 'react-toastify';
 
 import Input from '@/components/ui/input';
 import RegisterAssistantActions from './actions';
-import { registerAssistantAction } from '@/actions/assistants/register';
 import FormErrors from '../errors';
+import { registerAssistantAction } from '@/actions/register-assistant';
+import DropzoneImage from '../dropzone-image';
 
 function RegisterAssistantForm() {
   const [{ message, defaultValues, errors }, formAction] = useActionState(
@@ -30,28 +31,40 @@ function RegisterAssistantForm() {
 
   return (
     <form className="space-y-4" action={formAction}>
-      <Input
-        id="user-name"
-        label={t('user-name')}
-        type="text"
-        required
-        autoComplete="off"
-        defaultValue={defaultValues?.['user-name']}
-        error={
-          errors?.['user-name']
-            ? t('error', { field: t('user-name') })
-            : undefined
-        }
-      />
-      <Input
-        id="email"
-        label={t('email')}
-        type="email"
-        required
-        autoComplete="off"
-        defaultValue={defaultValues?.email}
-        error={errors?.email ? t('error', { field: t('email') }) : undefined}
-      />
+      <div className="grid grid-cols-1 gap-4 space-y-2 md:grid-cols-2">
+        <div className="space-y-2">
+          <Input
+            id="userName"
+            label={t('user-name')}
+            type="text"
+            required
+            autoComplete="off"
+            defaultValue={defaultValues?.userName}
+            error={
+              errors?.userName
+                ? t('error', { field: t('user-name') })
+                : undefined
+            }
+          />
+          <Input
+            id="email"
+            label={t('email')}
+            type="email"
+            required
+            autoComplete="off"
+            defaultValue={defaultValues?.email}
+            error={
+              errors?.email ? t('error', { field: t('email') }) : undefined
+            }
+          />
+        </div>
+
+        <DropzoneImage
+          id="profilePicture"
+          hasError={errors?.profilePicture}
+          defaultImage={defaultValues?.profilePicture}
+        />
+      </div>
       <Input
         id="password"
         label={t('password')}
@@ -64,14 +77,14 @@ function RegisterAssistantForm() {
         }
       />
       <Input
-        id="phone-number"
+        id="phoneNumber"
         label={t('phone-number')}
         type="text"
         required
         autoComplete="off"
-        defaultValue={defaultValues?.['phone-number']}
+        defaultValue={defaultValues?.phoneNumber}
         error={
-          errors?.['phone-number']
+          errors?.phoneNumber
             ? t('error', { field: t('phone-number') })
             : undefined
         }

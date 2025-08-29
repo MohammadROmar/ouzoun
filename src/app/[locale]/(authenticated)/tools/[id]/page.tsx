@@ -7,9 +7,10 @@ import Heading from '@/components/dashboard/details/heading';
 import Detail from '@/components/dashboard/details/detail';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
-import Actions from '@/components/dashboard/actions';
+import * as Actions from '@/components/dashboard/actions';
 import { getToolDimensions, getToolStock } from '@/utils/details/tool';
 import { get } from '@/actions/get';
+import toolsImg from '@/assets/images/tools.png';
 import { Tool } from '@/models/tool';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,6 +42,7 @@ export default async function ToolDetailsPage({ params }: Props) {
           t={t}
           title={tool.name}
           kitId={tool.kitId}
+          imagePath={tool.imagePath ? tool.imagePath : toolsImg}
         />
 
         <Detail
@@ -57,7 +59,13 @@ export default async function ToolDetailsPage({ params }: Props) {
       </div>
 
       <section className="grid h-full md:hidden">
-        <Actions item="tools" id={toolId} kitId={tool.kitId} t={t} />
+        <Actions.Root item="tools" id={toolId} kitId={tool.kitId}>
+          <div className="flex items-center gap-2 max-md:grid max-md:grid-cols-2 max-md:justify-end">
+            <Actions.Edit />
+            <Actions.Delete />
+          </div>
+          <Actions.Kit />
+        </Actions.Root>
       </section>
     </article>
   );

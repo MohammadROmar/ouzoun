@@ -21,11 +21,11 @@ function CategorySelector({ defaultValue, error }: CategorySelectorProps) {
 
   return (
     <div>
-      <label htmlFor="kit-id">{t('item.category')}</label>
+      <label htmlFor="categoryId">{t('item.category')}</label>
       <Select
         required
-        inputId="category-id"
-        name="category-id"
+        inputId="categoryId"
+        name="categoryId"
         options={options}
         placeholder={false}
         defaultValue={defaultCategory}

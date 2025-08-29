@@ -2,10 +2,10 @@ import { memo } from 'react';
 import { useLocale } from 'next-intl';
 import { useTheme } from 'next-themes';
 
-import { getHolidayStatus } from '@/utils/details/holiday-status';
-import type { ChangeHolidayStatusActionState as ActionState } from '@/actions/change-holiday-status';
 import Select from 'react-select';
+import { getHolidayStatus } from '@/utils/details/holiday-status';
 import { selectorStyles } from '@/data/selector-styles';
+import type { ChangeHolidayStatusActionState as ActionState } from '@/actions/change-holiday-status';
 
 type StatusOptionsProps = { state: ActionState; t: (key: string) => string };
 

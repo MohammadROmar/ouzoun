@@ -5,9 +5,9 @@ import Modal from '@/components/modal';
 import StatusOptions from './options';
 import Input from '@/components/ui/input';
 import ChangeStatusActions from './change-actions';
+import FormErrors from '../../forms/errors';
 import { changeHolidayStatusAction } from '@/actions/change-holiday-status';
 import { Holiday } from '@/models/holiday';
-import FormErrors from '../../forms/errors';
 
 export type ModalProps = { close: () => void; t: (key: string) => string };
 
@@ -26,7 +26,7 @@ function ChangeStatus({ holiday, open, close, t }: ChangeStatusProps) {
   const dialogRef = useDialog(open);
 
   return (
-    <Modal ref={dialogRef} title={t('holiday.modal.title')}>
+    <Modal ref={dialogRef} title={t('holiday.modal.title')} onClose={close}>
       <form className="mt-4 flex flex-col" action={formAction}>
         <label htmlFor="status">{t('holiday.status')}</label>
         <StatusOptions t={t} state={state} />

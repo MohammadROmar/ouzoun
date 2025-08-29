@@ -1,53 +1,69 @@
+'use client';
+
+import { type PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
 import { Link } from '@/i18n/navigation';
 import DeleteBtn from './delete-btn';
 import EditIcon from '@/assets/icons/edit';
 import KitIcon from '@/assets/icons/kit';
+import { useTranslations } from 'next-intl';
+import { ActionContext, ActionsProps, useActionContext } from '@/store/actions';
 
-type ActionsProps = {
-  item: 'kits' | 'tools' | 'implants';
-  id: string;
-  kitId?: string;
-  t: (key: string) => string;
-};
+const sharedStyles =
+  'button grid grid-cols-[1.25rem_auto] place-items-center justify-center gap-1 sm:gap-2';
 
-function Actions({ item, id, kitId, t }: ActionsProps) {
-  const sharedStyles =
-    'button grid grid-cols-[1.25rem_auto] place-items-center justify-center gap-1 sm:gap-2';
+function Root({ children, ...props }: ActionsProps & PropsWithChildren) {
+  const t = useTranslations('actions');
 
   return (
-    <div className="space-y-2 md:w-min">
-      <div className="flex items-center gap-2 max-md:grid max-md:grid-cols-2 max-md:justify-end">
-        <Link
-          href={`/${item}/${id}/edit`}
-          className={clsx(sharedStyles, 'bg-green/75')}
-        >
-          <span>
-            <EditIcon className="size-5" />
-          </span>
-
-          <span>{t('actions.edit')}</span>
-        </Link>
-
-        <DeleteBtn
-          item={item}
-          id={id}
-          styles={sharedStyles}
-          label={t('actions.delete')}
-        />
-      </div>
-
-      {kitId && (
-        <Link href={`/kits/${kitId}`} className={sharedStyles}>
-          <span>
-            <KitIcon className="size-5" />
-          </span>
-          <span>{t('actions.view-kit')}</span>
-        </Link>
-      )}
-    </div>
+    <ActionContext.Provider value={{ ...props, t }}>
+      <div className="space-y-2 md:w-min">{children}</div>
+    </ActionContext.Provider>
   );
 }
 
-export default Actions;
+function Delete() {
+  const { id, item, t } = useActionContext();
+
+  return (
+    <DeleteBtn
+      item={item}
+      id={id}
+      styles={clsx(sharedStyles, item === 'kits' && 'w-full')}
+      label={t('delete')}
+    />
+  );
+}
+
+function Kit() {
+  const { kitId, t } = useActionContext();
+
+  return (
+    <Link href={`/kits/${kitId}`} className={sharedStyles}>
+      <span>
+        <KitIcon className="size-5" />
+      </span>
+      <span>{t('view-kit')}</span>
+    </Link>
+  );
+}
+
+function Edit() {
+  const { item, id, t } = useActionContext();
+
+  return (
+    <Link
+      href={`/${item}/${id}/edit`}
+      className={clsx(sharedStyles, 'bg-green/75')}
+    >
+      <span>
+        <EditIcon className="size-5" />
+      </span>
+
+      <span>{t('edit')}</span>
+    </Link>
+  );
+}
+
+export { Root, Edit, Delete, Kit };

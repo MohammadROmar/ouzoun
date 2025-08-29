@@ -21,6 +21,7 @@ function LogoutModal({ open, close }: LogoutModalProps) {
       title={t('logout.title')}
       description={t('logout.description')}
       titleStyles="text-danger"
+      onClose={close}
     >
       <form action={logoutAction}>
         <ModalActions close={close} />

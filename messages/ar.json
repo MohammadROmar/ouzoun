@@ -257,7 +257,32 @@
       "in-progress": "قيد التنفيذ",
       "done": "مُكتملة",
       "declined": "مَرفوضة",
-      "cancelled": "مُلغاة"
+      "cancelled": "مُلغاة",
+      "procedure-details": {
+        "title": "تفاصيل العملية",
+        "doctor": "الطبيب",
+        "procedure-info": "معلومات العملية",
+        "category": "الصنف",
+        "status": "الحالة",
+        "change-status": "تغيير الحالة",
+        "surgical-kits": "عُدة جراحية",
+        "required-tools": "الأدوات المطلوبة",
+        "implant-kits": "عُدد الزرعات",
+        "implant": "الزرعة",
+        "tools-with-implant": "أدوات مع زرعات",
+        "clinic": "العيادة",
+        "unknown": "غير معروف",
+        "date": "الموعد",
+        "more": "رؤية المزيد",
+        "invalid-status": "رجاءاً اختر الحالة بشكل صحيح",
+        "no-option": "لا يوجد خيار",
+        "accept": "قبول",
+        "decline": "رفض",
+        "cancel": "إلغاء",
+        "change": "تأكيد",
+        "surgery": "عملية",
+        "recovery": "استعادة"
+      }
     },
     "holidays": {
       "title": "طلبات العُطل",
@@ -365,6 +390,11 @@
       "action": "حسناً"
     },
     "processing": "جاري المعالجة"
+  },
+  "actions": {
+    "view-kit": "الاطلاع على العدة",
+    "edit": "تعديل",
+    "delete": "حذف"
   },
   "accessibility": {
     "language": "تغيير اللغة",

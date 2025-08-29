@@ -9,6 +9,6 @@ export function implantToInputs(implant: Implant): ImplantInputs {
     width: implant.width.toString(),
     height: implant.height.toString(),
     radius: implant.radius.toString(),
-    'kit-id': implant.kitId,
+    kitId: implant.kitId.toString(),
   };
 }

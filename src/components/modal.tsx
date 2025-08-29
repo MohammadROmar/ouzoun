@@ -1,18 +1,27 @@
 'use client';
 
-import { RefObject, useEffect, useState, type ReactNode } from 'react';
+import {
+  useState,
+  useEffect,
+  type PropsWithChildren,
+  type ComponentPropsWithRef,
+} from 'react';
 import { createPortal } from 'react-dom';
 import clsx from 'clsx';
 
-type ModalProps = {
+type ModalProps = ComponentPropsWithRef<'dialog'> & {
   title: string;
   description?: string;
-  ref: RefObject<HTMLDialogElement | null>;
   titleStyles?: string;
-  children: ReactNode;
-};
+} & PropsWithChildren;
 
-function Modal({ title, description, ref, titleStyles, children }: ModalProps) {
+function Modal({
+  title,
+  description,
+  titleStyles,
+  children,
+  ...props
+}: ModalProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,12 +32,13 @@ function Modal({ title, description, ref, titleStyles, children }: ModalProps) {
 
   return createPortal(
     <dialog
-      ref={ref}
+      ref={props.ref}
       aria-modal
       aria-live="polite"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
       className="bg-bg-primary border-gray/50 animate-fade-in card-shadow fixed top-1/2 w-fit -translate-1/2 overflow-hidden rounded-xl border backdrop:bg-black/50 max-sm:w-full sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2"
+      {...props}
     >
       <div className="relative p-4">
         <h4

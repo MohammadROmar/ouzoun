@@ -23,9 +23,9 @@ export async function kitAction(
 ): Promise<KitActionState> {
   const name = formData.get('name') as string;
   const image = formData.get('image') as File;
-  const main = formData.get('main') as string | null;
+  const isMainKit = formData.get('isMainKit') as 'on' | null;
 
-  const errors = getKitInputErrors({ name, image, main });
+  const errors = getKitInputErrors({ name, image, isMainKit });
 
   const hasError = Object.entries(errors).find((error) => error[1]);
 
@@ -33,28 +33,33 @@ export async function kitAction(
     return {
       message: 'invalid-input',
       errors,
-      defaultValues: { name, image, main },
+      defaultValues: { name, image, isMainKit },
       action: prevState.action,
     };
   }
 
   try {
+    const requestFD = new FormData();
+
+    requestFD.append('name', name);
+    requestFD.append('isMainKit', isMainKit === 'on' ? 'true' : 'false');
+    requestFD.append('image', image);
+
     const accessToken = (await cookies()).get('access-token')?.value;
 
     const response = await fetch(`${process.env.BASE_URL}/api/kits`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ name: name, isMainKit: main !== null }),
+      body: requestFD,
     });
 
     if (!response.ok) {
       return {
         message: `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
         errors,
-        defaultValues: { name, image, main },
+        defaultValues: { name, image, isMainKit },
         action: prevState.action,
       };
     }
@@ -64,7 +69,7 @@ export async function kitAction(
     return {
       message: 'server-connection',
       errors,
-      defaultValues: { name, image, main },
+      defaultValues: { name, image, isMainKit },
       action: prevState.action,
     };
   }
@@ -75,7 +80,7 @@ export async function kitAction(
   return {
     message: 'success',
     action: prevState.action,
-    defaultValues: { name, image, main },
+    defaultValues: { name, image, isMainKit },
   };
 }
 
@@ -85,6 +90,8 @@ export async function deleteKitAction(
   const accessToken = (await cookies()).get('access-token')?.value;
 
   try {
+    console.log(`${process.env.BASE_URL}/api/kits/${prevState.id}`);
+
     const response = await fetch(
       `${process.env.BASE_URL}/api/kits/${prevState.id}`,
       {
@@ -95,6 +102,8 @@ export async function deleteKitAction(
         },
       },
     );
+
+    console.log(response);
 
     if (!response.ok) {
       return { message: 'failed-to-delete', id: prevState.id };

@@ -38,25 +38,37 @@ export async function toolAction(
   }
 
   try {
+    if (prevState.id) {
+      formData.append('id', prevState.id);
+    }
+
     const accessToken = (await cookies()).get('access-token')?.value;
 
     const endpoint = `${process.env.BASE_URL}/api/tools`;
     const response = await fetch(endpoint, {
       method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify({
-        id: prevState.id,
-        name: data.name,
-        width: data.width,
-        height: data.height,
-        thickness: data.thickness,
-        quantity: data.quantity,
-        kitId: data['kit-id'],
-        categoryId: data['category-id'],
-      }),
+      headers:
+        prevState.action === 'CREATE'
+          ? {
+              Authorization: `Bearer ${accessToken}`,
+            }
+          : {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+      body:
+        prevState.action === 'CREATE'
+          ? formData
+          : JSON.stringify({
+              id: prevState.id,
+              name: data.name,
+              width: data.width,
+              height: data.height,
+              thickness: data.thickness,
+              quantity: data.quantity,
+              kitId: data.kitId,
+              categoryId: data.categoryId,
+            }),
     });
 
     if (!response.ok) {
@@ -128,7 +140,7 @@ function getToolInputErrors(data: ToolInputs) {
   const errors: { [K in keyof ToolInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
-  errors['category-id'] = isInvalidText(data['category-id'].toString());
+  errors.categoryId = isInvalidText(data.categoryId.toString());
 
   errors.width = isInvalidNumber(data.width);
   errors.height = isInvalidNumber(data.height);

@@ -33,12 +33,12 @@ function KitSelector({
 
   return (
     <div>
-      <label htmlFor="kit-id">{label}</label>
+      <label htmlFor="kitId">{label}</label>
       <Select
         isClearable={!required}
         required={required}
-        inputId="kit-id"
-        name="kit-id"
+        inputId="kitId"
+        name="kitId"
         options={options}
         placeholder={false}
         isRtl={locale === 'ar'}

@@ -42,18 +42,16 @@ export default function ToolInfo({ kits }: ToolInfoProps) {
         <KitSelector
           label={t('item.kit-id')}
           kits={kits}
-          kitId={defaultValues?.['kit-id']}
+          kitId={defaultValues?.kitId}
           noOption={t('no-option')}
           error={
-            errors?.['kit-id']
-              ? t('error', { field: t('item.kit-id') })
-              : undefined
+            errors?.kitId ? t('error', { field: t('item.kit-id') }) : undefined
           }
         />
         <CategorySelector
-          defaultValue={defaultValues?.['category-id']}
+          defaultValue={defaultValues?.categoryId}
           error={
-            errors?.['category-id']
+            errors?.categoryId
               ? t('error', { field: t('item.description') })
               : undefined
           }

@@ -51,22 +51,28 @@ function KitForm({ defaultValues, action }: KitFormProps) {
         />
 
         <Input
-          id="main"
+          id="isMainKit"
+          name="isMainKit"
           label={t('item.main')}
           type="checkbox"
           autoComplete="off"
           containerStyles="flex-row gap-2 items-center"
           className="accent-green !mt-0 !size-4"
-          defaultChecked={defaultValues?.main ? true : false}
+          defaultChecked={
+            state.defaultValues?.isMainKit === 'on' ? true : false
+          }
           error={
-            state.errors?.main
+            state.errors?.isMainKit
               ? t('error', { field: t('item.main') })
               : undefined
           }
         />
 
         <div className="m-auto aspect-square max-w-md">
-          <DropzoneImage hasError={state.errors?.image} />
+          <DropzoneImage
+            hasError={state.errors?.image}
+            defaultImage={state.defaultValues?.image}
+          />
         </div>
 
         <FormActions action={action} />

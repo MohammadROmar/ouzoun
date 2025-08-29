@@ -42,7 +42,7 @@ export default function ResetPasswordPageContent() {
           alt=""
           fill
           sizes="(min-width: 48rem) 50vw, 0px"
-          // priority
+          priority
           className="absolute inset-0 -z-50 object-cover object-center"
           aria-hidden
         />

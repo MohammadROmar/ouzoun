@@ -258,7 +258,32 @@
       "in-progress": "In progress",
       "done": "Done",
       "declined": "Declined",
-      "cancelled": "Cancelled"
+      "cancelled": "Cancelled",
+      "procedure-details": {
+        "title": "Procedure Deatils",
+        "doctor": "Doctor",
+        "procedure-info": "Procedure Info",
+        "clinic": "Clinic",
+        "date": "Date",
+        "category": "Category",
+        "status": "Status",
+        "change-status": "Change status",
+        "surgical-kits": "Surgical kits",
+        "required-tools": "Required tools",
+        "implant-kits": "Implant kits",
+        "implant": "Implant",
+        "tools-with-implant": "Tools with implant",
+        "unknown": "Unknown",
+        "more": "View more info",
+        "invalid-status": "Please enter a valid status",
+        "no-option": "No option",
+        "accept": "Accept",
+        "decline": "Decline",
+        "cancel": "Cancel",
+        "change": "Confirm",
+        "surgery": "Surgery",
+        "recovery": "Recovery"
+      }
     },
     "holidays": {
       "title": "Assistants' Holidays",
@@ -366,6 +391,11 @@
       "action": "Ok"
     },
     "processing": "Processing"
+  },
+  "actions": {
+    "view-kit": "View kit",
+    "edit": "Edit",
+    "delete": "Delete"
   },
   "accessibility": {
     "language": "Change language",

@@ -30,12 +30,10 @@ export default function ImplantInfo({ kits }: ImplantInfoProps) {
           label={t('item.kit-id')}
           required
           kits={kits}
-          kitId={defaultValues?.['kit-id']}
+          kitId={defaultValues?.kitId}
           noOption={t('no-option')}
           error={
-            errors?.['kit-id']
-              ? t('error', { field: t('item.kit-id') })
-              : undefined
+            errors?.kitId ? t('error', { field: t('item.kit-id') }) : undefined
           }
         />
         <Input

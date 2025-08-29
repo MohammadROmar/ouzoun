@@ -4,9 +4,9 @@ type DetailProps = {
   details: { [key: string]: string } | string;
 } & DetailContainerProps;
 
-function Detail({ title, icon, details }: DetailProps) {
+function Detail({ title, icon, details, className }: DetailProps) {
   return (
-    <DetailContainer title={title} icon={icon}>
+    <DetailContainer title={title} icon={icon} className={className}>
       {typeof details === 'string' ? (
         <p className="max-md:text-sm">{details}</p>
       ) : (

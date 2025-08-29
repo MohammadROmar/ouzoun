@@ -2,14 +2,15 @@
 
 import { cookies } from 'next/headers';
 
-import { isInvalidText } from '../validation';
+import { isInvalidText } from './validation';
 import { isValidEmail, isValidPassword } from '@/utils/validation';
 
 type RegisterAssistantInputs = {
-  'user-name': string;
+  userName: string;
   email: string;
   password: string;
-  'phone-number': string;
+  phoneNumber: string;
+  profilePicture: File;
 };
 
 export type RegisterAssistantActionState = {
@@ -38,24 +39,17 @@ export async function registerAssistantAction(
   }
 
   try {
+    formData.append('latitude', '0');
+    formData.append('longtitude', '0');
+    formData.append('role', 'AssistantDoctor');
+    formData.append('address', '');
+    formData.append('clinicName', '');
+
     const accessToken = (await cookies()).get('access-token')?.value;
     const response = await fetch(`${process.env.BASE_URL}/api/users/register`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify({
-        userName: data['user-name'],
-        email: data.email,
-        password: data.password,
-        phoneNumber: data['phone-number'],
-        latitude: 0,
-        longtitude: 0,
-        role: 'AssistantDoctor',
-        address: '',
-        clinicName: '',
-      }),
+      headers: { Authorization: `Bearer ${accessToken}` },
+      body: formData,
     });
 
     if (!response.ok) {
@@ -76,12 +70,12 @@ export async function registerAssistantAction(
 
 function getAssistantInputsErrors(data: RegisterAssistantInputs) {
   const errors: { [K in keyof RegisterAssistantInputs]?: boolean } = {
-    'user-name': isInvalidText(data['user-name']),
+    userName: isInvalidText(data.userName),
     email: !isValidEmail(data.email),
     password: !isValidPassword(data.password),
-    'phone-number': isInvalidText(data['phone-number'])
+    phoneNumber: isInvalidText(data.phoneNumber)
       ? false
-      : !/^09[0-9]{8}$/.test(data['phone-number']),
+      : !/^09[0-9]{8}$/.test(data.phoneNumber),
   };
 
   return errors;

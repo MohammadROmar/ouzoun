@@ -2,7 +2,9 @@ import { getTranslations } from 'next-intl/server';
 import clsx from 'clsx';
 
 import { Link } from '@/i18n/navigation';
+import FallbackImage from '@/components/ui/fallback-image';
 import { getToolDimensions } from '@/utils/details/tool';
+import toolsImg from '@/assets/images/tools.png';
 import { Tool } from '@/models/tool';
 
 type ToolCardProps = { tool: Tool; className?: string };
@@ -20,7 +22,16 @@ async function ToolCard({ tool, className }: ToolCardProps) {
       )}
     >
       <div className="flex gap-2">
-        <div className="bg-green aspect-square w-1/4 rounded-lg" />
+        <div className="bg-green relative aspect-square w-1/4 overflow-hidden rounded-lg">
+          <FallbackImage
+            src={tool.imagePath ? tool.imagePath : toolsImg}
+            fallbackSrc={toolsImg}
+            alt=""
+            fill
+            sizes="250px"
+            aria-labelledby="implant-brand"
+          />
+        </div>
 
         <div className="flex flex-col justify-between">
           <h2 className="ltr:font-ubuntu text-lg">{tool.name}</h2>

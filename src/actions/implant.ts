@@ -38,25 +38,38 @@ async function implantAction(
   }
 
   try {
+    if (prevState.id) {
+      formData.append('implantId', prevState.id);
+    }
+
     const accessToken = (await cookies()).get('access-token')?.value;
 
-    const response = await fetch(`${process.env.BASE_URL}/api/implants`, {
-      method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
+    const response = await fetch(
+      `${process.env.BASE_URL}/api/implllants${prevState.action === 'EDIT' ? `/${prevState.id}` : ''}`,
+      {
+        method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
+        headers:
+          prevState.action === 'CREATE'
+            ? { Authorization: `Bearer ${accessToken}` }
+            : {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`,
+              },
+        body:
+          prevState.action === 'CREATE'
+            ? formData
+            : JSON.stringify({
+                implantId: prevState.id ? +prevState.id : undefined,
+                radius: +data.radius,
+                width: +data.width,
+                height: +data.height,
+                quantity: +data.quantity,
+                brand: data.brand,
+                description: data.description,
+                kitId: +data.kitId,
+              }),
       },
-      body: JSON.stringify({
-        implantId: prevState.id ? +prevState.id : undefined,
-        radius: +data.radius,
-        width: +data.width,
-        height: +data.height,
-        quantity: +data.quantity,
-        brand: data.brand,
-        description: data.description,
-        kitId: +data['kit-id'],
-      }),
-    });
+    );
 
     if (!response.ok) {
       return {
@@ -127,7 +140,7 @@ function getImplantInputErrors(data: ImplantInputs) {
   const errors: { [K in keyof ImplantInputs]?: boolean } = {};
 
   errors.brand = isInvalidText(data.brand);
-  errors['kit-id'] = isInvalidText(data['kit-id']);
+  errors.kitId = isInvalidText(data.kitId);
   errors.description = isInvalidText(data.description);
 
   errors.width = isInvalidNumber(data.width);

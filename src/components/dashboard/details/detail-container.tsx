@@ -1,17 +1,22 @@
+import clsx from 'clsx';
 import { SVGProps, type FC, type PropsWithChildren } from 'react';
 
 export type DetailContainerProps = PropsWithChildren & {
   title: string;
   icon: FC<SVGProps<SVGElement>>;
+  className?: string;
 };
 
 function DetailContainer({
   title,
   icon: Icon,
   children,
+  className,
 }: DetailContainerProps) {
   return (
-    <section className="bg-bg-primary card-shadow rounded-xl p-4">
+    <section
+      className={clsx('bg-bg-primary card-shadow rounded-xl p-4', className)}
+    >
       <div className="grid grid-cols-[1.75rem_auto] items-center gap-2">
         <Icon className="text-green size-7" />
 

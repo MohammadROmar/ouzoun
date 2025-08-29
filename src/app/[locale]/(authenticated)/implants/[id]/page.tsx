@@ -5,12 +5,13 @@ import { getTranslations } from 'next-intl/server';
 import Title from '@/components/dashboard/title';
 import Heading from '@/components/dashboard/details/heading';
 import Detail from '@/components/dashboard/details/detail';
-import Actions from '@/components/dashboard/actions';
+import * as Actions from '@/components/dashboard/actions';
 import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
 import { getToolDimentions, getToolSourceStock } from '@/utils/details/implant';
 import { get } from '@/actions/get';
+import implantImg from '@/assets/images/implant.png';
 import { Implant } from '@/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,6 +32,8 @@ async function ImplantDetailsPage({ params }: Props) {
 
   const t = await getTranslations('implants-page');
 
+  console.log(Actions);
+
   return (
     <article className="flex flex-col justify-between gap-4 max-md:min-h-[calc(100vh_-_5.5rem)]">
       <div className="space-y-4">
@@ -42,6 +45,7 @@ async function ImplantDetailsPage({ params }: Props) {
           t={t}
           title={implant.brand}
           kitId={implant.kitId}
+          imagePath={implant.imagePath ? implant.imagePath : implantImg}
         />
 
         <Detail
@@ -64,7 +68,13 @@ async function ImplantDetailsPage({ params }: Props) {
       </div>
 
       <section className="grid h-full md:hidden">
-        <Actions item="implants" id={implantId} kitId={implant.kitId} t={t} />
+        <Actions.Root item="implants" id={implantId} kitId={implant.kitId}>
+          <div className="flex items-center gap-2 max-md:grid max-md:grid-cols-2 max-md:justify-end">
+            <Actions.Edit />
+            <Actions.Delete />
+          </div>
+          <Actions.Kit />
+        </Actions.Root>
       </section>
     </article>
   );

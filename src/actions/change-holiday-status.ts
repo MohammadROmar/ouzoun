@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { getLocale } from 'next-intl/server';
 
-import { isInvalidText } from './validation';
+import { isInvalidNumber, isInvalidText } from './validation';
 
 type HolidayStatusInputs = { status: string; note: string };
 
@@ -25,7 +25,7 @@ export async function changeHolidayStatusAction(
 
   const errors: { [K in keyof HolidayStatusInputs]?: boolean } = {};
 
-  if (!['1', '2', '3'].includes(status)) {
+  if (isInvalidNumber(status) || !['1', '2', '3'].includes(status)) {
     errors.status = true;
   }
   errors.note = isInvalidText(note);

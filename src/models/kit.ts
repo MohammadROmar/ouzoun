@@ -4,15 +4,16 @@ import { Implant } from './implant';
 export interface Kit {
   id: number;
   name: string;
-  isMainKit: boolean;
+  isMainKit: boolean | 'on' | null;
   toolCount: number;
   implantCount: number;
   tools: Tool[];
   implants: Implant[];
+  imagePath: string | null;
 }
 
 export type KitInputs = {
   name: string;
-  main: string | null;
+  isMainKit: 'on' | null;
   image: File;
 };

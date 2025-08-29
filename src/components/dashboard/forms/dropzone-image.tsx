@@ -1,16 +1,24 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, memo } from 'react';
+import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 import { useDropzoneImage } from '@/hooks/use-dropzone-image';
 import type { TFunction } from '@/models/t-function';
 
-type DropzoneImageProps = { hasError?: boolean; defaultImage?: File };
+type DropzoneImageProps = {
+  hasError?: boolean;
+  defaultImage?: File;
+  id?: string;
+};
 
-function DropzoneImage({ hasError, defaultImage }: DropzoneImageProps) {
+function DropzoneImage({
+  hasError,
+  defaultImage,
+  id = 'image',
+}: DropzoneImageProps) {
   const { image, error, getRootProps, getInputProps, isDragActive, setImage } =
     useDropzoneImage();
 
@@ -53,8 +61,8 @@ function DropzoneImage({ hasError, defaultImage }: DropzoneImageProps) {
           {t('sr')}
         </label>
         <input
-          id="image"
-          name="image"
+          id={id}
+          name={id}
           type="file"
           accept="image/*"
           required

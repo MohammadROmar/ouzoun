@@ -28,6 +28,7 @@ function DeleteToolModal({ id, open, close }: DeleteToolModalProps) {
       title={t('modal.delete.title')}
       description={t('modal.delete.description')}
       titleStyles="text-danger"
+      onClose={close}
     >
       <form action={formAction}>
         <ModalActions close={close} />
