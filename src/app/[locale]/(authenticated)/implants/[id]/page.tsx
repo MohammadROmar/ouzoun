@@ -2,17 +2,20 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import Heading from '@/components/dashboard/details/heading';
-import Detail from '@/components/dashboard/details/detail';
-import * as Actions from '@/components/dashboard/actions';
+import Title from '@/shared/components/dashboard/title';
+import Heading from '@/shared/components/dashboard/heading';
+import Detail from '@/shared/components/dashboard/detail';
+import * as Actions from '@/shared/components/dashboard/product-actions';
 import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
-import { getToolDimentions, getToolSourceStock } from '@/utils/details/implant';
-import { get } from '@/actions/get';
+import {
+  getToolDimentions,
+  getToolSourceStock,
+} from '@/features/implants/utils/details';
+import { get } from '@/shared/api/get';
 import implantImg from '@/assets/images/implant.png';
-import { Implant } from '@/models/implant';
+import { Implant } from '@/features/implants/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');
@@ -36,7 +39,6 @@ async function ImplantDetailsPage({ params }: Props) {
     <article className="flex flex-col justify-between gap-4 max-md:min-h-[calc(100vh_-_5.5rem)]">
       <div className="space-y-4">
         <Title title={t('titles.details')} />
-
         <Heading
           item="implants"
           id={implantId}
@@ -46,19 +48,16 @@ async function ImplantDetailsPage({ params }: Props) {
           fallbackImage={implantImg}
           imagePath={implant.imagePath ? implant.imagePath : implantImg}
         />
-
         <Detail
           title={t('item.description')}
           icon={FileIcon}
           details={implant.description}
         />
-
         <Detail
           title={t('titles.dimensions')}
           icon={DimensionsIcon}
           details={getToolDimentions(implant, t)}
         />
-
         <Detail
           title={t('titles.source-stock')}
           icon={BoxIcon}

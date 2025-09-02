@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import ImplantForm from '@/components/dashboard/forms/implant';
+import Title from '@/shared/components/dashboard/title';
+import ImplantForm from '@/features/implants/components/form';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');

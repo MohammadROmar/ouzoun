@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import ToolForm from '@/components/dashboard/forms/tool';
+import Title from '@/shared/components/dashboard/title';
+import ToolForm from '@/features/tools/components/form';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('tools-page.titles');

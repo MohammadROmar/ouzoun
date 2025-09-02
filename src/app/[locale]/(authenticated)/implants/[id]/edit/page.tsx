@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import ImplantForm from '@/components/dashboard/forms/implant';
-import { implantToInputs } from '@/utils/implant-to-input';
-import { get } from '@/actions/get';
-import { Implant } from '@/models/implant';
+import Title from '@/shared/components/dashboard/title';
+import ImplantForm from '@/features/implants/components/form';
+import { implantToInputs } from '@/features/implants/utils/implant-to-input';
+import { get } from '@/shared/api/get';
+import { Implant } from '@/features/implants/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');

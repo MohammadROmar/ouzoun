@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
-import Logo from '@/components/shared/logo';
-import LocaleSwitcher from '@/components/locale/locale-switcher';
-import ThemeToggle from '@/components/theme/theme-toggle';
+import Logo from '@/shared/components/logo';
+import LocaleSwitcher from '@/shared/components/locale/locale-switcher';
+import ThemeToggle from '@/shared/components/theme/theme-toggle';
 import badToothImg from '@/assets/images/bad-tooth.png';
 
 type ErrorProps = {

@@ -1,10 +1,10 @@
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import AssistantHolidayCard from '@/components/dashboard/cards/assistant-holiday';
-import NoContent from '@/components/no-content';
-import { get } from '@/actions/get';
-import { Holiday } from '@/models/holiday';
+import Title from '@/shared/components/dashboard/title';
+import AssistantHolidayCard from '@/features/assistants/components/holidays/assistant-holiday-card';
+import NoContent from '@/shared/components/no-content';
+import { get } from '@/shared/api/get';
+import { Holiday } from '@/features/assistants/models/holiday';
 
 export default async function AssistantsLeaveRequestsPage() {
   const holidays = (await get('/api/holidays')) as Holiday[];

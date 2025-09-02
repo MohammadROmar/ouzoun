@@ -1,10 +1,16 @@
-import Layout from '@/custom-pages/layout';
-import LandingPage from '@/custom-pages/landing';
+import Layout from '@/shared/components/no-auth-layout';
+import Hero from '@/features/landing/components/hero';
+import Capabilities from '@/features/landing/components/capabilities';
+import Role from '@/features/landing/components/role';
+import Overview from '@/features/landing/components/overview';
 
 export default function HomePage() {
   return (
     <Layout>
-      <LandingPage />
+      <Hero />
+      <Capabilities />
+      <Role />
+      <Overview />
     </Layout>
   );
 }

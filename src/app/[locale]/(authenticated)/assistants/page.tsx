@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import AssistantActionCard from '@/components/dashboard/cards/assistant-action';
-import { getAssistantsActions } from '@/data/assistants-actions';
+import AssistantActionCard from '@/features/assistants/components/assistant-action-card';
+import { getAssistantsActions } from '@/features/assistants/utils/get-assistants-actions';
 
 export default async function AssistantsPage() {
   const t = await getTranslations('assistants-page');

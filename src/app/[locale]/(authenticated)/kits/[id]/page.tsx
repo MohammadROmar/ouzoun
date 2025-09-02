@@ -2,18 +2,18 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import Heading from '@/components/dashboard/details/heading';
-import DetailContainer from '@/components/dashboard/details/detail-container';
-import ToolCard from '@/components/dashboard/cards/tool';
-import ImplantCard from '@/components/dashboard/cards/implant';
-import * as Actions from '@/components/dashboard/actions';
+import Title from '@/shared/components/dashboard/title';
+import Heading from '@/shared/components/dashboard/heading';
+import DetailContainer from '@/shared/components/dashboard/detail-container';
+import ToolCard from '@/features/tools/components/card';
+import ImplantCard from '@/features/implants/components/card';
+import * as Actions from '@/shared/components/dashboard/product-actions';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import MainIcon from '@/assets/icons/main';
-import { get } from '@/actions/get';
+import { get } from '@/shared/api/get';
 import kitImg from '@/assets/images/kit.png';
-import { Kit } from '@/models/kit';
+import { Kit } from '@/features/kits/models/kit';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');

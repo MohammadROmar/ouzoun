@@ -1,13 +1,13 @@
 import { getTranslations } from 'next-intl/server';
 
-import ProcedureInfo from '@/components/dashboard/details/procedure/info';
-import Title from '@/components/dashboard/title';
-import ProcedureAssistants from '@/components/dashboard/details/procedure/assistants';
-import RequiredTools from '@/components/dashboard/details/procedure/required-tools';
-import ImplantKits from '@/components/dashboard/details/procedure/implant-kits';
-import SurgicalKits from '@/components/dashboard/details/procedure/surgical-kits';
-import { get } from '@/actions/get';
-import { DetailedProcedure } from '@/models/detailed-procedure';
+import ProcedureInfo from '@/features/assistants/components/assign/info';
+import Title from '@/shared/components/dashboard/title';
+import ProcedureAssistants from '@/features/assistants/components/assign/assistants';
+import RequiredTools from '@/features/assistants/components/assign/required-tools';
+import ImplantKits from '@/features/assistants/components/assign/implant-kits';
+import SurgicalKits from '@/features/assistants/components/assign/surgical-kits';
+import { get } from '@/shared/api/get';
+import { DetailedProcedure } from '@/features/assistants/models/detailed-procedure';
 
 type ProcedureDetailsPageProps = {
   params: Promise<{ locale: string; id: string }>;

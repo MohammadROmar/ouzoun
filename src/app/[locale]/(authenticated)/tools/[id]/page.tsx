@@ -2,16 +2,19 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import Heading from '@/components/dashboard/details/heading';
-import Detail from '@/components/dashboard/details/detail';
+import Title from '@/shared/components/dashboard/title';
+import Heading from '@/shared/components/dashboard/heading';
+import Detail from '@/shared/components/dashboard/detail';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
-import * as Actions from '@/components/dashboard/actions';
-import { getToolDimensions, getToolStock } from '@/utils/details/tool';
-import { get } from '@/actions/get';
+import * as Actions from '@/shared/components/dashboard/product-actions';
+import {
+  getToolDimensions,
+  getToolStock,
+} from '@/features/tools/utils/details';
+import { get } from '@/shared/api/get';
 import toolsImg from '@/assets/images/tools.png';
-import { Tool } from '@/models/tool';
+import { Tool } from '@/features/tools/models/tool';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('tools-page.titles');

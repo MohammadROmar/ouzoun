@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-import AddProductButton from '@/components/dashboard/add-product-btn';
-import ImplantCard from '@/components/dashboard/cards/implant';
-import NoContent from '@/components/no-content';
-import { get } from '@/actions/get';
-import { Implant } from '@/models/implant';
+import AddProductButton from '@/shared/components/dashboard/add-product-btn';
+import ImplantCard from '@/features/implants/components/card';
+import NoContent from '@/shared/components/no-content';
+import { get } from '@/shared/api/get';
+import { Implant } from '@/features/implants/models/implant';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('implants-page.titles');

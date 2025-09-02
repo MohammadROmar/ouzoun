@@ -4,10 +4,10 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import type { PropsWithChildren } from 'react';
 
-import RefreshTokens from '@/components/refresh-tokens';
-import SidebarContextProvider from '@/store/sidebar';
-import Header from '@/components/shared/header';
-import Sidebar from '@/components/shared/sidebar';
+import RefreshTokens from '@/features/auth/components/refresh-tokens';
+import SidebarContextProvider from '@/shared/store/sidebar';
+import Header from '@/shared/components/header';
+import Sidebar from '@/shared/components/sidebar';
 import { LocaleParams } from '@/i18n/routing';
 
 export async function generateMetadata(): Promise<Metadata> {

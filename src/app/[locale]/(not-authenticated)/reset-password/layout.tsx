@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import type { PropsWithChildren } from 'react';
 
-import Logo from '@/components/shared/logo';
+import Logo from '@/shared/components/logo';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('reset-password-page');

@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import HolidayCalendar from '@/components/dashboard/holiday/calendar';
-import HolidayStatus from '@/components/dashboard/holiday/status';
-import { get } from '@/actions/get';
-import { Holiday } from '@/models/holiday';
+import Title from '@/shared/components/dashboard/title';
+import HolidayCalendar from '@/features/assistants/components/holidays/calender';
+import HolidayStatus from '@/features/assistants/components/holidays/status';
+import { get } from '@/shared/api/get';
+import { Holiday } from '@/features/assistants/models/holiday';
 
 type LeaveRequestPageProps = {
   params: Promise<{ locale: string; id: string }>;

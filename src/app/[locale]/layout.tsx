@@ -4,10 +4,10 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 
-import Providers from '@/components/providers';
-import Toasts from '@/components/toasts';
+import Providers from '@/shared/store/providers';
+import Toasts from '@/shared/components/toasts';
 import { routing, type LocaleParams } from '@/i18n/routing';
-import { fontVariables } from '@/data/fonts';
+import { fontVariables } from '@/core/config/fonts';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata.root');

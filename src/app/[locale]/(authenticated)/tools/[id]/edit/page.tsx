@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import ToolForm from '@/components/dashboard/forms/tool';
+import Title from '@/shared/components/dashboard/title';
+import ToolForm from '@/features/tools/components/form';
 
-import { toolToInputs } from '@/utils/tool-to-input';
-import { Tool } from '@/models/tool';
-import { get } from '@/actions/get';
+import { toolToInputs } from '@/features/tools/utils/tool-to-input';
+import { Tool } from '@/features/tools/models/tool';
+import { get } from '@/shared/api/get';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('tools-page.titles');

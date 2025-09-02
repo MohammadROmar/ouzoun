@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-import AddProductButton from '@/components/dashboard/add-product-btn';
-import KitCard from '@/components/dashboard/cards/kit';
-import NoContent from '@/components/no-content';
-import { get } from '@/actions/get';
-import { Kit } from '@/models/kit';
+import AddProductButton from '@/shared/components/dashboard/add-product-btn';
+import KitCard from '@/features/kits/components/card';
+import NoContent from '@/shared/components/no-content';
+import { get } from '@/shared/api/get';
+import { Kit } from '@/features/kits/models/kit';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('kits-page.titles');

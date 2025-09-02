@@ -1,10 +1,10 @@
 import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import ProcedureCard from '@/components/dashboard/cards/procedure-card';
-import NoContent from '@/components/no-content';
-import { Procedure } from '@/models/procedure';
+import Title from '@/shared/components/dashboard/title';
+import ProcedureCard from '@/features/assistants/components/assign/procedure-card';
+import NoContent from '@/shared/components/no-content';
+import { Procedure } from '@/features/assistants/models/procedure';
 
 export default async function AssignAssistantsPage() {
   const t = await getTranslations('assistants-page.assign');

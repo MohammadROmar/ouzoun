@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import Title from '@/components/dashboard/title';
-import RegisterAssistantForm from '@/components/dashboard/forms/register-assistant';
+import Title from '@/shared/components/dashboard/title';
+import RegisterAssistantForm from '@/features/assistants/components/register';
 
 export default async function RegisterAssistantsPage() {
   const t = await getTranslations('assistants-page.register');

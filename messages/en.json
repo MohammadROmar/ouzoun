@@ -253,7 +253,6 @@
       "title": "Assign Assistant to Operation",
       "description": "Assign an assistant to a surgical procedure.",
       "dr": "Dr.",
-      "assistants": "Assistants",
       "clinic": "Clinic",
       "date": "Date",
       "procedure-details": {
@@ -279,7 +278,7 @@
           "required": "Required assistants",
           "chosen": "Chosen assistants",
           "invalid": "Please choose assistants correctly",
-          "max": "You can chose up to {value}"
+          "max": "You can chose up to {value} assistants"
         },
         "info": {
           "title": "Procedure Info",
