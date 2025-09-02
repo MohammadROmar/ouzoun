@@ -36,7 +36,9 @@ async function ProcedureCard({ procedure, t }: ProcedureCardProps) {
           </p>
         </div>
 
-        <p>{t(getProcedureStatus(status))}</p>
+        <p>
+          {t(`procedure-details.info.status.${getProcedureStatus(status)}`)}
+        </p>
 
         <Icon className="modal-icon text-green top-1/6 h-3/4 translate-x-6 -rotate-12 opacity-50 rtl:-translate-x-6" />
       </Link>

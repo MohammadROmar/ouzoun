@@ -42,6 +42,7 @@ export default async function ToolDetailsPage({ params }: Props) {
           t={t}
           title={tool.name}
           kitId={tool.kitId}
+          fallbackImage={toolsImg}
           imagePath={tool.imagePath ? tool.imagePath : toolsImg}
         />
 

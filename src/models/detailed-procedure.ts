@@ -1,4 +1,4 @@
-import { Doctor } from './doctor';
+import { User } from './user';
 import { Kit } from './kit';
 import { Tool } from './tool';
 import { Implant } from './implant';
@@ -10,12 +10,12 @@ export interface DetailedProcedure {
   numberOfAsisstants: number;
   status: number;
   date: string;
-  doctor: Doctor;
+  doctor: User;
   surgicalKits: Kit[];
   requiredTools: Tool[];
   implantKits: {
     implant: Implant;
     toolsWithImplant: Tool[];
   }[];
-  assistants: Doctor[];
+  assistants: User[];
 }

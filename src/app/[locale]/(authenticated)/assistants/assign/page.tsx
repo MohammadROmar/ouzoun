@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 
 import Title from '@/components/dashboard/title';
 import ProcedureCard from '@/components/dashboard/cards/procedure-card';
+import NoContent from '@/components/no-content';
 import { Procedure } from '@/models/procedure';
 
 export default async function AssignAssistantsPage() {
@@ -28,11 +29,15 @@ export default async function AssignAssistantsPage() {
       <Title title={t('title')} />
 
       <section className="mt-4">
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {procedures.map((procedure) => (
-            <ProcedureCard key={procedure.id} procedure={procedure} t={t} />
-          ))}
-        </ul>
+        {procedures.length > 0 ? (
+          <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {procedures.map((procedure) => (
+              <ProcedureCard key={procedure.id} procedure={procedure} t={t} />
+            ))}
+          </ul>
+        ) : (
+          <NoContent />
+        )}
       </section>
     </>
   );

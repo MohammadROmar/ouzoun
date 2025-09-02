@@ -29,12 +29,11 @@ function DeleteToolModal({ id, open, close }: DeleteToolModalProps) {
       description={t('modal.delete.description')}
       titleStyles="text-danger"
       onClose={close}
+      icon={<WarningIcon className="text-danger modal-icon" />}
     >
       <form action={formAction}>
         <ModalActions close={close} />
       </form>
-
-      <WarningIcon className="text-danger modal-icon" />
 
       <FormErrors message={state.message} />
     </Modal>

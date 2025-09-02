@@ -1,4 +1,4 @@
-import { Doctor } from './doctor';
+import { User } from './user';
 import { Kit } from './kit';
 import { Tool } from './tool';
 
@@ -10,8 +10,8 @@ export interface Procedure {
   categoryId: number;
   status: number;
   date: string;
-  doctor: Doctor;
+  doctor: User;
   tools: Tool[];
   kits: Kit[];
-  assistants: Doctor[];
+  assistants: User[];
 }

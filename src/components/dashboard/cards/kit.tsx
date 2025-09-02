@@ -2,10 +2,13 @@ import { Link } from '@/i18n/navigation';
 import FallbackImage from '@/components/ui/fallback-image';
 import kitImg from '@/assets/images/kit.png';
 import { Kit } from '@/models/kit';
+import { useTranslations } from 'next-intl';
 
-type KitCardProps = { kit: Kit; t: (key: string) => string };
+type KitCardProps = { kit: Kit };
 
-export default function KitCard({ kit, t }: KitCardProps) {
+export default function KitCard({ kit }: KitCardProps) {
+  const t = useTranslations('kits-page');
+
   return (
     <li
       key={kit.name}

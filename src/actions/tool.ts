@@ -47,28 +47,8 @@ export async function toolAction(
     const endpoint = `${process.env.BASE_URL}/api/tools`;
     const response = await fetch(endpoint, {
       method: prevState.action === 'CREATE' ? 'POST' : 'PATCH',
-      headers:
-        prevState.action === 'CREATE'
-          ? {
-              Authorization: `Bearer ${accessToken}`,
-            }
-          : {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${accessToken}`,
-            },
-      body:
-        prevState.action === 'CREATE'
-          ? formData
-          : JSON.stringify({
-              id: prevState.id,
-              name: data.name,
-              width: data.width,
-              height: data.height,
-              thickness: data.thickness,
-              quantity: data.quantity,
-              kitId: data.kitId,
-              categoryId: data.categoryId,
-            }),
+      headers: { Authorization: `Bearer ${accessToken}` },
+      body: formData,
     });
 
     if (!response.ok) {

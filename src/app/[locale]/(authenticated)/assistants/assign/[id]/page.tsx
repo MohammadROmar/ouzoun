@@ -1,8 +1,11 @@
 import { getTranslations } from 'next-intl/server';
 
-import KitIcon from '@/assets/icons/kit';
 import ProcedureInfo from '@/components/dashboard/details/procedure/info';
 import Title from '@/components/dashboard/title';
+import ProcedureAssistants from '@/components/dashboard/details/procedure/assistants';
+import RequiredTools from '@/components/dashboard/details/procedure/required-tools';
+import ImplantKits from '@/components/dashboard/details/procedure/implant-kits';
+import SurgicalKits from '@/components/dashboard/details/procedure/surgical-kits';
 import { get } from '@/actions/get';
 import { DetailedProcedure } from '@/models/detailed-procedure';
 
@@ -13,22 +16,23 @@ type ProcedureDetailsPageProps = {
 async function ProcedureDetailsPage({ params }: ProcedureDetailsPageProps) {
   const { id } = await params;
 
-  const t = await getTranslations('assistants-page.assign');
+  const t = await getTranslations('assistants-page.assign.procedure-details');
 
   const procedure = (await get(`/api/procedures/${id}`)) as DetailedProcedure;
 
   return (
     <>
-      <Title title={t('procedure-details.title')} />
+      <Title title={t('title')} />
 
-      <ProcedureInfo procedure={procedure} t={t} />
-
-      <section className="mt-4">
-        <div className="text-green border-b-gray/50 flex items-center gap-4 border-b">
-          <KitIcon className="size-8" />
-          <h2 className="ltr:font-ubuntu text-3xl">{procedure.categoryId}</h2>
-        </div>
-      </section>
+      <ProcedureInfo procedure={procedure} />
+      <ProcedureAssistants
+        assistants={procedure.assistants}
+        numberOfAsisstants={procedure.numberOfAsisstants}
+        t={t}
+      />
+      <RequiredTools tools={procedure.requiredTools} t={t} />
+      <ImplantKits implantKits={procedure.implantKits} t={t} />
+      <SurgicalKits kits={procedure.surgicalKits} t={t} />
     </>
   );
 }

@@ -39,12 +39,15 @@ export default function RefreshTokens() {
   }, []);
 
   return (
-    <Modal ref={dialogRef} title={t('title')} description={t('subtitle')}>
+    <Modal
+      ref={dialogRef}
+      title={t('title')}
+      description={t('subtitle')}
+      icon={<WarningIcon className="text-warning modal-icon" />}
+    >
       <form action={logoutAction}>
         <ModalAction t={t} />
       </form>
-
-      <WarningIcon className="text-warning modal-icon" />
     </Modal>
   );
 }

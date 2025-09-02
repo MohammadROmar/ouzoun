@@ -32,8 +32,6 @@ async function ImplantDetailsPage({ params }: Props) {
 
   const t = await getTranslations('implants-page');
 
-  console.log(Actions);
-
   return (
     <article className="flex flex-col justify-between gap-4 max-md:min-h-[calc(100vh_-_5.5rem)]">
       <div className="space-y-4">
@@ -45,6 +43,7 @@ async function ImplantDetailsPage({ params }: Props) {
           t={t}
           title={implant.brand}
           kitId={implant.kitId}
+          fallbackImage={implantImg}
           imagePath={implant.imagePath ? implant.imagePath : implantImg}
         />
 

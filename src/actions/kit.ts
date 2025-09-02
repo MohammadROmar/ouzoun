@@ -49,9 +49,7 @@ export async function kitAction(
 
     const response = await fetch(`${process.env.BASE_URL}/api/kits`, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+      headers: { Authorization: `Bearer ${accessToken}` },
       body: requestFD,
     });
 
@@ -90,8 +88,6 @@ export async function deleteKitAction(
   const accessToken = (await cookies()).get('access-token')?.value;
 
   try {
-    console.log(`${process.env.BASE_URL}/api/kits/${prevState.id}`);
-
     const response = await fetch(
       `${process.env.BASE_URL}/api/kits/${prevState.id}`,
       {
@@ -102,8 +98,6 @@ export async function deleteKitAction(
         },
       },
     );
-
-    console.log(response);
 
     if (!response.ok) {
       return { message: 'failed-to-delete', id: prevState.id };

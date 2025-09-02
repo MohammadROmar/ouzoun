@@ -10,16 +10,24 @@ type HeadingProps = {
   kitId?: number;
   item: 'kits' | 'tools' | 'implants';
   id: string;
+  fallbackImage: StaticImageData;
   imagePath: string | StaticImageData;
 };
 
-function Heading({ item, id, title, kitId, imagePath }: HeadingProps) {
+function Heading({
+  item,
+  id,
+  title,
+  kitId,
+  imagePath,
+  fallbackImage,
+}: HeadingProps) {
   return (
     <section className="flex gap-4 max-sm:flex-col md:max-lg:flex-col md:max-lg:items-center">
       <div className="bg-green relative aspect-square w-full max-w-3xs overflow-hidden rounded-lg selection:bg-transparent max-sm:m-auto sm:w-1/3 md:w-1/6 md:max-lg:w-1/3">
         <FallbackImage
           src={imagePath}
-          fallbackSrc={imagePath}
+          fallbackSrc={fallbackImage}
           alt=""
           aria-labelledby="details-title"
           fill

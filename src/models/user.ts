@@ -1,6 +1,6 @@
 import { Clinic } from './clinic';
 
-export interface Doctor {
+export interface User {
   id: string;
   userName: string;
   email: string;
@@ -8,4 +8,5 @@ export interface Doctor {
   role: string;
   clinic: Clinic | null;
   rate: number;
+  profileImagePath: string | null;
 }

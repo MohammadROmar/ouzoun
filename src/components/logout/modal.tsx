@@ -22,12 +22,11 @@ function LogoutModal({ open, close }: LogoutModalProps) {
       description={t('logout.description')}
       titleStyles="text-danger"
       onClose={close}
+      icon={<WarningIcon className="text-danger modal-icon" />}
     >
       <form action={logoutAction}>
         <ModalActions close={close} />
       </form>
-
-      <WarningIcon className="text-danger modal-icon" />
     </Modal>
   );
 }
