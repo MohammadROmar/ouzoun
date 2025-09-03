@@ -1,9 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { getLocale } from 'next-intl/server';
 
 import {
   isInvalidNumber,
@@ -84,6 +82,9 @@ export async function changeHolidayStatusAction(
   revalidatePath('/en/assistants/holidays');
   revalidatePath('/ar/assistants/holidays');
 
-  const locale = await getLocale();
-  redirect(`/${locale}/assistants/holidays`);
+  return {
+    message: 'success',
+    defaultValues: prevState.defaultValues,
+    id: prevState.id,
+  };
 }

@@ -6,7 +6,7 @@ function CapabilityCard({ capability }: CapabilityCardProps) {
   const { icon: Icon, title, body } = capability;
 
   return (
-    <li className="bg-green-light flex-1 space-y-2 rounded-xl p-4">
+    <li className="stripes bg-green-light flex-1 space-y-2 rounded-xl p-4 transition-transform duration-500 hover:scale-95">
       <Icon className="text-green size-12" />
       <h4 className="text-green ltr:font-ubuntu text-lg font-medium">
         {title}

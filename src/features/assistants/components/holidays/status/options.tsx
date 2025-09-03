@@ -17,7 +17,6 @@ const StatusOptions = memo(function StatusOptions({
   const { theme } = useTheme();
 
   const options = [
-    { label: t(getHolidayStatus(1)), value: '1' },
     { label: t(getHolidayStatus(2)), value: '2' },
     { label: t(getHolidayStatus(3)), value: '3' },
   ];

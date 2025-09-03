@@ -18,7 +18,7 @@ function NavLink({ label, to, children }: NavLinkProps) {
   return (
     <li
       className={clsx(
-        'group rounded-xl transition-colors',
+        'group rounded-xl transition-colors duration-500',
         isActive
           ? 'bg-green text-white'
           : 'hover:bg-green-light hover:text-[#222]',
@@ -26,7 +26,7 @@ function NavLink({ label, to, children }: NavLinkProps) {
     >
       <Link
         href={to}
-        className="flex items-center gap-4 p-2 transition-transform group-hover:scale-95"
+        className="flex items-center gap-4 p-2 transition-transform duration-500 group-hover:scale-95"
         onNavigate={isOpen ? () => setIsOpen(false) : undefined}
       >
         {children && <span>{children}</span>}

@@ -37,14 +37,10 @@ function RegisterAssistantForm() {
             id="userName"
             label={t('user-name')}
             type="text"
-            required
+            // required
             autoComplete="off"
             defaultValue={defaultValues?.userName}
-            error={
-              errors?.userName
-                ? t('error', { field: t('user-name') })
-                : undefined
-            }
+            error={errors?.userName ? t('user-name-error') : undefined}
           />
           <Input
             id="email"

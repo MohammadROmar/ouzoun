@@ -15,10 +15,10 @@ export default function LogoutButton() {
       <LogoutModal open={open} close={() => setOpen(false)} />
 
       <div className="flex size-full flex-col justify-end">
-        <div className="group h-fit w-full rounded-xl text-red-400 transition-colors hover:bg-red-400 hover:text-white">
+        <div className="group h-fit w-full rounded-xl text-red-400 transition-colors duration-500 hover:bg-red-400 hover:text-white">
           <button
             onClick={() => setOpen(true)}
-            className="flex w-full cursor-pointer items-center gap-4 p-2 transition-transform group-hover:scale-95"
+            className="flex w-full cursor-pointer items-center gap-4 p-2 transition-transform duration-500 group-hover:scale-95"
           >
             <span>
               <LogoutIcon className="size-7 md:size-5" />

@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 
-export async function get(path: string) {
+export async function get(path: string, options: RequestInit = {}) {
   try {
     const accessToken = (await cookies()).get('access-token')?.value;
 
@@ -10,6 +10,7 @@ export async function get(path: string) {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
+      ...options,
     });
 
     if (response.status === 404) {

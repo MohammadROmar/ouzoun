@@ -7,7 +7,9 @@ import { get } from '@/shared/api/get';
 import { Holiday } from '@/features/assistants/models/holiday';
 
 export default async function AssistantsLeaveRequestsPage() {
-  const holidays = (await get('/api/holidays')) as Holiday[];
+  const holidays = (await get('/api/holidays', {
+    cache: 'no-store',
+  })) as Holiday[];
 
   const t = await getTranslations('assistants-page.holidays');
 

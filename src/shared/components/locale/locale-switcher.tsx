@@ -36,7 +36,7 @@ function LocaleSwitcher({ direction = 'bottom' }: LocaleSwitcherProps) {
           aria-label={t('language')}
           aria-controls="languages-list"
           aria-expanded={isOpen}
-          className="flex cursor-pointer items-center justify-center"
+          className="flex cursor-pointer items-center justify-center transition-opacity duration-500 hover:opacity-75"
         >
           <GlobeIcon className="size-7 md:size-5" />
         </button>

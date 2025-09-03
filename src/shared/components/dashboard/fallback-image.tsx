@@ -21,6 +21,7 @@ function FallbackImage({
       src={imageSrc}
       alt={alt}
       onError={() => setImageSrc(fallbackSrc)}
+      unoptimized
     />
   );
 }

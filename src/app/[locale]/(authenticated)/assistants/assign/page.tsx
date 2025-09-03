@@ -19,6 +19,7 @@ export default async function AssignAssistantsPage() {
         Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify([]),
+      cache: 'no-store',
     },
   );
 

@@ -237,6 +237,15 @@
     "register-action": "Register",
     "assign-action": "Assign to Operation",
     "holidays-action": "Holidays",
+    "all": {
+      "title": "All Assistants",
+      "description": "View and manage all registered assistants.",
+      "email": "E-mail",
+      "phone-number": "Phone Number",
+      "send-email": "Send mail",
+      "call": "Call",
+      "delete": "Delete"
+    },
     "register": {
       "title": "Register Assistant",
       "description": "Add a new assistant.",
@@ -247,6 +256,7 @@
       "action": "Register",
       "reset": "Reset",
       "error": "Please enter a valid {field}",
+      "user-name-error": "User name must only contain letters, numbers or underscore",
       "success": "Assistant Registered Successfully"
     },
     "assign": {
@@ -309,6 +319,7 @@
     "holidays": {
       "title": "Assistants' Holidays",
       "description": "Manage and review assistants' Holidays.",
+      "success": "Updated status successfully",
       "status": {
         "pending": "Pending",
         "accepted": "Accepted",
@@ -389,7 +400,8 @@
       "assign": "Assign",
       "holidays": "Holidays",
       "new": "New",
-      "edit": "Edit"
+      "edit": "Edit",
+      "all": "All Assistants"
     }
   },
   "footer": {

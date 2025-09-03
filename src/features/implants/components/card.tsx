@@ -1,10 +1,11 @@
-import { getTranslations } from 'next-intl/server';
 import clsx from 'clsx';
 
 import { Link } from '@/i18n/navigation';
 import FallbackImage from '@/shared/components/dashboard/fallback-image';
+import { getCardData } from '../utils/get-card-data';
 import implantImg from '@/assets/images/implant.png';
 import { Implant } from '../models/implant';
+import { getTranslations } from 'next-intl/server';
 
 type ImplantCardProps = { implant: Implant; className?: string };
 
@@ -12,54 +13,44 @@ async function ImplantCard({ implant, className }: ImplantCardProps) {
   const t = await getTranslations('implants-page');
 
   return (
-    <li
-      className={clsx(
-        'bg-bg-primary card-shadow grid w-full grid-rows-[auto_1fr_auto] space-y-2 rounded-xl p-2',
-        className,
-      )}
-    >
-      <div className="flex basis-0 gap-2">
-        <div className="bg-green relative aspect-square w-1/4 overflow-hidden rounded-lg">
+    <li>
+      <Link
+        href={`/implants/${implant.id}`}
+        className={clsx(
+          'card-shadow bg-bg-primary border-gray/25 flex flex-col space-y-2 rounded-xl border p-2 md:p-3',
+          className,
+        )}
+      >
+        <div className="bg-green relative h-32 w-full overflow-hidden rounded-xl">
           <FallbackImage
             src={implant.imagePath ? implant.imagePath : implantImg}
             fallbackSrc={implantImg}
             alt=""
             fill
             sizes="250px"
-            aria-labelledby="implant-brand"
+            className="absolute w-fit object-contain object-center"
           />
         </div>
 
-        <div className="flex flex-col justify-between">
-          <h2 id="implant-brand" className="ltr:font-ubuntu text-lg">
-            {implant.brand}
-          </h2>
+        <h2 className="ltr:font-ubuntu text-2xl">{implant.brand}</h2>
+        <p className="text-gray border-b-gray/25 line-clamp-1 border-b pb-1">
+          {implant.description}
+        </p>
 
-          <ul className="flex gap-3">
-            <li>
-              <p className="flex flex-col">
-                <span className="text-sm opacity-75">{t('item.quantity')}</span>
-                <span>{implant.quantity}</span>
-              </p>
+        <ul className="text-gray flex gap-3">
+          {getCardData(implant).map(({ icon: Icon, label, value }, i) => (
+            <li key={`${value}-${i}`} className="flex items-center gap-1">
+              <span>
+                <Icon
+                  className="size-5"
+                  aria-hidden={false}
+                  aria-label={t(label)}
+                />
+              </span>
+              <p className="text-sm">{value}</p>
             </li>
-            <li>
-              <p className="flex flex-col">
-                <span className="text-sm opacity-75">{t('item.radius')}</span>
-                <span>{implant.radius}</span>
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <p className="line-clamp-2 text-sm opacity-75">{implant.description}</p>
-
-      <Link
-        href={`/implants/${implant.id}`}
-        prefetch={false}
-        className="button flex w-full justify-center"
-      >
-        {t('actions.card')}
+          ))}
+        </ul>
       </Link>
     </li>
   );

@@ -1,20 +1,10 @@
 'use server';
 
 import { cookies } from 'next/headers';
+import { revalidatePath } from 'next/cache';
 
-import {
-  isInvalidText,
-  isValidEmail,
-  isValidPassword,
-} from '@/shared/utils/validation';
-
-type RegisterAssistantInputs = {
-  userName: string;
-  email: string;
-  password: string;
-  phoneNumber: string;
-  profilePicture: File;
-};
+import { getAssistantInputsErrors } from '../utils/register-assistant-action-errors';
+import type { RegisterAssistantInputs } from '../models/register-assistant-inputs';
 
 export type RegisterAssistantActionState = {
   message: string | undefined;
@@ -68,18 +58,8 @@ export async function registerAssistantAction(
     };
   }
 
+  revalidatePath('/en/assistants/all');
+  revalidatePath('/ar/assistants/all');
+
   return { message: 'success', defaultValues: data };
-}
-
-function getAssistantInputsErrors(data: RegisterAssistantInputs) {
-  const errors: { [K in keyof RegisterAssistantInputs]?: boolean } = {
-    userName: isInvalidText(data.userName),
-    email: !isValidEmail(data.email),
-    password: !isValidPassword(data.password),
-    phoneNumber: isInvalidText(data.phoneNumber)
-      ? false
-      : !/^09[0-9]{8}$/.test(data.phoneNumber),
-  };
-
-  return errors;
 }

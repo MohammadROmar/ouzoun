@@ -1,4 +1,5 @@
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { useDialog } from '@/shared/hooks/use-dialog';
 import Modal from '@/shared/components/modal';
@@ -8,6 +9,8 @@ import ChangeStatusActions from './change-actions';
 import FormErrors from '../../../../../shared/components/dashboard/errors';
 import { changeHolidayStatusAction } from '@/features/assistants/api/change-holiday-status';
 import { Holiday } from '@/features/assistants/models/holiday';
+import { useLocale } from 'next-intl';
+import { redirect } from 'next/navigation';
 
 export type ModalProps = { close: () => void; t: (key: string) => string };
 
@@ -23,7 +26,15 @@ function ChangeStatus({ holiday, open, close, t }: ChangeStatusProps) {
     },
   );
 
+  const locale = useLocale();
   const dialogRef = useDialog(open);
+
+  useEffect(() => {
+    if (state.message === 'success') {
+      toast.success(t('success'));
+      redirect(`/${locale}/assistants/holidays`);
+    }
+  }, [state.message, locale, t]);
 
   return (
     <Modal ref={dialogRef} title={t('holiday.modal.title')} onClose={close}>

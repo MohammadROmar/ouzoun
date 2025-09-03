@@ -13,7 +13,7 @@ function AssistantActionCard({
     <li key={title}>
       <Link
         href={to}
-        className="bg-green-light flex h-full flex-col gap-2 rounded-xl p-4"
+        className="bg-green-light stripes flex h-full flex-col gap-2 rounded-xl p-4 transition-transform duration-500 hover:scale-95"
       >
         <span aria-hidden>{<Icon className="text-green size-12" />}</span>
         <h2 className="text-green ltr:font-ubuntu text-lg font-medium">

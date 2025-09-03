@@ -32,7 +32,7 @@ export default function ThemeToggle() {
       aria-label={t(isDark ? 'theme.light' : 'theme.dark')}
       title={t(isDark ? 'theme.light' : 'theme.dark')}
       className={clsx(
-        'flex cursor-pointer items-center justify-center transition-transform duration-300',
+        'flex cursor-pointer items-center justify-center transition-all duration-500 hover:opacity-75',
         isDark ? 'rotate-180' : 'rotate-90',
       )}
     >
