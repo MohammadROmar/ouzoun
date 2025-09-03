@@ -1,15 +1,15 @@
 import { useActionState, useEffect, useState } from 'react';
-import { useFormStatus } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import OTPInput from 'react-otp-input';
 
-import LoadingSpinner from '@/assets/icons/loading-spinner';
+import ResetPasswordAction from './action';
+import FormErrors from '@/shared/components/dashboard/errors';
 import { verifyEmailAction } from '../../api/verify-email';
 
 type VerifyEmailProps = { changeStep(step: number): void };
 
 export default function VerifyEmail({ changeStep }: VerifyEmailProps) {
-  const [state, formAction] = useActionState(verifyEmailAction, {
+  const [{ message }, formAction, pending] = useActionState(verifyEmailAction, {
     message: undefined,
   });
 
@@ -22,10 +22,10 @@ export default function VerifyEmail({ changeStep }: VerifyEmailProps) {
   }
 
   useEffect(() => {
-    if (state.message === 'success') {
+    if (message === 'success') {
       changeStep(2);
     }
-  }, [state.message, changeStep]);
+  }, [message, changeStep]);
 
   return (
     <form aria-live="polite" action={formAction}>
@@ -33,32 +33,29 @@ export default function VerifyEmail({ changeStep }: VerifyEmailProps) {
       <OTPInput
         value={otp}
         onChange={handleOTPChange}
-        numInputs={4}
+        numInputs={6}
         inputType="number"
         renderInput={(props, i) => (
           <input id={`otp-${i}`} name={`otp-${i}`} {...props} />
         )}
         containerStyle="justify-center flex gap-4 rtl:flex-row-reverse"
-        inputStyle="border-gray no-spinner focus:border-green mt-2 !size-14 rounded-md border-2 text-xl outline-none focus:border-2"
+        inputStyle="border-gray no-spinner focus:border-green mt-2 aspect-square !w-full max-w-14 rounded-md border-2 text-xl outline-none focus:border-2"
       />
 
-      <SubmitButton label={t('next')} disabled={otp.length !== 4} />
-    </form>
-  );
-}
-
-type SubmitButtonProps = { label: string; disabled: boolean };
-
-function SubmitButton({ label, disabled }: SubmitButtonProps) {
-  const { pending } = useFormStatus();
-
-  return (
-    <button disabled={disabled || pending} className="button mt-6 w-full">
-      {pending ? (
-        <LoadingSpinner className="flex size-6 w-full animate-spin items-center" />
-      ) : (
-        label
+      {message === 'invalid-input' && (
+        <p className="error-text">{t('error', { field: t('step1.label') })}</p>
       )}
-    </button>
+
+      <ResetPasswordAction
+        label={t('next')}
+        disabled={otp.length !== 6 || pending}
+      />
+
+      {message === 'failed-to-submit' ? (
+        <p className="error-text">{t('error', { field: t('step1.label') })}</p>
+      ) : (
+        <FormErrors message={message} />
+      )}
+    </form>
   );
 }

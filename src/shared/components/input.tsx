@@ -57,11 +57,7 @@ function Input({
       {element}
 
       {error && (
-        <p
-          id={`error-${id}`}
-          className="mt-1 text-sm text-red-400"
-          aria-live="polite"
-        >
+        <p id={`error-${id}`} className="error-text" aria-live="polite">
           {error}
         </p>
       )}

@@ -51,7 +51,7 @@ function KitSelector({
       />
 
       {error && (
-        <p className="mt-1 text-sm text-red-400" aria-live="polite">
+        <p className="error-text" aria-live="polite">
           {error}
         </p>
       )}

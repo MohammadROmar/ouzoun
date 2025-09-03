@@ -56,9 +56,7 @@ const StatusOptions = memo(function StatusOptions({
         />
 
         {errors?.status && (
-          <p className="mt-1 text-sm text-red-400">
-            {t('info.status.invalid')}
-          </p>
+          <p className="error-text">{t('info.status.invalid')}</p>
         )}
       </div>
 

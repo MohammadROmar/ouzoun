@@ -59,9 +59,7 @@ function AssistantsSelector({
         {t('assistants.max', { value: maxAssistants })}
       </p>
 
-      {hasError && (
-        <p className="mt-1 text-sm text-red-400">{t('assistants.invalid')}</p>
-      )}
+      {hasError && <p className="error-text">{t('assistants.invalid')}</p>}
     </div>
   );
 }

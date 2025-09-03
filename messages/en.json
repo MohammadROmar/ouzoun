@@ -78,13 +78,20 @@
       "email": "Please enter a valid E-mail.",
       "password": "Please enter a valid Password.",
       "not-admin": "Only administrators can sign in.",
-      "wrong-creds": "PLease check your E-mail and Password and try again.",
+      "wrong-creds": "Please check your E-mail and Password and try again.",
       "unknown": "Unknow error has occured. Please try again later."
     },
     "forgot-password": "Forgot password?"
   },
   "reset-password-page": {
     "title": "Reset Password",
+    "back-to-sign-in": "Back to Sign in",
+    "next": "Next",
+    "change-password": "Change Password",
+    "error": "Please check your {field} or try again later",
+    "passwords": "passwords",
+    "try-again": "Something went wrong while changing password. Please try again from the begining",
+    "server-connection": "Failed to connect to the server. Please check your internet connection or try again later.",
     "steps": {
       "0": "Enter E-mail",
       "1": "Verify E-mail",
@@ -110,10 +117,7 @@
       "title": "Password Changed",
       "subtitle": "Your password has been changed successfully",
       "sign-in": "Now you can Sign in with the new password."
-    },
-    "back-to-sign-in": "Back to Sign in",
-    "next": "Next",
-    "change-password": "Change Password"
+    }
   },
   "dashboard-page": {
     "title": "Dashboard",
@@ -235,7 +239,7 @@
   "assistants-page": {
     "title": "Assistants",
     "register-action": "Register",
-    "assign-action": "Assign to Operation",
+    "assign-action": "Assign to Procedure",
     "holidays-action": "Holidays",
     "all": {
       "title": "All Assistants",
@@ -354,7 +358,7 @@
   "error-page": {
     "title": "Something Went Wrong!",
     "subtitle": "Unfortunately, we encountered a problem while loading the page or processing your request.",
-    "server-connection": "Failed to connect to the server. PLease check your internet conntection or try again later.",
+    "server-connection": "Failed to connect to the server. Please check your internet connection or try again later.",
     "unknow-error": "An unexpected error occured. Please try again.",
     "try-again": "Try Again",
     "back-home": "Back to Home"
@@ -369,7 +373,7 @@
     "failed-to-create": "Failed to create.\nPlease try again later.",
     "failed-to-delete": "Failed to delete.\nPlease try again later.",
     "failed-to-register": "Failed to register new assistant.\nPlease try again later.",
-    "server-connection": "Failed to connect to the server.\nPLease check your internet conntection or try again later.",
+    "server-connection": "Failed to connect to the server.\nPLease check your internet connection or try again later.",
     "unknown": "Unknow error has occured. Please try again later."
   },
   "dnd-image": {

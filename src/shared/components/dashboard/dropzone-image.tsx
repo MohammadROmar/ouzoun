@@ -74,7 +74,7 @@ function DropzoneImage({
 
       {hasError ||
         (error && (
-          <p aria-live="polite" className="mt-1 text-sm text-red-400">
+          <p aria-live="polite" className="error-text">
             {hasError ? t('error') : t(`error-${error}`)}
           </p>
         ))}

@@ -41,9 +41,7 @@ const StatusOptions = memo(function StatusOptions({
       />
 
       {state.errors?.status && (
-        <p className="mt-1 text-sm text-red-400">
-          {t('holiday.invalid-status')}
-        </p>
+        <p className="error-text">{t('holiday.invalid-status')}</p>
       )}
     </>
   );

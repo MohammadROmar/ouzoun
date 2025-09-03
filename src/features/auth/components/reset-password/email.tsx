@@ -1,15 +1,15 @@
 import { useActionState, useEffect } from 'react';
-import { useFormStatus } from 'react-dom';
 import { useTranslations } from 'next-intl';
 
 import Input from '@/shared/components/input';
-import LoadingSpinner from '@/assets/icons/loading-spinner';
+import ResetPasswordAction from './action';
+import FormErrors from '@/shared/components/dashboard/errors';
 import { emailAction } from '../../api/email';
 
 type EmailProps = { changeStep(step: number): void };
 
 export default function Email({ changeStep }: EmailProps) {
-  const [state, formAction] = useActionState(emailAction, {
+  const [state, formAction, pending] = useActionState(emailAction, {
     message: undefined,
   });
 
@@ -31,24 +31,20 @@ export default function Email({ changeStep }: EmailProps) {
         placeholder="example@email.com"
         autoComplete="email"
         defaultValue={state.email}
-        error={state.message !== 'success' ? state?.message : undefined}
+        error={
+          state.message === 'invalid-input'
+            ? t('error', { field: t('step0.label') })
+            : undefined
+        }
       />
 
-      <SubmitButton text={t('next')} />
-    </form>
-  );
-}
+      <ResetPasswordAction label={t('next')} disabled={pending} />
 
-function SubmitButton({ text }: { text: string }) {
-  const { pending } = useFormStatus();
-
-  return (
-    <button disabled={pending} className="button mt-6 w-full">
-      {pending ? (
-        <LoadingSpinner className="flex size-6 w-full animate-spin items-center" />
+      {state.message === 'failed-to-submit' ? (
+        <p className="error-text">{t('error', { field: t('step1.label') })}</p>
       ) : (
-        text
+        <FormErrors message={state.message} />
       )}
-    </button>
+    </form>
   );
 }

@@ -11,6 +11,5 @@ export async function logoutAction() {
   cookieStore.delete('refresh-token');
 
   const locale = await getLocale();
-
   redirect(`/${locale}`);
 }

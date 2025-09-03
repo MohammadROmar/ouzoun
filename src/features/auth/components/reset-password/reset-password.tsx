@@ -2,12 +2,14 @@ import { useActionState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 
 import Input from '@/shared/components/input';
+import ResetPasswordErrors from './errors';
+import ResetPasswordAction from './action';
 import { resetPasswordAction } from '../../api/reset-password';
 
 type ResetPasswordProps = { changeStep(step: number): void };
 
 export default function ResetPassword({ changeStep }: ResetPasswordProps) {
-  const [state, formAction] = useActionState(resetPasswordAction, {
+  const [state, formAction, pending] = useActionState(resetPasswordAction, {
     message: undefined,
   });
 
@@ -42,13 +44,12 @@ export default function ResetPassword({ changeStep }: ResetPasswordProps) {
         />
       </div>
 
-      {state.message && state.message !== 'success' && (
-        <p className="mt-1 text-sm text-red-400">
-          Please enter a valid password
-        </p>
+      {state.message === 'invalid-input' && (
+        <p className="error-text">{t('error', { field: t('passwords') })}</p>
       )}
+      <ResetPasswordAction label={t('change-password')} disabled={pending} />
 
-      <button className="button mt-6 w-full">{t('change-password')}</button>
+      <ResetPasswordErrors message={state.message} t={t} />
     </form>
   );
 }
