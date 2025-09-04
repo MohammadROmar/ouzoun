@@ -1,5 +1,7 @@
 'use server';
 
+import { cookies } from 'next/headers';
+
 import { isInvalidNumber } from '@/shared/utils/validation';
 
 type VerifyEmailActionState = { message: string | undefined };
@@ -42,12 +44,14 @@ export async function verifyEmailAction(
       return { message: 'failed-to-submit' };
     }
 
-    // (await cookies()).set('reset-otp', code, {
-    //   httpOnly: true,
-    //   secure: true,
-    //   sameSite: 'strict',
-    //   path: '/',
-    // });
+    const data = await response.json();
+
+    (await cookies()).set('reset-otp-code', data.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: '/',
+    });
   } catch (e) {
     console.log(e);
 

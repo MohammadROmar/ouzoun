@@ -35,8 +35,6 @@ export async function registerAssistantAction(
     formData.append('latitude', '0');
     formData.append('longtitude', '0');
     formData.append('role', 'AssistantDoctor');
-    formData.append('address', '');
-    formData.append('clinicName', '');
 
     const accessToken = (await cookies()).get('access-token')?.value;
     const response = await fetch(`${process.env.BASE_URL}/api/users/register`, {

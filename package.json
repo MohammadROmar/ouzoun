@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "firebase": "^12.0.0",
+    "leaflet": "^1.9.4",
     "motion": "^12.23.0",
     "next": "15.3.2",
     "next-intl": "^4.1.0",
@@ -21,6 +22,7 @@
     "react-date-range": "^2.0.1",
     "react-dom": "^19.0.0",
     "react-dropzone": "^14.3.8",
+    "react-leaflet": "^5.0.0-rc.2",
     "react-otp-input": "^3.1.1",
     "react-select": "^5.10.1",
     "react-toastify": "^11.0.5"
@@ -28,9 +30,11 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/leaflet": "^1.9.20",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/react-leaflet": "^2.8.3",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "prettier": "^3.5.3",

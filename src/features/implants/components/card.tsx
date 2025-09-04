@@ -23,7 +23,7 @@ async function ImplantCard({ implant, className }: ImplantCardProps) {
       >
         <div className="bg-green relative h-32 w-full overflow-hidden rounded-xl">
           <FallbackImage
-            src={implant.imagePath ? implant.imagePath : implantImg}
+            src={`/api/images?imagePath=${implant.imagePath}`}
             fallbackSrc={implantImg}
             alt=""
             fill

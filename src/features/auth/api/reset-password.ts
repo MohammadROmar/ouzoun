@@ -23,11 +23,9 @@ export async function resetPasswordAction(
 
   try {
     const cookieStore = await cookies();
+    const token = cookieStore.get('reset-otp-code')?.value;
 
-    const email = cookieStore.get('reset-email')?.value;
-    // const otp = cookieStore.get('reset-otp')?.value;
-
-    if (!email) {
+    if (!token) {
       return { message: 'try-again', password, confirmPassword };
     }
 
@@ -37,7 +35,7 @@ export async function resetPasswordAction(
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
-          email,
+          token,
           newPassword: password,
           confirmNewPassword: confirmPassword,
         }),
@@ -47,6 +45,8 @@ export async function resetPasswordAction(
     if (!response.ok) {
       return { message: 'failed-to-submit', password, confirmPassword };
     }
+
+    cookieStore.delete('reset-otp-code');
   } catch (e) {
     console.log(e);
     return { message: 'server-connection', password, confirmPassword };

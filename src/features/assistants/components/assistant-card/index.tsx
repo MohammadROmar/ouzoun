@@ -18,11 +18,7 @@ async function AssistantCard({ assistant }: AssistantCardProps) {
     >
       <div className="bg-gray card-shadow absolute top-0 left-1/2 z-10 aspect-square h-[50%] -translate-x-1/2 overflow-hidden rounded-xl">
         <FallbackImage
-          src={
-            assistant.profileImagePath
-              ? assistant.profileImagePath
-              : assistantImg
-          }
+          src={`/api/images?imagePath=${assistant.profileImagePath}`}
           fallbackSrc={assistantImg}
           fill
           sizes="(min-width: 48rem) 50vw, (min-width: 64rem) 30vw, 90vw"

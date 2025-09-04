@@ -18,7 +18,7 @@ export default function KitCard({ kit }: KitCardProps) {
       <div className="flex gap-2">
         <div className="bg-green relative aspect-square w-1/4 overflow-hidden rounded-lg">
           <FallbackImage
-            src={kit.imagePath ? kit.imagePath : kitImg}
+            src={`/api/images?imagePath=${kit.imagePath}`}
             fallbackSrc={kitImg}
             alt=""
             fill

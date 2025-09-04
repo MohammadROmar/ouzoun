@@ -43,7 +43,7 @@ export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
         title={kit.name}
         t={t}
         fallbackImage={kitImg}
-        imagePath={kit.imagePath ? kit.imagePath : kitImg}
+        imagePath={`/api/images?imagePath=${kit.imagePath}`}
       />
 
       <DetailContainer title={t('item.main')} icon={MainIcon}>

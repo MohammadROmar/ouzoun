@@ -24,7 +24,7 @@ async function ToolCard({ tool, className }: ToolCardProps) {
       <div className="flex gap-2">
         <div className="bg-green relative aspect-square w-1/4 overflow-hidden rounded-lg">
           <FallbackImage
-            src={tool.imagePath ? tool.imagePath : toolsImg}
+            src={`/api/images?imagePath=${tool.imagePath}`}
             fallbackSrc={toolsImg}
             alt=""
             fill

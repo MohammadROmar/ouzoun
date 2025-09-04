@@ -1,7 +1,5 @@
 'use server';
 
-import { cookies } from 'next/headers';
-
 import { isValidEmail } from '@/shared/utils/validation';
 
 type EmailActionState = { message: string | undefined; email?: string };
@@ -31,13 +29,6 @@ export async function emailAction(
     if (!response.ok) {
       return { message: 'failed-to-submit', email };
     }
-
-    (await cookies()).set('reset-email', email, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      path: '/',
-    });
   } catch (e) {
     console.log(e);
 

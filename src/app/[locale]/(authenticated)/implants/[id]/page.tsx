@@ -46,7 +46,7 @@ async function ImplantDetailsPage({ params }: Props) {
           title={implant.brand}
           kitId={implant.kitId}
           fallbackImage={implantImg}
-          imagePath={implant.imagePath ? implant.imagePath : implantImg}
+          imagePath={`/api/images?imagePath=${implant.imagePath}`}
         />
         <Detail
           title={t('item.description')}

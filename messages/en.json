@@ -350,6 +350,17 @@
       }
     }
   },
+  "doctor-info-page": {
+    "title": "Doctor Information",
+    "dr": "Dr.",
+    "contact-info": "Contact Information",
+    "email": "E-mail",
+    "phone": "Phone",
+    "clinic-info": "Clinic Information",
+    "clinic": "Clinic",
+    "address": "Address",
+    "unknow": "Unknown"
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
