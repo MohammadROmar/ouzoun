@@ -26,6 +26,10 @@ export async function get(path: string, options: RequestInit = {}) {
   } catch (e) {
     const error = e as Error;
 
+    if (error.message.includes('Failed to fetch data.')) {
+      throw new Error(error.message);
+    }
+
     if (error.message.includes('404')) {
       notFound();
     }

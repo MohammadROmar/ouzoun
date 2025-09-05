@@ -6,6 +6,7 @@ import KitIcon from '@/assets/icons/kit';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import AssistantIcon from '@/assets/icons/assistant';
+import UserIcon from '@/assets/icons/user';
 import type { NavigationLink } from '@/core/models/navigation-link';
 
 export type DashboardNavigationLink = {
@@ -27,5 +28,6 @@ export async function dashboardNavigation(): Promise<
     { label: t('tools'), to: '/tools', icon: ToolsIcon },
     { label: t('implants'), to: '/implants', icon: ImplantIcon },
     { label: t('assistants'), to: '/assistants', icon: AssistantIcon },
+    { label: t('account'), to: '/account', icon: UserIcon },
   ];
 }

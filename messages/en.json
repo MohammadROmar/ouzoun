@@ -361,6 +361,35 @@
     "address": "Address",
     "unknow": "Unknown"
   },
+  "account-page": {
+    "title": "Account Details",
+    "email": "E-mail",
+    "phone": "Phone Number",
+    "edit": "Edit",
+    "contact-info": "Contact Information",
+    "unknow": "Unknown",
+    "note": "Note",
+    "keep-empty": "Keep the field you don't want to edit empty to keep its old value",
+    "change-password": "Change Password",
+    "save": "Save",
+    "reset": "Reset",
+    "password": "Password",
+    "passwords-not-matching": "new password and confirm password do not match. Please check and try agian",
+    "error": "Please enter a valid {field}",
+    "edit-page": {
+      "title": "Edit Profile Info",
+      "name": "Name",
+      "user-name": "User name",
+      "phone-number": "Phone number",
+      "email": "E-mail"
+    },
+    "change-password-page": {
+      "old-password": "Old password",
+      "new-password": "New password",
+      "confirm-new-password": "Confirm new password",
+      "success": "Password changed successfully"
+    }
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
@@ -416,7 +445,8 @@
       "holidays": "Holidays",
       "new": "New",
       "edit": "Edit",
-      "all": "All Assistants"
+      "all": "All Assistants",
+      "account": "Account"
     }
   },
   "footer": {

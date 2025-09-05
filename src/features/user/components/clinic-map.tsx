@@ -4,7 +4,9 @@ import dynamic from 'next/dynamic';
 
 import { Clinic } from '@/core/models/clinic';
 
-const Map = dynamic(() => import('./map'), { ssr: false });
+const Map = dynamic(() => import('../../../shared/components/map'), {
+  ssr: false,
+});
 
 export type ClinicMapProps = { clinic: Clinic };
 

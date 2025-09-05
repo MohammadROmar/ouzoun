@@ -24,7 +24,7 @@ export async function changeHolidayStatusAction(
   const status = formData.get('status') as string;
   const note = formData.get('note') as string;
 
-  const errors: { [K in keyof HolidayStatusInputs]?: boolean } = {};
+  const errors: ChangeHolidayStatusActionState['errors'] = {};
 
   if (isInvalidNumber(status) || !['1', '2', '3'].includes(status)) {
     errors.status = true;

@@ -37,7 +37,7 @@ function RegisterAssistantForm() {
             id="userName"
             label={t('user-name')}
             type="text"
-            // required
+            required
             autoComplete="off"
             defaultValue={defaultValues?.userName}
             error={errors?.userName ? t('user-name-error') : undefined}

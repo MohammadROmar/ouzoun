@@ -4,19 +4,19 @@ import { User } from '@/core/models/user';
 import type { InfoCardDetailProps } from '../models/info-card-detail';
 
 export function getContactInfo(
-  doctor: User,
+  user: User,
   t: (key: string) => string,
 ): InfoCardDetailProps[] {
   return [
     {
       icon: EmailIcon,
       title: t('email'),
-      value: doctor.email,
+      value: user.email,
     },
     {
       icon: MobileIcon,
       title: t('phone'),
-      value: doctor.phoneNumber ? doctor.phoneNumber : t('unknow'),
+      value: user.phoneNumber ? user.phoneNumber : t('unknow'),
     },
   ];
 }

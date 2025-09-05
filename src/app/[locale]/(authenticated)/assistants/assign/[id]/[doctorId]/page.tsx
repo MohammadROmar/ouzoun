@@ -3,9 +3,9 @@ import { getTranslations } from 'next-intl/server';
 
 import { get } from '@/shared/api/get';
 import Title from '@/shared/components/dashboard/title';
-import DoctorInfo from '@/features/doctor-profile/components/doctor-info';
-import DoctorContactAndClinic from '@/features/doctor-profile/components/contact-n-clinic';
-import ClinicMap from '@/features/doctor-profile/components/clinic-map';
+import UserInfo from '@/features/user/components/user-info';
+import UserContactAndClinic from '@/features/user/components/contact-n-clinic';
+import ClinicMap from '@/features/user/components/clinic-map';
 
 type DoctorDetailsPageProps = {
   params: Promise<{ locale: string; id: string; doctorId: string }>;
@@ -15,7 +15,6 @@ async function DoctorDetailsPage({ params }: DoctorDetailsPageProps) {
   const { doctorId } = await params;
 
   const doctor = await get(`/api/users/${doctorId}`);
-  // const doctor = getDummyDoctor();
 
   if (!doctor) {
     return notFound();
@@ -26,8 +25,8 @@ async function DoctorDetailsPage({ params }: DoctorDetailsPageProps) {
   return (
     <>
       <Title title={t('title')} />
-      <DoctorInfo doctor={doctor} label={t('dr')} />
-      <DoctorContactAndClinic doctor={doctor} t={t} />
+      <UserInfo user={doctor} label={t('dr')} />
+      <UserContactAndClinic user={doctor} t={t} />
       {doctor.clinic && <ClinicMap clinic={doctor.clinic} />}
     </>
   );
