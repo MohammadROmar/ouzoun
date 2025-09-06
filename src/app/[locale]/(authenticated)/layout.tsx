@@ -9,6 +9,7 @@ import SidebarContextProvider from '@/shared/store/sidebar';
 import Header from '@/shared/components/header';
 import Sidebar from '@/shared/components/sidebar';
 import { LocaleParams } from '@/i18n/routing';
+import Notifications from '@/shared/components/notification';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
@@ -36,6 +37,7 @@ async function AuthLayout({ params, children }: AuthLayoutProps) {
   return (
     <>
       <RefreshTokens />
+      <Notifications />
 
       <SidebarContextProvider>
         <Header />

@@ -28,7 +28,8 @@ export async function changePasswordAction(
   }
 
   try {
-    const accessToken = (await cookies()).get('access-token')?.value;
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get('access-token')?.value;
 
     const response = await fetch(
       `${process.env.BASE_URL}/api/users/ChangePassword`,
@@ -46,11 +47,26 @@ export async function changePasswordAction(
       },
     );
 
-    console.log(response);
-
     if (!response.ok) {
       return { message: 'failed-to-change', defaulValues: data };
     }
+
+    const responseData = await response.json();
+
+    cookieStore.set('access-token', responseData.token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 30,
+    });
+    cookieStore.set('refresh-token', responseData.refreshToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'strict',
+      path: '/',
+      maxAge: 60 * 30,
+    });
   } catch (e) {
     console.log(e);
     return { message: 'server-connection', defaulValues: data };

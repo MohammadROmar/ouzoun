@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import AddProductButton from '@/shared/components/dashboard/add-product-btn';
 import ImplantCard from '@/features/implants/components/card';
 import NoContent from '@/shared/components/no-content';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { Implant } from '@/features/implants/models/implant';
 
@@ -16,7 +17,18 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function ImplantsPage() {
   const t = await getTranslations('implants-page');
 
-  const implants = (await get('/api/Implants')) as Implant[];
+  const responseData = await get<Implant[]>('/api/Implants');
+
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const implants = responseData.data;
 
   return (
     <>

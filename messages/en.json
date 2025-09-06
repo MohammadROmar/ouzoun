@@ -130,6 +130,8 @@
     "user-count": "Count",
     "procedure-count": "Procedure count",
     "procedures": "Procedures (Last 3 months)",
+    "no-assistants": "No assistants to be shown",
+    "no-doctors": "No doctors to be shown",
     "roles": {
       "AssistantDoctor": "Assistants",
       "Administrator": "Administrators",
@@ -414,7 +416,9 @@
     "server-connection": "Failed to connect to the server. Please check your internet connection or try again later.",
     "unknow-error": "An unexpected error occured. Please try again.",
     "try-again": "Try Again",
-    "back-home": "Back to Home"
+    "back-home": "Back to Home",
+    "fetch-error": "Failed to fetch data. Please check your internet connection or try again later.",
+    "unauthorized": "You are unauthorized to access this data. Please check your session validity or try again later."
   },
   "no-content": {
     "title": "No Content Yet",

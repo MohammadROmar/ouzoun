@@ -24,6 +24,7 @@ async function AssistantCard({ assistant }: AssistantCardProps) {
           fill
           sizes="(min-width: 48rem) 50vw, (min-width: 64rem) 30vw, 90vw"
           alt=""
+          className="object-cover object-center"
         />
 
         <div className="bg-warning absolute top-0 right-0 flex items-center gap-1 rounded-bl-sm p-1 text-white">

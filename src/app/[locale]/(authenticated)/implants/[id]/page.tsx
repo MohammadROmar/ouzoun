@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
@@ -9,6 +8,7 @@ import * as Actions from '@/shared/components/dashboard/product-actions';
 import FileIcon from '@/assets/icons/file';
 import DimensionsIcon from '@/assets/icons/dimensions';
 import BoxIcon from '@/assets/icons/box';
+import ErrorHandler from '@/shared/components/error-handler';
 import {
   getToolDimentions,
   getToolSourceStock,
@@ -27,11 +27,18 @@ type Props = { params: Promise<{ locale: string; id: string }> };
 
 async function ImplantDetailsPage({ params }: Props) {
   const { id: implantId } = await params;
-  const implant = (await get(`/api/Implants/${implantId}`)) as Implant;
+  const responseData = await get<Implant>(`/api/Implants/${implantId}`);
 
-  if (!implant) {
-    return notFound();
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
   }
+
+  const implant = responseData.data;
 
   const t = await getTranslations('implants-page');
 

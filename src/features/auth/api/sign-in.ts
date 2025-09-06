@@ -29,6 +29,8 @@ export async function signInAction(
   const password = formData.get('password') as string;
   const fcmToken = formData.get('fcm-token') as string;
 
+  console.log(fcmToken);
+
   const errors: { [key: string]: string } = {};
 
   if (!isValidEmail(email)) {

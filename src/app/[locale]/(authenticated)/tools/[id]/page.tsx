@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
@@ -12,6 +11,7 @@ import {
   getToolDimensions,
   getToolStock,
 } from '@/features/tools/utils/details';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import toolsImg from '@/assets/images/tools.png';
 import { Tool } from '@/features/tools/models/tool';
@@ -26,11 +26,18 @@ type Props = { params: Promise<{ locale: string; id: string }> };
 
 export default async function ToolDetailsPage({ params }: Props) {
   const toolId = (await params).id;
-  const tool = (await get(`/api/tools/${toolId}`)) as Tool;
+  const responseData = await get<Tool>(`/api/tools/${toolId}`);
 
-  if (!tool) {
-    return notFound();
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
   }
+
+  const tool = responseData.data;
 
   const t = await getTranslations('tools-page');
 

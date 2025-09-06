@@ -4,10 +4,12 @@ import type { PropsWithChildren } from 'react';
 import { Link } from '@/i18n/navigation';
 import ProcedureIcon from '@/assets/icons/procedure';
 import ManageProcedure from './manage-procedure';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { formatDate } from '@/shared/utils/format-date';
 import { getProcedureStatus } from '../../utils/get-procedure-status';
 import { DetailedProcedure } from '../../models/detailed-procedure';
+import { User } from '@/core/models/user';
 
 type ProcedureInfoProps = { procedure: DetailedProcedure };
 
@@ -20,7 +22,18 @@ async function ProcedureInfo({ procedure }: ProcedureInfoProps) {
     'assistants-page.assign.procedure-details.info',
   );
 
-  const assistants = await get('/api/users?role=AssistantDoctor');
+  const responseData = await get<User[]>('/api/users?role=AssistantDoctor');
+
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const assistants = responseData.data;
 
   return (
     <section className="mt-4 space-y-2">

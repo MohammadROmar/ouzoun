@@ -3,13 +3,25 @@ import { getTranslations } from 'next-intl/server';
 import Title from '@/shared/components/dashboard/title';
 import AssistantHolidayCard from '@/features/assistants/components/holidays/assistant-holiday-card';
 import NoContent from '@/shared/components/no-content';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { Holiday } from '@/features/assistants/models/holiday';
 
 export default async function AssistantsLeaveRequestsPage() {
-  const holidays = (await get('/api/holidays', {
+  const responseData = await get<Holiday[]>('/api/holidays', {
     cache: 'no-store',
-  })) as Holiday[];
+  });
+
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const holidays = responseData.data;
 
   const t = await getTranslations('assistants-page.holidays');
 

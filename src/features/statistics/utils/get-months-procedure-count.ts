@@ -1,6 +1,17 @@
 import { get } from '@/shared/api/get';
 import { getCurrentAndPastTwoMonths } from './get-past-two-months';
 
+type Error = {
+  message: 'fetch-error' | 'server-connection';
+  data: { status: number };
+};
+type Success = {
+  message: 'success';
+  data: { name: string; proceduresCount: number };
+};
+
+type MonthProceduresCount = Error | Success;
+
 type GetMonthProceduresCountProps = {
   month: number;
   year: number;
@@ -11,20 +22,38 @@ async function getMonthProceduresCount({
   month,
   year,
   locale,
-}: GetMonthProceduresCountProps) {
-  const { result } = (await get(
+}: GetMonthProceduresCountProps): Promise<MonthProceduresCount> {
+  const responseData = await get<{ result: number }>(
     `/api/Statistics/GetNumberOfProcedures?Month=${month}&Year=${year}`,
-  )) as { result: number };
+  );
+
+  if (responseData.message !== 'success') {
+    return {
+      message: responseData.message,
+      data: { status: responseData.data.status },
+    };
+  }
+
+  const result = responseData.data.result;
 
   const date = new Date(year, month).toLocaleDateString(locale, {
     month: 'long',
     year: 'numeric',
   });
 
-  return { name: date, proceduresCount: result };
+  return { message: 'success', data: { name: date, proceduresCount: result } };
 }
 
-export async function getMonthsProceduresCount(locale: string) {
+type OverallSuccess = {
+  message: 'success';
+  data: { name: string; proceduresCount: number }[];
+};
+
+type MonthsProceduresCount = Error | OverallSuccess;
+
+export async function getMonthsProceduresCount(
+  locale: string,
+): Promise<MonthsProceduresCount> {
   const months = getCurrentAndPastTwoMonths(new Date());
 
   const data: {
@@ -33,14 +62,21 @@ export async function getMonthsProceduresCount(locale: string) {
   }[] = [];
 
   for (const { month, year } of months) {
-    const { name, proceduresCount } = await getMonthProceduresCount({
+    const responseData = await getMonthProceduresCount({
       month,
       year,
       locale,
     });
 
-    data.push({ name, proceduresCount });
+    if (responseData.message !== 'success') {
+      return {
+        message: responseData.message,
+        data: { status: responseData.data.status },
+      };
+    }
+
+    data.push({ ...responseData.data });
   }
 
-  return data;
+  return { message: 'success', data };
 }

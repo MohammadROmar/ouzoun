@@ -1,9 +1,9 @@
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
 import HolidayCalendar from '@/features/assistants/components/holidays/calender';
 import HolidayStatus from '@/features/assistants/components/holidays/status';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { Holiday } from '@/features/assistants/models/holiday';
 
@@ -14,9 +14,18 @@ type LeaveRequestPageProps = {
 async function LeaveRequestPage({ params }: LeaveRequestPageProps) {
   const { id } = await params;
 
-  const holiday = (await get(`/api/holidays/${id}`)) as Holiday;
+  const responseData = await get<Holiday>(`/api/holidays/${id}`);
 
-  if (!holiday) return notFound();
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const holiday = responseData.data;
 
   const t = await getTranslations('assistants-page.holidays');
 

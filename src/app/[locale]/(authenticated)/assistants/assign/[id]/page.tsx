@@ -6,6 +6,7 @@ import ProcedureAssistants from '@/features/assistants/components/assign/assista
 import RequiredTools from '@/features/assistants/components/assign/required-tools';
 import ImplantKits from '@/features/assistants/components/assign/implant-kits';
 import SurgicalKits from '@/features/assistants/components/assign/surgical-kits';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { DetailedProcedure } from '@/features/assistants/models/detailed-procedure';
 
@@ -18,7 +19,18 @@ async function ProcedureDetailsPage({ params }: ProcedureDetailsPageProps) {
 
   const t = await getTranslations('assistants-page.assign.procedure-details');
 
-  const procedure = (await get(`/api/procedures/${id}`)) as DetailedProcedure;
+  const responseData = await get<DetailedProcedure>(`/api/procedures/${id}`);
+
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const procedure = responseData.data;
 
   return (
     <>

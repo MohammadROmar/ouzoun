@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
@@ -11,6 +10,7 @@ import * as Actions from '@/shared/components/dashboard/product-actions';
 import ToolsIcon from '@/assets/icons/tools';
 import ImplantIcon from '@/assets/icons/implant';
 import MainIcon from '@/assets/icons/main';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import kitImg from '@/assets/images/kit.png';
 import { Kit } from '@/features/kits/models/kit';
@@ -25,11 +25,18 @@ type KitDetailsPageProps = { params: Promise<{ locale: string; id: string }> };
 
 export default async function KitDetailsPage({ params }: KitDetailsPageProps) {
   const { id: kitId } = await params;
-  const kit = (await get(`/api/kits/${kitId}`)) as Kit;
+  const responseData = await get<Kit>(`/api/kits/${kitId}`);
 
-  if (!kit) {
-    return notFound();
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
   }
+
+  const kit = responseData.data;
 
   const t = await getTranslations('kits-page');
 

@@ -67,7 +67,7 @@ export default function NotificationConsetButton() {
         />
       </div>
 
-      <SignInFormSubmit text={t('title')} disabled />
+      <SignInFormSubmit text={t('title')} disabled={status === 'pending'} />
     </>
   );
 }

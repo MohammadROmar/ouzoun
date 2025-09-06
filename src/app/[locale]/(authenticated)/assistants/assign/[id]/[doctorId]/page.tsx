@@ -1,11 +1,12 @@
-import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { get } from '@/shared/api/get';
 import Title from '@/shared/components/dashboard/title';
 import UserInfo from '@/features/user/components/user-info';
 import UserContactAndClinic from '@/features/user/components/contact-n-clinic';
 import ClinicMap from '@/features/user/components/clinic-map';
+import ErrorHandler from '@/shared/components/error-handler';
+import { get } from '@/shared/api/get';
+import { User } from '@/core/models/user';
 
 type DoctorDetailsPageProps = {
   params: Promise<{ locale: string; id: string; doctorId: string }>;
@@ -14,11 +15,18 @@ type DoctorDetailsPageProps = {
 async function DoctorDetailsPage({ params }: DoctorDetailsPageProps) {
   const { doctorId } = await params;
 
-  const doctor = await get(`/api/users/${doctorId}`);
+  const responseData = await get<User>(`/api/users/${doctorId}`);
 
-  if (!doctor) {
-    return notFound();
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
   }
+
+  const doctor = responseData.data as User;
 
   const t = await getTranslations('doctor-info-page');
 

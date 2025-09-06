@@ -1,14 +1,26 @@
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
+import AssistantCard from '@/features/assistants/components/assistant-card';
+import ErrorHandler from '@/shared/components/error-handler';
 import { get } from '@/shared/api/get';
 import { User } from '@/core/models/user';
-import AssistantCard from '@/features/assistants/components/assistant-card';
 
 async function AllAssistantsPage() {
   const t = await getTranslations('assistants-page.all');
 
-  const assistants = (await get('/api/users?role=AssistantDoctor')) as User[];
+  const responseData = await get<User[]>('/api/users?role=AssistantDoctor');
+
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const assistants = responseData.data;
 
   return (
     <>
