@@ -261,9 +261,18 @@
       "description": "View and manage all registered assistants.",
       "email": "E-mail",
       "phone-number": "Phone Number",
-      "send-email": "Send mail",
-      "call": "Call",
-      "delete": "Delete"
+      "delete": "Delete",
+      "recover": {
+        "title": "Recover Assistant",
+        "button": "Recover",
+        "password": "Password",
+        "success": "Password changed successfully",
+        "reset": "Reset",
+        "action": "Recover",
+        "confirm-password": "Confirm password",
+        "error": "Please enter a valid {field}",
+        "password-mismatch": "Password and confirm password are not identical. Please check your input and try again."
+      }
     },
     "register": {
       "title": "Register Assistant",
@@ -430,6 +439,7 @@
     "failed-to-create": "Failed to create.\nPlease try again later.",
     "failed-to-delete": "Failed to delete.\nPlease try again later.",
     "failed-to-register": "Failed to register new assistant.\nPlease try again later.",
+    "unauthorized": "You are unauthorized to access this data or mutate it. Please check your session validity or try again later.",
     "server-connection": "Failed to connect to the server.\nPLease check your internet connection or try again later.",
     "unknown": "Unknow error has occured. Please try again later."
   },
@@ -452,6 +462,7 @@
       "role": "Role"
     },
     "dashboard": {
+      "dashboard": "Statistics",
       "statistics": "Statistics",
       "kits": "Kits",
       "tools": "Tools",

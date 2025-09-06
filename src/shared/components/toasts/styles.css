@@ -1,6 +1,6 @@
 .custom-toast {
   --toastify-color-light: var(--color-bg-primary);
-  --toastify-color-dark: red;
+  --toastify-color-dark: var(--color-bg-primary);
 
   --toastify-text-color-light: black;
   --toastify-text-color-dark: black;

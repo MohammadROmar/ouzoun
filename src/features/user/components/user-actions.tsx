@@ -1,22 +1,15 @@
 import { Link } from '@/i18n/navigation';
 
 type UserActionsProps = {
-  edit: { label: string; href: string };
   changePassword: { label: string; href: string };
 };
 
-async function UserActions({ edit, changePassword }: UserActionsProps) {
+async function UserActions({ changePassword }: UserActionsProps) {
   return (
-    <section className="mt-4 flex gap-2 max-md:flex-col md:gap-4">
-      <Link
-        href={edit.href}
-        className="button flex w-full items-center justify-center"
-      >
-        {edit.label}
-      </Link>
+    <section className="mt-4 flex items-center justify-center md:gap-4">
       <Link
         href={changePassword.href}
-        className="button border-green !text-green flex w-full items-center justify-center border !bg-transparent"
+        className="button flex w-full max-w-md items-center justify-center"
       >
         {changePassword.label}
       </Link>

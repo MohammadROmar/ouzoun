@@ -48,7 +48,13 @@ export async function changePasswordAction(
     );
 
     if (!response.ok) {
-      return { message: 'failed-to-change', defaulValues: data };
+      return {
+        message:
+          response.status === 401 || response.status === 403
+            ? 'unauthorized'
+            : 'failed-to-change',
+        defaulValues: data,
+      };
     }
 
     const responseData = await response.json();

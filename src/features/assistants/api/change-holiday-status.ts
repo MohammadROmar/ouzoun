@@ -64,7 +64,10 @@ export async function changeHolidayStatusAction(
     if (!response.ok) {
       return {
         id: prevState.id,
-        message: 'failed-to-change',
+        message:
+          response.status === 401 || response.status === 403
+            ? 'unauthorized'
+            : 'failed-to-change',
         defaultValues: { status, note },
       };
     }

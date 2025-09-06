@@ -25,7 +25,13 @@ export async function deleteImplantAction(
     );
 
     if (!response.ok) {
-      return { message: 'failed-to-delete', id: prevState.id };
+      return {
+        message:
+          response.status === 401 || response.status === 403
+            ? 'unauthorized'
+            : 'failed-to-delete',
+        id: prevState.id,
+      };
     }
   } catch (e) {
     console.log(e);

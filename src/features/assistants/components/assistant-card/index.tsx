@@ -3,9 +3,9 @@ import { getTranslations } from 'next-intl/server';
 import FallbackImage from '@/shared/components/dashboard/fallback-image';
 import AssistantCredentials from './credentials';
 import AssistantCardActions from './actions';
+import StarIcon from '@/assets/icons/star';
 import userImg from '@/assets/images/user.jpg';
 import { User } from '@/core/models/user';
-import StarIcon from '@/assets/icons/star';
 
 export type AssistantCardProps = { assistant: User };
 

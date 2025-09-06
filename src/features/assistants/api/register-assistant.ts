@@ -44,7 +44,14 @@ export async function registerAssistantAction(
     });
 
     if (!response.ok) {
-      return { message: 'failed-to-register', defaultValues: data, errors };
+      return {
+        message:
+          response.status === 401 || response.status === 403
+            ? 'unauthorized'
+            : 'failed-to-register',
+        defaultValues: data,
+        errors,
+      };
     }
   } catch (error) {
     console.log(error);

@@ -42,7 +42,10 @@ export async function toolAction(
 
     if (!response.ok) {
       return {
-        message: `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
+        message:
+          response.status === 401 || response.status === 403
+            ? 'unauthorized'
+            : `failed-to-${prevState.action === 'CREATE' ? 'create' : 'edit'}`,
         errors,
         defaultValues: data,
         id: prevState.id,

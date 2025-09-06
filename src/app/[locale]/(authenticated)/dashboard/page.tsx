@@ -7,6 +7,8 @@ import TopByRate from '@/features/statistics/components/top-by-rate';
 import TopByAssignments from '@/features/statistics/components/top-by-assignments';
 import TopDoctors from '@/features/statistics/components/top-doctors';
 
+export const dynamic = 'force-dynamic';
+
 export default async function DashboardPage() {
   const t = await getTranslations('dashboard-page');
 

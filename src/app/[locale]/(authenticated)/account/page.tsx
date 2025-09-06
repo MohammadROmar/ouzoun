@@ -31,7 +31,6 @@ async function AccountPage() {
       <UserInfo user={user} />
       <UserContactAndClinic user={user} t={t} />
       <UserActions
-        edit={{ label: t('edit'), href: '/account/edit' }}
         changePassword={{
           label: t('change-password'),
           href: '/account/change-password',
