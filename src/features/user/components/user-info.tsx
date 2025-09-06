@@ -6,7 +6,7 @@ type UserInfoProps = { user: User; label?: string };
 
 function UserInfo({ user, label }: UserInfoProps) {
   return (
-    <section className="card-shadow mt-4 flex w-full items-center gap-4 rounded-xl p-2 max-md:flex-col max-md:gap-2 md:p-3">
+    <section className="card-shadow bg-bg-primary mt-4 flex w-full items-center gap-4 rounded-xl p-2 max-md:flex-col max-md:gap-2 md:p-3">
       <div className="border-green relative size-24 overflow-hidden rounded-full border-2">
         <FallbackImage
           src={`/api/images?imagePath=${user.profileImagePath}`}

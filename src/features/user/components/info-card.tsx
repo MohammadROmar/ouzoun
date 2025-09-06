@@ -5,7 +5,7 @@ type InfoCardProps = { title: string; cardDetails: InfoCardDetailProps[] };
 
 function InfoCard({ title, cardDetails }: InfoCardProps) {
   return (
-    <div className="card-shadow w-full space-y-3 rounded-xl p-2 md:p-3">
+    <div className="card-shadow bg-bg-primary w-full space-y-3 rounded-xl p-2 md:p-3">
       <h3 className="ltr:font-ubuntu text-xl md:text-2xl">{title}</h3>
 
       <ul className="space-y-2">

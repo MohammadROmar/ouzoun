@@ -121,7 +121,20 @@
   },
   "dashboard-page": {
     "title": "لوحة التحكم",
-    "logout": "تسجيل الخروج"
+    "dr": "د.",
+    "logout": "تسجيل الخروج",
+    "distribution": "تعداد المستخدمين",
+    "assistants-rating": "اعلى مساعدين حسب التقييم",
+    "assistants-assignments": "اعلى مساعدين حسب العمليات",
+    "top-doctors": "أفضل أطباء من ناحية عدد العمليات",
+    "user-count": "العدد",
+    "procedure-count": "عدد العمليات",
+    "procedures": "العمليات (آخر 3 شهور)",
+    "roles": {
+      "AssistantDoctor": "مساعدين",
+      "Administrator": "مشرفين",
+      "User": "أطباء"
+    }
   },
   "kits-page": {
     "error": "رجاءاً ادخل {field} بشكل صحيح",

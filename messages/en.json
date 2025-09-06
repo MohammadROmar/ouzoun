@@ -121,7 +121,20 @@
   },
   "dashboard-page": {
     "title": "Dashboard",
-    "logout": "Logout"
+    "dr": "Dr.",
+    "logout": "Logout",
+    "distribution": "User distribution",
+    "assistants-rating": "Top assistants by Rating",
+    "assistants-assignments": "Top assistants by Assignments",
+    "top-doctors": "Top doctors by procedures count",
+    "user-count": "Count",
+    "procedure-count": "Procedure count",
+    "procedures": "Procedures (Last 3 months)",
+    "roles": {
+      "AssistantDoctor": "Assistants",
+      "Administrator": "Administrators",
+      "User": "Doctors"
+    }
   },
   "kits-page": {
     "error": "Please enter a valid {field}",
