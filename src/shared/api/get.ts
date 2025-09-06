@@ -1,17 +1,11 @@
 import { cookies } from 'next/headers';
 
-type Success<T> = { message: 'success'; data: T };
-export type Error = {
-  message: 'fetch-error' | 'server-connection';
-  data: { status: number };
-};
-
-type Get<T> = Success<T> | Error;
+import type { Fetch } from '@/core/models/fetch';
 
 export async function get<T>(
   path: string,
   options: RequestInit = {},
-): Promise<Get<T>> {
+): Promise<Fetch<T>> {
   try {
     const accessToken = (await cookies()).get('access-token')?.value;
 

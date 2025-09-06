@@ -1,29 +1,26 @@
-import { cookies } from 'next/headers';
 import { getTranslations } from 'next-intl/server';
 
 import Title from '@/shared/components/dashboard/title';
 import ProcedureCard from '@/features/assistants/components/assign/procedure-card';
 import NoContent from '@/shared/components/no-content';
-import { Procedure } from '@/features/assistants/models/procedure';
+import ErrorHandler from '@/shared/components/error-handler';
+import { getProcedure } from '@/features/assistants/api/get-procedures';
 
 export default async function AssignAssistantsPage() {
   const t = await getTranslations('assistants-page.assign');
 
-  const accessToken = (await cookies()).get('access-token')?.value;
-  const response = await fetch(
-    `${process.env.BASE_URL}/api/procedures/FilteredProcedure`,
-    {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify([]),
-      cache: 'no-store',
-    },
-  );
+  const responseData = await getProcedure();
 
-  const procedures = (await response.json()) as Procedure[];
+  if (responseData.message !== 'success') {
+    return (
+      <ErrorHandler
+        message={responseData.message}
+        status={responseData.data.status}
+      />
+    );
+  }
+
+  const procedures = responseData.data;
 
   return (
     <>

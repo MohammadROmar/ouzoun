@@ -49,9 +49,6 @@ export async function recoverAssistantAction(
       },
     );
 
-    console.log(response);
-    console.log(await response.json());
-
     if (!response.ok) {
       return {
         errors,
@@ -65,6 +62,12 @@ export async function recoverAssistantAction(
     }
   } catch (e) {
     console.log(e);
+
+    return {
+      id: prevState.id,
+      message: 'server-connection',
+      defaultValues: { password, confirmPassword },
+    };
   }
 
   return {

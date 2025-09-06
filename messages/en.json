@@ -414,6 +414,9 @@
       "success": "Password changed successfully"
     }
   },
+  "notifications-page": {
+    "title": "Notifications"
+  },
   "not-found-page": {
     "title": "Oops!",
     "subtitle": "Could not find the page you requested",
@@ -470,6 +473,7 @@
       "assistants": "Assistants",
       "register": "Register",
       "assign": "Assign",
+      "notifications": "Notifications",
       "holidays": "Holidays",
       "new": "New",
       "edit": "Edit",

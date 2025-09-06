@@ -12,17 +12,30 @@ import { Holiday } from '@/features/assistants/models/holiday';
 import { useLocale } from 'next-intl';
 import { redirect } from 'next/navigation';
 
-export type ModalProps = { close: () => void; t: (key: string) => string };
+export type ModalProps = {
+  close: () => void;
+  t: (key: string) => string;
+};
 
-type ChangeStatusProps = ModalProps & { holiday: Holiday; open: boolean };
+type ChangeStatusProps = ModalProps & {
+  canChange: boolean;
+  holiday: Holiday;
+  open: boolean;
+};
 
-function ChangeStatus({ holiday, open, close, t }: ChangeStatusProps) {
+function ChangeStatus({
+  canChange,
+  holiday,
+  open,
+  close,
+  t,
+}: ChangeStatusProps) {
   const [state, formAction, pending] = useActionState(
     changeHolidayStatusAction,
     {
       id: holiday.id.toString(),
       message: undefined,
-      defaultValues: { note: '', status: holiday.status.toString() },
+      defaultValues: { note: holiday.note, status: holiday.status.toString() },
     },
   );
 
@@ -35,6 +48,8 @@ function ChangeStatus({ holiday, open, close, t }: ChangeStatusProps) {
       redirect(`/${locale}/assistants/holidays`);
     }
   }, [state.message, locale, t]);
+
+  if (!canChange) return null;
 
   return (
     <Modal ref={dialogRef} title={t('holiday.modal.title')} onClose={close}>

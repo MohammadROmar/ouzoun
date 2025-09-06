@@ -18,14 +18,13 @@ function HolidayStatus({ holiday }: HolidayStatusProps) {
 
   return (
     <section className="mt-4 flex items-center gap-4">
-      {canChangeStatus && (
         <ChangeStatus
           holiday={holiday}
+          canChange={canChangeStatus}
           open={open}
           close={() => setOpen(false)}
           t={t}
         />
-      )}
 
       <h3 className="ltr:font-ubuntu text-xl md:text-2xl">
         <span className="text-green">{t('holiday.status')}:</span>{' '}
