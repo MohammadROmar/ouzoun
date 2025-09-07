@@ -4,9 +4,8 @@ import { useLocale } from 'next-intl';
 import { toast } from 'react-toastify';
 
 import FormErrors from '@/shared/components/dashboard/errors';
-import { deleteAssistantAction } from '../../api/delete-assistant';
-
 import LoadingSpinner from '@/assets/icons/loading-spinner';
+import { deleteAssistantAction } from '../../api/delete-assistant';
 
 type DeleteAssistantFormProps = {
   close: () => void;

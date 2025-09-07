@@ -461,7 +461,9 @@
     "drop": "Drop image here",
     "error-size": "File size must not exceed 2MB",
     "error-type": "File type must be png or jpg",
-    "error-unknow": "Unknow error happent while uploading the image"
+    "error-unknow": "Unknow error happent while uploading the image",
+    "note": "Note",
+    "not-required": "Keep image field empty if you want to keep the old one"
   },
   "navigation": {
     "landing": {

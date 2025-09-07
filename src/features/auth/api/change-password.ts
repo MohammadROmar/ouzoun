@@ -64,14 +64,14 @@ export async function changePasswordAction(
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 30,
+      maxAge: 60 * 60 * 22,
     });
     cookieStore.set('refresh-token', responseData.refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 30,
+      maxAge: 60 * 60 * 24 * 5,
     });
   } catch (e) {
     console.log(e);

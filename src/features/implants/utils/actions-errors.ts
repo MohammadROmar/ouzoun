@@ -5,7 +5,10 @@ import {
 } from '@/shared/utils/validation';
 import type { ImplantInputs } from '../models/implant-inputs';
 
-export function getImplantInputErrors(data: ImplantInputs) {
+export function getImplantInputErrors(
+  data: ImplantInputs,
+  action: 'CREATE' | 'EDIT',
+) {
   const errors: { [K in keyof ImplantInputs]?: boolean } = {};
 
   errors.brand = isInvalidText(data.brand);
@@ -17,7 +20,9 @@ export function getImplantInputErrors(data: ImplantInputs) {
   errors.radius = isInvalidNumber(data.radius);
   errors.quantity = isInvalidNumber(data.quantity);
 
-  errors.image = isInvalidImage(data.image);
+  if (action === 'CREATE') {
+    errors.image = isInvalidImage(data.image);
+  }
 
   return errors;
 }

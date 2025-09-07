@@ -30,6 +30,7 @@ async function ToolCard({ tool, className }: ToolCardProps) {
             fill
             sizes="250px"
             aria-labelledby="implant-brand"
+            className="object-cover object-center"
           />
         </div>
 

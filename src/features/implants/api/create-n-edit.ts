@@ -13,7 +13,7 @@ export async function implantAction(
 ): Promise<ImplantActionState> {
   const data = Object.fromEntries(formData.entries()) as ImplantInputs;
 
-  const errors = getImplantInputErrors(data);
+  const errors = getImplantInputErrors(data, prevState.action);
   const hasError = Object.entries(errors).find((error) => error[1]);
 
   if (hasError) {

@@ -6,18 +6,21 @@ import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 import { useDropzoneImage } from '@/shared/hooks/use-dropzone-image';
+import WarningIcon from '@/assets/icons/warning';
 import type { TFunction } from '@/core/models/t-function';
 
 type DropzoneImageProps = {
   hasError?: boolean;
   defaultImage?: File;
   id?: string;
+  required: boolean;
 };
 
 function DropzoneImage({
   hasError,
   defaultImage,
   id = 'image',
+  required,
 }: DropzoneImageProps) {
   const { image, error, getRootProps, getInputProps, isDragActive, setImage } =
     useDropzoneImage();
@@ -32,6 +35,16 @@ function DropzoneImage({
 
   return (
     <div className="size-full max-md:m-auto max-md:aspect-square max-md:w-full max-md:max-w-56">
+      {!required && (
+        <p className="flex items-center gap-1 text-sm">
+          <span>
+            <WarningIcon className="text-warning size-4" />
+          </span>
+          <span className="text-warning">{t('note')}:</span>
+          <span className="text-gray">{t('not-required')}</span>
+        </p>
+      )}
+
       <div
         className={clsx(
           'bg-bg-primary relative flex size-full cursor-pointer flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border border-dashed !outline-current',
@@ -65,7 +78,7 @@ function DropzoneImage({
           name={id}
           type="file"
           accept="image/*"
-          required
+          required={required}
           className="cursor-default"
           aria-invalid={hasError || !!error}
           {...getInputProps()}

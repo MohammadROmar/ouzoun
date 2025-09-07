@@ -4,7 +4,7 @@ import type { ToolInputs } from '../models/tool-inputs';
 export function toolToInputs(tool: Tool): ToolInputs {
   return {
     name: tool.name,
-    kitId: tool.kitId.toString(),
+    kitId: tool.kitId !== null ? tool.kitId.toString() : null,
     categoryId: tool.categoryId,
     width: tool.width.toString(),
     height: tool.height.toString(),

@@ -72,7 +72,7 @@ export async function signInAction(
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 30,
+      maxAge: 60 * 60 * 22,
     });
     cookieStore.set('access-token', data.token, {
       httpOnly: true,

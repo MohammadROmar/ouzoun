@@ -24,6 +24,7 @@ export default function KitCard({ kit }: KitCardProps) {
             fill
             sizes="250px"
             aria-labelledby="implant-brand"
+            className="object-cover object-center"
           />
         </div>
 

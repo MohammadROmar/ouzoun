@@ -62,6 +62,7 @@ export default function ToolInfo({ kits }: ToolInfoProps) {
       </div>
 
       <DropzoneImage
+        required
         hasError={errors?.image}
         defaultImage={defaultValues?.image}
       />

@@ -36,14 +36,14 @@ export async function POST() {
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 30,
+      maxAge: 60 * 60 * 24 * 5,
     });
     res.cookies.set('access-token', data.token, {
       httpOnly: true,
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 60 * 24 * 5,
+      maxAge: 60 * 60 * 22,
     });
 
     return res;

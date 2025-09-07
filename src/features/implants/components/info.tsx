@@ -56,6 +56,7 @@ export default function ImplantInfo({ kits }: ImplantInfoProps) {
       </div>
 
       <DropzoneImage
+        required
         hasError={errors?.image}
         defaultImage={defaultValues?.image}
       />

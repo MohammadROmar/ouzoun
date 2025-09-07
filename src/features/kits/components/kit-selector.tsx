@@ -10,7 +10,7 @@ import { Kit } from '@/features/kits/models/kit';
 type KitSelectorProps = {
   label: string;
   kits: Kit[];
-  kitId?: string;
+  kitId?: string | null;
   error?: string;
   required?: boolean;
   noOption: string;
@@ -28,7 +28,9 @@ function KitSelector({
   const locale = useLocale();
 
   const kit =
-    kitId === undefined ? undefined : kits.find((kit) => kit.id === +kitId);
+    kitId === undefined || kitId === null
+      ? undefined
+      : kits.find((kit) => kit.id === +kitId);
   const options = kits.map((kit) => ({ label: kit.name, value: kit.id }));
 
   return (

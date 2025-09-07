@@ -56,6 +56,7 @@ function RegisterAssistantForm() {
         </div>
 
         <DropzoneImage
+          required
           id="profilePicture"
           hasError={errors?.profilePicture}
           defaultImage={defaultValues?.profilePicture}

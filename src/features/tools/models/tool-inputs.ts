@@ -1,7 +1,7 @@
 export type ToolInputs = {
   name: string;
   image: File;
-  kitId: string;
+  kitId: string | null;
   categoryId: number;
   width: string;
   height: string;

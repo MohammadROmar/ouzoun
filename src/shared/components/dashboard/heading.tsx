@@ -32,6 +32,7 @@ function Heading({
           aria-labelledby="details-title"
           fill
           sizes="(min-width: 40rem) 33.33vw, (min-width: 48rem) 16.67vw, (max-width: 64rem) 33.33vw, 16rem"
+          className="object-cover object-center"
         />
       </div>
 

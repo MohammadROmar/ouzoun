@@ -13,7 +13,7 @@ export async function toolAction(
 ): Promise<ToolActionState> {
   const data = Object.fromEntries(formData.entries()) as unknown as ToolInputs;
 
-  const errors = getToolInputErrors(data);
+  const errors = getToolInputErrors(data, prevState.action);
   const hasError = Object.entries(errors).find((error) => error[1]);
 
   if (hasError) {

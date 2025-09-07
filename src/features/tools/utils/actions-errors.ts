@@ -5,7 +5,10 @@ import {
   isInvalidImage,
 } from '../../../shared/utils/validation';
 
-export function getToolInputErrors(data: ToolInputs) {
+export function getToolInputErrors(
+  data: ToolInputs,
+  action: 'CREATE' | 'EDIT',
+) {
   const errors: { [K in keyof ToolInputs]?: boolean } = {};
 
   errors.name = isInvalidText(data.name);
@@ -16,7 +19,9 @@ export function getToolInputErrors(data: ToolInputs) {
   errors.thickness = isInvalidNumber(data.thickness);
   errors.quantity = isInvalidNumber(data.quantity);
 
-  errors.image = isInvalidImage(data.image);
+  if (action === 'CREATE') {
+    errors.image = isInvalidImage(data.image);
+  }
 
   return errors;
 }

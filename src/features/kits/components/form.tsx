@@ -70,6 +70,7 @@ function KitForm({ defaultValues, action }: KitFormProps) {
 
         <div className="m-auto aspect-square max-w-md">
           <DropzoneImage
+            required
             hasError={state.errors?.image}
             defaultImage={state.defaultValues?.image}
           />
