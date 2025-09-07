@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/navigation';
 import RecoverIcon from '@/assets/icons/recover';
-import DeleteIcon from '@/assets/icons/delete';
+import DeleteAssistant from '../delete-assistant/button';
 import type { AssistantCardProps } from '.';
 
 type AssistantCredentialsProps = AssistantCardProps & {
@@ -18,13 +18,8 @@ function AssistantCardActions({ assistant, t }: AssistantCredentialsProps) {
       >
         <RecoverIcon className="aspect-square size-full" />
       </Link>
-      <button
-        title={t('delete')}
-        aria-label={t('delete')}
-        className="bg-gray hover:bg-danger size-6 cursor-pointer rounded-sm p-1 transition-colors duration-500"
-      >
-        <DeleteIcon className="aspect-square size-full" />
-      </button>
+
+      <DeleteAssistant assistantId={assistant.id} />
     </div>
   );
 }

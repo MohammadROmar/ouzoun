@@ -261,7 +261,6 @@
       "description": "View and manage all registered assistants.",
       "email": "E-mail",
       "phone-number": "Phone Number",
-      "delete": "Delete",
       "recover": {
         "title": "Recover Assistant",
         "button": "Recover",
@@ -272,6 +271,13 @@
         "confirm-password": "Confirm password",
         "error": "Please enter a valid {field}",
         "password-mismatch": "Password and confirm password are not identical. Please check your input and try again."
+      },
+      "delete": {
+        "title": "Delete Assistant",
+        "button": "Delete",
+        "success": "Assistants deleted successfully",
+        "modal-body": "Are you sure you want to delete this assistant?\nThis action cannot be undone.",
+        "cancel": "Cancel"
       }
     },
     "register": {
